@@ -96,6 +96,13 @@ export function installClaimIssues(name, text) {
   return issues;
 }
 
+// Every pinned action SHA, mapped to the upstream tag it actually is. Verified against the
+// action repository's own tag list on the date it was added. A pin absent here is unverified.
+const PINNED_VERSIONS = {
+  'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1': 'v7.0.1',
+  'actions/setup-node@820762786026740c76f36085b0efc47a31fe5020': 'v7.0.0',
+};
+
 export function workflowIssues(name, text) {
   const issues = [];
   let workflow;
@@ -131,6 +138,15 @@ export function workflowIssues(name, text) {
     for (const [key, value] of Object.entries(obj)) {
       if (key === 'uses' && (typeof value !== 'string' || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_./-]+@[a-f0-9]{40}$/.test(value))) issues.push(`ACTION_PIN:${name}`);
       if (key === 'uses' && typeof value === 'string' && value.startsWith('actions/checkout@') && obj.with?.['persist-credentials'] !== false) issues.push(`WORKFLOW_CREDENTIALS:${name}`);
+      // A step name that quotes a version must quote the version actually pinned. Dependabot
+      // moves the SHA and leaves the label, so without this the workflow lies after every bump.
+      if (key === 'uses' && typeof value === 'string' && typeof obj.name === 'string') {
+        const labelled = obj.name.match(/\bv\d+(?:\.\d+)*\b/);
+        const action = value.split('@')[0].split('/').pop();
+        if (labelled && !obj.name.includes(`${action} ${labelled[0]}`)) issues.push(`ACTION_LABEL:${name}:${obj.name}`);
+        if (labelled && !PINNED_VERSIONS[value]) issues.push(`ACTION_LABEL:${name}:unverified pin ${value}`);
+        else if (labelled && PINNED_VERSIONS[value] !== labelled[0]) issues.push(`ACTION_LABEL:${name}:${obj.name} pins ${PINNED_VERSIONS[value]}`);
+      }
       visitUses(value);
     }
   };
