@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "path": "prompts/missing-stage.md",
+      "active": true
+    }
+  ]
+}

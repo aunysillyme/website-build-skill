@@ -1,0 +1,74 @@
+# website-build-skill
+
+> Research-first website instructions, role boundaries and evidence gates.
+
+Generated from skills/website-build-skill/manifest.json. Public retrieval is UNVERIFIED until publication.
+
+## Active sources
+
+- [SKILL.md](skills/website-build-skill/SKILL.md): entrypoint
+- [manifest.json](skills/website-build-skill/manifest.json): manifest
+- [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): prompt
+- [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): prompt
+- [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): prompt
+- [prompts/04-three-mockups.md](skills/website-build-skill/prompts/04-three-mockups.md): prompt
+- [prompts/05-stack-and-build.md](skills/website-build-skill/prompts/05-stack-and-build.md): prompt
+- [prompts/06-site-audit.md](skills/website-build-skill/prompts/06-site-audit.md): prompt
+- [prompts/07-accessibility-contrast.md](skills/website-build-skill/prompts/07-accessibility-contrast.md): prompt
+- [prompts/08-seo-aeo.md](skills/website-build-skill/prompts/08-seo-aeo.md): prompt
+- [prompts/09-security-headers.md](skills/website-build-skill/prompts/09-security-headers.md): prompt
+- [prompts/10-adversarial-pre-ship.md](skills/website-build-skill/prompts/10-adversarial-pre-ship.md): prompt
+- [prompts/11-ship-and-verify.md](skills/website-build-skill/prompts/11-ship-and-verify.md): prompt
+- [prompts/12-web-design-team.md](skills/website-build-skill/prompts/12-web-design-team.md): prompt
+- [roles/researcher.md](skills/website-build-skill/roles/researcher.md): role
+- [roles/coordinator.md](skills/website-build-skill/roles/coordinator.md): role
+- [roles/designer.md](skills/website-build-skill/roles/designer.md): role
+- [roles/graphics.md](skills/website-build-skill/roles/graphics.md): role
+- [roles/builder.md](skills/website-build-skill/roles/builder.md): role
+- [roles/optimizer.md](skills/website-build-skill/roles/optimizer.md): role
+- [roles/reviewer.md](skills/website-build-skill/roles/reviewer.md): role
+- [playbooks/choose-stack.md](skills/website-build-skill/playbooks/choose-stack.md): playbook
+- [playbooks/data-and-templates.md](skills/website-build-skill/playbooks/data-and-templates.md): playbook
+- [playbooks/image-pipeline.md](skills/website-build-skill/playbooks/image-pipeline.md): playbook
+- [playbooks/self-hosted-fonts.md](skills/website-build-skill/playbooks/self-hosted-fonts.md): playbook
+- [playbooks/embed-facades.md](skills/website-build-skill/playbooks/embed-facades.md): playbook
+- [playbooks/security-headers.md](skills/website-build-skill/playbooks/security-headers.md): playbook
+- [playbooks/structured-data-and-llms.md](skills/website-build-skill/playbooks/structured-data-and-llms.md): playbook
+- [playbooks/performance-budgets.md](skills/website-build-skill/playbooks/performance-budgets.md): playbook
+- [playbooks/accessibility.md](skills/website-build-skill/playbooks/accessibility.md): playbook
+- [playbooks/research-and-memory.md](skills/website-build-skill/playbooks/research-and-memory.md): playbook
+- [playbooks/deploy-and-operate.md](skills/website-build-skill/playbooks/deploy-and-operate.md): playbook
+- [checklists/research.md](skills/website-build-skill/checklists/research.md): checklist
+- [checklists/brand-and-mockups.md](skills/website-build-skill/checklists/brand-and-mockups.md): checklist
+- [checklists/build.md](skills/website-build-skill/checklists/build.md): checklist
+- [checklists/accessibility.md](skills/website-build-skill/checklists/accessibility.md): checklist
+- [checklists/performance-seo.md](skills/website-build-skill/checklists/performance-seo.md): checklist
+- [checklists/security.md](skills/website-build-skill/checklists/security.md): checklist
+- [checklists/ship.md](skills/website-build-skill/checklists/ship.md): checklist
+- [references/stacks/static-html.md](skills/website-build-skill/references/stacks/static-html.md): reference
+- [references/stacks/scripted-static.md](skills/website-build-skill/references/stacks/scripted-static.md): reference
+- [references/stacks/framework.md](skills/website-build-skill/references/stacks/framework.md): reference
+- [templates/install-choice.txt](skills/website-build-skill/templates/install-choice.txt): template
+- [templates/brief.md](skills/website-build-skill/templates/brief.md): template
+- [templates/brand.md](skills/website-build-skill/templates/brand.md): template
+- [templates/tokens.json](skills/website-build-skill/templates/tokens.json): template
+- [templates/evidence.md](skills/website-build-skill/templates/evidence.md): template
+- [templates/handoff.yaml](skills/website-build-skill/templates/handoff.yaml): template
+- [templates/audit-brief.md](skills/website-build-skill/templates/audit-brief.md): template
+- [templates/site-operations.md](skills/website-build-skill/templates/site-operations.md): template
+- [templates/status.md](skills/website-build-skill/templates/status.md): template
+- [examples/fictional-studio-brief.md](skills/website-build-skill/examples/fictional-studio-brief.md): example
+- [examples/fictional-studio-handoff.md](skills/website-build-skill/examples/fictional-studio-handoff.md): example
+- [examples/audit-cases.md](skills/website-build-skill/examples/audit-cases.md): example
+
+## Bundles
+
+- [method](docs/bundles/method.md): generated upload packet
+- [prompts](docs/bundles/prompts.md): generated upload packet
+- [playbooks](docs/bundles/playbooks.md): generated upload packet
+- [checklists](docs/bundles/checklists.md): generated upload packet
+- [team](docs/bundles/team.md): generated upload packet
+
+## Inactive provenance
+
+- [Graphics original](skills/website-build-skill/prompts/02-graphics-design-original.md): archive only; never execute

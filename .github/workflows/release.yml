@@ -1,0 +1,64 @@
+{
+  "name": "Release readiness (publication unavailable)",
+  "on": {
+    "workflow_dispatch": {
+      "inputs": {
+        "tag": {
+          "description": "Existing immutable version tag to inspect; publication is unavailable",
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "${{ github.workflow }}-${{ inputs.tag }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "readiness": {
+      "name": "Inspect requested tag; never publish",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 10,
+      "steps": [
+        {
+          "name": "Check out source (checkout v4.2.2)",
+          "uses": "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "with": {
+            "persist-credentials": false,
+            "ref": "${{ inputs.tag }}"
+          }
+        },
+        {
+          "name": "Select maintainer runtime (setup-node v4.4.0)",
+          "uses": "actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "with": {
+            "node-version": "22.22.3"
+          }
+        },
+        {
+          "name": "Validate requested tag format",
+          "env": {
+            "RELEASE_TAG": "${{ inputs.tag }}"
+          },
+          "run": "node --input-type=module -e 'if (!/^v[0-9]+\\.[0-9]+\\.[0-9]+$/.test(process.env.RELEASE_TAG || \"\")) process.exit(2)'"
+        },
+        {
+          "name": "Check exact selected source",
+          "run": "node --experimental-strip-types scripts/check.ts"
+        },
+        {
+          "name": "Run local rejection cases",
+          "run": "node --experimental-strip-types --test test/*.test.ts"
+        },
+        {
+          "name": "Block unimplemented publication",
+          "run": "node --input-type=module -e 'console.error(\"BLOCKED: publisher, immutable-tag and fresh-package verification are planned and unavailable\"); process.exit(2)'"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Method and usage documentation
+    url: https://github.com/aunysillyme/website-build-skill/blob/main/docs/METHOD.md
+    about: Read the method, adapters and tool limits first.
+  - name: Private vulnerability report
+    url: https://github.com/aunysillyme/website-build-skill/security/advisories/new
+    about: UNVERIFIED until repository creation and private reporting activation.
+  - name: Private conduct report
+    url: https://support.github.com/contact
+    about: Use GitHub private reporting for abuse. Do not post private details publicly.

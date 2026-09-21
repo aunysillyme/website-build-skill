@@ -1,0 +1,113 @@
+{
+  "policy": "Editorial review scope, not test evidence. New or changed prose requires renewed human/code-owner review; generator must not update this ledger.",
+  "files": {
+    ".github/pull_request_template.md": {
+      "sha256": "debf5cbb40e292fb82280abf6f61809813cdc1df3bbfd9d9bd275bbec8c5ed34",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "AGENTS.md": {
+      "sha256": "cff67bf54d9d5d1d4ad3e838a342dd49089cd24daac0ce81576ae04ea5121172",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "CHANGELOG.md": {
+      "sha256": "93fdb0b1196762c42e8743304815d244bd3511c011d157135fdde19640b9d979",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "CLAUDE.md": {
+      "sha256": "5fdffd65702fdbb23fb1ba3652673769c010519be3c5b794e5c2966d575738c5",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "CODE_OF_CONDUCT.md": {
+      "sha256": "9b32964f09663dbcf16e5ce39b4522928ba4c74d13c49f3fe6a9fb131b8ddd31",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "CONTRIBUTING.md": {
+      "sha256": "6973e5450c9bb36a7ce85c2f208e9b5debc905cfc536a5c100efe1c3b24d522f",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "MAINTAINERS.md": {
+      "sha256": "8d24df77301222d4fe37764bdb7b13a66d80a6d8445e8acd39e15af9913f0900",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "README.md": {
+      "sha256": "7b0158dd911ca667763e688710acd0c79c48137b161b45b6102a062786db4f1e",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "RELEASING.md": {
+      "sha256": "ac95ffcc381bbd43a206959ba82742baf7ec5059d536fd0d53d8483734a12f81",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "REPO_SETTINGS.md": {
+      "sha256": "1efcb4660572ae30a429668a1e64d68b677f50215ce3633524f4a44504f4382e",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "SECURITY.md": {
+      "sha256": "9e0a9064cd020c23ae82f4c734ceab24bb9e4297073227a49ecc41414e33f8b7",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/agents-md.md": {
+      "sha256": "52c14c0beea36986593a6712c3abfb09f966de82f8a6ecff00ee72a073cd3e34",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/antigravity.md": {
+      "sha256": "e53f80ca2eedefd4148a6b7cd022a589557a2249e6a581e420ccd578dbe5a7e4",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/chatgpt-project.md": {
+      "sha256": "71bc6e2dbc77c58f9286dd7f82d2b0f1158cc4e74e8eba4983153fa33b456e02",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/claude-code.md": {
+      "sha256": "ff0f7eddcd77f21c23b7b36d83d30e500bf6f809a91d0d7abaab02e4063f1871",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/claude-desktop.md": {
+      "sha256": "784165915ac2c2a486a8f0d9b1f33a8a30ee2d81105d74fbdcd6bcb44c32eab9",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/codex.md": {
+      "sha256": "5d3c9cc8081370399a4537ab3066f366d9ee60266e0b9819817f14da7b140ac5",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/custom-gpt.md": {
+      "sha256": "b31dafccdc76e91c4037e2d911194c7ea6f205fab0aec115896e6e5df8030dd8",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/grok.md": {
+      "sha256": "e4dc7aa9ff4991a4e4610812faa476f267167c3470a3f728105b09da3ec5e24c",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/hermes.md": {
+      "sha256": "c843201641877edb4d4e41f4507220e7e1144d6762f53fbf99660caa999dc3fd",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "adapters/zero-install.md": {
+      "sha256": "d1cc7f652db55567635366f582a4eec63904676a1eb64cd24aa3e9ea58bd430e",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/COMPATIBILITY.md": {
+      "sha256": "51dcdbf008fa5bbe59c6996ff88ddcb37ee70b5bb5bbce9a6258158d64b165f0",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/EVALUATION.md": {
+      "sha256": "c3d9d6a36202f37f9af252f35edcf7659a37ccfe9b2b90278457d2ac9f82d958",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/INSTALLER.md": {
+      "sha256": "8151ebb50237bfa1889a97d594c70318bca4a6e484d164eb73999b0e978a8fee",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/METHOD.md": {
+      "sha256": "c316397d190cb1b86e6167914106e6fd71db97b7d18e1af09e5f18b36e04b266",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/PROVENANCE.md": {
+      "sha256": "98eef5479eaa9855703893907f4933b668e76770ae87d7dc98119d1cee60d11d",
+      "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/TIPS.md": {
+      "sha256": "d74d14021a72135ef8331a111557921c696695ba90451efaa6a67132abf89d1a",
+      "disposition": "instructions-and-qualified-status-only"
+    }
+  }
+}

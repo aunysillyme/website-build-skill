@@ -1,0 +1,7 @@
+fixture: synthetic
+stage: research
+status: PASS
+artifacts: []
+checks: []
+expected: BLOCKED
+reason: No saved library or evidence can support downstream acceptance.

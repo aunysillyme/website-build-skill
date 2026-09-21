@@ -1,0 +1,350 @@
+{
+  "scope": "Section 4 file coverage outside the canonical skill. PARTIAL means the future installer or publication contract is not implemented.",
+  "files": [
+    {
+      "path": "README.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "LICENSE",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "CHANGELOG.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "SECURITY.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "MAINTAINERS.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "RELEASING.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "CLAUDE.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "llms.txt",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "package.json",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "package-lock.json",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "tsconfig.json",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": ".gitignore",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".editorconfig",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".gitattributes",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/claude-code.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/claude-desktop.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/codex.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/antigravity.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/hermes.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/agents-md.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/grok.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/chatgpt-project.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/custom-gpt.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/zero-install.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/team.yaml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/METHOD.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/TIPS.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/COMPATIBILITY.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/PROVENANCE.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/INSTALLER.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/EVALUATION.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/bundles/method.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/bundles/prompts.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/bundles/playbooks.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/bundles/checklists.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "docs/bundles/team.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "src/cli.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "src/choice.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "src/agents.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "src/install.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "src/catalog.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "src/bundle.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "src/validate.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "bin/website-build-skill.mjs",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "scripts/build.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "scripts/check.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/content.test.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/research-date.test.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "test/installer.test.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "test/package.test.ts",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    },
+    {
+      "path": "test/privacy.test.ts",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/fixtures/invalid-manifest.json",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/fixtures/conflicting-brand.json",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/fixtures/malicious-source.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/fixtures/incomplete-handoff.yaml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "test/fixtures/ask-date-cases.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/CODEOWNERS",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "status": "PARTIAL",
+      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+    }
+  ]
+}

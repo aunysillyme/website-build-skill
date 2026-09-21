@@ -1,0 +1,7 @@
+{
+  "fixture": "synthetic",
+  "primaryAccent": "#2463eb",
+  "secondaryClaimedPrimary": "#db2777",
+  "approval": null,
+  "expected": "BLOCKED: resolve the primary accent roles before approval"
+}

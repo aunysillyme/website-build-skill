@@ -1,0 +1,29 @@
+name: Feature request
+description: Propose a small change with a clear user outcome.
+title: '[Feature] '
+labels: []
+body:
+  - type: textarea
+    id: job
+    attributes:
+      label: Who needs this and what are they trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: Current failure or missing capability
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Smallest useful change
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Observable success check
+    validations:
+      required: true

@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible instruction, adapter or content-check defect.
+title: '[Bug] '
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: Use synthetic inputs. Send vulnerabilities through private reporting, never public issues.
+  - type: input
+    id: client
+    attributes:
+      label: Client and exact version
+      placeholder: Host, runtime, operating system and revision
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Command or prompt and minimal reproduction
+      description: Include the relevant file and sanitized inputs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and evidence
+      description: Remove secrets, personal paths and private project content.
+    validations:
+      required: true

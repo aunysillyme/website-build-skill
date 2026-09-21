@@ -1,0 +1,24 @@
+# Local work and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+node_modules/
+.cache/
+.test-work/
+.build-local/
+site-work/
+research/
+brand-kit/
+screenshots/
+coverage/
+dist/
+*.tgz
+*.zip
+*.log
+.DS_Store
+# Local planning and review notes, never published
+*.plan.md
+*.brief.md
+notes-local/

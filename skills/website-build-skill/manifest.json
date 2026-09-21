@@ -1,0 +1,1474 @@
+{
+  "schemaVersion": 1,
+  "packageVersion": "0.1.0",
+  "skillName": "website-build-skill",
+  "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
+  "assets": [
+    {
+      "path": "SKILL.md",
+      "version": "0.1.0",
+      "kind": "entrypoint",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "03ac28cc2cea0bea62fbc32d9d2d594d1005a128616753931adb0360165b932d"
+    },
+    {
+      "path": "manifest.json",
+      "version": "0.1.0",
+      "kind": "manifest",
+      "active": true,
+      "bundles": [],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "digestPolicy": "Omit own digest to avoid self-reference."
+    },
+    {
+      "path": "prompts/00-start.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "eb9ba538670695f42cb565e9fd7e7fe77ed27ff1dfdfa72aa3ea30b946fffee9"
+    },
+    {
+      "path": "prompts/01-website-deep-research.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "7f174ed03b29e2fc1afa58b988a031854812f9e42217d71fe4979d2a79ffd17c"
+    },
+    {
+      "path": "prompts/02-graphics-design-original.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": false,
+      "bundles": [],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "d985b6fcaf5c0de9c6d60f2511bb9fa5728ad0d2d543a64a673962647ea5388a",
+      "usage": "Inactive provenance reading only; never execute or route as a stage."
+    },
+    {
+      "path": "prompts/03-extract-brand-kit.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "910e6391458dc049eae2ae6e5a44b886efd6246704d6c06caa4822e0ce482f05"
+    },
+    {
+      "path": "prompts/04-three-mockups.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "01dadb70cd93381edf711807f24ee579416d443ef5049b7041fc29c1599ce5e3"
+    },
+    {
+      "path": "prompts/05-stack-and-build.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "4a7b4120f37922eee98db9160cdab13f104f422d58c2f8e235ad8697f8079efa"
+    },
+    {
+      "path": "prompts/06-site-audit.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "adfe9d361c53b553d3fd9a22ef15bd62606708c68c9977a917cf32fc63d2ca0f"
+    },
+    {
+      "path": "prompts/07-accessibility-contrast.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0ba285752592a700b5ec2d8a0b7b3622c20c37594b22c643c06f927a9a488850"
+    },
+    {
+      "path": "prompts/08-seo-aeo.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "1af1d425954d9c5529534ea96ab7d4f2d6f24175738b1eb00f38dc87e6bc8f41"
+    },
+    {
+      "path": "prompts/09-security-headers.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "d1b66b98989513883cb3430b932da5d8b0ae51d9c805fcc3321f852776bd9286"
+    },
+    {
+      "path": "prompts/10-adversarial-pre-ship.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "c98da6d0c2b729f2a37f5a2f662c657b9650248fdb03b93cb84ec2368d9558ec"
+    },
+    {
+      "path": "prompts/11-ship-and-verify.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0b40f5ee1bc09a57c77d57f44b241621a323a45a8017fbced9f228e731936ff9"
+    },
+    {
+      "path": "prompts/12-web-design-team.md",
+      "version": "0.1.0",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts",
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "e6e7cad7d31ee51879a82f14b82ef7d0a171c67ab1763140a69e2b63e5d0c93f"
+    },
+    {
+      "path": "roles/researcher.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0bf020a6872b2ea8b8c1bc56708996d6ff37d90b4ff45870e79dae44a616ff4d"
+    },
+    {
+      "path": "roles/coordinator.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "8278f418fe13d8ee6ae554c28a2a3bdfe506952bbdf11b4059d9ba05ae19e0ac"
+    },
+    {
+      "path": "roles/designer.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "1b416b4adc69b8e0a2f8a5c95249dbcd7fe6631459383d4f01f84f99ba89ed6f"
+    },
+    {
+      "path": "roles/graphics.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "c13765328efa51cfd7e8b90c6c20e5015d28f964dc9c70c17780a976d3652ab7"
+    },
+    {
+      "path": "roles/builder.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "a874b560794534a0685d22213079ae56bfa3c6055a6925ea2d35c9b4a5abecce"
+    },
+    {
+      "path": "roles/optimizer.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "ae6f7dd1c9695c3f2b599ae04a6c32a84a5a3ea7489bac4463252fb6e0fe0470"
+    },
+    {
+      "path": "roles/reviewer.md",
+      "version": "0.1.0",
+      "kind": "role",
+      "active": true,
+      "bundles": [
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "a912bb208a4759c70709fad92442fc4af094104d33d1a68556b30ba1d9161a05"
+    },
+    {
+      "path": "playbooks/choose-stack.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "19adacd9a78b6ec2a36ff15f4b467a30543ccaa5d14aea7b94a24bddb52b5698"
+    },
+    {
+      "path": "playbooks/data-and-templates.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "299ce054d2a9d5d30ea0d49e45b50f51bfcb2dd029f347beeb3965f7d5a09f2b"
+    },
+    {
+      "path": "playbooks/image-pipeline.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "3bb320df95568cd6ffe69b268ac9a15d60b4c5a8158962b8e6092fab58136de9"
+    },
+    {
+      "path": "playbooks/self-hosted-fonts.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "00ba6935af35446c5baf6c68f2c45622d74138d76de69cd5aacfcbd847e4af13"
+    },
+    {
+      "path": "playbooks/embed-facades.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "3c952d6fed81b97842c0155bcfc3948131a30385bfac7d40aed47d62f6797e5b"
+    },
+    {
+      "path": "playbooks/security-headers.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "5ee221b169138c2d64d74c957d66a50bacb99b0e997223988afa256f3015ab45"
+    },
+    {
+      "path": "playbooks/structured-data-and-llms.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "b12d22471fd4b07497d3df03c40ce01097896db2c5785c6fa40f99edc203a431"
+    },
+    {
+      "path": "playbooks/performance-budgets.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0c5e41bd940c070a7613e7f71b5acd663799e233bbbc2fc2dffb9bb3910bbd9a"
+    },
+    {
+      "path": "playbooks/accessibility.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0b7bec1ae75cb222fb5cc12a68993b5be0e2bd476a257a96a4cd47f3a4b1c0d4"
+    },
+    {
+      "path": "playbooks/research-and-memory.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "method",
+        "playbooks",
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "0620ba55ae577fdfdc3fa78d8943fd185b29279d579d980b2106b41cd34dbe90"
+    },
+    {
+      "path": "playbooks/deploy-and-operate.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "170e2a32a6993e901056e67fc82d5ba3a4a1dfc97a363a9f17bab902c3ed194f"
+    },
+    {
+      "path": "checklists/research.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "bffacaf68f9ae13cc76f525c8862123e4bf5816b21753a1ede1ac7d442091f26"
+    },
+    {
+      "path": "checklists/brand-and-mockups.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "f3fa751a47e0358c758c262b2c2e3e4d51747606cc5283af94cd5023802067fa"
+    },
+    {
+      "path": "checklists/build.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "bf41f87f56761f15a3528a27ba56052ddfcc50a68a45766d84b61fddbba8e0d1"
+    },
+    {
+      "path": "checklists/accessibility.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "5833f446b6a4b5b039bb24dc5a6df98bf73275f5acb1b2557fb7d4eb37acfba2"
+    },
+    {
+      "path": "checklists/performance-seo.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "2ca383928c74e3f8dd6d8404ed3bc1e2bc1633707b06816c9620be1b2f97e0f7"
+    },
+    {
+      "path": "checklists/security.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "a9d92b9a647744d4217354a804d333fb3cb5d1e736df78f08d9dfe7fc91b4623"
+    },
+    {
+      "path": "checklists/ship.md",
+      "version": "0.1.0",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "16e71886e51957db9e4c18758fcb5de7ba1d85ab930a199ce77e3ce9b6a08902"
+    },
+    {
+      "path": "references/stacks/static-html.md",
+      "version": "0.1.0",
+      "kind": "reference",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "30279786edb49ebdf4fd1116d326071f3fa84c25cc5575433f723150ca209ea8"
+    },
+    {
+      "path": "references/stacks/scripted-static.md",
+      "version": "0.1.0",
+      "kind": "reference",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "c45a7f8f32254e3be4933be90ca729bbfabdde9c203db81ce4cff24fc40795ca"
+    },
+    {
+      "path": "references/stacks/framework.md",
+      "version": "0.1.0",
+      "kind": "reference",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "1f8b528af930748a2d68d4cdd290ad9413a8e5ad05466d8a9b9f67bc9e099fc3"
+    },
+    {
+      "path": "templates/install-choice.txt",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "3bbcf8906a96083f7e6d1d51a013ec43ed1738b3c9739ad236f7f3541680a865"
+    },
+    {
+      "path": "templates/brief.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "80e82e54df8ef1a817a4bd5cb5362c7be1b49048565e60e12e54bc26bf851ee6"
+    },
+    {
+      "path": "templates/brand.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "87afe2383412605ef73c6b720b4513b8a04e2433a0c8f070deafc92969a92e97"
+    },
+    {
+      "path": "templates/tokens.json",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "24e4f59d1bc63450d9a808aa61c2bc67acfd174099776aa94975376bae82a624"
+    },
+    {
+      "path": "templates/evidence.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "9b7bb6bdb818c3576912856efe41f77783094bdcc8c91d4464443a128633ba73"
+    },
+    {
+      "path": "templates/handoff.yaml",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method",
+        "team"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "511e4d43b4dc7fb0d27814fa914986b1da35ec157154d61f6093d8503e1b6802"
+    },
+    {
+      "path": "templates/audit-brief.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "6154acccd40fbc57cb069a4f4b5de4beb130af643865e2f24ad607f882d38f18"
+    },
+    {
+      "path": "templates/site-operations.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "7fe11d6d15a504f8da7820bd5936a9c23559b93a8692a9bd08f16afdf65e1dc1"
+    },
+    {
+      "path": "templates/status.md",
+      "version": "0.1.0",
+      "kind": "template",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "ba8fd139f7a7c28433cd27fad9fb5adabe49c79789cc1c8abe78cb1258e8d2af"
+    },
+    {
+      "path": "examples/fictional-studio-brief.md",
+      "version": "0.1.0",
+      "kind": "example",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "1b5375d4624823c426cce086fc2247c6645f5049d18a1890e42e967f3ab1ce94"
+    },
+    {
+      "path": "examples/fictional-studio-handoff.md",
+      "version": "0.1.0",
+      "kind": "example",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "d1caaa1ecb36de1fa19439d30f18dd68f29ca512e3c9c7252804367ad128c8d3"
+    },
+    {
+      "path": "examples/audit-cases.md",
+      "version": "0.1.0",
+      "kind": "example",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "02eb34cf2ce394533d4627677541a4ae4093157673b2ce628a1fb1a8163c9016"
+    }
+  ],
+  "entryRole": "researcher",
+  "roleOrder": [
+    "researcher",
+    "coordinator",
+    "designer",
+    "graphics",
+    "builder",
+    "optimizer",
+    "reviewer"
+  ],
+  "stageRoutes": [
+    {
+      "id": "setup",
+      "owner": "human-or-installer",
+      "assets": [
+        "templates/install-choice.txt",
+        "prompts/12-web-design-team.md",
+        "roles/researcher.md",
+        "roles/coordinator.md",
+        "roles/designer.md",
+        "roles/graphics.md",
+        "roles/builder.md",
+        "roles/optimizer.md",
+        "roles/reviewer.md",
+        "templates/handoff.yaml"
+      ],
+      "requires": [],
+      "checks": [
+        "Actual mode, routes, family and capabilities recorded; setup is not role work"
+      ],
+      "runtimeOutputs": [
+        "Setup packet supplied to Researcher"
+      ]
+    },
+    {
+      "id": "research",
+      "owner": "researcher",
+      "assets": [
+        "SKILL.md",
+        "roles/researcher.md",
+        "prompts/00-start.md",
+        "prompts/01-website-deep-research.md",
+        "playbooks/research-and-memory.md",
+        "checklists/research.md",
+        "templates/evidence.md",
+        "templates/handoff.yaml"
+      ],
+      "requires": [
+        "Recorded install choice and authorized request/workspace"
+      ],
+      "checks": [
+        "AD01",
+        "AD02",
+        "AD03",
+        "AD04",
+        "AD05",
+        "AD06",
+        "AD07",
+        "AD08",
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "runtimeOutputs": [
+        "site-work/research/library/",
+        "site-work/handoffs/researcher/"
+      ]
+    },
+    {
+      "id": "scope",
+      "owner": "coordinator",
+      "assets": [
+        "roles/coordinator.md",
+        "prompts/00-start.md",
+        "checklists/research.md",
+        "templates/brief.md",
+        "templates/status.md",
+        "templates/handoff.yaml"
+      ],
+      "requires": [
+        "research accepted after file read-back"
+      ],
+      "checks": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06"
+      ],
+      "runtimeOutputs": [
+        "site-work/brief.md",
+        "site-work/capabilities.md",
+        "site-work/status.md",
+        "site-work/team.md",
+        "site-work/ownership.yaml"
+      ]
+    },
+    {
+      "id": "match",
+      "owner": "designer",
+      "assets": [
+        "roles/designer.md",
+        "prompts/03-extract-brand-kit.md",
+        "playbooks/accessibility.md",
+        "checklists/brand-and-mockups.md",
+        "templates/brand.md",
+        "templates/tokens.json"
+      ],
+      "requires": [
+        "research",
+        "scope"
+      ],
+      "checks": [
+        "BM01",
+        "BM02",
+        "BM03"
+      ],
+      "runtimeOutputs": [
+        "site-work/brand/"
+      ]
+    },
+    {
+      "id": "mock",
+      "owner": "designer",
+      "assets": [
+        "roles/designer.md",
+        "prompts/04-three-mockups.md",
+        "checklists/brand-and-mockups.md"
+      ],
+      "requires": [
+        "match and approved inferred direction"
+      ],
+      "checks": [
+        "BM04",
+        "BM05",
+        "BM06"
+      ],
+      "runtimeOutputs": [
+        "site-work/mockups/"
+      ]
+    },
+    {
+      "id": "graphics",
+      "owner": "graphics",
+      "assets": [
+        "roles/graphics.md",
+        "playbooks/image-pipeline.md",
+        "playbooks/self-hosted-fonts.md",
+        "checklists/brand-and-mockups.md"
+      ],
+      "requires": [
+        "research",
+        "scope",
+        "Final exports require approved brand and selected mockup"
+      ],
+      "checks": [
+        "BM07",
+        "BM08"
+      ],
+      "runtimeOutputs": [
+        "site-work/graphics/"
+      ]
+    },
+    {
+      "id": "choose-build",
+      "owner": "builder",
+      "assets": [
+        "roles/builder.md",
+        "prompts/05-stack-and-build.md",
+        "playbooks/choose-stack.md",
+        "playbooks/data-and-templates.md",
+        "playbooks/image-pipeline.md",
+        "playbooks/self-hosted-fonts.md",
+        "playbooks/embed-facades.md",
+        "references/stacks/static-html.md",
+        "references/stacks/scripted-static.md",
+        "references/stacks/framework.md",
+        "checklists/build.md"
+      ],
+      "requires": [
+        "research",
+        "scope",
+        "mock with named user selection"
+      ],
+      "checks": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "runtimeOutputs": [
+        "site-work/stack.md",
+        "site-work/build/",
+        "site-work/qa/build/",
+        "authorized implementation_root"
+      ]
+    },
+    {
+      "id": "experience",
+      "owner": "builder",
+      "assets": [
+        "prompts/06-site-audit.md",
+        "prompts/07-accessibility-contrast.md",
+        "playbooks/accessibility.md",
+        "playbooks/performance-budgets.md",
+        "checklists/accessibility.md",
+        "checklists/performance-seo.md"
+      ],
+      "requires": [
+        "choose-build"
+      ],
+      "checks": [
+        "AX01",
+        "AX02",
+        "AX03",
+        "AX04",
+        "AX05",
+        "AX06",
+        "AX07",
+        "AX08",
+        "PS01",
+        "PS02",
+        "PS03",
+        "PS04"
+      ],
+      "runtimeOutputs": [
+        "site-work/qa/site-audit.md",
+        "site-work/qa/accessibility.md",
+        "site-work/qa/contrast.md",
+        "site-work/qa/build/performance.md"
+      ]
+    },
+    {
+      "id": "discovery",
+      "owner": "optimizer",
+      "assets": [
+        "roles/optimizer.md",
+        "prompts/08-seo-aeo.md",
+        "playbooks/structured-data-and-llms.md",
+        "checklists/performance-seo.md"
+      ],
+      "requires": [
+        "research",
+        "scope",
+        "Named selection; final validation requires Builder candidate"
+      ],
+      "checks": [
+        "PS05",
+        "PS06",
+        "PS07",
+        "PS08",
+        "PS09",
+        "PS10"
+      ],
+      "runtimeOutputs": [
+        "site-work/optimization/",
+        "site-work/research/optimizer/",
+        "site-work/qa/seo-aeo.md"
+      ]
+    },
+    {
+      "id": "protect",
+      "owner": "builder",
+      "assets": [
+        "prompts/09-security-headers.md",
+        "playbooks/security-headers.md",
+        "checklists/security.md"
+      ],
+      "requires": [
+        "choose-build",
+        "Final resource graph and host evidence"
+      ],
+      "checks": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "runtimeOutputs": [
+        "site-work/qa/security-headers.md"
+      ]
+    },
+    {
+      "id": "challenge",
+      "owner": "reviewer",
+      "assets": [
+        "roles/reviewer.md",
+        "prompts/10-adversarial-pre-ship.md",
+        "templates/audit-brief.md",
+        "checklists/research.md",
+        "checklists/ship.md"
+      ],
+      "requires": [
+        "experience",
+        "discovery",
+        "protect",
+        "Fixed candidate and different-family evidence"
+      ],
+      "checks": [
+        "AD09",
+        "SH01",
+        "SH02",
+        "SH03"
+      ],
+      "runtimeOutputs": [
+        "Returned read-only findings/research/handoff; Coordinator captures site-work/review/"
+      ]
+    },
+    {
+      "id": "ship",
+      "owner": "builder",
+      "assets": [
+        "prompts/11-ship-and-verify.md",
+        "playbooks/deploy-and-operate.md",
+        "checklists/ship.md",
+        "templates/site-operations.md",
+        "templates/status.md"
+      ],
+      "requires": [
+        "challenge",
+        "Post-fix harness and Coordinator acceptance",
+        "Existing release authorization or concrete boundary approval"
+      ],
+      "checks": [
+        "SH01",
+        "SH02",
+        "SH03",
+        "SH04",
+        "SH05",
+        "SH06",
+        "SH07",
+        "SH08",
+        "SH09",
+        "SH10"
+      ],
+      "runtimeOutputs": [
+        "site-work/release/",
+        "implementation_root/SITE_OPERATIONS.md"
+      ]
+    }
+  ],
+  "bundles": {
+    "method": [
+      "SKILL.md",
+      "templates/install-choice.txt",
+      "playbooks/research-and-memory.md",
+      "templates/brief.md",
+      "templates/brand.md",
+      "templates/tokens.json",
+      "templates/evidence.md",
+      "templates/handoff.yaml",
+      "templates/audit-brief.md",
+      "templates/site-operations.md",
+      "templates/status.md",
+      "examples/fictional-studio-brief.md",
+      "examples/fictional-studio-handoff.md",
+      "examples/audit-cases.md"
+    ],
+    "prompts": [
+      "prompts/00-start.md",
+      "prompts/01-website-deep-research.md",
+      "prompts/03-extract-brand-kit.md",
+      "prompts/04-three-mockups.md",
+      "prompts/05-stack-and-build.md",
+      "prompts/06-site-audit.md",
+      "prompts/07-accessibility-contrast.md",
+      "prompts/08-seo-aeo.md",
+      "prompts/09-security-headers.md",
+      "prompts/10-adversarial-pre-ship.md",
+      "prompts/11-ship-and-verify.md",
+      "prompts/12-web-design-team.md"
+    ],
+    "playbooks": [
+      "playbooks/choose-stack.md",
+      "playbooks/data-and-templates.md",
+      "playbooks/image-pipeline.md",
+      "playbooks/self-hosted-fonts.md",
+      "playbooks/embed-facades.md",
+      "playbooks/security-headers.md",
+      "playbooks/structured-data-and-llms.md",
+      "playbooks/performance-budgets.md",
+      "playbooks/accessibility.md",
+      "playbooks/research-and-memory.md",
+      "playbooks/deploy-and-operate.md",
+      "references/stacks/static-html.md",
+      "references/stacks/scripted-static.md",
+      "references/stacks/framework.md"
+    ],
+    "checklists": [
+      "checklists/research.md",
+      "checklists/brand-and-mockups.md",
+      "checklists/build.md",
+      "checklists/accessibility.md",
+      "checklists/performance-seo.md",
+      "checklists/security.md",
+      "checklists/ship.md"
+    ],
+    "team": [
+      "prompts/12-web-design-team.md",
+      "roles/researcher.md",
+      "roles/coordinator.md",
+      "roles/designer.md",
+      "roles/graphics.md",
+      "roles/builder.md",
+      "roles/optimizer.md",
+      "roles/reviewer.md",
+      "templates/handoff.yaml",
+      "playbooks/research-and-memory.md"
+    ]
+  },
+  "bundlePolicy": "Membership is ordered. Include complete assets, preserving relative-reference resolution. Each role body appears exactly once in team. No bundle contains the inactive archive.",
+  "distributions": {
+    "npm": {
+      "members": [
+        "SKILL.md",
+        "manifest.json",
+        "prompts/00-start.md",
+        "prompts/01-website-deep-research.md",
+        "prompts/02-graphics-design-original.md",
+        "prompts/03-extract-brand-kit.md",
+        "prompts/04-three-mockups.md",
+        "prompts/05-stack-and-build.md",
+        "prompts/06-site-audit.md",
+        "prompts/07-accessibility-contrast.md",
+        "prompts/08-seo-aeo.md",
+        "prompts/09-security-headers.md",
+        "prompts/10-adversarial-pre-ship.md",
+        "prompts/11-ship-and-verify.md",
+        "prompts/12-web-design-team.md",
+        "roles/researcher.md",
+        "roles/coordinator.md",
+        "roles/designer.md",
+        "roles/graphics.md",
+        "roles/builder.md",
+        "roles/optimizer.md",
+        "roles/reviewer.md",
+        "playbooks/choose-stack.md",
+        "playbooks/data-and-templates.md",
+        "playbooks/image-pipeline.md",
+        "playbooks/self-hosted-fonts.md",
+        "playbooks/embed-facades.md",
+        "playbooks/security-headers.md",
+        "playbooks/structured-data-and-llms.md",
+        "playbooks/performance-budgets.md",
+        "playbooks/accessibility.md",
+        "playbooks/research-and-memory.md",
+        "playbooks/deploy-and-operate.md",
+        "checklists/research.md",
+        "checklists/brand-and-mockups.md",
+        "checklists/build.md",
+        "checklists/accessibility.md",
+        "checklists/performance-seo.md",
+        "checklists/security.md",
+        "checklists/ship.md",
+        "references/stacks/static-html.md",
+        "references/stacks/scripted-static.md",
+        "references/stacks/framework.md",
+        "templates/install-choice.txt",
+        "templates/brief.md",
+        "templates/brand.md",
+        "templates/tokens.json",
+        "templates/evidence.md",
+        "templates/handoff.yaml",
+        "templates/audit-brief.md",
+        "templates/site-operations.md",
+        "templates/status.md",
+        "examples/fictional-studio-brief.md",
+        "examples/fictional-studio-handoff.md",
+        "examples/audit-cases.md"
+      ],
+      "archiveIncluded": true,
+      "status": "Membership specification only; packaging and installation UNVERIFIED."
+    },
+    "skill-zip": {
+      "members": [
+        "SKILL.md",
+        "manifest.json",
+        "prompts/00-start.md",
+        "prompts/01-website-deep-research.md",
+        "prompts/02-graphics-design-original.md",
+        "prompts/03-extract-brand-kit.md",
+        "prompts/04-three-mockups.md",
+        "prompts/05-stack-and-build.md",
+        "prompts/06-site-audit.md",
+        "prompts/07-accessibility-contrast.md",
+        "prompts/08-seo-aeo.md",
+        "prompts/09-security-headers.md",
+        "prompts/10-adversarial-pre-ship.md",
+        "prompts/11-ship-and-verify.md",
+        "prompts/12-web-design-team.md",
+        "roles/researcher.md",
+        "roles/coordinator.md",
+        "roles/designer.md",
+        "roles/graphics.md",
+        "roles/builder.md",
+        "roles/optimizer.md",
+        "roles/reviewer.md",
+        "playbooks/choose-stack.md",
+        "playbooks/data-and-templates.md",
+        "playbooks/image-pipeline.md",
+        "playbooks/self-hosted-fonts.md",
+        "playbooks/embed-facades.md",
+        "playbooks/security-headers.md",
+        "playbooks/structured-data-and-llms.md",
+        "playbooks/performance-budgets.md",
+        "playbooks/accessibility.md",
+        "playbooks/research-and-memory.md",
+        "playbooks/deploy-and-operate.md",
+        "checklists/research.md",
+        "checklists/brand-and-mockups.md",
+        "checklists/build.md",
+        "checklists/accessibility.md",
+        "checklists/performance-seo.md",
+        "checklists/security.md",
+        "checklists/ship.md",
+        "references/stacks/static-html.md",
+        "references/stacks/scripted-static.md",
+        "references/stacks/framework.md",
+        "templates/install-choice.txt",
+        "templates/brief.md",
+        "templates/brand.md",
+        "templates/tokens.json",
+        "templates/evidence.md",
+        "templates/handoff.yaml",
+        "templates/audit-brief.md",
+        "templates/site-operations.md",
+        "templates/status.md",
+        "examples/fictional-studio-brief.md",
+        "examples/fictional-studio-handoff.md",
+        "examples/audit-cases.md"
+      ],
+      "archiveIncluded": true,
+      "status": "Membership specification only; packaging and installation UNVERIFIED."
+    },
+    "native-skill": {
+      "members": [
+        "SKILL.md",
+        "manifest.json",
+        "prompts/00-start.md",
+        "prompts/01-website-deep-research.md",
+        "prompts/02-graphics-design-original.md",
+        "prompts/03-extract-brand-kit.md",
+        "prompts/04-three-mockups.md",
+        "prompts/05-stack-and-build.md",
+        "prompts/06-site-audit.md",
+        "prompts/07-accessibility-contrast.md",
+        "prompts/08-seo-aeo.md",
+        "prompts/09-security-headers.md",
+        "prompts/10-adversarial-pre-ship.md",
+        "prompts/11-ship-and-verify.md",
+        "prompts/12-web-design-team.md",
+        "roles/researcher.md",
+        "roles/coordinator.md",
+        "roles/designer.md",
+        "roles/graphics.md",
+        "roles/builder.md",
+        "roles/optimizer.md",
+        "roles/reviewer.md",
+        "playbooks/choose-stack.md",
+        "playbooks/data-and-templates.md",
+        "playbooks/image-pipeline.md",
+        "playbooks/self-hosted-fonts.md",
+        "playbooks/embed-facades.md",
+        "playbooks/security-headers.md",
+        "playbooks/structured-data-and-llms.md",
+        "playbooks/performance-budgets.md",
+        "playbooks/accessibility.md",
+        "playbooks/research-and-memory.md",
+        "playbooks/deploy-and-operate.md",
+        "checklists/research.md",
+        "checklists/brand-and-mockups.md",
+        "checklists/build.md",
+        "checklists/accessibility.md",
+        "checklists/performance-seo.md",
+        "checklists/security.md",
+        "checklists/ship.md",
+        "references/stacks/static-html.md",
+        "references/stacks/scripted-static.md",
+        "references/stacks/framework.md",
+        "templates/install-choice.txt",
+        "templates/brief.md",
+        "templates/brand.md",
+        "templates/tokens.json",
+        "templates/evidence.md",
+        "templates/handoff.yaml",
+        "templates/audit-brief.md",
+        "templates/site-operations.md",
+        "templates/status.md",
+        "examples/fictional-studio-brief.md",
+        "examples/fictional-studio-handoff.md",
+        "examples/audit-cases.md"
+      ],
+      "archiveIncluded": true,
+      "status": "Membership specification only; packaging and installation UNVERIFIED."
+    }
+  },
+  "contextAllowlist": [
+    {
+      "path": "prompts/02-graphics-design-original.md",
+      "context": "ARCHIVE",
+      "end": "end-of-file",
+      "bodySha256": "9c5333c42b780b8bde25e7a35701d28427f0d12db40ae8de0386bb51bb62907d",
+      "usage": "Exact original body only. Adjacent wrapper is active guidance and receives no year exemption.",
+      "bodyStartLine": 9
+    }
+  ],
+  "gates": {
+    "default": "BLOCKED",
+    "statuses": [
+      "PASS",
+      "FAIL",
+      "BLOCKED",
+      "NOT APPLICABLE"
+    ],
+    "independentReview": "Different actual model family required. INTERNAL means independent gate NOT MET and shipment BLOCKED.",
+    "research": "AD01-AD08 before downstream work; AD09 independent repetition before ship.",
+    "evidence": "Never report measured, saved, installed or deployed without evidence."
+  },
+  "supportStatus": {
+    "nativeLoading": "UNVERIFIED",
+    "teamAutomation": "UNVERIFIED",
+    "permissionEnforcement": "UNVERIFIED",
+    "packageDistribution": "UNVERIFIED",
+    "headerStarterDeploymentAndScanner": "UNVERIFIED"
+  },
+  "supportSettlingChecks": "Current official source access plus actual target/version trial. Definitions are not workers; prose is not permission enforcement."
+}

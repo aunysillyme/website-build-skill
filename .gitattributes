@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.ts text eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.avif binary
+*.woff2 binary
+*.zip binary
+# Inactive source bytes are immutable, including its trailing newline policy.
+skills/website-build-skill/prompts/02-graphics-design-original.md -text

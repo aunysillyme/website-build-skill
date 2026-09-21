@@ -1,0 +1,12 @@
+{
+  "name": "website-build-skill",
+  "owner": {
+    "name": "website-build-skill maintainers"
+  },
+  "plugins": [
+    {
+      "name": "website-build-skill",
+      "source": "./"
+    }
+  ]
+}

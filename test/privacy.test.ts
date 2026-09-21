@@ -1,0 +1,28 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { privacyIssues } from '../src/validate.ts';
+import { fixture, change, candidateCheck as check } from './helpers.ts';
+
+test('RED01 private machine path in published text', () => fixture(r => {
+  change(r, 'README.md', s => s + '\n' + ['/', 'Users', '/synthetic/project'].join('') + '\n');
+  assert.ok(check(r).some(s => s.startsWith('PRIVACY:README.md:')));
+}));
+
+test('RED02 private issue URL and identifier, case insensitive', () => {
+  for (const value of [['linear', '.app'].join(''), ['A', 'UN-', '123'].join('')]) fixture(r => {
+    change(r, 'README.md', s => s + '\n' + value.toLowerCase() + '\n');
+    assert.ok(check(r).some(s => s.startsWith('PRIVACY:README.md:')));
+  });
+});
+
+test('Allowing a repository URL never exempts adjacent private text', () => {
+  const url = 'https://github.com/' + ['au', 'ny', 'sillyme'].join('') + '/website-build-skill';
+  assert.deepEqual(privacyIssues('README.md', url), []);
+  assert.ok(privacyIssues('README.md', url + ' ' + ['/', 'Users', '/synthetic'].join('')).length);
+});
+
+test('License exception is exact; arbitrary authorship elsewhere fails', () => {
+  const line = 'Copyright (c) 2026 ' + ['Au', 'ny'].join('');
+  assert.deepEqual(privacyIssues('LICENSE', line), []);
+  assert.ok(privacyIssues('README.md', line).length);
+});

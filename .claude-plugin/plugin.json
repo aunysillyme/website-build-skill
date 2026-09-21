@@ -1,0 +1,10 @@
+{
+  "name": "website-build-skill",
+  "version": "0.1.0",
+  "description": "A research-first website-building method with design and release gates.",
+  "author": {
+    "name": "website-build-skill contributors"
+  },
+  "repository": "https://github.com/aunysillyme/website-build-skill",
+  "license": "MIT"
+}

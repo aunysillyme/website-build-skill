@@ -1,0 +1,11 @@
+How do you want to work?
+
+  1  Teach my AI          One AI learns the whole thing and does every job itself.
+                          Works with any AI: Claude, ChatGPT, Grok, Cursor, Copilot.
+                          Nothing else to install.
+
+  2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
+                          Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
+                          One command and they are ready.
+
+Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
