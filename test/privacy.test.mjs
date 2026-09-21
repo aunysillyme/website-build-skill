@@ -21,6 +21,14 @@ test('Allowing a repository URL never exempts adjacent private text', () => {
   assert.ok(privacyIssues('README.md', url + ' ' + ['/', 'Users', '/synthetic'].join('')).length);
 });
 
+test('The npm repository shorthand is exempt in one spelling only', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  assert.deepEqual(privacyIssues('README.md', `npx github:${owner}/website-build-skill --version`), []);
+  assert.ok(privacyIssues('README.md', `npx github:${owner}/another-repo`).length, 'another repository under the same account must fail');
+  assert.ok(privacyIssues('README.md', `npx github:${owner}-personal/website-build-skill`).length, 'a different account must fail');
+  assert.ok(privacyIssues('README.md', `see ${owner} for details`).length, 'the bare handle still fails');
+});
+
 test('License exception is exact; arbitrary authorship elsewhere fails', () => {
   const line = 'Copyright (c) 2026 ' + ['Au', 'ny'].join('');
   assert.deepEqual(privacyIssues('LICENSE', line), []);

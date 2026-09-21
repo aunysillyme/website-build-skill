@@ -31,8 +31,11 @@ export function privacyIssues(name, text, options = {}) {
     const productPath = new RegExp(`(?:~|\\$HOME|%USERPROFILE%|[A-Za-z]:)?[\\\\/]${product}(?=[\\\\/ ]|$)`, 'i');
     if (productPath.test(normalised)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
     line = line.replaceAll(product, 'PUBLIC_PRODUCT');
-    // Only exact repository URL namespaces, never the whole line around a URL.
+    // Only exact repository URL namespaces, never the whole line around a URL. npm's
+    // `github:owner/repo` shorthand is the same repository reference in the form a package
+    // manager takes, so it is exempt in exactly that spelling and no other.
     line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/website-build-skill(?=[/\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
+    line = line.replace(new RegExp(`github:${owner}/website-build-skill(?=[\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
     if (privacyPattern.test(line) || /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(line)) issues.push(`PRIVACY:${name}:${i + 1}`);
     if (line.includes(String.fromCharCode(0x2014))) issues.push(`VOICE:${name}:${i + 1}`);
   }

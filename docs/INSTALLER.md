@@ -25,6 +25,9 @@ For chat-only hosts, attach the five bundles and use the [Project instructions](
 
 ## Command interface
 
+Before the package is on npm, the same entry point runs from the repository with
+`npx github:aunysillyme/website-build-skill <flags>`, verified to print its version.
+
 Installs the files, activation still UNVERIFIED: `npx website-build-skill --solo --target codex --dir . --scope project --yes`.
 Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
