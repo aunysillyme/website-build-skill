@@ -45,7 +45,10 @@ Installs the files, activation still UNVERIFIED: `npx website-build-skill --team
 - Integration: preserve existing routers and emit a named integration snippet; unmerged means activation pending.
 - Interruption: record truthful partial results; never advertise an all-or-nothing transaction without evidence.
 - Exit policy: 0 complete, 2 invalid input, 3 preflight conflict, 4 interrupted write, 5 activation pending. 5 is a completed install whose integration snippet is unmerged, not a failure.
-- Uninstall: receipt-based, removing only owned files whose bytes still match the receipt. A changed file is kept and named; a file the receipt does not list is kept and named. Unknown ownership means preserve.
+- Uninstall: receipt-based, removing only files this package actually wrote and whose bytes still match the receipt. A file that was already on disk before the install, and therefore recorded as identical, is kept: installing it was a no-op and removing it would be taking something that is not ours. A changed file is kept and named, and so is a file the receipt does not list. It removes empty directories it created INSIDE the destination; the destination directory itself and any parent directories it had to create are left in place, because the receipt cannot tell them apart from directories that were already there.
+- Destination: decided by `--target` and `--dir`, or by where the receipt sits when only `--receipt` is given. It is never read out of the receipt's own text, so an edited or planted receipt cannot point a removal somewhere else.
+- Read-back: every file is re-read from disk and digested after the write pass. A digest taken from the bytes the installer meant to write is a record of the intention, not of what is on disk, and the receipt only ever carries the second one.
+- Ownership across runs: a reinstall that writes fewer files keeps owning what an earlier run wrote, so a SOLO install over a TEAM install does not orphan the bundles.
 
 ## Native team branches
 

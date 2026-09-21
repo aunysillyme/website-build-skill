@@ -56,12 +56,8 @@
           "run": "node --test test/*.test.mjs"
         },
         {
-          "name": "Install the packed tarball and run its entry point",
-          "run": "set -eu\ntarball=\"$(npm pack --silent)\"\nmkdir -p /tmp/release-trial\ncd /tmp/release-trial\nnpm init -y > /dev/null\nnpm install --no-audit --no-fund \"$OLDPWD/$tarball\"\n./node_modules/.bin/website-build-skill --version\n./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes\ntest -f .agents/skills/website-build-skill/SKILL.md\ntest -f .agents/skills/website-build-skill/.website-build-skill-receipt.json"
-        },
-        {
-          "name": "Publish",
-          "run": "npm publish --provenance --access public"
+          "name": "Pack once, prove that tarball, publish that same file",
+          "run": "set -eu\ntarball=\"$PWD/$(npm pack --silent)\"\ntrial=\"$(mktemp -d)\"\ncd \"$trial\"\nnpm init -y > /dev/null\nnpm install --no-audit --no-fund \"$tarball\"\n./node_modules/.bin/website-build-skill --version\n./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes\ntest -f .agents/skills/website-build-skill/SKILL.md\ntest -f .agents/skills/website-build-skill/.website-build-skill-receipt.json\n./node_modules/.bin/website-build-skill --uninstall --target codex --dir .\ncd \"$GITHUB_WORKSPACE\"\nnpm publish \"$tarball\" --provenance --access public"
         }
       ]
     }

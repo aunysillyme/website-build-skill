@@ -202,6 +202,81 @@ test('7b A symlinked ancestor of the project is resolved, while a link inside th
   assert.equal(safePath(base, 'below'), resolve(base, 'below'));
 }));
 
+// Findings from the pre-publication review, each reproduced before it was fixed.
+test('7c A receipt that names another destination is refused, and that destination is untouched', () => workspace(dir => {
+  assert.equal(install(request(dir)).code, 0);
+  const victim = resolve(dir, 'victim');
+  fs.mkdirSync(victim);
+  const personal = resolve(victim, 'personal.txt');
+  fs.writeFileSync(personal, 'not ours');
+  const forged = JSON.parse(fs.readFileSync(receiptPath(dir), 'utf8'));
+  forged.destination = victim;
+  forged.files = [{ path: personal, sha256: digest(fs.readFileSync(personal)), action: 'written' }];
+  forged.directories = [];
+  const forgedPath = resolve(dir, 'forged.json');
+  fs.writeFileSync(forgedPath, JSON.stringify(forged, null, 2) + '\n');
+  // Both shapes: with an explicit destination, and with the receipt alone.
+  assert.equal(install({ uninstall: true, receipt: forgedPath, target: 'codex', dir }).code, 2);
+  assert.equal(install({ uninstall: true, receipt: forgedPath }).code, 2);
+  assert.equal(fs.readFileSync(personal, 'utf8'), 'not ours');
+}));
+
+test('7d A destination replaced by a symlink after the install is refused by uninstall', () => workspace(dir => {
+  assert.equal(install(request(dir)).code, 0);
+  const moved = resolve(dir, 'moved');
+  fs.renameSync(destination(dir), moved);
+  fs.symlinkSync(moved, destination(dir));
+  const before = fs.readdirSync(moved).length;
+  const result = install({ uninstall: true, target: 'codex', dir });
+  assert.equal(result.code, 2);
+  assert.match(result.message, /Symlink refused/);
+  assert.equal(fs.readdirSync(moved).length, before);
+}));
+
+test('10b The receipt records the bytes on disk, not the bytes we meant to write', () => workspace(dir => {
+  // A digest taken from the source is a record of the intention. Make one write land
+  // different bytes and the run has to fail rather than sign for what it did not verify.
+  const real = fs.writeFileSync;
+  let swapped = false;
+  mock.method(fs, 'writeFileSync', (target, bytes, ...rest) => {
+    if (!swapped && typeof target === 'number') { swapped = true; return real(target, Buffer.from('tampered'), ...rest); }
+    return real(target, bytes, ...rest);
+  });
+  const result = install(request(dir));
+  mock.restoreAll();
+  assert.equal(result.code, 4);
+  assert.match(result.message, /Read-back mismatch/);
+}));
+
+test('13b Uninstall keeps a file and a directory that predate the install', () => workspace(dir => {
+  const dest = destination(dir);
+  fs.mkdirSync(resolve(dest, 'templates'), { recursive: true });
+  fs.copyFileSync(resolve(root, CORE, 'SKILL.md'), resolve(dest, 'SKILL.md'));
+  const mine = resolve(dest, 'templates', 'mine.txt');
+  fs.writeFileSync(mine, 'mine');
+  assert.equal(install(request(dir)).code, 0);
+  assert.equal(receipt(dir).files.find(entry => entry.path === resolve(dest, 'SKILL.md')).action, 'identical');
+  const removal = install({ uninstall: true, target: 'codex', dir });
+  assert.equal(removal.code, 0);
+  assert.match(removal.message, /Kept preexisting/);
+  assert.ok(fs.existsSync(resolve(dest, 'SKILL.md')), 'a file that was already there is not ours to remove');
+  assert.ok(fs.existsSync(mine), 'a file we never listed stays');
+  assert.ok(!fs.existsSync(resolve(dest, 'prompts')), 'a directory this install created is removed');
+}));
+
+test('13c A smaller reinstall keeps owning what the larger one wrote', () => workspace(dir => {
+  assert.equal(install({ mode: 'team', target: 'codex', dir }).code, 0);
+  const bundles = resolve(destination(dir), 'bundles');
+  assert.equal(fs.readdirSync(bundles).length, 5);
+  assert.equal(install(request(dir)).code, 0);
+  assert.equal(install({ uninstall: true, target: 'codex', dir }).code, 0);
+  assert.ok(!fs.existsSync(bundles), 'the TEAM bundles stayed owned across the SOLO reinstall');
+  // And the core files, which the SOLO run found already on disk and byte-identical, are
+  // still ours: written by the TEAM run, not preexisting, so uninstall removes them too.
+  assert.ok(!fs.existsSync(resolve(destination(dir), 'SKILL.md')), 'a file an earlier run wrote is still ours');
+  assert.deepEqual(fs.existsSync(destination(dir)) ? fs.readdirSync(destination(dir)) : [], []);
+}));
+
 test('8 Idempotence preserves every byte and mtime, reports identical and records preexisting matches', () => workspace(dir => {
   const dest = destination(dir);
   fs.mkdirSync(dest, { recursive: true });
@@ -230,7 +305,7 @@ test('10 Receipt has exactly the contracted fields and hashes read-back disk byt
   const start = new Date();
   assert.equal(install(request(dir)).code, 0);
   const saved = receipt(dir);
-  assert.deepEqual(Object.keys(saved).sort(), ['schemaVersion', 'package', 'date', 'mode', 'target', 'scope', 'destination', 'outputRoot', 'files', 'integration', 'activation'].sort());
+  assert.deepEqual(Object.keys(saved).sort(), ['schemaVersion', 'package', 'date', 'mode', 'target', 'scope', 'destination', 'outputRoot', 'files', 'directories', 'integration', 'activation'].sort());
   assert.deepEqual(saved.package, packageInfo);
   assert.equal(saved.schemaVersion, 1);
   assert.equal(saved.date, new Date(saved.date).toISOString());

@@ -36,6 +36,11 @@ const cases = [
   ['RED15 a starter that names the stages only to skip them', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Skip Scope, Choose, Protect and Challenge'))],
   ['RED16 the stage route moved outside the fenced starter', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Build and ship immediately').replace('```\n\n## Full method', `\`\`\`\n\n${ROUTE}\n\n## Full method`))],
   ['RED17 that same promise wrapped across two lines', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace('One command installs their files; you open each session yourself.', 'One command and\n                          they are ready.'))],
+  // From the pre-publication review, each reproduced against the gate before it was fixed.
+  ['RED19 a lifecycle hook that runs on the consumer machine', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, preinstall: 'node -e 0' } }, null, 2) + '\n')],
+  ['RED20 a publish-time hook that can change the tested bytes', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, prepublishOnly: 'node -e 0' } }, null, 2) + '\n')],
+  ['RED21 a negated files entry that empties a published path', 'PACKAGE_FILES:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), files: [...JSON.parse(s).files, '!src/**'] }, null, 2) + '\n')],
+  ['RED22 a runtime step that ignores the matrix it claims to run', 'ENGINE_UNTESTED:', r => change(r, '.github/workflows/check.yml', s => s.replace('"node-version": "${{ matrix.node }}"', '"node-version": "24"'))],
 ];
 for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   mutate(r);
