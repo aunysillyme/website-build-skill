@@ -807,7 +807,8 @@ Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/03-graphics-and-rights.md,
 02-design-and-experience.md, and 04-accessibility-and-performance.md.
 Apply library checklists/04-graphics.md and 13-legal.md, plus relevant checks in
-06-accessibility.md and 07-performance.md. Learn export and delivery from
+06-accessibility.md and 07-performance.md. Read site-work/research/library/recipes.md for export commands that already ran here,
+and append the ones you get working. Learn export and delivery from
 playbooks/image-pipeline.md, playbooks/self-hosted-fonts.md,
 playbooks/embed-facades.md, checklists/brand-and-mockups.md,
 checklists/performance-seo.md, and templates/brand.md. The archived graphics prompt
@@ -944,6 +945,8 @@ Apply library checklists/01-codebases.md, 02-stacks.md, 05-ui-ux.md,
 06-accessibility.md, 07-performance.md, 10-security.md, and 11-hosting.md.
 Learn the smallest-stack decision from playbooks/choose-stack.md and
 references/stacks/static-html.md, scripted-static.md, and framework.md.
+Read site-work/research/library/recipes.md for build and asset commands already proven here,
+and append the ones you get working.
 Read playbooks/data-and-templates.md, image-pipeline.md, self-hosted-fonts.md,
 embed-facades.md, security-headers.md, performance-budgets.md, accessibility.md,
 and deploy-and-operate.md. Read checklists/build.md, accessibility.md, security.md,
@@ -1561,6 +1564,7 @@ site-work/
       surprises.md                        Short findings and implications for the user.
       staleness.md                        Thirteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
       learning.md                         Opened evidence, learned rules, applied checklist IDs.
+      recipes.md                          Commands that actually ran, with tool version and what they produced.
       memory-proposal.md                  Durable rules and location, not a completed save.
       memory-receipt.md                   Save status, destination, read-back or pending action.
       checklists/
@@ -1594,6 +1598,10 @@ site-work/
 - Checklists: each domain check names criterion, method, expected evidence, claim IDs, owner, status, and exclusion reason.
 - Blockers: website-qa-checklist.md collects unresolved critical checks before quality scoring.
 - Learning: reopen written files and record which rules change the handoff.
+- Recipes: when a command works, paste it into recipes.md with the tool and version it ran on,
+  the input it took, and the output it produced. A later role runs the recorded command instead
+  of re-deriving flags. A recipe is a record of one run, not a guarantee for a different version:
+  re-check it against the installed tool before relying on it, exactly as with any example command.
 - Read-back: verify the saved revision and links before issuing a research receipt.
 - Privacy: keep runtime research, source assets, and private scope out of deployment output.
 
@@ -1603,6 +1611,8 @@ Every downstream role starts with its WHAT YOU MUST LEARN filenames.
 Read the actual library, its current revision, and the applicable domain checklists.
 Record opened files, learned rules, changed assumptions, and applied check IDs in learning.md.
 Top up only remaining questions in that role's domain using current source openings.
+Read library/recipes.md before deriving an image, font, or build command, and append any
+command you got working, with its tool version and result, in the same pass.
 Write README.md, sources.md, top-up.md, flags.md, learning.md, applied-checklists.md,
 memory-proposal.md, and memory-receipt.md in the role's owned research directory.
 Reviewer returns these bodies read-only for unchanged Coordinator capture.

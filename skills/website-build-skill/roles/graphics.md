@@ -31,7 +31,8 @@ Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/03-graphics-and-rights.md,
 02-design-and-experience.md, and 04-accessibility-and-performance.md.
 Apply library checklists/04-graphics.md and 13-legal.md, plus relevant checks in
-06-accessibility.md and 07-performance.md. Learn export and delivery from
+06-accessibility.md and 07-performance.md. Read site-work/research/library/recipes.md for export commands that already ran here,
+and append the ones you get working. Learn export and delivery from
 playbooks/image-pipeline.md, playbooks/self-hosted-fonts.md,
 playbooks/embed-facades.md, checklists/brand-and-mockups.md,
 checklists/performance-seo.md, and templates/brand.md. The archived graphics prompt

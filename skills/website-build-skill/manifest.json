@@ -285,7 +285,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c13765328efa51cfd7e8b90c6c20e5015d28f964dc9c70c17780a976d3652ab7"
+      "sha256": "28f306cf62351bc9cd658323ab87fa6499b32d3c2f8bcfded67ec1c2502cb433"
     },
     {
       "path": "roles/builder.md",
@@ -300,7 +300,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a874b560794534a0685d22213079ae56bfa3c6055a6925ea2d35c9b4a5abecce"
+      "sha256": "391e2a89a6e9fe42a9481a6e9bef2f8254fb71fdc3c038fa82cc1a0894d04d9f"
     },
     {
       "path": "roles/optimizer.md",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "97eee856bdd655e8a857a7a25cdd1dc989ea63a1afbae11e47054ba900e05a3d"
+      "sha256": "f741f8586b2a2c1277c32145ca5c0d820b55d8380d678298ac96698ffe7142d0"
     },
     {
       "path": "playbooks/deploy-and-operate.md",

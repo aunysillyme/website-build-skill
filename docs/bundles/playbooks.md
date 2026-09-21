@@ -1021,6 +1021,7 @@ site-work/
       surprises.md                        Short findings and implications for the user.
       staleness.md                        Thirteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
       learning.md                         Opened evidence, learned rules, applied checklist IDs.
+      recipes.md                          Commands that actually ran, with tool version and what they produced.
       memory-proposal.md                  Durable rules and location, not a completed save.
       memory-receipt.md                   Save status, destination, read-back or pending action.
       checklists/
@@ -1054,6 +1055,10 @@ site-work/
 - Checklists: each domain check names criterion, method, expected evidence, claim IDs, owner, status, and exclusion reason.
 - Blockers: website-qa-checklist.md collects unresolved critical checks before quality scoring.
 - Learning: reopen written files and record which rules change the handoff.
+- Recipes: when a command works, paste it into recipes.md with the tool and version it ran on,
+  the input it took, and the output it produced. A later role runs the recorded command instead
+  of re-deriving flags. A recipe is a record of one run, not a guarantee for a different version:
+  re-check it against the installed tool before relying on it, exactly as with any example command.
 - Read-back: verify the saved revision and links before issuing a research receipt.
 - Privacy: keep runtime research, source assets, and private scope out of deployment output.
 
@@ -1063,6 +1068,8 @@ Every downstream role starts with its WHAT YOU MUST LEARN filenames.
 Read the actual library, its current revision, and the applicable domain checklists.
 Record opened files, learned rules, changed assumptions, and applied check IDs in learning.md.
 Top up only remaining questions in that role's domain using current source openings.
+Read library/recipes.md before deriving an image, font, or build command, and append any
+command you got working, with its tool version and result, in the same pass.
 Write README.md, sources.md, top-up.md, flags.md, learning.md, applied-checklists.md,
 memory-proposal.md, and memory-receipt.md in the role's owned research directory.
 Reviewer returns these bodies read-only for unchanged Coordinator capture.

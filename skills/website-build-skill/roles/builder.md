@@ -36,6 +36,8 @@ Apply library checklists/01-codebases.md, 02-stacks.md, 05-ui-ux.md,
 06-accessibility.md, 07-performance.md, 10-security.md, and 11-hosting.md.
 Learn the smallest-stack decision from playbooks/choose-stack.md and
 references/stacks/static-html.md, scripted-static.md, and framework.md.
+Read site-work/research/library/recipes.md for build and asset commands already proven here,
+and append the ones you get working.
 Read playbooks/data-and-templates.md, image-pipeline.md, self-hosted-fonts.md,
 embed-facades.md, security-headers.md, performance-budgets.md, accessibility.md,
 and deploy-and-operate.md. Read checklists/build.md, accessibility.md, security.md,
