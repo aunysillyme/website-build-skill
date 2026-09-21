@@ -1,0 +1,10 @@
+# Reviewed exemptions. Each line is a gitleaks fingerprint plus the reason it is not a secret.
+#
+# docs/evidence/local-checks.json holds a sourceHashes map: one SHA-256 content hash per
+# published file, used to detect drift between the canonical sources and the generated
+# bundles. The values are 64 hex characters with high entropy, so the generic-api-key rule
+# matches them. Verified 2026-09-21: the flagged value equals
+# `shasum -a 256 skills/website-build-skill/templates/tokens.json` exactly, and every other
+# 64-hex value in the file is likewise a content hash of a file in this repository.
+# No credential, token or key is stored anywhere in this repository.
+52f1de0165d6ac856688a1ba8137aa64ea7c1799:docs/evidence/local-checks.json:generic-api-key:131
