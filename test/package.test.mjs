@@ -11,10 +11,14 @@ test('Published package ships the real entry point and no lifecycle hook', () =>
   assert.equal(p.private, undefined);
   assert.equal(p.bin['website-build-skill'], 'bin/website-build-skill.mjs');
   assert.doesNotMatch(read(root, p.bin['website-build-skill']), /UNAVAILABLE/);
-  // A lifecycle hook runs on a stranger's machine before they have read anything.
-  assert.equal(p.scripts.install, undefined); assert.equal(p.scripts.postinstall, undefined);
-  // The tarball has to carry everything the entry point reads at run time.
-  for (const needed of ['bin', 'src', 'skills/', 'docs/', 'README.md', 'LICENSE']) assert.ok(p.files.includes(needed), needed);
+  // Four of these run on a stranger's machine before they have read anything; the other two
+  // run at publish time and could change the bytes after the trial that approved them.
+  for (const hook of ['preinstall', 'install', 'postinstall', 'prepare', 'prepublishOnly', 'prepack']) assert.equal(p.scripts[hook], undefined, hook);
+  // The tarball has to carry everything the entry point reads at run time, and no entry may
+  // negate another: npm applies a negation even when the path it empties is still listed.
+  const published = p.files.map(entry => entry.replace(/\/+$/, ''));
+  assert.ok(!published.some(entry => entry.startsWith('!')), 'no negated files entry');
+  for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE']) assert.ok(published.includes(needed), needed);
   // The engine floor is a claim about runtimes, so it is one continuous integration runs.
   const floor = p.engines.node.match(/(\d+)/)[1];
   const matrix = JSON.parse(read(root, '.github/workflows/check.yml')).jobs.checks.strategy.matrix.node;

@@ -26,7 +26,9 @@ export function canonical(path) {
     const entry = stat(current);
     if (entry) {
       if (!entry.isDirectory() && !entry.isSymbolicLink()) throw Error(`Not a directory: ${current}`);
-      return resolve(fs.realpathSync(current), ...tail);
+      // A dangling link has no real path; say so instead of surfacing a bare ENOENT.
+      try { return resolve(fs.realpathSync(current), ...tail); }
+      catch { throw Error(`Cannot resolve: ${current}`); }
     }
     const parent = dirname(current);
     if (parent === current) throw Error(`No existing ancestor: ${path}`);
@@ -37,9 +39,13 @@ export function canonical(path) {
 
 // Below a canonical, user-chosen root, a symlink is something a third party planted in the
 // install target, so it is refused. lstat observes a dangling link, unlike existsSync.
+// Every caller passes the root the path belongs to. Re-deriving a root from the path's own
+// parent would resolve whatever had just been swapped in and lose the boundary entirely.
 export function safePath(root, name) {
   const base = resolve(root), path = resolve(base, name);
   if (!inside(base, path)) throw Error(`Path escapes destination root: ${path}`);
+  // The base was canonical when it was resolved; a link here means it was replaced since.
+  if (stat(base)?.isSymbolicLink()) throw Error(`Symlink refused: ${base}`);
   let current = base;
   for (const segment of relative(base, path).split(sep).filter(Boolean)) {
     current = resolve(current, segment);
@@ -49,8 +55,7 @@ export function safePath(root, name) {
   }
   return path;
 }
-// A path whose own root the user named: canonicalize the parent, then guard the last segment.
-const safeUnder = path => { const full = resolve(path); return safePath(canonical(dirname(full)), basename(full)); };
+
 const receiptName = '.website-build-skill-receipt.json';
 const result = (code, message) => ({ code, message });
 
@@ -87,12 +92,14 @@ function integrationFor(project, destination, target) {
   };
 }
 
-function readReceipt(path, destination) {
-  safeUnder(path);
+function readReceipt(path, destination, receiptRoot) {
+  safePath(receiptRoot, path);
   const info = stat(path);
   if (!info?.isFile() || info.nlink !== 1) throw Error(`Missing, shared or non-file receipt: ${path}`);
   const value = JSON.parse(fs.readFileSync(path, 'utf8'));
-  if (value.schemaVersion !== 1 || value.package?.name !== packageInfo.name || value.destination !== destination || !Array.isArray(value.files)) throw Error('Invalid receipt ownership');
+  // The destination is always derived from what the user named, never read out of the file,
+  // so this comparison is a check that the receipt belongs here, not a source of authority.
+  if (value.schemaVersion !== 1 || value.package?.name !== packageInfo.name || value.destination !== destination || !Array.isArray(value.files) || !Array.isArray(value.directories)) throw Error('Invalid receipt ownership');
   if (value.activation !== 'UNVERIFIED' || !['solo', 'team'].includes(value.mode) || !Object.hasOwn(targets, value.target) || !['project', 'user'].includes(value.scope)) throw Error('Invalid receipt metadata');
   const seen = new Set();
   for (const entry of value.files) {
@@ -100,22 +107,34 @@ function readReceipt(path, destination) {
     safePath(destination, entry.path);
     seen.add(entry.path);
   }
+  for (const directory of value.directories) {
+    if (typeof directory !== 'string' || directory !== resolve(directory) || directory === destination || !inside(destination, directory)) throw Error('Invalid receipt directory');
+    safePath(destination, directory);
+  }
   return value;
 }
 
-function mkdirFor(path) {
-  safeUnder(path);
-  fs.mkdirSync(dirname(path), { recursive: true });
-  safeUnder(path);
+function mkdirFor(path, root, made) {
+  safePath(root, path);
+  const target = dirname(path);
+  // Record every directory inside the root that does not exist yet, rather than trusting
+  // mkdirSync's return: it names only the TOPMOST directory it creates, which for the first
+  // file of a fresh install is above the destination, leaving its subdirectories unrecorded
+  // and therefore never removed. A directory that already exists is never ours.
+  const missing = [];
+  for (let current = target; inside(root, current) && current !== root && !stat(current); current = dirname(current)) missing.unshift(current);
+  fs.mkdirSync(target, { recursive: true });
+  made.push(...missing);
+  safePath(root, path);
 }
-function writeNew(path, bytes, landed) {
-  mkdirFor(path);
+function writeNew(path, bytes, landed, root, made) {
+  mkdirFor(path, root, made);
   const fd = fs.openSync(path, fs.constants.O_WRONLY | fs.constants.O_CREAT | fs.constants.O_EXCL | (fs.constants.O_NOFOLLOW ?? 0), 0o644);
   landed.push(path);
   try { fs.writeFileSync(fd, bytes); } finally { fs.closeSync(fd); }
 }
-function writeReceipt(path, value, previous, state = {}) {
-  mkdirFor(path);
+function writeReceipt(path, value, previous, state, root, made) {
+  mkdirFor(path, root, made);
   if (previous !== null) {
     if (!stat(path)?.isFile() || fs.readFileSync(path, 'utf8') !== previous) throw Error(`Receipt changed during install: ${path}`);
     const fd = fs.openSync(path, fs.constants.O_WRONLY | (fs.constants.O_NOFOLLOW ?? 0));
@@ -123,14 +142,13 @@ function writeReceipt(path, value, previous, state = {}) {
     try { fs.ftruncateSync(fd); fs.writeFileSync(fd, JSON.stringify(value, null, 2) + '\n'); } finally { fs.closeSync(fd); }
   } else {
     const created = [];
-    try { writeNew(path, JSON.stringify(value, null, 2) + '\n', created); }
+    try { writeNew(path, JSON.stringify(value, null, 2) + '\n', created, root, made); }
     finally { state.started = created.includes(path); }
   }
 }
 function probe(root) {
-  safeUnder(root);
   if (!stat(root)?.isDirectory()) throw Error(`Output root must be an existing writable directory: ${root}`);
-  const path = resolve(root, `.website-build-skill-probe-${randomUUID()}`);
+  const path = safePath(root, `.website-build-skill-probe-${randomUUID()}`);
   let created = false;
   try {
     const fd = fs.openSync(path, 'wx', 0o600);
@@ -140,14 +158,30 @@ function probe(root) {
   } finally { if (created) fs.unlinkSync(path); }
 }
 
-function uninstall(request, destination, receiptPath) {
+// Remove empty directories inside one tree this install created, deepest first. A directory
+// that existed before the install is never in that list, so it is never removed.
+function pruneCreated(destination, root, removed) {
+  const walk = path => {
+    safePath(destination, path);
+    const info = stat(path);
+    if (!info?.isDirectory()) return;
+    for (const name of fs.readdirSync(path)) walk(resolve(path, name));
+    if (fs.readdirSync(path).length === 0 && path !== destination) { fs.rmdirSync(path); removed.push(path); }
+  };
+  walk(root);
+}
+
+function uninstall(request, destination, receiptPath, receiptRoot) {
   let receipt;
-  try { receipt = readReceipt(receiptPath, destination); } catch (error) { return result(2, error.message); }
-  const remove = [], kept = [], directories = new Set();
+  try { receipt = readReceipt(receiptPath, destination, receiptRoot); } catch (error) { return result(2, error.message); }
+  const remove = [], kept = [];
   try {
     for (const entry of receipt.files) {
       const info = stat(entry.path);
       if (!info) continue;
+      // A file recorded as identical was already on disk before this package touched it.
+      // Installing it was a no-op, so removing it would be taking something that is not ours.
+      if (entry.action === 'identical') { kept.push(`Kept preexisting: ${entry.path}`); continue; }
       if (info.isFile() && digest(fs.readFileSync(entry.path)) === entry.sha256) remove.push(entry);
       else kept.push(`Kept changed: ${entry.path}`);
     }
@@ -166,47 +200,49 @@ function uninstall(request, destination, receiptPath) {
         if (digest(fs.readFileSync(entry.path)) !== entry.sha256) { kept.push(`Kept changed: ${entry.path}`); continue; }
         fs.unlinkSync(entry.path);
         removed.push(entry.path);
-        for (let dir = dirname(entry.path); inside(destination, dir); dir = dirname(dir)) {
-          directories.add(dir);
-          if (dir === destination) break;
-        }
       }
-      safeUnder(receiptPath);
+      safePath(receiptRoot, receiptPath);
       fs.unlinkSync(receiptPath);
-      for (const dir of [...directories].sort((a, b) => b.length - a.length)) {
-        safeUnder(dir);
-        if (stat(dir)?.isDirectory() && fs.readdirSync(dir).length === 0) fs.rmdirSync(dir);
-      }
+      for (const directory of [...receipt.directories].sort((a, b) => b.length - a.length)) pruneCreated(destination, directory, removed);
       return result(0, [...removed.map(path => `Removed: ${path}`), ...kept, 'Uninstall complete.'].join('\n'));
     } catch (error) { return result(4, `Uninstall interrupted: ${error.message}\n${removed.map(path => `Removed: ${path}`).join('\n')}\n${kept.join('\n')}`); }
   } catch (error) { return result(3, error.message); }
 }
 
 export function install(request = {}) {
-  let destination, receiptPath, entries, integration, previous = null, oldReceipt, outputRoot, project;
+  let destination, receiptPath, receiptRoot, entries, integration, previous = null, oldReceipt, outputRoot, project;
   try {
-    // Uninstall gets mode and target from its receipt when only --receipt is supplied.
-    if (request.uninstall && request.receipt && (!request.target || !request.mode)) {
-      safeUnder(request.receipt);
-      const saved = JSON.parse(fs.readFileSync(request.receipt, 'utf8'));
-      if (typeof saved.destination !== 'string' || saved.destination !== resolve(saved.destination)) throw Error('Invalid receipt destination');
-      request = { ...request, mode: request.mode ?? saved.mode, target: request.target ?? saved.target };
-      destination = canonical(saved.destination);
+    if (request.uninstall) {
+      // What gets removed is decided by what the user named. A receipt that carries its own
+      // destination would let an edited or planted file point the removal anywhere on disk.
+      if (request.target && request.dir) {
+        if (!Object.hasOwn(targets, request.target)) throw Error('Unknown or missing target');
+        destination = resolve(canonical(request.dir), targets[request.target]);
+        receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
+      } else if (request.receipt) {
+        receiptPath = resolve(request.receipt);
+        destination = canonical(dirname(receiptPath));
+      } else throw Error('Uninstall requires --receipt or --target and --dir');
+      // The default receipt sits at the destination root, so that root is already its own.
+      // Only a receipt the user placed elsewhere needs its own directory canonicalized, and
+      // doing that eagerly for the default would resolve the destination before preflight.
+      receiptRoot = request.receipt ? canonical(dirname(receiptPath)) : destination;
+    } else {
+      validate(request);
+      // The project root is the user's to name, so it is canonicalized here. The target suffix
+      // is ours, and a symlink planted in it is a preflight refusal, not bad input, so that
+      // walk happens in the preflight block below where the exit code is 3.
+      project = canonical(request.dir ?? process.cwd());
+      destination = resolve(project, targets[request.target]);
+      receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
+      receiptRoot = request.receipt ? canonical(dirname(receiptPath)) : destination;
+      outputRoot = request.outputDir === undefined ? null : canonical(request.outputDir);
     }
-    if (request.uninstall && !request.mode) request = { ...request, mode: 'solo' };
-    validate(request);
-    // The project root is the user's to name, so it is canonicalized here. The target suffix
-    // is ours, and a symlink planted in it is a preflight refusal, not bad input, so that
-    // walk happens in the preflight block below where the exit code is 3.
-    project = canonical(request.dir ?? process.cwd());
-    destination ??= resolve(project, targets[request.target]);
-    receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
-    outputRoot = request.outputDir === undefined ? null : canonical(request.outputDir);
   } catch (error) { return result(2, error.message); }
-  if (request.uninstall) return uninstall(request, destination, receiptPath);
+  if (request.uninstall) return uninstall(request, destination, receiptPath, receiptRoot);
   try {
     safePath(project, targets[request.target]);
-    if (request.receipt) safeUnder(request.receipt);
+    if (request.receipt) safePath(receiptRoot, receiptPath);
     if (inside(destination, receiptPath) && receiptPath === destination) throw Error('Receipt collides with destination');
     entries = plan(request, destination);
     for (const entry of entries) {
@@ -215,16 +251,23 @@ export function install(request = {}) {
     if (entries.some(entry => entry.path === receiptPath || inside(entry.path, receiptPath) || inside(receiptPath, entry.path))) throw Error('Receipt collides with installed content');
     integration = integrationFor(resolve(request.dir ?? process.cwd()), destination, request.target);
     const conflicts = [];
-    for (const entry of entries) {
-      const info = stat(entry.path);
-      entry.action = info?.isFile() && fs.readFileSync(entry.path).equals(entry.bytes) ? 'identical' : 'written';
-      if (info && entry.action !== 'identical') conflicts.push(entry.path);
-    }
+    // Read the previous receipt FIRST, because it is what separates a file this package wrote
+    // on an earlier run from a file that was already on disk. Both are byte-identical now, and
+    // only one of them is ours to remove later.
     if (stat(receiptPath)) {
       try {
-        oldReceipt = readReceipt(receiptPath, destination);
+        oldReceipt = readReceipt(receiptPath, destination, receiptRoot);
         previous = fs.readFileSync(receiptPath, 'utf8');
       } catch { conflicts.push(receiptPath); }
+    }
+    const ours = new Set((oldReceipt?.files ?? []).filter(entry => entry.action === 'written').map(entry => entry.path));
+    for (const entry of entries) {
+      const info = stat(entry.path);
+      const matches = Boolean(info?.isFile()) && fs.readFileSync(entry.path).equals(entry.bytes);
+      // `wrote` is what this run does; `action` is who the file belongs to afterwards.
+      entry.wrote = !matches;
+      entry.action = matches && !ours.has(entry.path) ? 'identical' : 'written';
+      if (info && entry.wrote) conflicts.push(entry.path);
     }
     if (conflicts.length) return result(3, `Preflight conflicts; nothing written:\n${conflicts.join('\n')}`);
   } catch (error) { return result(3, `Preflight refused; nothing written: ${error.message}`); }
@@ -232,42 +275,63 @@ export function install(request = {}) {
     schemaVersion: 1, package: packageInfo, date: new Date().toISOString(), mode: request.mode,
     target: request.target, scope: request.scope ?? 'project', destination, outputRoot,
     files: entries.map(entry => ({ path: entry.path, sha256: digest(entry.bytes), action: entry.action })),
-    integration, activation: 'UNVERIFIED',
+    directories: [], integration, activation: 'UNVERIFIED',
   };
+  // An earlier run's files stay owned even when this run installs fewer of them, or a later
+  // uninstall would walk past its own TEAM bundles and call them somebody else's.
+  const carried = [];
+  if (oldReceipt) {
+    for (const entry of oldReceipt.files) {
+      if (receipt.files.some(current => current.path === entry.path)) continue;
+      const info = stat(entry.path);
+      if (info?.isFile() && digest(fs.readFileSync(entry.path)) === entry.sha256) carried.push(entry);
+    }
+    receipt.directories.push(...oldReceipt.directories);
+  }
   const sameReceipt = oldReceipt && ['mode', 'target', 'scope', 'outputRoot'].every(key => oldReceipt[key] === receipt[key]) && JSON.stringify(oldReceipt.package) === JSON.stringify(receipt.package) && JSON.stringify(oldReceipt.integration) === JSON.stringify(integration) && oldReceipt.files.length === receipt.files.length && receipt.files.every(entry => oldReceipt.files.some(old => old.path === entry.path && old.sha256 === entry.sha256));
-  const noChanges = entries.every(entry => entry.action === 'identical') && sameReceipt;
-  const lines = entries.map(entry => `${entry.action === 'identical' ? 'identical' : 'write'}: ${entry.path}`);
+  const noChanges = entries.every(entry => !entry.wrote) && sameReceipt;
+  const lines = entries.map(entry => `${entry.wrote ? 'write' : 'identical'}: ${entry.path}`);
   lines.push(`${noChanges ? 'identical' : 'write'} receipt: ${receiptPath}`);
   if (request.mode === 'team') lines.push('TEAM uses manual relay: adapters/grok.md#manual-fallback. No native agent definitions were generated.');
   if (integration.snippet) lines.push(`Completed install with activation pending: unmerged integration snippet for ${integration.routerPath}\n${integration.snippet}`);
   if (request.dryRun) return result(0, `Dry run; no writes or probe.\n${outputRoot ? `Would probe: ${outputRoot}\n` : ''}${lines.join('\n')}`);
   if (noChanges) return result(integration.snippet ? 5 : 0, `Identical install; nothing written.\n${lines.join('\n')}`);
   try { if (outputRoot) probe(outputRoot); } catch (error) { return result(2, `Output root verification failed; no skill files written: ${error.message}`); }
-  const landed = [], receiptWrite = {};
+  const landed = [], made = [], receiptWrite = {};
   try {
     for (const entry of entries) {
       safePath(destination, entry.path);
-      if (entry.action === 'written') writeNew(entry.path, entry.bytes, landed);
+      if (entry.wrote) writeNew(entry.path, entry.bytes, landed, destination, made);
       else if (digest(fs.readFileSync(entry.path)) !== digest(entry.bytes)) throw Error(`File changed during install: ${entry.path}`);
     }
-    writeReceipt(receiptPath, receipt, previous, receiptWrite);
+    // Read every file back before the receipt claims it. A digest taken from the bytes we
+    // meant to write is a record of the intention, not of what is on disk.
+    for (const entry of receipt.files) {
+      const actual = digest(fs.readFileSync(safePath(destination, entry.path)));
+      if (actual !== entry.sha256) throw Error(`Read-back mismatch after write: ${entry.path}`);
+    }
+    receipt.files.push(...carried);
+    receipt.directories = [...new Set([...receipt.directories, ...made])].filter(path => inside(destination, path) && path !== destination);
+    writeReceipt(receiptPath, receipt, previous, receiptWrite, receiptRoot, made);
   } catch (error) {
-    receipt.files = receipt.files.filter(entry => entry.action === 'identical' || landed.includes(entry.path));
+    receipt.files = receipt.files.filter(entry => !entries.find(planned => planned.path === entry.path)?.wrote || landed.includes(entry.path));
     const notes = [];
     receipt.files = receipt.files.filter(entry => {
       try {
         safePath(destination, entry.path);
         const actual = digest(fs.readFileSync(entry.path));
-        if (entry.action === 'identical' && actual !== entry.sha256) { notes.push(`Kept changed during install: ${entry.path}`); return false; }
+        if (!landed.includes(entry.path) && actual !== entry.sha256) { notes.push(`Kept changed during install: ${entry.path}`); return false; }
         entry.sha256 = actual;
         return true;
       }
       catch { notes.push(`Could not verify: ${entry.path}`); return false; }
     });
+    receipt.files.push(...carried.filter(entry => stat(entry.path)?.isFile()));
+    receipt.directories = [...new Set([...receipt.directories, ...made])].filter(path => inside(destination, path) && path !== destination);
     try {
       // Retry our own interrupted receipt, without clobbering an unrelated arrival.
-      if (receiptWrite.started) { safeUnder(receiptPath); previous = fs.readFileSync(receiptPath, 'utf8'); }
-      writeReceipt(receiptPath, receipt, previous);
+      if (receiptWrite.started) { safePath(receiptRoot, receiptPath); previous = fs.readFileSync(receiptPath, 'utf8'); }
+      writeReceipt(receiptPath, receipt, previous, {}, receiptRoot, made);
     } catch (failure) { notes.push(`Receipt could not be saved: ${failure.message}`); }
     return result(4, `Write interrupted: ${error.message}\nPaths actually created:\n${landed.join('\n')}\n${notes.join('\n')}`);
   }

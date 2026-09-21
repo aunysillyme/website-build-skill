@@ -108,9 +108,12 @@ export function installClaimIssues(name, text, published = false) {
   const issues = [];
   const command = /\b(?:npx|npm\s+(?:exec|install|i)|pnpm\s+(?:dlx|add)|yarn\s+(?:dlx|add)|bunx)\s+.*website-build-skill/;
   for (const [i, line] of text.split('\n').entries()) {
-    const labelled = /planned|unavailable/i.test(line);
-    if (command.test(line) && !labelled && !published) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
-    if (command.test(line) && labelled && published) issues.push(`STALE_CLAIM:${name}:${i+1}`);
+    const at = line.search(command);
+    // Only a caveat standing in FRONT of the command labels that command. The same words
+    // after it are usually an honest limitation about something else on the same line.
+    const labelled = /planned|unavailable/i.test(at < 0 ? line : line.slice(0, at));
+    if (at >= 0 && !labelled && !published) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
+    if (at >= 0 && labelled && published) issues.push(`STALE_CLAIM:${name}:${i+1}`);
     // Nothing in this package is installed by piping a script into a shell, published or not.
     if (/\b(?:curl|wget)\b.*\|\s*(?:sh|bash)/.test(line) && !labelled) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
   }
@@ -300,17 +303,29 @@ export function check(root, options = {}) {
     // way round: the entry has to exist, the files it needs have to ship, and the engine
     // floor has to be one continuous integration actually runs.
     if (p.private) issues.push('PACKAGE_HONESTY:private package cannot be published');
-    if (p.scripts?.install || p.scripts?.postinstall) issues.push('PACKAGE_HONESTY:lifecycle hook runs on a stranger machine');
+    // npm runs preinstall, install, postinstall and prepare on the consumer's machine, before
+    // they have read anything. prepublishOnly and prepack run at publish time and can change
+    // the bytes after they were tested. This package needs none of the six.
+    for (const hook of ['preinstall', 'install', 'postinstall', 'prepare', 'prepublishOnly', 'prepack'])
+      if (p.scripts?.[hook]) issues.push(`PACKAGE_HONESTY:${hook} runs outside the test that approved these bytes`);
     const binEntry = typeof p.bin === 'string' ? p.bin : p.bin?.[p.name];
     if (binEntry !== 'bin/website-build-skill.mjs') issues.push('PACKAGE_HONESTY:bin must name the real entry point');
     else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
     // A published tarball that omits any of these installs nothing on a stranger's machine.
-    for (const needed of ['bin', 'src', 'skills/', 'docs/', 'README.md', 'LICENSE'])
-      if (!p.files?.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
+    // A negation can empty one of them while the entry it negates is still listed, so the
+    // list is compared on its effective entries, and `src` and `src/` are the same entry.
+    const published = (p.files ?? []).map(entry => String(entry).replace(/\/+$/, ''));
+    if (published.some(entry => entry.startsWith('!'))) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
+    for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE'])
+      if (!published.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
     const floor = p.engines?.node?.match(/(\d+)/)?.[1];
-    const matrix = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks?.strategy?.matrix?.node;
+    const checks = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks;
+    const matrix = checks?.strategy?.matrix?.node;
     if (!floor) issues.push('PACKAGE_HONESTY:no engine floor declared');
     else if (!Array.isArray(matrix) || !matrix.some(version => String(version).split('.')[0] === floor)) issues.push(`ENGINE_UNTESTED:node ${floor} is claimed but not in the check matrix`);
+    // A matrix nobody reads proves nothing: the runtime step has to select from it.
+    else if (!(checks.steps ?? []).some(step => typeof step.uses === 'string' && step.uses.startsWith('actions/setup-node@') && step.with?.['node-version'] === '${{ matrix.node }}'))
+      issues.push('ENGINE_UNTESTED:the runtime step does not select the matrix version');
     // `engines` is refused above because it advertises consumer functionality this package
     // does not publish, so the maintainer runtime is stated by a guard that runs first and
     // by the README instead. Node 20 otherwise fails the flag with `bad option` and no cause.
