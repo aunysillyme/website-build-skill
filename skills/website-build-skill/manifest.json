@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "03ac28cc2cea0bea62fbc32d9d2d594d1005a128616753931adb0360165b932d"
+      "sha256": "5d4d9b790f689a86795feef025d01ff16427138d5dd4e89df9892924493d5a99"
     },
     {
       "path": "manifest.json",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0620ba55ae577fdfdc3fa78d8943fd185b29279d579d980b2106b41cd34dbe90"
+      "sha256": "97eee856bdd655e8a857a7a25cdd1dc989ea63a1afbae11e47054ba900e05a3d"
     },
     {
       "path": "playbooks/deploy-and-operate.md",

@@ -1,5 +1,6 @@
 schema_version: 1
-team: website-design-teamcoordinator: coordinator
+team: website-design-team
+coordinator: coordinator
 entry_role: researcher
 execution_order: [researcher, coordinator, designer, graphics, builder, optimizer, reviewer]
 artifact_root: site-work

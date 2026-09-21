@@ -16,8 +16,13 @@ export function owned(root, name, mustExist = true) {
   if (lstatSync(base).isSymbolicLink()) throw Error('symlink root');
   for (const segment of relative(base, full).split(sep).filter(Boolean)) {
     part = resolve(part, segment);
-    if (existsSync(part)) {
-      if (lstatSync(part).isSymbolicLink()) throw Error('symlink path');
+    // existsSync follows the link, so it is FALSE for a dangling symlink and the symlink
+    // check below was skipped. An ordinary write then follows that link outside the
+    // repository. lstat never follows, so it sees the link whether or not the target exists.
+    let entry = null;
+    try { entry = lstatSync(part); } catch { entry = null; }
+    if (entry) {
+      if (entry.isSymbolicLink()) throw Error('symlink path');
     } else if (mustExist) throw Error(`missing path: ${name}`);
   }
   return full;
@@ -27,6 +32,9 @@ export function files(root, directory = '') {
   const out = [];
   for (const item of readdirSync(owned(root, directory || '.'), { withFileTypes: true }).sort((a,b) => a.name.localeCompare(b.name, 'en'))) {
     if (['.git', 'node_modules', '.test-work', '.build-local'].includes(item.name)) continue;
+    // Local, gitignored working files are not part of the published tree. Reviewing them
+    // would fail the gate on notes that never ship.
+    if (/^AUDIT_BRIEF.*\.md$/.test(item.name) || /\.(plan|brief)\.md$/.test(item.name) || item.name === 'notes-local') continue;
     const name = directory ? `${directory}/${item.name}` : item.name;
     if (item.isSymbolicLink()) throw Error(`symlink in public tree: ${name}`);
     if (item.isDirectory()) out.push(...files(root, name));

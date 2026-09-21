@@ -11,7 +11,8 @@ Never automatically fall back to the user-level candidate `~/.gemini/config/agen
 
 ```yaml
 ---
-name: <agent_name>description: <one line: what it does, when to use it, what it never does>
+name: <agent_name>
+description: "<one line: what it does, when to use it, what it never does>"
 subagent: true
 mainAgent: false
 model: inherit

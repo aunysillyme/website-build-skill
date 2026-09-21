@@ -54,8 +54,8 @@ Future publication would need contents write only in its publishing job and iden
 ## The closed loop
 
 Local success requires exit 0 from both the read-only check and the test runner, with no unexpected skips.
-The literal privacy gate currently remains BLOCKED by required public product and CODEOWNERS wording.
-Tests exercise a candidate identifier exception separately; that never authorizes production CI to pass.
+The privacy gate passes on the published tree. Its two public-identifier exemptions are narrow and
+documented in `docs/EVALUATION.md`; the tests run against the same policy, not a separate one.
 Inspect the full output and changed file list. A generated file existing is not enough; its bytes must match regeneration.
 Hosted success requires the exact source revision's run to pass. Hosted execution is UNVERIFIED until that run exists.
 The release readiness workflow must end BLOCKED until the publisher and its immutable-tag gate are implemented.
@@ -90,9 +90,8 @@ node --experimental-strip-types scripts/check.ts
 node --experimental-strip-types --test test/*.test.ts
 ```
 
-Expected now: build names six generated files; check fails the unresolved literal privacy conflict;
-tests exit 0 after rejecting the RED fixtures under the explicitly isolated candidate policy.
-After that conflict is resolved, check must print PASS before publication can proceed.
+Expected now: build names six generated files; check prints PASS; tests exit 0 after rejecting
+every RED fixture. Check must print PASS before publication can proceed.
 Run check once more only if a file changes after verification.
 To exercise the unavailable installer boundary, run `node bin/website-build-skill.mjs`.
 Expected: exit 2, an UNAVAILABLE message and no file writes. That is a sentinel check, not an install test.

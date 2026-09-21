@@ -22,3 +22,4 @@ dist/
 *.plan.md
 *.brief.md
 notes-local/
+AUDIT_BRIEF*.md

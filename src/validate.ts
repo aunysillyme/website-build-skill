@@ -12,6 +12,9 @@ export const privacyPattern = new RegExp(forbidden.map(s => s.replace(/[.*+?^${}
 
 export function privacyIssues(name, text, options = {}) {
   const issues = [];
+  // A private identifier can reach the public tree as a FILENAME while every line of the
+  // file is clean, so the path is scanned before its contents.
+  if (privacyPattern.test(name)) issues.push(`PRIVACY_NAME:${name}`);
   for (const [i, original] of text.split('\n').entries()) {
     let line = original;
     if (name === 'LICENSE' && line === `Copyright (c) 2026 ${personal[0].toUpperCase()}${personal.slice(1)}`) continue;
@@ -22,8 +25,11 @@ export function privacyIssues(name, text, options = {}) {
     if (name === '.github/CODEOWNERS' && line === `* @${owner}`) continue;
     // The product name is exempt as a name, never as a path segment. Exempting it outright
     // would let a local working directory through, so path-shaped uses are caught first.
-    const productPath = new RegExp(`(?:~|/)${product}|${product}/`);
-    if (productPath.test(line)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
+    // Normalise the spellings a path can take before testing: an escaped space, surrounding
+    // quotes, and a Windows separator all hide the same path from a naive pattern.
+    const normalised = line.replace(/\\ /g, ' ').replace(/["']/g, '');
+    const productPath = new RegExp(`(?:~|\\$HOME|%USERPROFILE%|[A-Za-z]:)?[\\\\/]${product}(?=[\\\\/ ]|$)`, 'i');
+    if (productPath.test(normalised)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
     line = line.replaceAll(product, 'PUBLIC_PRODUCT');
     // Only exact repository URL namespaces, never the whole line around a URL.
     line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/website-build-skill(?=[/\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
@@ -101,7 +107,25 @@ export function workflowIssues(name, text) {
   };
   checkPermissions(workflow.permissions, name);
   if (!workflow.concurrency || workflow.concurrency['cancel-in-progress'] !== true) issues.push(`WORKFLOW_CONCURRENCY:${name}`);
-  if (workflow.on?.pull_request_target !== undefined) issues.push(`WORKFLOW_TRIGGER:${name}`);
+  // A trigger can be written as an object, a bare string or an array. Checking only the
+  // object form let `on: pull_request_target` through as a string.
+  const triggers = workflow.on === undefined ? []
+    : typeof workflow.on === 'string' ? [workflow.on]
+    : Array.isArray(workflow.on) ? workflow.on.filter(t => typeof t === 'string')
+    : Object.keys(workflow.on);
+  const forbiddenTriggers = ['pull_request_target', 'workflow_run', 'issue_comment'];
+  for (const trigger of triggers) if (forbiddenTriggers.includes(trigger)) issues.push(`WORKFLOW_TRIGGER:${name}:${trigger}`);
+  // Attacker-controlled event data interpolated straight into a shell is command injection.
+  // The safe form passes the value through `env:` and reads it as a variable.
+  const injectable = /\$\{\{\s*(?:github\.event\b|github\.head_ref\b|inputs\.|github\.actor\b)[^}]*\}\}/;
+  const visitRun = obj => {
+    if (!obj || typeof obj !== 'object') return;
+    for (const [key, value] of Object.entries(obj)) {
+      if (key === 'run' && typeof value === 'string' && injectable.test(value)) issues.push(`WORKFLOW_INJECTION:${name}`);
+      visitRun(value);
+    }
+  };
+  visitRun(workflow);
   const visitUses = obj => {
     if (!obj || typeof obj !== 'object') return;
     for (const [key, value] of Object.entries(obj)) {

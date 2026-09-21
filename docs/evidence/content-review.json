@@ -34,7 +34,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
-      "sha256": "ac95ffcc381bbd43a206959ba82742baf7ec5059d536fd0d53d8483734a12f81",
+      "sha256": "ac842e06e6a5b17dfd7e98da97d5dd98a628b7c66c0e76f596cab0235a5e40ec",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
@@ -50,7 +50,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/antigravity.md": {
-      "sha256": "e53f80ca2eedefd4148a6b7cd022a589557a2249e6a581e420ccd578dbe5a7e4",
+      "sha256": "8664829ac63fc34d9e0106b694f1f23d56ac6bef520d4ea9589067a45b369ed0",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/chatgpt-project.md": {
@@ -90,7 +90,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/EVALUATION.md": {
-      "sha256": "c3d9d6a36202f37f9af252f35edcf7659a37ccfe9b2b90278457d2ac9f82d958",
+      "sha256": "1c4ec4ea61b2634d28dee1775cb5f5a29dfb4781c8a4bb430ec816b8414d8013",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/INSTALLER.md": {

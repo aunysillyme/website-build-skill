@@ -13,9 +13,12 @@ node --experimental-strip-types --test test/*.test.ts
 
 Check performs no writes. The test suite copies synthetic fixtures into `.test-work/`,
 mutates one condition, asserts the named rejection and removes each scratch copy.
-The GREEN control isolates the nine RED cases under a candidate public-identifier policy.
-Production check and CI retain the literal privacy ban and remain BLOCKED by the required
-public product wording and CODEOWNERS entry. The candidate policy is test-only, not approval.
+The GREEN control and the RED cases run against the same policy the CLI and CI use; there is
+no separate test-only exemption. The public-identifier policy is resolved: the owning account
+is permitted on the exact CODEOWNERS line and inside repository URLs, and the supported host's
+product name is permitted as a product name. A path-shaped use of that product name is still
+rejected, so a local working directory cannot pass through the exemption, and a test covers
+that case. Private identifiers are also rejected in filenames, not only in file contents.
 
 | RED case | Named rejection | Regression |
 | --- | --- | --- |
