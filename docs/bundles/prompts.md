@@ -88,7 +88,9 @@ BRIEF
 - Separate confirmed requirements from suggestions and missing inputs.
 
 SAVE
-- As Researcher, save the request and tool limits to site-work/research/library/scope.md.
+- As Researcher, ask where the work should be saved (Obsidian vault, a folder on this
+  computer, Notion, or a typed path), then save that root with the request and tool limits
+  to <root>/research/library/scope.md. Notion receives an export; the working copy stays on disk.
 - Complete prompts/01-website-deep-research.md and its library before any other role.
 - After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
   under site-work/. If file tools are missing, return named bodies for me to save
