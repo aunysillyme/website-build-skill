@@ -30,7 +30,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "4cf5c52fa6bb01c40d7cf6a1364e0bd7c70cc537c7ce4eff58e6a2b3a644b678",
+      "sha256": "38878afded2265272900d0328570c2713732a9a9fa10608b216f2d58c6309ed5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
@@ -94,7 +94,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/INSTALLER.md": {
-      "sha256": "779c93adacdee2d34925a11381ec9657b6efb65c4ac20697e9da0e4632e6c8a8",
+      "sha256": "de102b6fbf2ddf525d04a9a8d71937a02fe83b7da649aa2ade07663ee77bad95",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/METHOD.md": {

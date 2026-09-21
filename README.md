@@ -82,6 +82,12 @@ npx website-build-skill --solo --target codex --dir . --yes
 npx website-build-skill --team --target claude-code --dir . --yes
 ```
 
+Until that version is on npm, the same entry point runs straight from the repository:
+
+```bash
+npx github:aunysillyme/website-build-skill --solo --target codex --dir . --yes
+```
+
 Add `--dry-run` to see every path first, `--output-dir` to say where the work is saved, and
 `--uninstall` to remove only the files it wrote and left untouched.
 It copies files. It does not start seven workers, supply an independent model provider, or
