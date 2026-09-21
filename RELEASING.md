@@ -2,17 +2,20 @@
 
 ## What and why
 
-This is the end-to-end operating document for repository validation and future distribution.
-The current system generates Markdown bundles and checks repository content locally.
-Publication, installer compilation, native installs and release asset delivery are planned and unavailable.
-The release workflow deliberately ends BLOCKED. It must never be described as a publisher.
+This is the end-to-end operating document for repository validation and distribution.
+The system generates Markdown bundles, checks repository content locally, and publishes the
+package to npm when a version tag is pushed. Native worker generation and any claim of host
+activation remain unavailable and unverified; publication of the files is not.
+The release workflow IS the publisher. It holds no stored registry secret: it authenticates
+through npm trusted publishing, which exchanges a short-lived OIDC token issued to that one job.
 
 ## Trigger
 
 Local: a maintainer changes canonical content or adapters and explicitly runs the commands below.
 Hosted checks: pull request, push to main or manual dispatch after repository creation.
-Release readiness: explicit dispatch with an existing version tag after review and authorization.
-No tag push automatically publishes anything. No scheduled publication exists.
+Release: pushing a `v*` tag runs the publish job, which republishes nothing and refuses a tag
+whose version disagrees with `package.json`. No scheduled publication exists, and no branch
+push publishes. Creating the GitHub release page stays manual.
 
 ## Invocation chain
 
@@ -21,10 +24,10 @@ No tag push automatically publishes anything. No scheduled publication exists.
 3. Run `node scripts/check.mjs` without rewriting outputs.
 4. Run `node --test test/*.test.mjs` for rejection cases and valid controls.
 5. Review the exact candidate with an independent model family before wiring executable changes into live automation.
-6. For planned publication, bind an immutable version tag to that candidate and verify version agreement among package, plugin, manifest, changelog and tag.
-7. For planned publication, build once from that tag; inspect the actual npm tarball and skill ZIP against explicit allowlists. Keep checksums and source identity.
-8. For planned publication, obtain release authorization for those concrete artifacts; publish those bytes through a reviewed publisher with narrowly scoped credentials.
-9. For planned publication, download afresh and complete the verification loop below before recording a release as complete.
+6. Update `CHANGELOG.md`, then set the same version in `package.json`, `.claude-plugin/plugin.json` and the manifest's `packageVersion`; the check fails when they disagree.
+7. Commit, then push an immutable `v<version>` tag on that commit. Leave the tag where it is: npm provenance names that exact commit, so a later history rewrite would point the provenance at a commit that no longer exists.
+8. The workflow re-runs the gates, packs the tarball, installs it in a scratch project, runs the installed entry point, and only then publishes with `--provenance`.
+9. Wait for the registry, which lagged by roughly a minute on the sibling repository, then complete the verification loop below before recording the release as complete.
 
 ## Dependencies
 
@@ -33,7 +36,13 @@ Other runtime versions, hosted execution and the proposed TypeScript compiler co
 Workflow files use the JSON subset of YAML so structural security checks need no YAML dependency.
 The checkout and runtime setup actions are pinned to upstream commit URLs recorded in provenance.
 Network is only needed by hosted checkout/runtime setup and future public delivery probes, not by the local content gates.
-Future npm publication needs an authorized registry identity and a reviewed trusted-publishing configuration; none is wired here.
+npm trusted publishing must be configured once, by hand, on npmjs.com: the package's settings,
+Trusted publisher, GitHub Actions, with the owner and repository exactly as they appear in
+https://github.com/aunysillyme/website-build-skill
+then workflow `release.yml` and an empty environment. A package that does not exist yet
+cannot carry that setting, so the FIRST version is published by hand from an authorized
+maintainer login, and every version after it is published by the workflow. `npm publish --provenance` only works
+inside a CI runner; never run that flag locally.
 
 ## Reads
 
@@ -47,9 +56,12 @@ The archive is an immutable input and never an active bundle member.
 Build writes exactly `docs/bundles/method.md`, `prompts.md`, `playbooks.md`, `checklists.md`,
 `team.md` below that same bundle directory, plus root `llms.txt`.
 Check writes nothing. Tests create synthetic scratch directories only under `.test-work/` and remove their own directories.
-The installer sentinel writes no files and returns exit code 2.
-Current workflows have only `contents: read`. They create no release, tag or registry version.
-Future publication would need contents write only in its publishing job and identity-token write only for a reviewed trusted-publishing flow.
+The installer writes only its destination, the output root probe it removes, and its receipt.
+The check workflow has only `contents: read`. The release workflow's publish job adds exactly
+one permission, `id-token: write`, for the OIDC exchange, and the workflow validator refuses
+that permission at the top level, in any other job, and in any other workflow.
+The installer writes only inside the destination it was given, the output root probe it removes,
+and its receipt.
 
 ## The closed loop
 
@@ -57,12 +69,13 @@ Local success requires exit 0 from both the read-only check and the test runner,
 The privacy gate passes on the published tree. Its two public-identifier exemptions are narrow and
 documented in `docs/EVALUATION.md`; the tests run against the same policy, not a separate one.
 Inspect the full output and changed file list. A generated file existing is not enough; its bytes must match regeneration.
-Hosted success requires the exact source revision's run to pass. Hosted execution is UNVERIFIED until that run exists.
-The release readiness workflow must end BLOCKED until the publisher and its immutable-tag gate are implemented.
-Future release completion requires fresh unauthenticated raw-file retrieval, manifest/hash read-back,
-fresh tarball/ZIP downloads, fresh isolated installs, native invocation and first-stage research flow on each claimed host/version.
+Hosted success requires the exact source revision's run to pass on every runtime in the matrix.
+Release completion requires `npm view website-build-skill version` to name the tag, a fresh
+`npx website-build-skill@<version> --version` from a machine that has never held the package,
+and one real install into a scratch directory whose receipt digests match the bytes on disk.
+Host discovery and activation are still not proven by any of that.
 Record downloaded bytes, commands, versions, date, actual results and any gaps as sanitized evidence.
-Update the changelog only for a real release. Metadata version 0.1.0 is presently an unreleased draft.
+Update the changelog only for a real release.
 Watcher: local checks have no watcher. GitHub Actions can notify configured repository watchers; delivery is UNVERIFIED.
 No separate watchdog is configured. The public repository owner is the failure recipient; use public issues only for sanitized operational failures and private reporting for security.
 
@@ -93,11 +106,19 @@ node --test test/*.test.mjs
 Expected now: build names six generated files; check prints PASS; tests exit 0 after rejecting
 every RED fixture. Check must print PASS before publication can proceed.
 Run check once more only if a file changes after verification.
-To exercise the unavailable installer boundary, run `node bin/website-build-skill.mjs`.
-Expected: exit 2, an UNAVAILABLE message and no file writes. That is a sentinel check, not an install test.
-For hosted readiness after creation, open Actions, select Release readiness and provide the authorized existing tag.
-Expected today: content gates run and the publication step ends BLOCKED. Do not bypass it.
-No public release command is offered because the publisher is not built.
+To exercise the installer end to end without publishing anything:
+
+```sh
+tarball="$(npm pack --silent)"
+trial="$(mktemp -d)"
+cd "$trial" && npm init -y > /dev/null && npm install "$OLDPWD/$tarball"
+./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes
+```
+
+Expected: exit 0, 55 files plus a receipt under `.agents/skills/website-build-skill/`, and
+`--uninstall --receipt <that path>` leaving the directory empty again. Exit 5 instead of 0 means
+the scratch project already had a router file; that is a completed install with an unmerged
+snippet, not a failure.
 
 ## Source of truth
 

@@ -2,7 +2,7 @@
 
 - Manual SOLO: copy the full canonical folder to a new `.agents/skills/website-build-skill/` in the chosen project.
 - Candidate invocation, UNVERIFIED: ask the host to load `website-build-skill`; confirm the exact file it opens.
-- Planned, unavailable: `npx website-build-skill --team --target codex --dir . --scope project --yes`.
+- Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target codex --dir . --scope project --yes`.
 - Planned native definitions: `.codex/agents/website-<role>.toml` with name, description and full canonical developer_instructions. Round-trip quotes and backslashes.
 - Fallback: separate sessions using [the full team bundle](../docs/bundles/team.md). Do not overwrite `.codex/config.toml` or infer independence from two model names.
 - Shared core: Hermes may use the same candidate path; preserve identical content and retain the core until every owner releases it.

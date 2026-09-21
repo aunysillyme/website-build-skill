@@ -1,62 +1,67 @@
 {
-  "name": "Release readiness (publication unavailable)",
+  "name": "release",
   "on": {
-    "workflow_dispatch": {
-      "inputs": {
-        "tag": {
-          "description": "Existing immutable version tag to inspect; publication is unavailable",
-          "required": true,
-          "type": "string"
-        }
-      }
+    "push": {
+      "tags": [
+        "v*"
+      ]
     }
   },
   "permissions": {
     "contents": "read"
   },
   "concurrency": {
-    "group": "${{ github.workflow }}-${{ inputs.tag }}",
+    "group": "release-${{ github.ref }}",
     "cancel-in-progress": true
   },
   "jobs": {
-    "readiness": {
-      "name": "Inspect requested tag; never publish",
+    "publish": {
+      "name": "Publish the tagged version to npm with provenance",
       "runs-on": "ubuntu-latest",
-      "timeout-minutes": 10,
+      "timeout-minutes": 15,
+      "permissions": {
+        "contents": "read",
+        "id-token": "write"
+      },
       "steps": [
         {
-          "name": "Check out source (checkout v7.0.1)",
+          "name": "Check out the tag (checkout v7.0.1)",
           "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
           "with": {
-            "persist-credentials": false,
-            "ref": "${{ inputs.tag }}"
+            "persist-credentials": false
           }
         },
         {
-          "name": "Select maintainer runtime (setup-node v7.0.0)",
+          "name": "Select the publishing runtime (setup-node v7.0.0)",
           "uses": "actions/setup-node@820762786026740c76f36085b0efc47a31fe5020",
           "with": {
-            "node-version": "22.22.3"
+            "node-version": "24",
+            "registry-url": "https://registry.npmjs.org"
           }
         },
         {
-          "name": "Validate requested tag format",
-          "env": {
-            "RELEASE_TAG": "${{ inputs.tag }}"
-          },
-          "run": "node --input-type=module -e 'if (!/^v[0-9]+\\.[0-9]+\\.[0-9]+$/.test(process.env.RELEASE_TAG || \"\")) process.exit(2)'"
+          "name": "Trusted publishing needs npm 11.5.1 or newer",
+          "run": "npm install -g npm@latest\nnpm --version"
         },
         {
-          "name": "Check exact selected source",
+          "name": "The tag and package.json must name the same version",
+          "run": "tag=\"${GITHUB_REF_NAME#v}\"\npkg=\"$(node -p \"require('./package.json').version\")\"\ntest \"$tag\" = \"$pkg\" || { echo \"tag v$tag but package.json is $pkg\"; exit 1; }"
+        },
+        {
+          "name": "Content, links, privacy, bundle drift and evidence gates",
           "run": "node scripts/check.mjs"
         },
         {
-          "name": "Run local rejection cases",
+          "name": "RED cases and valid controls",
           "run": "node --test test/*.test.mjs"
         },
         {
-          "name": "Block unimplemented publication",
-          "run": "node --input-type=module -e 'console.error(\"BLOCKED: publisher, immutable-tag and fresh-package verification are planned and unavailable\"); process.exit(2)'"
+          "name": "Install the packed tarball and run its entry point",
+          "run": "set -eu\ntarball=\"$(npm pack --silent)\"\nmkdir -p /tmp/release-trial\ncd /tmp/release-trial\nnpm init -y > /dev/null\nnpm install --no-audit --no-fund \"$OLDPWD/$tarball\"\n./node_modules/.bin/website-build-skill --version\n./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes\ntest -f .agents/skills/website-build-skill/SKILL.md\ntest -f .agents/skills/website-build-skill/.website-build-skill-receipt.json"
+        },
+        {
+          "name": "Publish",
+          "run": "npm publish --provenance --access public"
         }
       ]
     }

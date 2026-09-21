@@ -12,5 +12,5 @@ node scripts/check.mjs
 node --test test/*.test.mjs
 ```
 
-The installer and native worker generator are planned. Do not imply they exist.
+The installer is real; the native worker generator is not. Do not imply seven workers start.
 Native loading, account tools and independent-review access are UNVERIFIED until a real trial.

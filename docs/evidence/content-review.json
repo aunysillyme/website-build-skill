@@ -6,15 +6,15 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "AGENTS.md": {
-      "sha256": "14e89610efdedd2e8bf75cf47fccb6dfec1e9fd43ca3c507ef65b1b621b095f1",
+      "sha256": "c18d86aa59f32f19f8636c1a6b8c215b768ac9edcc88d9147f0689145e890695",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "6f7c52ce5595cf4df5397d7dcb50d91ab953909a9c554f1868404917dbf39a60",
+      "sha256": "e126f9f614bafdf266b78d42ea4e8f15828389b788883b2fd4c6674f04b0394a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CLAUDE.md": {
-      "sha256": "5131afec7838454ecbfae2bd20c1c5740df435aaa0b95803efcb80f102e60d96",
+      "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CODE_OF_CONDUCT.md": {
@@ -30,11 +30,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "58adab88237c2caa2cb647b44465c0489bdb7fc4a33add79726501b274478ca5",
+      "sha256": "4cf5c52fa6bb01c40d7cf6a1364e0bd7c70cc537c7ce4eff58e6a2b3a644b678",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
-      "sha256": "86f98014cdc81d52ed6c370509797d8034d893bc7d1e66d681b02cadac4bc4ed",
+      "sha256": "7a8bee3bb86d2f1df2ce08ca6a85618bddabf5bd2639e4fa6d837232d803b7d6",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
@@ -46,11 +46,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/agents-md.md": {
-      "sha256": "52c14c0beea36986593a6712c3abfb09f966de82f8a6ecff00ee72a073cd3e34",
+      "sha256": "2ac19d8c482d98ae91218ea5c5a058aaadd57aef3b85d7d76868e98e296e182f",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/antigravity.md": {
-      "sha256": "8664829ac63fc34d9e0106b694f1f23d56ac6bef520d4ea9589067a45b369ed0",
+      "sha256": "4359c79048c9bbfef700c0ac1d0fcf34b9a7edd6d63a0b58bede950d454e5b6c",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/chatgpt-project.md": {
@@ -58,7 +58,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-code.md": {
-      "sha256": "157c1b3b8e2621d461452dbe19c3a889b8aa53964c330faf8c546e8ec10bdd5f",
+      "sha256": "a8517cff15070fbb86e8f401c2af31271f876fe06025edfdf5ea5b69809ef327",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-desktop.md": {
@@ -66,7 +66,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/codex.md": {
-      "sha256": "5d3c9cc8081370399a4537ab3066f366d9ee60266e0b9819817f14da7b140ac5",
+      "sha256": "06cd6275718e4bd51f329084199fd58f9ee072b213c05fd260e7c3711a874fa9",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/custom-gpt.md": {
@@ -78,7 +78,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/hermes.md": {
-      "sha256": "c843201641877edb4d4e41f4507220e7e1144d6762f53fbf99660caa999dc3fd",
+      "sha256": "eee6b7009b8f4448c84fa55c11939248e0bc5a5f119b746816443e988db53ba5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/zero-install.md": {
@@ -86,15 +86,15 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "51dcdbf008fa5bbe59c6996ff88ddcb37ee70b5bb5bbce9a6258158d64b165f0",
+      "sha256": "b204206e5d981e58caa89dcda9595c8a0dab573761cf99cbad5fcc9ddb3be145",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/EVALUATION.md": {
-      "sha256": "dab9e621534930c5cce5f5c6624106ff583197d0c238aa471f71e3b1e9fdc6c4",
+      "sha256": "f74fd00e75215ad735ca640b7947170598a417a9ec8b7e3405cc90b5ff1c8e45",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/INSTALLER.md": {
-      "sha256": "115c15af9877b6c6d0a52a1e23c93088c7477c7b4996224be970a4f9dc369524",
+      "sha256": "54f539b4cf3819dbd5890e57f11d296191a41a9dd093b8cfd87aa12651d595d5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/METHOD.md": {

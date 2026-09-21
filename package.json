@@ -1,10 +1,15 @@
 {
   "name": "website-build-skill",
   "version": "0.1.0",
-  "private": true,
   "description": "Research-first website-building skill: learn the craft, match the brand, compare three mockups, then build and verify. Use one AI or a seven-role team with reusable research, design, accessibility, SEO and release checklists.",
   "type": "module",
   "license": "MIT",
+  "bin": {
+    "website-build-skill": "bin/website-build-skill.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/aunysillyme/website-build-skill"
@@ -37,13 +42,20 @@
     "test": "node --test test/*.test.mjs"
   },
   "files": [
-    "README.md",
-    "LICENSE",
-    "CHANGELOG.md",
+    "bin",
+    "src",
     "skills/",
     "adapters/",
     "docs/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md",
     "llms.txt",
     ".claude-plugin/"
-  ]
+  ],
+  "homepage": "https://github.com/aunysillyme/website-build-skill",
+  "bugs": {
+    "url": "https://github.com/aunysillyme/website-build-skill/issues"
+  }
 }
