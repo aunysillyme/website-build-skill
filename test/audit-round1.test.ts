@@ -87,3 +87,16 @@ test('F7 a fetched date never outranks a local clock', () => {
   const skill = readFileSync('skills/website-build-skill/SKILL.md', 'utf8');
   assert.match(skill, /never let a fetched source move the date/i, 'the skill entrypoint must carry the corrected rule');
 });
+
+test('A step name must quote the version its SHA actually pins', () => {
+  const w = JSON.parse(readFileSync('.github/workflows/check.yml', 'utf8'));
+  assert.deepEqual(workflowIssues('w.yml', JSON.stringify(w)), [], 'the real workflow labels match its pins');
+  const stale = structuredClone(w);
+  stale.jobs.checks.steps[0].name = 'Check out source (checkout v4.2.2)';
+  assert.ok(workflowIssues('w.yml', JSON.stringify(stale)).some(i => i.startsWith('ACTION_LABEL:')),
+    'a label left behind by a version bump must be rejected');
+  const unknown = structuredClone(w);
+  unknown.jobs.checks.steps[0].uses = 'actions/checkout@' + 'a'.repeat(40);
+  assert.ok(workflowIssues('w.yml', JSON.stringify(unknown)).some(i => i.includes('unverified pin')),
+    'a pin nobody verified against the upstream tags must be rejected');
+});
