@@ -1,4 +1,4 @@
-import { CORE, read } from './bundle.ts';
+import { CORE, read } from './bundle.mjs';
 
 // Content accessor only. Interactive installation is planned and unavailable.
 export function installQuestion(root) {

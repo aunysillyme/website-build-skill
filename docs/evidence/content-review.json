@@ -6,7 +6,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "AGENTS.md": {
-      "sha256": "cff67bf54d9d5d1d4ad3e838a342dd49089cd24daac0ce81576ae04ea5121172",
+      "sha256": "14e89610efdedd2e8bf75cf47fccb6dfec1e9fd43ca3c507ef65b1b621b095f1",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
@@ -14,7 +14,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CLAUDE.md": {
-      "sha256": "5fdffd65702fdbb23fb1ba3652673769c010519be3c5b794e5c2966d575738c5",
+      "sha256": "5131afec7838454ecbfae2bd20c1c5740df435aaa0b95803efcb80f102e60d96",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CODE_OF_CONDUCT.md": {
@@ -22,7 +22,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CONTRIBUTING.md": {
-      "sha256": "6973e5450c9bb36a7ce85c2f208e9b5debc905cfc536a5c100efe1c3b24d522f",
+      "sha256": "4e20d3e212fc2567b5fd60677a0d94586bdc4b6b75fe99a3c97af464f76e9dfb",
       "disposition": "instructions-and-qualified-status-only"
     },
     "MAINTAINERS.md": {
@@ -30,11 +30,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "d77bae207a1cff7e963604e26c5bd1954a07952301ef89e4250d0735a6ca141e",
+      "sha256": "58adab88237c2caa2cb647b44465c0489bdb7fc4a33add79726501b274478ca5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
-      "sha256": "ac842e06e6a5b17dfd7e98da97d5dd98a628b7c66c0e76f596cab0235a5e40ec",
+      "sha256": "86f98014cdc81d52ed6c370509797d8034d893bc7d1e66d681b02cadac4bc4ed",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
@@ -90,7 +90,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/EVALUATION.md": {
-      "sha256": "1c4ec4ea61b2634d28dee1775cb5f5a29dfb4781c8a4bb430ec816b8414d8013",
+      "sha256": "dab9e621534930c5cce5f5c6624106ff583197d0c238aa471f71e3b1e9fdc6c4",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/INSTALLER.md": {

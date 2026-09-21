@@ -1,7 +1,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import { files, owned } from '../src/bundle.ts';
-import { check as strictCheck } from '../src/validate.ts';
+import { files, owned } from '../src/bundle.mjs';
+import { check as strictCheck } from '../src/validate.mjs';
 
 export const root = process.cwd();
 // The public-identifier policy is resolved and is now the only policy.

@@ -1,10 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { install } from '../src/install.ts';
-import { generateAgents } from '../src/agents.ts';
-import { main } from '../src/cli.ts';
-import { owned } from '../src/bundle.ts';
-import { root } from './helpers.ts';
+import { install } from '../src/install.mjs';
+import { generateAgents } from '../src/agents.mjs';
+import { main } from '../src/cli.mjs';
+import { owned } from '../src/bundle.mjs';
+import { root } from './helpers.mjs';
 
 test('Unavailable installer and worker generator fail closed', () => {
   assert.throws(() => install({}), /UNAVAILABLE/);

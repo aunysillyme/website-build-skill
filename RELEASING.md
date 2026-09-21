@@ -17,9 +17,9 @@ No tag push automatically publishes anything. No scheduled publication exists.
 ## Invocation chain
 
 1. Read the candidate and resolve any source, privacy, claim-review or license defect.
-2. Run `node --experimental-strip-types scripts/build.ts` to regenerate bundles and the index.
-3. Run `node --experimental-strip-types scripts/check.ts` without rewriting outputs.
-4. Run `node --experimental-strip-types --test test/*.test.ts` for rejection cases and valid controls.
+2. Run `node scripts/build.mjs` to regenerate bundles and the index.
+3. Run `node scripts/check.mjs` without rewriting outputs.
+4. Run `node --test test/*.test.mjs` for rejection cases and valid controls.
 5. Review the exact candidate with an independent model family before wiring executable changes into live automation.
 6. For planned publication, bind an immutable version tag to that candidate and verify version agreement among package, plugin, manifest, changelog and tag.
 7. For planned publication, build once from that tag; inspect the actual npm tarball and skill ZIP against explicit allowlists. Keep checksums and source identity.
@@ -28,7 +28,7 @@ No tag push automatically publishes anything. No scheduled publication exists.
 
 ## Dependencies
 
-Local maintainer runtime: Node 22.22.3 with explicit TypeScript stripping. No dependency install is needed.
+Local maintainer runtime: Node 22.22.3. The sources are plain ES modules; no build step or dependency install is needed.
 Other runtime versions, hosted execution and the proposed TypeScript compiler configuration remain UNVERIFIED.
 Workflow files use the JSON subset of YAML so structural security checks need no YAML dependency.
 The checkout and runtime setup actions are pinned to upstream commit URLs recorded in provenance.
@@ -85,9 +85,9 @@ From the repository root, with no project data in the tree:
 
 ```sh
 node --version
-node --experimental-strip-types scripts/build.ts
-node --experimental-strip-types scripts/check.ts
-node --experimental-strip-types --test test/*.test.ts
+node scripts/build.mjs
+node scripts/check.mjs
+node --test test/*.test.mjs
 ```
 
 Expected now: build names six generated files; check prints PASS; tests exit 0 after rejecting
@@ -102,7 +102,7 @@ No public release command is offered because the publisher is not built.
 ## Source of truth
 
 Canonical method: `skills/website-build-skill/manifest.json` and its declared assets.
-Distribution generator: `src/bundle.ts`; checks: `src/validate.ts`; invocation: `scripts/build.ts` and `scripts/check.ts`.
+Distribution generator: `src/bundle.mjs`; checks: `src/validate.mjs`; invocation: `scripts/build.mjs` and `scripts/check.mjs`.
 Workflow definitions: `.github/workflows/check.yml` and `.github/workflows/release.yml`.
 Editorial review: `docs/evidence/content-review.json`; coverage: `docs/evidence/floor.json`.
 Ownership: the public repository account at https://github.com/aunysillyme/website-build-skill.

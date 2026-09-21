@@ -7,9 +7,9 @@ Keep website output in the authorized project, separate from this repository.
 For repository work, follow [CONTRIBUTING](CONTRIBUTING.md).
 
 ```sh
-node --experimental-strip-types scripts/build.ts
-node --experimental-strip-types scripts/check.ts
-node --experimental-strip-types --test test/*.test.ts
+node scripts/build.mjs
+node scripts/check.mjs
+node --test test/*.test.mjs
 ```
 
 The installer and native worker generator are planned. Do not imply they exist.

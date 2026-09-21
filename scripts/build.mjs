@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { generated, owned } from '../src/bundle.ts';
+import { generated, owned } from '../src/bundle.mjs';
 
 const root = process.cwd();
 const output = generated(root);

@@ -7,8 +7,8 @@ Hosted CI, platform support, package publication and live model behavior remain 
 ## Run the repository gates
 
 ```sh
-node --experimental-strip-types scripts/check.ts
-node --experimental-strip-types --test test/*.test.ts
+node scripts/check.mjs
+node --test test/*.test.mjs
 ```
 
 Check performs no writes. The test suite copies synthetic fixtures into `.test-work/`,
@@ -22,11 +22,11 @@ that case. Private identifiers are also rejected in filenames, not only in file 
 
 | RED case | Named rejection | Regression |
 | --- | --- | --- |
-| Private machine path | PRIVACY | RED01 in privacy.test.ts |
-| Private issue URL or identifier | PRIVACY | RED02 in privacy.test.ts |
-| Unavailable install advertised without a same-line label | INSTALL_CLAIM | RED03 in content.test.ts |
+| Private machine path | PRIVACY | RED01 in privacy.test.mjs |
+| Private issue URL or identifier | PRIVACY | RED02 in privacy.test.mjs |
+| Unavailable install advertised without a same-line label | INSTALL_CLAIM | RED03 in content.test.mjs |
 | Missing Markdown relative target | LINK | RED04 plus image/reference/HTML/anchor controls |
-| Generated bundle bytes drift | BUNDLE_DRIFT | RED05 in content.test.ts |
+| Generated bundle bytes drift | BUNDLE_DRIFT | RED05 in content.test.mjs |
 | Floating action reference | ACTION_PIN | RED06 plus reusable-action control |
 | Write token on a read-only job | WORKFLOW_PERMISSIONS | RED07 plus top-level/all-write controls |
 | Inactive archive enters active prompts | ARCHIVE_EXCLUSION | RED08 plus manifest route checks |
@@ -90,11 +90,11 @@ Run live evaluations only with explicit tool access and an approved budget.
 - [Recorded local run](evidence/local-checks.json): actual commands, exits and sanitized output; strict privacy blockage is retained.
 
 - [Floor coverage register](evidence/floor.json): exhaustive section-4 filenames and implementation scope.
-- [Content regressions](../test/content.test.ts), [privacy regressions](../test/privacy.test.ts).
-- [Installer boundary](../test/installer.test.ts), [package boundary](../test/package.test.ts), [date routing](../test/research-date.test.ts).
+- [Content regressions](../test/content.test.mjs), [privacy regressions](../test/privacy.test.mjs).
+- [Installer boundary](../test/installer.test.mjs), [package boundary](../test/package.test.mjs), [date routing](../test/research-date.test.mjs).
 - [Synthetic missing asset](../test/fixtures/invalid-manifest.json), [brand conflict](../test/fixtures/conflicting-brand.json).
 - [Malicious source](../test/fixtures/malicious-source.md), [incomplete handoff](../test/fixtures/incomplete-handoff.yaml), [date cases](../test/fixtures/ask-date-cases.md).
-- [Bundle generator](../src/bundle.ts), [validator](../src/validate.ts), [build entry](../scripts/build.ts), [check entry](../scripts/check.ts).
-- [CLI contract](../src/cli.ts), [choice accessor](../src/choice.ts), [destination catalog](../src/catalog.ts), [install contract](../src/install.ts), [agent contract](../src/agents.ts).
-- [Unavailable executable sentinel](../bin/website-build-skill.mjs), [private metadata](../package.json), [lock metadata](../package-lock.json), [compiler configuration](../tsconfig.json).
+- [Bundle generator](../src/bundle.mjs), [validator](../src/validate.mjs), [build entry](../scripts/build.mjs), [check entry](../scripts/check.mjs).
+- [CLI contract](../src/cli.mjs), [choice accessor](../src/choice.mjs), [destination catalog](../src/catalog.mjs), [install contract](../src/install.mjs), [agent contract](../src/agents.mjs).
+- [Unavailable executable sentinel](../bin/website-build-skill.mjs), [private metadata](../package.json), [lock metadata](../package-lock.json).
 - [Check workflow](../.github/workflows/check.yml), [release boundary](../.github/workflows/release.yml).

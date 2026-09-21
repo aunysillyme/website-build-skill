@@ -2,9 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { writeFileSync, unlinkSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { check as strictCheck, privacyIssues, linkIssues, workflowIssues } from '../src/validate.ts';
-import { read, CORE, ARCHIVE } from '../src/bundle.ts';
-import { fixture, change, root, candidateCheck as check } from './helpers.ts';
+import { check as strictCheck, privacyIssues, linkIssues, workflowIssues } from '../src/validate.mjs';
+import { read, CORE, ARCHIVE } from '../src/bundle.mjs';
+import { fixture, change, root, candidateCheck as check } from './helpers.mjs';
 
 test('GREEN: candidate public-identifier policy passes without edits', () => assert.deepEqual(check(root), []));
 
@@ -31,13 +31,10 @@ const cases = [
   ['RED09 unsupported factual claim', 'CLAIM_EVIDENCE:', r => change(r, 'README.md', s => s + '\nThis package was tested on every host and published successfully.\n')],
   ['RED10 starter drops a mandatory stage', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replaceAll('Protect', ''))],
   ['RED11 one-command promise without an installer', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace(/Manual host setup today; one-command install is planned\./, 'One command and they are ready.'))],
-  ['RED12 maintainer script without the runtime guard', 'NODE_GUARD:', r => change(r, 'package.json', s => s.replaceAll('node scripts/node-version.mjs && ', ''))],
-  ['RED13 README stops naming the maintainer runtime', 'NODE_GUARD:', r => change(r, 'README.md', s => s.replaceAll('Node 22.6', 'a recent Node'))],
   ['RED14 a second starter block makes the payload ambiguous', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace('```text\n', '```text\nUse option 1: Teach my AI. Historical example, do not copy.\n```\n\n```text\n'))],
   ['RED15 a starter that names the stages only to skip them', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Skip Scope, Choose, Protect and Challenge'))],
   ['RED16 the stage route moved outside the fenced starter', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Build and ship immediately').replace('```\n\n## Full method', `\`\`\`\n\n${ROUTE}\n\n## Full method`))],
   ['RED17 the one-command promise wrapped across two lines', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace('Manual host setup today; one-command install is planned.', 'One command and\n                          they are ready.'))],
-  ['RED18 a second command separated from the guard by a semicolon', 'NODE_GUARD:', r => change(r, 'package.json', s => s.replace('node scripts/node-version.mjs && node --experimental-strip-types scripts/check.ts', 'node scripts/node-version.mjs && echo preflight; node --experimental-strip-types scripts/check.ts'))],
 ];
 for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   mutate(r);

@@ -48,11 +48,11 @@
         },
         {
           "name": "Check exact selected source",
-          "run": "node --experimental-strip-types scripts/check.ts"
+          "run": "node scripts/check.mjs"
         },
         {
           "name": "Run local rejection cases",
-          "run": "node --experimental-strip-types --test test/*.test.ts"
+          "run": "node --test test/*.test.mjs"
         },
         {
           "name": "Block unimplemented publication",

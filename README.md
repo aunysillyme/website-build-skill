@@ -128,7 +128,6 @@ No release, score, hosted CI result or clean-client trial is claimed here.
 Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
 [SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
 [REPO_SETTINGS](REPO_SETTINGS.md) records the live repository settings and what is still open.
-Maintainer checks need Node 22.6 or newer, because `npm run build`, `npm run check` and `npm test`
-strip TypeScript types in the runtime; on an older Node they stop with an explicit version error.
-Using the method files needs no Node and no install.
+Maintainer checks are plain Node with no dependency install: `npm run build`, `npm run check`
+and `npm test`. Using the method files by the manual copy or paste route needs no Node at all.
 Original package work is licensed under [MIT](LICENSE); the covenant retains its attribution.
