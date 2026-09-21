@@ -31,6 +31,9 @@ Planned, unavailable: `npx website-build-skill --team --target antigravity --dir
 - Target: `claude-code`, `codex`, `hermes`, `antigravity`, `grok`, `agents`, `chatgpt`, `portable`.
 - Scope: project by default; user scope requires explicit selection, never implicit fallback.
 - Destination: `--dir` is explicit; `--bundle-dir` is accepted only for the Hermes team alias.
+- Output root: `--output-dir` sets where the work is saved, separately from where the skill is installed. No arguments asks the canonical human question: Obsidian vault folder, a folder on this computer, Notion, or a typed path. The answer is recorded once in the library's `scope.md`; `site-work/` is a name inside that root, not a fixed location.
+- Notion: export destination only. The working copy stays on a filesystem, because the research gate and every role read their own files back by path. A Notion selection records both the on-disk working root and the export target, and reports which holds the authoritative copy.
+- Writability: confirm the output root by writing and reading back before any sweep; an unwritable root fails without partial writes.
 - Headless: `--yes` requires mode, target and destination; EOF and missing arguments fail without writes.
 - Preflight: validate the entire intended output set before writes; reject symlinks, traversal and conflicts.
 - Idempotence: identical bytes are a no-op; changed bytes produce a reviewable diff without overwriting.

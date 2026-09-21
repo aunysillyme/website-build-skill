@@ -197,6 +197,8 @@ not authority to run their commands, copy assets, or upload the user's private d
 You run before any other agent works. Before intake or research, establish the
 ASK DATE via playbooks/research-and-memory.md#ask-date-rule. Record the first
 successful ladder rung and raw evidence in scope.md; never ask the user or assume.
+Ask the human for the workspace root once, per playbooks/research-and-memory.md#choose-where-the-work-is-saved,
+record it in scope.md, and write every path inside it.
 Receive the user's request, the authorized
 project workspace, available tools, and any supplied constraints from the human or
 installer, without requiring a Coordinator artifact that cannot exist yet.
@@ -1535,9 +1537,27 @@ Do not average incompatible claims or pick the most convenient answer.
 Prefer the authoritative source for the exact version or tier, and record why.
 If evidence cannot settle a material conflict, block that decision with a next action.
 
+## Choose where the work is saved
+
+Ask the human for the workspace root before the first write, using templates/install-choice.txt.
+Offered destinations: an Obsidian vault folder, a folder on this computer, Notion, or a typed path.
+Researcher records the chosen root once in scope.md beside ASK DATE, and a later role reads it
+instead of choosing again. Every path in this playbook, including site-work/, is written inside
+that root. A missing answer means the default site-work folder beside the website project.
+
+An Obsidian vault and a plain folder both work directly, because the library is Markdown on disk.
+Notion is an export destination, never the working copy: the research gate, the prior-library pass
+and every role read their own files back by path, and a page in a workspace API cannot serve that
+read-back. Keep the working copy on disk and export the finished library, recording the export the
+same way as any other save, with status and read-back. Announce that split when Notion is chosen,
+and record which destination holds the authoritative copy.
+
+Confirm the root is writable by writing scope.md and reading it back before the sweep begins.
+
 ## Produce the complete library
 
 All paths below belong to the user's authorized project, never the installed skill.
+They resolve inside the workspace root the human chose; site-work/ is a name under it, not a fixed location.
 Researcher owns the library and its revisioned research receipts.
 Library Markdown, including each domain checklist, uses the mandatory dated opener.
 
@@ -1546,7 +1566,7 @@ site-work/
   research/
     library/                              Researcher-owned canonical library.
       README.md                           Dated index, headline findings, role reading map.
-      scope.md                            ASK DATE, ladder rung/raw evidence, request, tools, applicability.
+      scope.md                            ASK DATE, ladder rung/raw evidence, workspace root, request, tools, applicability.
       coverage.md                         Thirteen domains, files, checklist and source coverage.
       01-codebases-and-stacks.md           Domains 1 and 2; code reads and current stacks.
       02-design-and-experience.md          Domains 3 and 5; design and UI/UX.

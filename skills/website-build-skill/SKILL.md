@@ -17,6 +17,23 @@ How do you want to work?
 
 Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 
+Where should the work be saved?
+
+  1  Obsidian vault       Give the vault path and a folder inside it. The library is
+                          plain Markdown, so it opens and links natively.
+
+  2  A folder on this computer
+                          Give any path. The default is a site-work folder beside
+                          the website project.
+
+  3  Notion               Working copy still lives in a folder on this computer,
+                          because every gate reads its own files back by path.
+                          Notion receives an export of the finished library.
+
+  4  Somewhere else       Type the destination yourself.
+
+Whatever you pick becomes the workspace root. Everything below is written inside it.
+
 Every agent runs its own research pass before it touches your site, so it works from what is
 true as of the date of your ask, not from what its model happens to remember.
 

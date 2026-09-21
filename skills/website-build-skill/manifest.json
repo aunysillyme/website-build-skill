@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "5d4d9b790f689a86795feef025d01ff16427138d5dd4e89df9892924493d5a99"
+      "sha256": "742454893cd6522a5c2b28ceb3754ecfc894d47b15336bdea5eab9b89d62a66e"
     },
     {
       "path": "manifest.json",
@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "eb9ba538670695f42cb565e9fd7e7fe77ed27ff1dfdfa72aa3ea30b946fffee9"
+      "sha256": "23f9cbc3f43011df7b8fe78d986649e89a9c3a62afe52fb784733fccfb9ccae2"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -240,7 +240,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0bf020a6872b2ea8b8c1bc56708996d6ff37d90b4ff45870e79dae44a616ff4d"
+      "sha256": "41d1948531e9a898c4d332b3918771484624632ba8c0d0264d3e0ab16e1e6275"
     },
     {
       "path": "roles/coordinator.md",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f741f8586b2a2c1277c32145ca5c0d820b55d8380d678298ac96698ffe7142d0"
+      "sha256": "f37405f14891512e10330c26621ba13e3731e72b75c3537a854c944d8505c4c7"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -662,7 +662,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "3bbcf8906a96083f7e6d1d51a013ec43ed1738b3c9739ad236f7f3541680a865"
+      "sha256": "dfd9eec47dc0a526fc5ead0d8eb8c755bff2f7adec1a1b34239f489d8a262c2c"
     },
     {
       "path": "templates/brief.md",
