@@ -52,6 +52,20 @@ function visibleMarkdown(text) {
   }).join('\n');
 }
 
+// Fenced blocks, closed the way a Markdown reader closes them: same marker, at least as
+// long, indented up to three spaces. Returns each block's body.
+export function fenced(text) {
+  const blocks = [];
+  let marker = null, body = [];
+  for (const line of text.replace(/\r\n/g, '\n').split('\n')) {
+    const open = line.match(/^ {0,3}(`{3,}|~{3,})/);
+    if (!marker) { if (open) { marker = open[1]; body = []; } continue; }
+    if (open && open[1][0] === marker[0] && open[1].length >= marker.length && !line.slice(line.indexOf(open[1]) + open[1].length).trim()) { blocks.push(body.join('\n')); marker = null; continue; }
+    body.push(line);
+  }
+  return blocks;
+}
+
 function anchors(text) {
   const result = new Set(), counts = new Map();
   for (const match of visibleMarkdown(text).matchAll(/^#{1,6}\s+(.+?)\s*#*$/gm)) {
@@ -222,6 +236,34 @@ export function check(root, options = {}) {
     const prompts = read(root, 'docs/bundles/prompts.md');
     if (prompts.includes(`BEGIN SOURCE: ${ARCHIVE}`) || prompts.includes(read(root, `${CORE}/${ARCHIVE}`).split('\n').slice(8).join('\n').trim())) issues.push('ARCHIVE_EXCLUSION:active prompt bundle');
   });
+  // The starter is the whole payload for a chat-only user. It names the route they will
+  // follow, so it cannot quietly drop the gates that stand between a candidate and release.
+  // A substring gate cannot read intent: an author who writes "skip Protect" defeats it. It
+  // catches the failure that actually happened, a route that silently lost four stages.
+  protect('STARTER', () => {
+    // The route is read from SKILL.md, so the starter cannot drift from the canonical method.
+    const route = read(root, `${CORE}/SKILL.md`).split('\nFollow Research')[1]?.split('.')[0];
+    const stages = route === undefined ? [] : ['Research', ...route.split(/,|\band\b/)].map(stage => stage.trim()).filter(Boolean);
+    if (stages.length < 8) { issues.push(`STARTER_ROUTE:${CORE}/SKILL.md:canonical route unreadable`); return; }
+    const starters = new Map();
+    for (const name of ['README.md', 'adapters/zero-install.md']) {
+      // Fences are parsed rather than split on, because an indented or longer closing fence
+      // ended the block for a reader while a naive split kept counting the prose after it.
+      const blocks = fenced(read(root, name)).filter(block => block.startsWith('Use option 1'));
+      if (blocks.length !== 1) { issues.push(`STARTER_ROUTE:${name}:${blocks.length ? 'ambiguous starter' : 'missing starter'}`); continue; }
+      const [starter] = blocks;
+      starters.set(name, starter);
+      // In order, not merely present: a sentence that names four stages while dropping the
+      // rest satisfies a membership test and still describes a different route.
+      let cursor = 0;
+      for (const stage of stages) {
+        const at = starter.indexOf(stage, cursor);
+        if (at < 0) { issues.push(`STARTER_ROUTE:${name}:${stage}`); break; }
+        cursor = at + stage.length;
+      }
+    }
+    if (starters.size === 2 && new Set(starters.values()).size !== 1) issues.push('STARTER_DRIFT:README and zero-install starters differ');
+  });
   protect('BUNDLE_DRIFT', () => {
     for (const [name, body] of Object.entries(generated(root))) if (read(root, name) !== body) issues.push(`BUNDLE_DRIFT:${name}`);
   });
@@ -229,6 +271,26 @@ export function check(root, options = {}) {
   protect('PACKAGE', () => {
     const p = JSON.parse(read(root, 'package.json'));
     if (!p.private || p.bin || p.scripts?.install || p.scripts?.postinstall || p.engines) issues.push('PACKAGE_HONESTY:unavailable consumer functionality');
+    // `engines` is refused above because it advertises consumer functionality this package
+    // does not publish, so the maintainer runtime is stated by a guard that runs first and
+    // by the README instead. Node 20 otherwise fails the flag with `bad option` and no cause.
+    // `guard && command` stops on failure, but `guard && echo x; command` does not: the part
+    // after `;` runs anyway. A prefix test passes that, so the whole shape is pinned and no
+    // second separator is allowed after the guard.
+    const guarded = /^node scripts\/node-version\.mjs && [^;&|]+$/;
+    for (const [name, command] of Object.entries(p.scripts || {})) if (typeof command === 'string' && command.includes('--experimental-strip-types') && !guarded.test(command)) issues.push(`NODE_GUARD:${name}:unguarded maintainer script`);
+    // The minimum is declared once, in the guard, and the README has to state that same one.
+    const required = read(root, 'scripts/node-version.mjs').match(/REQUIRED_NODE = '(\d+\.\d+)(?:\.\d+)?'/)?.[1];
+    if (!required) issues.push('NODE_GUARD:scripts/node-version.mjs:no declared minimum');
+    else if (!read(root, 'README.md').includes(`Node ${required}`)) issues.push('NODE_GUARD:README:maintainer runtime unstated');
+    // The install question is the pitch. Promising a one-command team while no installer
+    // ships is the one claim in it that a first-run user can act on and be wrong. The card
+    // is wrapped text, so a claim can straddle a line break; whitespace is collapsed first.
+    const choice = read(root, `${CORE}/templates/install-choice.txt`).replace(/\s+/g, ' ');
+    if (!p.bin) {
+      if (/one command and they are ready/i.test(choice)) issues.push('CHOICE_HONESTY:one-command claim without an installer');
+      if (!/one-command install is planned/i.test(choice)) issues.push('CHOICE_HONESTY:manual-setup statement missing');
+    }
     const settings = read(root, 'REPO_SETTINGS.md');
     const topics = settings.split('## Topics')[1].split('## Creation')[0].split('\n').filter(s => /^- [a-z0-9-]+$/.test(s)).map(s => s.slice(2));
     if (JSON.stringify(topics) !== JSON.stringify(p.keywords) || topics.length > 20 || topics.some(t => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t) || t.length >= 50)) issues.push('TOPICS:invalid or mismatched keywords');

@@ -18,7 +18,7 @@ How do you want to work?
 
   2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
-                          One command and they are ready.
+                          Manual host setup today; one-command install is planned.
 
 Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 
@@ -46,13 +46,17 @@ Copy this starter into your AI chat, then describe the website you want.
 No clone, repository access or npm is needed to give the AI this first task.
 
 ```text
-Use option 1: Teach my AI. Help me build a website with Research, Learn, Ingest, Match, Mock, Build, Prove and Ship. First act as Researcher: establish the request date from host evidence, then research the site's design, accessibility, performance, security, stack and search needs using current opened sources. Save a library with source URLs, publication dates or unknown, access dates, disagreements and checklists. If you lack search, say research is BLOCKED and return a query plan. If you lack files, return named bodies for me to save and reattach before passing the save gate. Only then confirm my brief, extract my brand or request profile/banner screenshots, and show three visual mockups. Wait for my named selection before site code. Choose the smallest fitting stack. Keep evidence and handoffs between roles. Require a different model family for independent review and my authorization before release. Start with the site request I provide next; ask only for missing inputs that change the work.
+Use option 1: Teach my AI. Help me build a website with Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove, Protect, Challenge and Ship. First act as Researcher: establish the request date from host evidence, then research the site's design, accessibility, performance, security, stack and search needs using current opened sources. Save a library with source URLs, publication dates or unknown, access dates, disagreements and checklists. If you lack search, say research is BLOCKED and return a query plan. If you lack files, return named bodies for me to save and reattach before passing the save gate. Only then confirm my brief, extract my brand or request profile/banner screenshots, and show three visual mockups. Wait for my named selection before site code. Choose the smallest fitting stack. Keep evidence and handoffs between roles. Protect means security headers and the ship security checklist; Challenge means a different model family reviews a fixed candidate read-only, and I authorize release. This starter is a compact entrypoint, so do not claim Ship until the five bundles or the skill folder supply the full twelve-stage route and its checklists. Start with the site request I provide next; ask only for missing inputs that change the work.
 ```
 
 For the complete method, paste or attach the five local bundles:
 [method](docs/bundles/method.md), [prompts](docs/bundles/prompts.md),
 [playbooks](docs/bundles/playbooks.md), [checklists](docs/bundles/checklists.md),
-and [team](docs/bundles/team.md). Public downloads are planned until repository publication.
+and [team](docs/bundles/team.md).
+From another machine, read them from the public repository: browse [the bundle folder](https://github.com/aunysillyme/website-build-skill/tree/main/docs/bundles),
+download [the main archive](https://github.com/aunysillyme/website-build-skill/archive/refs/heads/main.zip), or open one raw file such as
+`https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/bundles/method.md`.
+Those paths serve the files; whether a given host can fetch and load a URL by itself is UNVERIFIED.
 The starter is a compact entrypoint, not a substitute for all stage instructions.
 
 ## Choose your host
@@ -123,5 +127,8 @@ No release, score, hosted CI result or clean-client trial is claimed here.
 
 Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
 [SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
-Repository settings remain proposed in [REPO_SETTINGS](REPO_SETTINGS.md).
+[REPO_SETTINGS](REPO_SETTINGS.md) records the live repository settings and what is still open.
+Maintainer checks need Node 22.6 or newer, because `npm run build`, `npm run check` and `npm test`
+strip TypeScript types in the runtime; on an older Node they stop with an explicit version error.
+Using the method files needs no Node and no install.
 Original package work is licensed under [MIT](LICENSE); the covenant retains its attribution.

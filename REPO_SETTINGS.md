@@ -1,16 +1,19 @@
-# Proposed repository settings
+# Repository settings
 
-Nothing in this checklist has been applied. Creation and account settings are UNVERIFIED.
+Live read-back, not a plan. Every row below was read from the GitHub API on 2026-09-21
+(America/New_York) with `gh api`, and the settings applied that day were applied deliberately
+by the maintainer. Rerun the commands in [Read it back yourself](#read-it-back-yourself) before
+trusting any row; a checklist is only as current as its last read.
 
 ## Description
 
-- [ ] Set the repository description to this one line:
+- [x] Repository description set to this one line. Read back 2026-09-21; it matches.
 
 Research-first website-building skill: learn the craft, match the brand, compare three mockups, then build and verify. Use one AI or a seven-role team with reusable research, design, accessibility, SEO and release checklists.
 
 ## Topics
 
-- [ ] Apply the following proposed topics. They describe adapter coverage and method scope, not verified host support.
+- [x] All twenty topics below are applied. Read back 2026-09-21. They describe adapter coverage and method scope, not verified host support.
 
 - agent-skills
 - website-builder
@@ -35,41 +38,54 @@ Research-first website-building skill: learn the craft, match the brand, compare
 
 ## Creation and access
 
-- [ ] Name: `website-build-skill`.
-- [ ] Visibility: public, only after the privacy and content gates pass.
-- [ ] Default branch: `main`.
-- [ ] Issues: ON; blank issues OFF through the supplied template configuration.
-- [ ] Discussions: optional, OFF unless a maintainer chooses to staff it.
-- [ ] Private vulnerability reporting: ON; confirm the private report form actually opens.
-- [ ] Wiki: OFF; keep the method and process documentation in this tree.
-- [ ] Repository link: https://github.com/aunysillyme/website-build-skill.
+- [x] Name: `website-build-skill`.
+- [x] Visibility: public since 2026-09-21T17:49:06Z, after the privacy and content gates passed.
+- [x] Default branch: `main`.
+- [x] Issues: ON; blank issues OFF through the supplied template configuration.
+- [x] Discussions: OFF. No maintainer is staffing one.
+- [x] Private vulnerability reporting: ON. The API reports it enabled; the report form itself is UNVERIFIED.
+- [x] Wiki: OFF. Applied 2026-09-21; the method and process documentation stays in this tree.
+- [x] Repository link: https://github.com/aunysillyme/website-build-skill.
 
 ## Review and automation
 
-The plan requires review before release and read-only checks. The following branch rules are proposed implementation settings, not a claim of existing protection.
+Branch protection on `main` was applied 2026-09-21 in its administrator-bypassable form, so a
+sole maintainer can still push directly while force pushes, deletions and a red check cannot land.
 
-- [ ] Require pull requests for `main`.
-- [ ] Require an approving review for changes; verify the available reviewer arrangement before enabling a rule that prevents sole-maintainer work.
-- [ ] Require code-owner review for source, workflow and publication changes.
-- [ ] Require the `Repository checks` status after its first successful hosted run establishes the context.
-- [ ] Require resolved review conversations.
-- [ ] Dismiss stale approvals when the candidate changes.
-- [ ] Block force pushes and branch deletion.
-- [ ] Use read-only default workflow token permissions.
-- [ ] Disable workflow permission to create or approve pull requests.
-- [ ] Allow only approved actions pinned to full commit SHAs.
-- [ ] Enable dependency alerts and review monthly action update proposals.
-- [ ] Keep release dispatch read-only and publication disabled until an authorized release implementation is reviewed.
-- [ ] Configure maintainer notifications for failed Actions runs; verify delivery with an intentional safe failure.
+- [x] Require the `Repository checks` status, strict, on `main`. The context was established by real runs before the rule.
+- [x] Block force pushes and branch deletion.
+- [x] Require resolved review conversations.
+- [x] Read-only default workflow token permissions; workflows cannot create or approve pull requests.
+- [x] Dependency alerts and automated security updates: ON, applied 2026-09-21. Action update proposals arrive as Dependabot pull requests.
+- [x] Secret scanning and push protection: ON.
+- [x] Every action in this tree is pinned to a full commit SHA, and `ACTION_PIN` fails the check when one floats.
+- [ ] Administrator enforcement stays OFF by decision, because requiring review with one maintainer would block that maintainer's own work. Revisit when a second reviewer exists.
+- [ ] Require pull requests and an approving review for `main`: not applied, same reason.
+- [ ] Require code-owner review for source, workflow and publication changes: not applied.
+- [ ] Restrict the repository to selected actions, or require SHA pinning at the repository level: not applied. `allowed_actions` is `all`; the pinning that exists is in the workflow files.
+- [ ] Release dispatch stays read-only and publication disabled until an authorized release implementation is reviewed. No release has been published.
+- [ ] Maintainer notifications for failed Actions runs: delivery UNVERIFIED, no intentional safe failure has been sent.
 
 ## Social preview
 
-- [ ] Produce a social preview image: 1280 x 640 pixels, PNG or JPEG. Not yet produced.
-- [ ] Show the project name, Research → Mock → Build → Prove, and a readable visual hierarchy.
+- [ ] Produce a social preview image: 1280 x 640 pixels, PNG or JPEG. Not produced; the repository serves the default generated image.
+- [ ] Show the project name, Research to Mock to Build to Prove, and a readable visual hierarchy.
 - [ ] Review crop, contrast, rights and private-data absence before upload.
 - [ ] Confirm current GitHub image constraints in the creation UI before applying them; account behavior is UNVERIFIED.
 
-## Final read-back
+## Community profile
 
-- [ ] Reopen the public description, topics, reporting routes, rules and community profile after creation.
-- [ ] Record actual status and evidence. Do not claim a community-health score before observing it.
+- [x] Community profile health: 100 percent, read 2026-09-21, with README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT and a pull request template detected.
+- [x] Issue forms live in `.github/ISSUE_TEMPLATE/`. The profile API reports `issue_template` absent because it looks for a single legacy file, not the forms directory.
+
+## Read it back yourself
+
+```bash
+REPO=$(gh repo view --json nameWithOwner --jq .nameWithOwner)
+gh api "repos/$REPO" --jq '{private,has_wiki,has_issues,has_discussions,default_branch,description,topics,security_and_analysis}'
+gh api "repos/$REPO/branches/main/protection"
+gh api "repos/$REPO/community/profile" --jq '.health_percentage'
+gh api "repos/$REPO/actions/permissions/workflow"
+```
+
+Record the actual status and its date. Do not claim a setting this token cannot see.

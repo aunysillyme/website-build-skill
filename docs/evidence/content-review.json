@@ -10,7 +10,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "93fdb0b1196762c42e8743304815d244bd3511c011d157135fdde19640b9d979",
+      "sha256": "6f7c52ce5595cf4df5397d7dcb50d91ab953909a9c554f1868404917dbf39a60",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CLAUDE.md": {
@@ -30,7 +30,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "79e0e1ea646580786a7b813751a44f832b2d4bd67e23014d1cdbe65af667bcf7",
+      "sha256": "d77bae207a1cff7e963604e26c5bd1954a07952301ef89e4250d0735a6ca141e",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
@@ -38,7 +38,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
-      "sha256": "1efcb4660572ae30a429668a1e64d68b677f50215ce3633524f4a44504f4382e",
+      "sha256": "bd7c2349901aa171338085a8c47759f6f6e80e32ee1f2fedce5a11ec6d4b8a1a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "SECURITY.md": {
@@ -58,7 +58,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-code.md": {
-      "sha256": "ff0f7eddcd77f21c23b7b36d83d30e500bf6f809a91d0d7abaab02e4063f1871",
+      "sha256": "157c1b3b8e2621d461452dbe19c3a889b8aa53964c330faf8c546e8ec10bdd5f",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-desktop.md": {
@@ -82,7 +82,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/zero-install.md": {
-      "sha256": "d1cc7f652db55567635366f582a4eec63904676a1eb64cd24aa3e9ea58bd430e",
+      "sha256": "7bc2b91aa7b72fa70d5a4d5eaf5452489122289f6461cac40eac6bec0cfe28ef",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/COMPATIBILITY.md": {

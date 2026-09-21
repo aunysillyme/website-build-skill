@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "742454893cd6522a5c2b28ceb3754ecfc894d47b15336bdea5eab9b89d62a66e"
+      "sha256": "a6777ca9426cddcfdb2ebd7d79b8838542c8dd20750d991b0a1782dfb10bde2e"
     },
     {
       "path": "manifest.json",
@@ -662,7 +662,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "dfd9eec47dc0a526fc5ead0d8eb8c755bff2f7adec1a1b34239f489d8a262c2c"
+      "sha256": "1d173b63dbc08067ca4f3403dc4c39b7ad3067ec114a0ea8f46ab2379e08f236"
     },
     {
       "path": "templates/brief.md",

@@ -6,7 +6,7 @@ How do you want to work?
 
   2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
-                          One command and they are ready.
+                          Manual host setup today; one-command install is planned.
 
 Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 

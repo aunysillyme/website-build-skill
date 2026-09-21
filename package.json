@@ -32,9 +32,9 @@
     "research-workflow"
   ],
   "scripts": {
-    "build": "node --experimental-strip-types scripts/build.ts",
-    "check": "node --experimental-strip-types scripts/check.ts",
-    "test": "node --experimental-strip-types --test test/*.test.ts"
+    "build": "node scripts/node-version.mjs && node --experimental-strip-types scripts/build.ts",
+    "check": "node scripts/node-version.mjs && node --experimental-strip-types scripts/check.ts",
+    "test": "node scripts/node-version.mjs && node --experimental-strip-types --test test/*.test.ts"
   },
   "files": [
     "README.md",
