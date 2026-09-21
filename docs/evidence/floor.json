@@ -67,11 +67,6 @@
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "tsconfig.json",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
-    },
-    {
       "path": ".gitignore",
       "status": "CREATED",
       "note": "Repository floor content."
@@ -207,37 +202,37 @@
       "note": "Repository floor content."
     },
     {
-      "path": "src/cli.ts",
+      "path": "src/cli.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "src/choice.ts",
+      "path": "src/choice.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },
     {
-      "path": "src/agents.ts",
+      "path": "src/agents.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "src/install.ts",
+      "path": "src/install.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "src/catalog.ts",
+      "path": "src/catalog.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "src/bundle.ts",
+      "path": "src/bundle.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },
     {
-      "path": "src/validate.ts",
+      "path": "src/validate.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },
@@ -247,37 +242,37 @@
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "scripts/build.ts",
+      "path": "scripts/build.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "scripts/check.ts",
+      "path": "scripts/check.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },
     {
-      "path": "test/content.test.ts",
+      "path": "test/content.test.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },
     {
-      "path": "test/research-date.test.ts",
+      "path": "test/research-date.test.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "test/installer.test.ts",
+      "path": "test/installer.test.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "test/package.test.ts",
+      "path": "test/package.test.mjs",
       "status": "PARTIAL",
       "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
     },
     {
-      "path": "test/privacy.test.ts",
+      "path": "test/privacy.test.mjs",
       "status": "CREATED",
       "note": "Repository floor content."
     },

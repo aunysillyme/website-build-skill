@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { privacyIssues } from '../src/validate.ts';
-import { fixture, change, candidateCheck as check } from './helpers.ts';
+import { privacyIssues } from '../src/validate.mjs';
+import { fixture, change, candidateCheck as check } from './helpers.mjs';
 
 test('RED01 private machine path in published text', () => fixture(r => {
   change(r, 'README.md', s => s + '\n' + ['/', 'Users', '/synthetic/project'].join('') + '\n');

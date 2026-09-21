@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { posix } from 'node:path';
-import { CORE, ARCHIVE, ARCHIVE_SHA, digest, files, read, manifest, generated, owned } from './bundle.ts';
+import { CORE, ARCHIVE, ARCHIVE_SHA, digest, files, read, manifest, generated, owned } from './bundle.mjs';
 
 const roles = ['researcher', 'coordinator', 'designer', 'graphics', 'builder', 'optimizer', 'reviewer'];
 const headings = ['IDENTITY', 'WHAT YOU OWN', 'WHAT YOU MUST NOT DO', 'WHAT YOU NEED TO KNOW BEFORE YOU START', 'WHAT YOU MUST LEARN', 'WHAT YOU MUST RESEARCH', 'YOUR TOOLS', 'YOUR INPUTS', 'YOUR OUTPUTS', 'YOUR GATE', 'YOUR HANDOFF', 'HOW YOU FAIL'];
@@ -274,15 +274,6 @@ export function check(root, options = {}) {
     // `engines` is refused above because it advertises consumer functionality this package
     // does not publish, so the maintainer runtime is stated by a guard that runs first and
     // by the README instead. Node 20 otherwise fails the flag with `bad option` and no cause.
-    // `guard && command` stops on failure, but `guard && echo x; command` does not: the part
-    // after `;` runs anyway. A prefix test passes that, so the whole shape is pinned and no
-    // second separator is allowed after the guard.
-    const guarded = /^node scripts\/node-version\.mjs && [^;&|]+$/;
-    for (const [name, command] of Object.entries(p.scripts || {})) if (typeof command === 'string' && command.includes('--experimental-strip-types') && !guarded.test(command)) issues.push(`NODE_GUARD:${name}:unguarded maintainer script`);
-    // The minimum is declared once, in the guard, and the README has to state that same one.
-    const required = read(root, 'scripts/node-version.mjs').match(/REQUIRED_NODE = '(\d+\.\d+)(?:\.\d+)?'/)?.[1];
-    if (!required) issues.push('NODE_GUARD:scripts/node-version.mjs:no declared minimum');
-    else if (!read(root, 'README.md').includes(`Node ${required}`)) issues.push('NODE_GUARD:README:maintainer runtime unstated');
     // The install question is the pitch. Promising a one-command team while no installer
     // ships is the one claim in it that a first-run user can act on and be wrong. The card
     // is wrapped text, so a claim can straddle a line break; whitespace is collapsed first.

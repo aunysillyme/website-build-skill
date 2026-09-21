@@ -1,4 +1,4 @@
-import { check } from '../src/validate.ts';
+import { check } from '../src/validate.mjs';
 
 try {
   const issues = check(process.cwd());

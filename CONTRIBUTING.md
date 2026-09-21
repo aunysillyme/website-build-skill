@@ -23,14 +23,14 @@ Use synthetic fixtures and reserved example domains. Never paste real project tr
 
 ## Run locally
 
-Prerequisite: Node with TypeScript stripping. The local floor uses Node 22.22.3;
+Prerequisite: Node, no dependency install. Continuous integration pins Node 22.22.3;
 other runtimes and hosted runners are UNVERIFIED until actual runs are recorded.
 No dependency install is required. No npm installer is provided.
 
 ```sh
-node --experimental-strip-types scripts/build.ts
-node --experimental-strip-types scripts/check.ts
-node --experimental-strip-types --test test/*.test.ts
+node scripts/build.mjs
+node scripts/check.mjs
+node --test test/*.test.mjs
 ```
 
 Build rewrites only the five bundles and the index. Check is read-only and fails on drift.

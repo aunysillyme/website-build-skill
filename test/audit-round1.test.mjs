@@ -4,8 +4,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, symlinkSync, mkdirSync, rmSync } from 'node:fs';
-import { privacyIssues, workflowIssues } from '../src/validate.ts';
-import { owned } from '../src/bundle.ts';
+import { privacyIssues, workflowIssues } from '../src/validate.mjs';
+import { owned } from '../src/bundle.mjs';
 
 const PRODUCT = ['Claude', 'Code'].join(' ');
 

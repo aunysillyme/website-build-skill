@@ -38,11 +38,11 @@
         },
         {
           "name": "Content, links, privacy, bundle drift and evidence gates",
-          "run": "node --experimental-strip-types scripts/check.ts"
+          "run": "node scripts/check.mjs"
         },
         {
           "name": "RED cases and valid controls",
-          "run": "node --experimental-strip-types --test test/*.test.ts",
+          "run": "node --test test/*.test.mjs",
           "if": "always()"
         }
       ]

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { CORE, manifest, read, generated } from '../src/bundle.ts';
-import { root } from './helpers.ts';
+import { CORE, manifest, read, generated } from '../src/bundle.mjs';
+import { root } from './helpers.mjs';
 
 test('Canonical date rule and downstream checks remain routed', () => {
   const rule = read(root, `${CORE}/playbooks/research-and-memory.md`);
