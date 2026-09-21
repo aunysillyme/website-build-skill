@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aunysillyme/website-build-skill"
+    "url": "git+https://github.com/aunysillyme/website-build-skill.git"
   },
   "keywords": [
     "agent-skills",
