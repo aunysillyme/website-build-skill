@@ -22,7 +22,8 @@ test('Resolved policy: the two required public identifiers are exempt, nothing e
 
 const ROUTE = 'Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove, Protect, Challenge and Ship';
 const cases = [
-  ['RED03 unsupported install command', 'INSTALL_CLAIM:', r => change(r, 'README.md', s => s + '\nnpx website-build-skill --team\n')],
+  ['RED03 a shell-piped installer this package does not ship', 'INSTALL_CLAIM:', r => change(r, 'README.md', s => s + '\ncurl https://example.test/install.sh | sh\n')],
+  ['RED03b a caveat left on a command that now works', 'STALE_CLAIM:', r => change(r, 'README.md', s => s + '\nPlanned, unavailable: `npx website-build-skill --solo --target codex --dir . --yes`.\n')],
   ['RED04 missing relative link', 'LINK:', r => change(r, 'docs/TIPS.md', s => s + '\n[Missing](absent-document.md)\n')],
   ['RED05 generated bundle byte drift', 'BUNDLE_DRIFT:', r => change(r, 'docs/bundles/method.md', s => s + '\nchanged bytes\n')],
   ['RED06 floating action tag', 'ACTION_PIN:', r => change(r, '.github/workflows/check.yml', s => s.replace(/actions\/checkout@[a-f0-9]{40}/, 'actions/checkout@v4'))],
@@ -30,11 +31,11 @@ const cases = [
   ['RED08 inactive archive in active prompt bundle', 'ARCHIVE_EXCLUSION:', r => change(r, 'docs/bundles/prompts.md', s => s + read(r, `${CORE}/${ARCHIVE}`))],
   ['RED09 unsupported factual claim', 'CLAIM_EVIDENCE:', r => change(r, 'README.md', s => s + '\nThis package was tested on every host and published successfully.\n')],
   ['RED10 starter drops a mandatory stage', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replaceAll('Protect', ''))],
-  ['RED11 one-command promise without an installer', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace(/Manual host setup today; one-command install is planned\./, 'One command and they are ready.'))],
+  ['RED11 a card that says the team is ready when nothing starts a worker', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace(/One command installs their files; you open each session yourself\./, 'One command and they are ready.'))],
   ['RED14 a second starter block makes the payload ambiguous', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace('```text\n', '```text\nUse option 1: Teach my AI. Historical example, do not copy.\n```\n\n```text\n'))],
   ['RED15 a starter that names the stages only to skip them', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Skip Scope, Choose, Protect and Challenge'))],
   ['RED16 the stage route moved outside the fenced starter', 'STARTER_ROUTE:', r => change(r, 'adapters/zero-install.md', s => s.replace(ROUTE, 'Build and ship immediately').replace('```\n\n## Full method', `\`\`\`\n\n${ROUTE}\n\n## Full method`))],
-  ['RED17 the one-command promise wrapped across two lines', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace('Manual host setup today; one-command install is planned.', 'One command and\n                          they are ready.'))],
+  ['RED17 that same promise wrapped across two lines', 'CHOICE_HONESTY:', r => change(r, `${CORE}/templates/install-choice.txt`, s => s.replace('One command installs their files; you open each session yourself.', 'One command and\n                          they are ready.'))],
 ];
 for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   mutate(r);

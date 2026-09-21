@@ -21,7 +21,14 @@ No version has shipped. Metadata version 0.1.0 identifies an unreleased draft.
 - Maintainer scripts fail with an explicit Node 22 message instead of the runtime's `bad option` error.
 - Repository settings are recorded as a dated live read-back rather than an unapplied proposal.
 
+- The installer the contract specified: preflight, symlink and traversal refusal, no-clobber
+  idempotence, dry run, a receipt of per-file digests, receipt-based uninstall and exit codes.
+- Public npm package with a real `bin`, an engine floor continuous integration actually runs,
+  and a `v*` tag that publishes with provenance through npm trusted publishing.
+- Sources renamed from `.ts` to `.mjs`, since none of them contained TypeScript. The
+  `--experimental-strip-types` flag, its runtime guard and the Node 22.6 floor are gone.
+
 ### Planned
 
-- npm installer, generated native workers and release publication.
-- Clean-client trials, behavioral evaluations and hosted CI evidence.
+- Generated native workers for the seven-role team, gated on schema and permission tests.
+- Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.

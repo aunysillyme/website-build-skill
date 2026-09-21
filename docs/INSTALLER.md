@@ -1,8 +1,9 @@
 # Installer contract
 
-Status: planned and unavailable. No npm installer or native worker generator is implemented.
-The source contracts reserve behavior; the executable placeholder exits nonzero and writes nothing.
-The package metadata is private, has no bin entry, and is not a consumer package.
+Status: the installer is implemented; native worker generation is not.
+`npx website-build-skill` copies the canonical files, verifies them by read-back and writes a
+receipt of exactly what it wrote. It never creates a running agent, and host activation stays
+UNVERIFIED until a real client trial. The manual copy route below still works and needs no Node.
 
 ## Manual copy available now
 
@@ -22,10 +23,10 @@ Copy a router pointer into existing project instructions only with authorization
 A copied file is prepared content. Discovery and activation require a separate read-back.
 For chat-only hosts, attach the five bundles and use the [Project instructions](../adapters/chatgpt-project.md).
 
-## Planned command interface
+## Command interface
 
-Planned, unavailable: `npx website-build-skill --solo --target codex --dir . --scope project --yes`.
-Planned, unavailable: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
+Installs the files, activation still UNVERIFIED: `npx website-build-skill --solo --target codex --dir . --scope project --yes`.
+Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
 - Choice: mutually exclusive `--solo` / `--team`; no arguments asks the canonical human question first.
 - Target: `claude-code`, `codex`, `hermes`, `antigravity`, `grok`, `agents`, `chatgpt`, `portable`.
@@ -36,14 +37,15 @@ Planned, unavailable: `npx website-build-skill --team --target antigravity --dir
 - Writability: confirm the output root by writing and reading back before any sweep; an unwritable root fails without partial writes.
 - Headless: `--yes` requires mode, target and destination; EOF and missing arguments fail without writes.
 - Preflight: validate the entire intended output set before writes; reject symlinks, traversal and conflicts.
+- Paths: the project root you name is canonicalized, so a symlinked ancestor such as macOS `/tmp` installs normally. Every segment at or below that root is refused when it is a symlink, because that is what a third party can plant in an install target.
 - Idempotence: identical bytes are a no-op; changed bytes produce a reviewable diff without overwriting.
 - Dry run: `--dry-run` makes no writes, including directories, receipts or aliases.
-- Runtime: planned offline execution after package retrieval; no telemetry, profiles, background tasks or lifecycle hooks.
+- Runtime: offline after package retrieval; no telemetry, profiles, background tasks or lifecycle hooks.
 - Receipt: list every actual path and digest, mode, target, definition and unresolved activation check.
 - Integration: preserve existing routers and emit a named integration snippet; unmerged means activation pending.
 - Interruption: record truthful partial results; never advertise an all-or-nothing transaction without evidence.
-- Exit policy: planned 0 complete, 2 invalid input, 3 preflight conflict, 4 interrupted write, 5 activation pending. These are a design contract, not current installer behavior.
-- Uninstall: planned receipt-based review, remove only unchanged owned files after authorization. Keep shared Codex/Hermes core while either receipt references it; unknown ownership means preserve.
+- Exit policy: 0 complete, 2 invalid input, 3 preflight conflict, 4 interrupted write, 5 activation pending. 5 is a completed install whose integration snippet is unmerged, not a failure.
+- Uninstall: receipt-based, removing only owned files whose bytes still match the receipt. A changed file is kept and named; a file the receipt does not list is kept and named. Unknown ownership means preserve.
 
 ## Native team branches
 
@@ -53,9 +55,13 @@ Hermes branch A requires verified declarative role support. Branch B uses separa
 Both branches keep Researcher first, seven acknowledgements, a blocked downstream gate and a different-family Reviewer.
 See [Antigravity](../adapters/antigravity.md), [Hermes](../adapters/hermes.md) and [team ownership](../adapters/team.yaml).
 
-## Acceptance before implementation can be called ready
+## What is proven, and what is not
 
-Run traversal, symlink, conflict, interruption, dry-run and router-preservation cases against a fresh package.
-Run both shared-host install orders, aliases, manifest completeness and full role-body round trips.
-Run fresh tarball and ZIP trials on Linux, macOS and Windows with exact runtime/client versions.
-Record actual results before adding a bin entry, publishing or changing a compatibility row.
+Proven by the test suite and by hand on macOS: traversal and symlink refusal at and below the
+project root, whole-set conflict refusal, idempotent reruns, dry run writing nothing, an
+unwritable output root failing before any skill file, receipt digests matching the bytes on
+disk, uninstall keeping a changed file, router files left untouched with exit 5.
+
+Not proven by anyone: host discovery or activation on any client, a fresh tarball trial on
+Linux or Windows, and the native worker generation described below. Record actual results
+before changing a compatibility row.

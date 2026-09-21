@@ -15,5 +15,5 @@ Read [CONTRIBUTING](CONTRIBUTING.md) and [INSTALLER](docs/INSTALLER.md) before e
 Edit canonical sources, then regenerate bundles with `node scripts/build.mjs`.
 Run `node scripts/check.mjs` and `node --test test/*.test.mjs`.
 Report actual results and skips. No em dashes or private project data in public files.
-The installer is planned; preserve existing files during manual copies.
+The installer refuses to clobber: preserve existing files during manual copies too.
 Do not publish or change account/repository settings without authorization.

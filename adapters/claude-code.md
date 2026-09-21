@@ -7,7 +7,7 @@
 - Available to try, UNVERIFIED: `claude plugin marketplace add https://github.com/aunysillyme/website-build-skill`.
 - Available to try, UNVERIFIED: `claude plugin install website-build-skill@website-build-skill`.
 - Candidate plugin invocation, UNVERIFIED: `/website-build-skill:website-build-skill`.
-- Planned, unavailable: `npx website-build-skill --team --target claude-code --dir . --scope project --yes`.
+- Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target claude-code --dir . --scope project --yes`.
 - TEAM fallback: create separate sessions with complete [role bodies](../docs/bundles/team.md), Researcher first. Use the [manual relay](grok.md#manual-fallback).
 - Planned native definitions: `.claude/agents/website-<role>.md`, YAML name and description plus the complete canonical body, with references resolved to the installed core.
 - Source targets: [skills](https://code.claude.com/docs/en/skills) and [subagents](https://code.claude.com/docs/en/sub-agents). No live package trial is implied.

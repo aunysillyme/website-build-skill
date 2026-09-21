@@ -11,7 +11,7 @@ Keep site-work in this authorized project. Researcher works first; preserve all 
 Confirm the agent reads the pointer and core before calling it activated.
 Host router discovery is UNVERIFIED: Cursor, Copilot, Jules and other clients need their own version-specific trial.
 A human can paste the pointer explicitly when automatic discovery is unavailable.
-Planned, unavailable: `npx website-build-skill --solo --target agents --dir . --yes`.
+Installs the files, activation still UNVERIFIED: `npx website-build-skill --solo --target agents --dir . --yes`.
 
 
 ## Common limits and smoke check

@@ -96,5 +96,5 @@ Run live evaluations only with explicit tool access and an approved budget.
 - [Malicious source](../test/fixtures/malicious-source.md), [incomplete handoff](../test/fixtures/incomplete-handoff.yaml), [date cases](../test/fixtures/ask-date-cases.md).
 - [Bundle generator](../src/bundle.mjs), [validator](../src/validate.mjs), [build entry](../scripts/build.mjs), [check entry](../scripts/check.mjs).
 - [CLI contract](../src/cli.mjs), [choice accessor](../src/choice.mjs), [destination catalog](../src/catalog.mjs), [install contract](../src/install.mjs), [agent contract](../src/agents.mjs).
-- [Unavailable executable sentinel](../bin/website-build-skill.mjs), [private metadata](../package.json), [lock metadata](../package-lock.json).
+- [Entry point](../bin/website-build-skill.mjs), [install engine](../src/install.mjs), [package metadata](../package.json), [lock metadata](../package-lock.json).
 - [Check workflow](../.github/workflows/check.yml), [release boundary](../.github/workflows/release.yml).

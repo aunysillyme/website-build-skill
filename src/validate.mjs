@@ -101,11 +101,18 @@ export function linkIssues(root, name, text) {
   return issues;
 }
 
-export function installClaimIssues(name, text) {
+// Before the installer existed, an unlabelled `npx` line was the lie. Now that it exists,
+// a line still labelled planned or unavailable is the lie, and it is the one that survives
+// a release because nobody rereads a caveat. The direction is taken from the package itself.
+export function installClaimIssues(name, text, published = false) {
   const issues = [];
+  const command = /\b(?:npx|npm\s+(?:exec|install|i)|pnpm\s+(?:dlx|add)|yarn\s+(?:dlx|add)|bunx)\s+.*website-build-skill/;
   for (const [i, line] of text.split('\n').entries()) {
-    if (/\b(?:npx|npm\s+(?:exec|install|i)|pnpm\s+(?:dlx|add)|yarn\s+(?:dlx|add)|bunx)\s+.*website-build-skill/.test(line) && !/planned|unavailable/i.test(line)) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
-    if (/\b(?:curl|wget)\b.*\|\s*(?:sh|bash)/.test(line) && !/planned|unavailable/i.test(line)) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
+    const labelled = /planned|unavailable/i.test(line);
+    if (command.test(line) && !labelled && !published) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
+    if (command.test(line) && labelled && published) issues.push(`STALE_CLAIM:${name}:${i+1}`);
+    // Nothing in this package is installed by piping a script into a shell, published or not.
+    if (/\b(?:curl|wget)\b.*\|\s*(?:sh|bash)/.test(line) && !labelled) issues.push(`INSTALL_CLAIM:${name}:${i+1}`);
   }
   return issues;
 }
@@ -122,9 +129,18 @@ export function workflowIssues(name, text) {
   let workflow;
   try { workflow = JSON.parse(text); }
   catch { return [`WORKFLOW_FORMAT:${name}:use the JSON subset of YAML for structural validation`]; }
-  const checkPermissions = (permissions, location) => {
+  // One exception, as narrow as it can be written: npm trusted publishing exchanges an OIDC
+  // token for a short-lived credential, so the publish job of the release workflow needs
+  // id-token: write. No other workflow, no other job, and no other permission value.
+  const publisher = name === '.github/workflows/release.yml';
+  const checkPermissions = (permissions, location, job) => {
     if (!permissions || typeof permissions !== 'object' || Array.isArray(permissions)) issues.push(`WORKFLOW_PERMISSIONS:${location}`);
-    else for (const [key, value] of Object.entries(permissions)) if (!(key === 'contents' && value === 'read') && value !== 'none') issues.push(`WORKFLOW_PERMISSIONS:${location}:${key}`);
+    else for (const [key, value] of Object.entries(permissions)) {
+      if (key === 'contents' && value === 'read') continue;
+      if (value === 'none') continue;
+      if (publisher && job === 'publish' && key === 'id-token' && value === 'write') continue;
+      issues.push(`WORKFLOW_PERMISSIONS:${location}:${key}`);
+    }
   };
   checkPermissions(workflow.permissions, name);
   if (!workflow.concurrency || workflow.concurrency['cancel-in-progress'] !== true) issues.push(`WORKFLOW_CONCURRENCY:${name}`);
@@ -166,7 +182,7 @@ export function workflowIssues(name, text) {
   };
   visitUses(workflow);
   for (const [jobName, job] of Object.entries(workflow.jobs || {})) {
-    if (job.permissions !== undefined) checkPermissions(job.permissions, `${name}:${jobName}`);
+    if (job.permissions !== undefined) checkPermissions(job.permissions, `${name}:${jobName}`, jobName);
     if (!job['timeout-minutes']) issues.push(`WORKFLOW_TIMEOUT:${name}:${jobName}`);
   }
   return issues;
@@ -195,12 +211,20 @@ export function claimIssues(root, names) {
 
 export function check(root, options = {}) {
   const issues = [], names = files(root);
+  // A published package is one whose bin names a real entry point, read from package.json
+  // rather than assumed, so the claim checks below follow the package instead of the prose.
+  let published = false;
+  try {
+    const binEntry = JSON.parse(read(root, 'package.json')).bin;
+    const entry = typeof binEntry === 'string' ? binEntry : binEntry?.['website-build-skill'];
+    published = Boolean(entry) && !/UNAVAILABLE/.test(read(root, entry));
+  } catch { published = false; }
   const protect = (name, fn) => { try { fn(); } catch (e) { issues.push(`${name}:${e.message}`); } };
   for (const name of names) {
     const text = read(root, name);
     issues.push(...privacyIssues(name, text, options));
     if (name.endsWith('.md') || name === 'llms.txt') issues.push(...linkIssues(root, name, text));
-    if (name.endsWith('.md')) issues.push(...installClaimIssues(name, text));
+    if (name.endsWith('.md')) issues.push(...installClaimIssues(name, text, published));
     if (/^\.github\/workflows\/.*\.ya?ml$/.test(name)) issues.push(...workflowIssues(name, text));
   }
   protect('FLOOR', () => {
@@ -270,7 +294,23 @@ export function check(root, options = {}) {
   protect('CLAIM_EVIDENCE', () => issues.push(...claimIssues(root, names)));
   protect('PACKAGE', () => {
     const p = JSON.parse(read(root, 'package.json'));
-    if (!p.private || p.bin || p.scripts?.install || p.scripts?.postinstall || p.engines) issues.push('PACKAGE_HONESTY:unavailable consumer functionality');
+    // The gate used to refuse a bin, engines and publication outright, because the installer
+    // did not exist and the package would have shipped an entry point that only printed
+    // UNAVAILABLE. Now that the installer is real, the same honesty is enforced the other
+    // way round: the entry has to exist, the files it needs have to ship, and the engine
+    // floor has to be one continuous integration actually runs.
+    if (p.private) issues.push('PACKAGE_HONESTY:private package cannot be published');
+    if (p.scripts?.install || p.scripts?.postinstall) issues.push('PACKAGE_HONESTY:lifecycle hook runs on a stranger machine');
+    const binEntry = typeof p.bin === 'string' ? p.bin : p.bin?.[p.name];
+    if (binEntry !== 'bin/website-build-skill.mjs') issues.push('PACKAGE_HONESTY:bin must name the real entry point');
+    else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
+    // A published tarball that omits any of these installs nothing on a stranger's machine.
+    for (const needed of ['bin', 'src', 'skills/', 'docs/', 'README.md', 'LICENSE'])
+      if (!p.files?.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
+    const floor = p.engines?.node?.match(/(\d+)/)?.[1];
+    const matrix = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks?.strategy?.matrix?.node;
+    if (!floor) issues.push('PACKAGE_HONESTY:no engine floor declared');
+    else if (!Array.isArray(matrix) || !matrix.some(version => String(version).split('.')[0] === floor)) issues.push(`ENGINE_UNTESTED:node ${floor} is claimed but not in the check matrix`);
     // `engines` is refused above because it advertises consumer functionality this package
     // does not publish, so the maintainer runtime is stated by a guard that runs first and
     // by the README instead. Node 20 otherwise fails the flag with `bad option` and no cause.
@@ -278,10 +318,10 @@ export function check(root, options = {}) {
     // ships is the one claim in it that a first-run user can act on and be wrong. The card
     // is wrapped text, so a claim can straddle a line break; whitespace is collapsed first.
     const choice = read(root, `${CORE}/templates/install-choice.txt`).replace(/\s+/g, ' ');
-    if (!p.bin) {
-      if (/one command and they are ready/i.test(choice)) issues.push('CHOICE_HONESTY:one-command claim without an installer');
-      if (!/one-command install is planned/i.test(choice)) issues.push('CHOICE_HONESTY:manual-setup statement missing');
-    }
+    // Nothing in this package starts a worker, installer or not, so the card can never say
+    // the team is ready. Without a bin it must also say the one-command install is planned.
+    if (/they are ready/i.test(choice)) issues.push('CHOICE_HONESTY:no installer creates a running worker');
+    if (!p.bin && !/one-command install is planned/i.test(choice)) issues.push('CHOICE_HONESTY:manual-setup statement missing');
     const settings = read(root, 'REPO_SETTINGS.md');
     const topics = settings.split('## Topics')[1].split('## Creation')[0].split('\n').filter(s => /^- [a-z0-9-]+$/.test(s)).map(s => s.slice(2));
     if (JSON.stringify(topics) !== JSON.stringify(p.keywords) || topics.length > 20 || topics.some(t => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t) || t.length >= 50)) issues.push('TOPICS:invalid or mismatched keywords');

@@ -7,7 +7,7 @@ Teach my AI works with Claude, ChatGPT, Grok, Cursor, or Copilot, with nothing e
 Give me the team needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot; start with the setup line for your host.
 
 The pitch describes the intended experience. Native loading and team setup are UNVERIFIED.
-The npm installer is not built; the one-command team option below is planned.
+The installer copies files and reports what it wrote; it never starts a worker for you.
 
 ```text
 How do you want to work?
@@ -18,7 +18,7 @@ How do you want to work?
 
   2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
-                          Manual host setup today; one-command install is planned.
+                          One command installs their files; you open each session yourself.
 
 Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 
@@ -75,10 +75,17 @@ Native discovery, tool permissions and team automation are UNVERIFIED until a re
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instruction block | SOLO method; account-level skill ZIP upload is UNVERIFIED |
 | [ChatGPT](adapters/chatgpt-project.md) | Put the instruction block in Project instructions and attach the five bundles; [custom GPT route](adapters/custom-gpt.md) | SOLO reference packet; account controls and file access are UNVERIFIED |
 
-Planned, unavailable: `npx website-build-skill --solo --target codex --dir . --yes`.
-Planned, unavailable: `npx website-build-skill --team --target claude-code --dir . --yes`.
-The npm installer is not built. Use the manual copy or paste paths above today.
-No setup line starts seven workers or supplies an independent model provider by itself.
+One command copies the same files and writes a receipt of exactly what it wrote:
+
+```bash
+npx website-build-skill --solo --target codex --dir . --yes
+npx website-build-skill --team --target claude-code --dir . --yes
+```
+
+Add `--dry-run` to see every path first, `--output-dir` to say where the work is saved, and
+`--uninstall` to remove only the files it wrote and left untouched.
+It copies files. It does not start seven workers, supply an independent model provider, or
+prove a host loaded anything; activation stays UNVERIFIED until a real client trial.
 
 ## What you get
 
