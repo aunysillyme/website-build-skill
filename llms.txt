@@ -2,7 +2,7 @@
 
 > Research-first website instructions, role boundaries and evidence gates.
 
-Generated from skills/website-build-skill/manifest.json. Public retrieval is UNVERIFIED until publication.
+Generated from skills/website-build-skill/manifest.json. Published at https://github.com/aunysillyme/website-build-skill. Host loading is UNVERIFIED.
 
 ## Active sources
 

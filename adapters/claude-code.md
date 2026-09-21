@@ -3,9 +3,9 @@
 - Manual SOLO: copy the intact canonical folder into a new project `.claude/skills/website-build-skill/` directory. Preserve conflicts.
 - Candidate invocation, UNVERIFIED: `/website-build-skill` after native discovery; explicit fallback is to read its SKILL.md.
 - Plugin: the repository root contains metadata and discovers the canonical `skills/` tree. There are no hooks or required service connections.
-- Plugin installation is planned until the public repository exists and a clean client validates it.
-- Planned, unavailable: `claude plugin marketplace add https://github.com/aunysillyme/website-build-skill`.
-- Planned, unavailable: `claude plugin install website-build-skill@website-build-skill`.
+- The repository is public, so the two plugin commands below are available to try. Both stay UNVERIFIED until a clean client validates them.
+- Available to try, UNVERIFIED: `claude plugin marketplace add https://github.com/aunysillyme/website-build-skill`.
+- Available to try, UNVERIFIED: `claude plugin install website-build-skill@website-build-skill`.
 - Candidate plugin invocation, UNVERIFIED: `/website-build-skill:website-build-skill`.
 - Planned, unavailable: `npx website-build-skill --team --target claude-code --dir . --scope project --yes`.
 - TEAM fallback: create separate sessions with complete [role bodies](../docs/bundles/team.md), Researcher first. Use the [manual relay](grok.md#manual-fallback).

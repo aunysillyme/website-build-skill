@@ -96,7 +96,7 @@ export function generated(root) {
     output[target] = text.trimEnd() + '\n';
   }
   let index = '# website-build-skill\n\n> Research-first website instructions, role boundaries and evidence gates.\n\n';
-  index += 'Generated from skills/website-build-skill/manifest.json. Public retrieval is UNVERIFIED until publication.\n\n## Active sources\n\n';
+  index += 'Generated from skills/website-build-skill/manifest.json. Published at https://github.com/aunysillyme/website-build-skill. Host loading is UNVERIFIED.\n\n## Active sources\n\n';
   for (const asset of m.assets.filter(a => a.active)) index += `- [${asset.path}](${CORE}/${asset.path}): ${asset.kind}\n`;
   index += '\n## Bundles\n\n';
   for (const name of Object.keys(m.bundles)) index += `- [${name}](docs/bundles/${name}.md): generated upload packet\n`;
