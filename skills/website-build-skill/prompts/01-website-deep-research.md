@@ -65,7 +65,7 @@ RESEARCH THESE 13 AREAS
    What are the social/link-preview sizes and safe zones as of the ASK DATE? Study
    formats, vector versus raster, compression, responsive crops, export hygiene,
    icon consistency, font embedding/subsetting, and stock licensing. Inspect output.
-   Use prompts/02-graphics-design-original.md as the archived source of this domain;
+   Use archive/graphics-design-original.md as the archived source of this domain;
    learn its standards and deep areas without executing its historical SAVE paths.
    Artifact: 03-graphics-and-rights.md, domain 4 tool/tier/rights matrix and format
    specifications; checklists/04-graphics.md with export, crop, and rights gates.

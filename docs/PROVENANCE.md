@@ -6,7 +6,7 @@ The method's research prompts originate in two public posts by the repository's 
 - [Current design research and three brand-matched mockups](https://x.com/i/status/2097418846282145946): browser exploration, brand inputs and design selection before code.
 
 Attribution comes from the supplied source record; live post retrieval is UNVERIFIED here.
-The [inactive graphics original](../skills/website-build-skill/prompts/02-graphics-design-original.md) retains its bytes and historical save instruction.
+The [inactive graphics original](../skills/website-build-skill/archive/graphics-design-original.md) retains its bytes and historical save instruction.
 It is provenance reading only and is excluded from active bundles and stage routes.
 The website research and site audit prompts are adaptations. They are not a recovered historical audit transcript.
 Reported historical measurements are not repeated as package evidence.
