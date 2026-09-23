@@ -95,13 +95,24 @@ test('4 Flags validate scope, values, Hermes bundle-dir, help and package versio
   assert.equal((await main([...flags(dir), '--scope', 'user', '--receipt', custom])).code, 0);
   assert.equal(JSON.parse(fs.readFileSync(custom)).scope, 'user');
   const hermes = resolve(dir, 'hermes');
-  assert.equal((await main(['--team', '--target', 'hermes', '--dir', hermes, '--bundle-dir', 'relay', '--yes'])).code, 0);
-  assert.ok(fs.lstatSync(resolve(hermes, targets.hermes, 'relay/team.md')).isFile());
-  assert.equal((await main(['--team', '--target', 'hermes', '--dir', resolve(dir, 'escape'), '--bundle-dir', '../../../../outside', '--yes'])).code, 3);
+  assert.equal((await main(['--team', '--target', 'hermes', '--dir', hermes, '--bundle-dir', 'team-aliases', '--yes'])).code, 0);
+  for (const name of files(root, 'docs/bundles').filter(name => name.endsWith('.md'))) {
+    assert.deepEqual(fs.readFileSync(resolve(hermes, targets.hermes, 'team-aliases', name.split('/').at(-1))), fs.readFileSync(resolve(root, name)));
+  }
+  assert.throws(() => fs.lstatSync(resolve(hermes, 'team-aliases')), { code: 'ENOENT' });
+  const escape = await main(['--team', '--target', 'hermes', '--dir', resolve(dir, 'escape'), '--bundle-dir', '../../../../outside', '--yes']);
+  assert.equal(escape.code, 3);
+  assert.match(escape.message, /Path escapes destination root/);
   const collision = resolve(dir, 'collision');
   assert.equal((await main(['--team', '--target', 'hermes', '--dir', collision, '--bundle-dir', 'SKILL.md', '--yes'])).code, 3);
   assert.throws(() => fs.lstatSync(collision), { code: 'ENOENT' });
 }));
+
+test('Hermes --help names the bundle-dir resolution root', async () => {
+  const help = await main(['--help']);
+  assert.equal(help.code, 0);
+  assert.match(help.message, /--bundle-dir <path> \(Hermes TEAM only; relative to the installed skill folder\)/);
+});
 
 test('5 Interactive questions preserve canonical text and EOF or incomplete --yes writes nothing', () => workspace(async dir => {
   for (const args of [ ['--target', 'codex', '--dir', dir, '--yes'], ['--solo', '--dir', dir, '--yes'], ['--solo', '--target', 'codex', '--yes'] ]) {

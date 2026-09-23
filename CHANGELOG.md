@@ -6,6 +6,13 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-09-23
+
+### Fixed
+
+- #13: Synchronized the repository settings description with `package.json`, added a description drift check and documented the release update step.
+- #14: Documented the installed skill folder as the Hermes alias path root in the adapter, installer contract and CLI help, with regression coverage for help text and alias placement.
+
 ## [0.1.2] - 2026-09-23
 
 ### Changed

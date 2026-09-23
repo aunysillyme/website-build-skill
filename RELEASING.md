@@ -19,6 +19,8 @@ push publishes. Creating the GitHub release page stays manual.
 
 ## Invocation chain
 
+When `package.json` description changes, update REPO_SETTINGS.md § Description in the same commit and run `gh repo edit https://github.com/aunysillyme/website-build-skill --description "<same string>"`.
+
 1. Read the candidate and resolve any source, privacy, claim-review or license defect.
 2. Run `node scripts/build.mjs` to regenerate bundles and the index.
 3. Run `node scripts/check.mjs` without rewriting outputs.

@@ -38,7 +38,7 @@ Append `#<reviewed-commit-sha>` to the repository reference for a reproducible i
 - Choice: mutually exclusive `--solo` / `--team`; no arguments asks the canonical human question first.
 - Target: `claude-code`, `codex`, `hermes`, `antigravity`, `grok`, `agents`, `chatgpt`, `portable`.
 - Scope: project by default; user scope requires explicit selection, never implicit fallback.
-- Destination: `--dir` is explicit; `--bundle-dir` is accepted only for the Hermes team alias.
+- Destination: `--dir` is explicit; `--bundle-dir` is accepted only for the Hermes team alias and resolves relative to the installed skill folder. Paths outside that folder are refused with exit 3 and "Path escapes destination root".
 - Output root: `--output-dir` selects an existing directory separately from the skill destination. Interactive setup collects the save-location choice and path; Enter on the local-folder path uses the website project directory. The receipt records `outputRoot` and optional `outputStorage` (kind and Notion export target). Researcher consumes those values before writing `<outputRoot>/site-work/research/library/scope.md`. The installer only probes the root; it does not create a library or export to Notion. Headless setup without `--output-dir` leaves the root unset for Researcher to ask before writing.
 - Notion: export destination only. Interactive setup requires both the existing local working directory (authoritative) and a page URL or name for later export. No credentials are requested and no network upload occurs.
 - Writability: confirm the output root by writing and reading back before any sweep; an unwritable root fails without partial writes.
