@@ -6,7 +6,7 @@ A file-reading fallback can load its SKILL.md directly; that does not prove nati
 Candidate preload, UNVERIFIED: `hermes -s website-build-skill` after discovery is confirmed.
 Candidate trust operation, UNVERIFIED: `hermes skills trust`; this changes trust state and requires the user's authorization.
 Do not create version-control state or alter global settings during a copy.
-Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target hermes --dir . --scope project --yes --bundle-dir ./team-aliases`.
+Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --team --target hermes --dir . --scope project --yes --bundle-dir ./team-aliases`.
 
 ## Two planned branches
 

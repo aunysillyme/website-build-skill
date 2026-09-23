@@ -32,10 +32,13 @@ push publishes. Creating the GitHub release page stays manual.
 ## Dependencies
 
 Local maintainer runtime: Node 22.22.3. The sources are plain ES modules; no build step or dependency install is needed.
-Other runtime versions, hosted execution and the proposed TypeScript compiler configuration remain UNVERIFIED.
+The check matrix covers Node 18, 20, 22.22.3 and 24. Sources are JavaScript ES modules;
+no TypeScript compiler is part of this operating chain. Consult the revision-bound
+baseline receipt in docs/evidence/audit-baseline.json and rerun checks for a new candidate.
 Workflow files use the JSON subset of YAML so structural security checks need no YAML dependency.
 The checkout and runtime setup actions are pinned to upstream commit URLs recorded in provenance.
-Network is only needed by hosted checkout/runtime setup and future public delivery probes, not by the local content gates.
+Network is needed by hosted setup, registry publication and public delivery probes,
+not by the local content gates.
 npm trusted publishing must be configured once, by hand, on npmjs.com: the package's settings,
 Trusted publisher, GitHub Actions, with the owner and repository exactly as they appear in
 https://github.com/aunysillyme/website-build-skill
@@ -85,7 +88,7 @@ No separate watchdog is configured. The public repository owner is the failure r
 - Bundle drift: review the source change and regenerate, then rerun check. Never have CI silently repair the candidate.
 - Private data: remove it from all public artifacts; if already exposed, use private incident handling and rotate affected credentials through the owner's authorized process.
 - Claim review pending: review the prose and actual evidence before updating its checksum entry; the generator must not approve claims.
-- Floating action or write permission: restore an upstream full SHA and read-only permissions; review any scope expansion independently.
+- Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving only the reviewed publish-job OIDC exception.
 - Local tests fail: stop publication, reproduce, fix confirmed defects and rerun the affected harness.
 - Runtime or network unavailable: report BLOCKED with the failing command; do not substitute a pass.
 - Future publication partly succeeds: inspect registry and release state before any retry. Never assume an npm version can be overwritten or routinely deleted.

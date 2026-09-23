@@ -88,9 +88,12 @@ BRIEF
 - Separate confirmed requirements from suggestions and missing inputs.
 
 SAVE
-- As Researcher, ask where the work should be saved (Obsidian vault, a folder on this
-  computer, Notion, or a typed path), then save that root with the request and tool limits
-  to <root>/site-work/research/library/scope.md. Notion receives an export; the working copy stays on disk.
+- As Researcher, read outputRoot and outputStorage from the install receipt first.
+  Reuse the recorded root and Notion export destination without repeating the question.
+  If outputRoot is absent, ask where work should be saved (Obsidian vault, a folder on
+  this computer, Notion, or a typed path) before any write.
+  Save the root, request and tool limits to <root>/site-work/research/library/scope.md.
+  Notion is a later export destination; the authoritative working copy stays on disk.
 - At each page fetch, write `site-work/research/library/receipts/<CLAIM-ID>.md`
   using templates/evidence.md. Never write the receipt afterward or mark a claim
   OPENED from memory or a search snippet. Without a receipt it is UNVERIFIED;
@@ -190,7 +193,7 @@ RESEARCH THESE 13 AREAS
    What are the social/link-preview sizes and safe zones as of the ASK DATE? Study
    formats, vector versus raster, compression, responsive crops, export hygiene,
    icon consistency, font embedding/subsetting, and stock licensing. Inspect output.
-   Use prompts/02-graphics-design-original.md as the archived source of this domain;
+   Use archive/graphics-design-original.md as the archived source of this domain;
    learn its standards and deep areas without executing its historical SAVE paths.
    Artifact: 03-graphics-and-rights.md, domain 4 tool/tier/rights matrix and format
    specifications; checklists/04-graphics.md with export, crop, and rights gates.

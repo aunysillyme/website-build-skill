@@ -10,7 +10,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "ef50e0b6625c39251589305f48f2cb39bb9cbd84bdafa0e3dabf68da3a716b26",
+      "sha256": "d6153194f54442b81f04087b3bae7970b023b29ace0a88d2f3f904fe6db475a5",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     },
@@ -23,23 +23,23 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CONTRIBUTING.md": {
-      "sha256": "4e20d3e212fc2567b5fd60677a0d94586bdc4b6b75fe99a3c97af464f76e9dfb",
+      "sha256": "d77f293d947f4b60569f4dff4b9eb410c214d20107a0c7049f7ec63ebd4ba860",
       "disposition": "instructions-and-qualified-status-only"
     },
     "MAINTAINERS.md": {
-      "sha256": "8d24df77301222d4fe37764bdb7b13a66d80a6d8445e8acd39e15af9913f0900",
+      "sha256": "8632008661d5ad3d60300ea2028715217c298d24d3d66af7224c52b6e0e24552",
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "38878afded2265272900d0328570c2713732a9a9fa10608b216f2d58c6309ed5",
+      "sha256": "4826c35954178fd6ca6064bf25d0892be7a8534612fd644956aa1292b4978bc5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
-      "sha256": "7a8bee3bb86d2f1df2ce08ca6a85618bddabf5bd2639e4fa6d837232d803b7d6",
+      "sha256": "c09c6fe815997615f0242d580430d8c83175b3ef2c0b0b929f9bd4d6284def2a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
-      "sha256": "bd7c2349901aa171338085a8c47759f6f6e80e32ee1f2fedce5a11ec6d4b8a1a",
+      "sha256": "84937c24362bac215a2edff4c259224df1c37f8444da3f4bcde305c5ba84b0bd",
       "disposition": "instructions-and-qualified-status-only"
     },
     "SECURITY.md": {
@@ -47,39 +47,39 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/agents-md.md": {
-      "sha256": "2ac19d8c482d98ae91218ea5c5a058aaadd57aef3b85d7d76868e98e296e182f",
+      "sha256": "c2175a6b0f11d702b82af67a1566ca5e5a5890f0063047fab258aaad34608e04",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/antigravity.md": {
-      "sha256": "4359c79048c9bbfef700c0ac1d0fcf34b9a7edd6d63a0b58bede950d454e5b6c",
+      "sha256": "4e11eaffd5f0a98f663c6a351a6e730c28748a0ef50855e277c722fcf5822df0",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/chatgpt-project.md": {
-      "sha256": "71bc6e2dbc77c58f9286dd7f82d2b0f1158cc4e74e8eba4983153fa33b456e02",
+      "sha256": "3d2ddc63d3b4b49f40f5efeb684c6f94dd48a874ef92a3b605a92854e163858a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-code.md": {
-      "sha256": "a8517cff15070fbb86e8f401c2af31271f876fe06025edfdf5ea5b69809ef327",
+      "sha256": "3399b055c0247e82b521a8e6b83111ddc198d439f4b514a36c1dd7eac9f0b150",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-desktop.md": {
-      "sha256": "784165915ac2c2a486a8f0d9b1f33a8a30ee2d81105d74fbdcd6bcb44c32eab9",
+      "sha256": "1fd8cf190c3ab4c46b9c4fab9f033d4958542ea930b67f9013cb5c78b5fbb20b",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/codex.md": {
-      "sha256": "06cd6275718e4bd51f329084199fd58f9ee072b213c05fd260e7c3711a874fa9",
+      "sha256": "f5d0a7921551fcf1e74edb2151cdfe609fe28289e427f11c721abc53253b4fa9",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/custom-gpt.md": {
-      "sha256": "b31dafccdc76e91c4037e2d911194c7ea6f205fab0aec115896e6e5df8030dd8",
+      "sha256": "ca76ba3718628833235e08528baae8705f96b50e4370ec72fb917c1fc18673eb",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/grok.md": {
-      "sha256": "e4dc7aa9ff4991a4e4610812faa476f267167c3470a3f728105b09da3ec5e24c",
+      "sha256": "6d0422e852b01d105a677d9fb465c87efee322f235b7376b30c752191b857808",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/hermes.md": {
-      "sha256": "eee6b7009b8f4448c84fa55c11939248e0bc5a5f119b746816443e988db53ba5",
+      "sha256": "357e141650c6ba0ae25f82eac32f410314d2195aa024176772f9bbfcb21c8e54",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/zero-install.md": {
@@ -87,15 +87,27 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "b204206e5d981e58caa89dcda9595c8a0dab573761cf99cbad5fcc9ddb3be145",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "02c48474302f399c98014984895a75c8954f52a2c98be03331c899197752d354",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "Hosted repository checks have a [revision-bound baseline receipt](evidence/audit-baseline.json).",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/EVALUATION.md": {
-      "sha256": "f74fd00e75215ad735ca640b7947170598a417a9ec8b7e3405cc90b5ff1c8e45",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "05cda6eae321c5f4ea982fbcbd0b669921b53bca31d31daed190947de74b1304",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "The [baseline receipt](evidence/audit-baseline.json) records a hosted CI run for one",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/INSTALLER.md": {
-      "sha256": "de102b6fbf2ddf525d04a9a8d71937a02fe83b7da649aa2ade07663ee77bad95",
+      "sha256": "29f3c7ba1ece6d8776838702d517e4d2dd5122d2ef439b722ea367962eed15df",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/METHOD.md": {
@@ -103,8 +115,14 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/PROVENANCE.md": {
-      "sha256": "98eef5479eaa9855703893907f4933b668e76770ae87d7dc98119d1cee60d11d",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "a4d8039968d64163c78997e15b1a9dc8cc5b1e7aa6995a0f07e789758b2e7cb4",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "The checkout v7.0.1 tag points to commit `3d3c42e5aac5ba805825da76410c181273ba90b1`.",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/TIPS.md": {
       "sha256": "d74d14021a72135ef8331a111557921c696695ba90451efaa6a67132abf89d1a",
@@ -114,6 +132,10 @@
       "sha256": "8aca9f1dcc5d99b47099ca58e9a5c7af6ad808415d7ebb6d5aa8d930d212a698",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
+    },
+    "docs/evaluation/host-trial.md": {
+      "sha256": "770b5663a7c0bfe71919a4c4d9a53df31cbe8a9aac54b193ae7ba092cec23b41",
+      "disposition": "instructions-and-qualified-status-only"
     }
   }
 }

@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "56f80a7225f6f7ec3bf6827fa5caf6ad37b2689b49f939b8a5f015b7115c7bbe"
+      "sha256": "a9778cb747ebf96c8283bd4d814037b74df77e9256166159cbf39be6c05ef91c"
     },
     {
       "path": "manifest.json",
@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0a3104c79e721929b3bced98e52c4f286de2548dc5e48eee41872e56d050f45b"
+      "sha256": "a505d4678267dbace9bbd38eb8ed35f4ce46cfb13318317aa521df7a733c750b"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -60,12 +60,12 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "b66381261865a2b9c5927c86b2bc3a3d6b84329f8665e147ad016872ca3759c4"
+      "sha256": "233b0834ecd4a0c47f7d300c6e0f57c896a92b6c10899d985a676e246452c8b1"
     },
     {
-      "path": "prompts/02-graphics-design-original.md",
+      "path": "archive/graphics-design-original.md",
       "version": "0.1.0",
-      "kind": "prompt",
+      "kind": "archive",
       "active": false,
       "bundles": [],
       "distributions": [
@@ -240,7 +240,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "3cc2dcf24d10998da4d7559f2317b0e99eb71f96778b28fb73ddad7904e90cb1"
+      "sha256": "b03951027d4c51cfcba27ea2245b635a3e254b912639f13e58a3002df65c6005"
     },
     {
       "path": "roles/coordinator.md",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9b8431878ca8c8f24852bd1bbcd436824a53d817143910075d5185487dca7f57"
+      "sha256": "3bf9c16c76d8741b27926eff45c122dbc75c1e8d470a99d751e799ab5714a3f2"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -662,7 +662,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "55962a652e48d692b92b6f3fc86073d0599077c3615844048d2033e9844b6bfd"
+      "sha256": "86e729beecba45c1e08da6e3aa91c4e968fa86a08c1f3a27873bb29c56415a9e"
     },
     {
       "path": "templates/brief.md",
@@ -1263,7 +1263,7 @@
         "manifest.json",
         "prompts/00-start.md",
         "prompts/01-website-deep-research.md",
-        "prompts/02-graphics-design-original.md",
+        "archive/graphics-design-original.md",
         "prompts/03-extract-brand-kit.md",
         "prompts/04-three-mockups.md",
         "prompts/05-stack-and-build.md",
@@ -1324,7 +1324,7 @@
         "manifest.json",
         "prompts/00-start.md",
         "prompts/01-website-deep-research.md",
-        "prompts/02-graphics-design-original.md",
+        "archive/graphics-design-original.md",
         "prompts/03-extract-brand-kit.md",
         "prompts/04-three-mockups.md",
         "prompts/05-stack-and-build.md",
@@ -1385,7 +1385,7 @@
         "manifest.json",
         "prompts/00-start.md",
         "prompts/01-website-deep-research.md",
-        "prompts/02-graphics-design-original.md",
+        "archive/graphics-design-original.md",
         "prompts/03-extract-brand-kit.md",
         "prompts/04-three-mockups.md",
         "prompts/05-stack-and-build.md",
@@ -1443,7 +1443,7 @@
   },
   "contextAllowlist": [
     {
-      "path": "prompts/02-graphics-design-original.md",
+      "path": "archive/graphics-design-original.md",
       "context": "ARCHIVE",
       "end": "end-of-file",
       "bodySha256": "9c5333c42b780b8bde25e7a35701d28427f0d12db40ae8de0386bb51bb62907d",

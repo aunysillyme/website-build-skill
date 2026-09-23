@@ -6,7 +6,7 @@ The method's research prompts originate in two public posts by the repository's 
 - [Current design research and three brand-matched mockups](https://x.com/i/status/2097418846282145946): browser exploration, brand inputs and design selection before code.
 
 Attribution comes from the supplied source record; live post retrieval is UNVERIFIED here.
-The [inactive graphics original](../skills/website-build-skill/prompts/02-graphics-design-original.md) retains its bytes and historical save instruction.
+The [inactive graphics original](../skills/website-build-skill/archive/graphics-design-original.md) retains its bytes and historical save instruction.
 It is provenance reading only and is excluded from active bundles and stage routes.
 The website research and site audit prompts are adaptations. They are not a recovered historical audit transcript.
 Reported historical measurements are not repeated as package evidence.
@@ -26,10 +26,11 @@ Open current sources and record real source/access dates before relying on a cla
 
 ## Automation pin provenance
 
-The checkout v4.2.2 release links to commit `11bd71901bbe5b1630ceea73d27597364c9af683`.
-Source: [upstream commit](https://github.com/actions/checkout/commit/11bd71901bbe5b1630ceea73d27597364c9af683), opened 2026-09-21.
+The checkout v7.0.1 tag points to commit `3d3c42e5aac5ba805825da76410c181273ba90b1`.
+Source: [upstream tag](https://github.com/actions/checkout/releases/tag/v7.0.1), checked through the GitHub API in the baseline receipt.
 This identifies the pin; it is not an audit of the action or a hosted workflow run.
 
-The setup-node v4.4.0 release links to commit `49933ea5288caeca8642d1e84afbd3f7d6820020`.
-Source: [upstream commit](https://github.com/actions/setup-node/commit/49933ea5288caeca8642d1e84afbd3f7d6820020), opened 2026-09-21.
-This identifies the pin only; hosted runtime setup remains UNVERIFIED.
+The setup-node v7.0.0 tag points to commit `820762786026740c76f36085b0efc47a31fe5020`.
+Source: [upstream tag](https://github.com/actions/setup-node/releases/tag/v7.0.0), checked through the GitHub API in the baseline receipt.
+These tag checks identify pins only; they are not an audit of the actions. See the
+[baseline receipt](evidence/audit-baseline.json) for the separate hosted-check observation.

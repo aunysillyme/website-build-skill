@@ -24,18 +24,18 @@ Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 
 Where should the work be saved?
 
-  1  Obsidian vault       Give the vault path and a folder inside it. The library is
+  1  Obsidian vault       Give an existing folder inside your vault. The library is
                           plain Markdown, so it opens and links natively.
 
   2  A folder on this computer
-                          Give any path. The default is a site-work folder beside
-                          the website project.
+                          Give an existing directory. The default is the
+                          website project folder.
 
   3  Notion               Working copy still lives in a folder on this computer,
                           because every gate reads its own files back by path.
                           Notion receives an export of the finished library.
 
-  4  Somewhere else       Type the destination yourself.
+  4  Somewhere else       Type an existing local destination yourself.
 
 Whatever you pick becomes the workspace root. Everything below is written inside it.
 ```
@@ -75,20 +75,22 @@ Native discovery, tool permissions and team automation are UNVERIFIED until a re
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instruction block | SOLO method; account-level skill ZIP upload is UNVERIFIED |
 | [ChatGPT](adapters/chatgpt-project.md) | Put the instruction block in Project instructions and attach the five bundles; [custom GPT route](adapters/custom-gpt.md) | SOLO reference packet; account controls and file access are UNVERIFIED |
 
-One command copies the same files and writes a receipt of exactly what it wrote:
-
-```bash
-npx website-build-skill --solo --target codex --dir . --yes
-npx website-build-skill --team --target claude-code --dir . --yes
-```
-
-Until that version is on npm, the same entry point runs straight from the repository:
+Run directly from the public repository while registry publication is pending.
+These commands copy files and write a receipt; they do not activate a host:
 
 ```bash
 npx github:aunysillyme/website-build-skill --solo --target codex --dir . --yes
+npx github:aunysillyme/website-build-skill --team --target claude-code --dir . --yes
 ```
 
-Add `--dry-run` to see every path first, `--output-dir` to say where the work is saved, and
+For a reproducible install, append `#<reviewed-commit-sha>` to the GitHub package
+specifier. Use the registry package name only after a published version is verified.
+
+Omit flags for the interactive mode, host and save-location questions. Save locations
+must be existing directories; paths retain their case. Notion is a recorded export
+destination, with an authoritative local working copy and no automatic upload.
+With `--yes`, add `--output-dir` to record an existing output root, or let the host ask
+before research. Add `--dry-run` to see every path first, and
 `--uninstall` to remove only the files it wrote and left untouched.
 It copies files. It does not start seven workers, supply an independent model provider, or
 prove a host loaded anything; activation stays UNVERIFIED until a real client trial.
