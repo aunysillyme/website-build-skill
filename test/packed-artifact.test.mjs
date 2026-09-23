@@ -16,7 +16,9 @@ test('Actual npm tarball preserves documentation links and installs from its own
     return result.stdout;
   };
   try {
-    const [packed] = JSON.parse(run('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', trial]));
+    // npm 10 and 11 print an array; npm 12 prints an object keyed by package name.
+    const report = JSON.parse(run('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', trial]));
+    const [packed] = Array.isArray(report) ? report : Object.values(report);
     run('tar', ['-xzf', resolve(trial, packed.filename), '-C', trial]);
     const artifact = resolve(trial, 'package');
     const issues = files(artifact).filter(name => name.endsWith('.md') || name === 'llms.txt')
