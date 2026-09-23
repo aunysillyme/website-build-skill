@@ -1,13 +1,91 @@
 # website-build-skill
 
-Choose how you work: teach one AI the whole method, or give the jobs to seven specialists.
-Research current as of the date of your ask, turn your brand into usable rules, then compare three designs before code.
-Build with the smallest stack that fits, and check accessibility, speed, search, and security.
-Teach my AI works with Claude, ChatGPT, Grok, Cursor, or Copilot, with nothing else to install.
-Give me the team needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot; start with the setup line for your host.
+[![npm version](https://img.shields.io/npm/v/website-build-skill)](https://www.npmjs.com/package/website-build-skill)
+[![Repository checks](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml/badge.svg)](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-The pitch describes the intended experience. Native loading and team setup are UNVERIFIED.
-The installer copies files and reports what it wrote; it never starts a worker for you.
+**A skill pack that turns your AI into an expert website builder.** It teaches your LLM or agent current, researched practice in design, brand, accessibility, performance, search, security, stacks and code, so the sites it builds look and work like a professional made them.
+
+- **The problem:** an AI builds websites from what it remembered at training time: dated frameworks, generic layouts, and missed accessibility, speed and security basics.
+- **What you get:** research instructions that make your AI look up what is current on the day you ask, plus design, coding, accessibility, performance, search and security playbooks and checklists it follows on every site.
+
+## Quick start
+
+Run the npm installer in your project folder. It asks how you want to work, which host to use and where to save the work:
+
+```bash
+npx website-build-skill
+```
+
+It copies the skill pack into your host's folder, checks the saved files and writes a receipt.
+Open your AI and ask it to read the installed `SKILL.md`.
+Use `--dry-run` to preview paths. To remove files the installer wrote that still match its receipt:
+
+```bash
+npx website-build-skill --uninstall --target codex --dir . --yes
+```
+
+Use the target and directory from your install. The [installer guide](docs/INSTALLER.md) covers all flags, receipts and exit codes.
+
+For a headless install with no prompts, name SOLO or TEAM and your host:
+
+```bash
+npx website-build-skill --solo --target codex --dir . --yes
+npx website-build-skill --team --target claude-code --dir . --yes
+```
+
+### Start with one paste
+
+For a chat AI, paste this starter and then describe the website you want:
+
+```text
+Use option 1: Teach my AI. Help me build a website with Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove, Protect, Challenge and Ship. First act as Researcher: establish the request date from host evidence, then research the site's design, accessibility, performance, security, stack and search needs using current opened sources. Save a library with source URLs, publication dates or unknown, access dates, disagreements and checklists. When search is unavailable, report research as BLOCKED and return a query plan. If you lack files, return named bodies for me to save and reattach before passing the save gate. Only then confirm my brief, extract my brand or request profile/banner screenshots, and show three visual mockups. Wait for my named selection before site code. Choose the smallest fitting stack. Keep evidence and handoffs between roles. Protect means security headers and the ship security checklist; Challenge means a different model family reviews a fixed candidate read-only, and I authorize release. This starter is a compact entrypoint, so claim Ship only after the five bundles or the skill folder supply the full twelve-stage route and its checklists. Start with the site request I provide next; ask only for missing inputs that change the work.
+```
+
+For the complete method, paste or attach the five bundles from one revision:
+[method](docs/bundles/method.md), [prompts](docs/bundles/prompts.md),
+[playbooks](docs/bundles/playbooks.md), [checklists](docs/bundles/checklists.md), and [team](docs/bundles/team.md).
+Get them from [the public bundle folder](https://github.com/aunysillyme/website-build-skill/tree/main/docs/bundles)
+or [the main archive](https://github.com/aunysillyme/website-build-skill/archive/refs/heads/main.zip).
+Ask your AI to name the files it read before starting.
+
+![Installer demo: preview the files, install the Codex skill and inspect the receipt](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif)
+
+## What your AI learns
+
+| Area | What your AI learns | Files |
+|---|---|---|
+| Research | It learns to inspect current sources across thirteen domains, record source dates and evidence, and recheck stale claims. | [Research prompt](skills/website-build-skill/prompts/01-website-deep-research.md), [research and memory](skills/website-build-skill/playbooks/research-and-memory.md) |
+| Brand and design | It learns to extract brand tokens, distinguish observed rules from inferences, and compare three desktop and mobile designs through hierarchy, typography and composition. | [Brand extraction](skills/website-build-skill/prompts/03-extract-brand-kit.md), [three mockups](skills/website-build-skill/prompts/04-three-mockups.md) |
+| Graphics and image rights | It learns to verify intended-use rights, choose responsive crops and formats, and inspect exported dimensions, compression and alt-text intent. | [Image pipeline](skills/website-build-skill/playbooks/image-pipeline.md), [brand and mockup checklist](skills/website-build-skill/checklists/brand-and-mockups.md) |
+| Stacks and code | It learns to choose between static HTML, a scripted static builder and a framework, validate content records, and render shared templates safely. | [Stack selection](skills/website-build-skill/playbooks/choose-stack.md), [data and templates](skills/website-build-skill/playbooks/data-and-templates.md) |
+| Accessibility | It learns to use semantic structure, test keyboard and screen-reader journeys, compute contrast, and check reflow and reduced motion. | [Accessibility playbook](skills/website-build-skill/playbooks/accessibility.md), [accessibility checklist](skills/website-build-skill/checklists/accessibility.md) |
+| Performance | It learns to set route budgets, run repeatable Lighthouse measurements, distinguish lab scores from field data, and diagnose image, font and script costs. | [Performance budgets](skills/website-build-skill/playbooks/performance-budgets.md), [performance and search checklist](skills/website-build-skill/checklists/performance-seo.md) |
+| Search and answer engines | It learns SEO and AEO through visible answers, truthful structured data, canonical URLs, sitemaps and llms.txt generated from shared records. | [SEO and AEO prompt](skills/website-build-skill/prompts/08-seo-aeo.md), [structured data and llms.txt](skills/website-build-skill/playbooks/structured-data-and-llms.md) |
+| Security headers | It learns to tailor CSP and other headers to actual resources and response types, verify HTTPS readiness, and test journeys with the policy enforced. | [Security headers](skills/website-build-skill/playbooks/security-headers.md), [security checklist](skills/website-build-skill/checklists/security.md) |
+| Hosting and operations | It learns to promote an exact release artifact, verify live routes, plan rollback, and document monitoring, recovery and maintenance ownership. | [Deploy and operate](skills/website-build-skill/playbooks/deploy-and-operate.md), [ship and verify](skills/website-build-skill/prompts/11-ship-and-verify.md) |
+| Review and release | It learns to prepare a fixed candidate for review by a different model family, reproduce findings, verify fixes, and check release authority and evidence. | [Adversarial review](skills/website-build-skill/prompts/10-adversarial-pre-ship.md), [ship checklist](skills/website-build-skill/checklists/ship.md) |
+
+## How your AI uses it on a site
+
+Every site follows the same twelve stages, so your AI researches before it designs and checks before it ships.
+
+1. **Research:** save current sources, domain coverage and a research gate receipt.
+2. **Learn:** read the library and learn the checklists for the next job.
+3. **Ingest:** apply that research and record what the role learned.
+4. **Scope:** confirm the brief, available tools and artifact owners.
+5. **Match:** turn brand assets into rules, tokens and approved inferences.
+6. **Mock:** present three visual directions for your named selection.
+7. **Choose:** choose the smallest stack that fits the approved direction.
+8. **Build:** implement the selected design.
+9. **Prove:** gather accessibility, performance and search evidence.
+10. **Protect:** check security headers and exposed surfaces.
+11. **Challenge:** have a different model family review the fixed candidate read-only.
+12. **Ship:** authorize release, check the live site and save its operations document.
+
+[Method details](docs/METHOD.md) · [fictional brief](skills/website-build-skill/examples/fictional-studio-brief.md).
+
+## Two ways to work
 
 ```text
 How do you want to work?
@@ -20,7 +98,7 @@ How do you want to work?
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
                           One command installs their files; you open each session yourself.
 
-Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
+Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
 Where should the work be saved?
 
@@ -40,109 +118,107 @@ Where should the work be saved?
 Whatever you pick becomes the workspace root. Everything below is written inside it.
 ```
 
-## Start with one paste
+SOLO follows the same jobs with saved self-handoffs. TEAM gives each job a separate route:
 
-Copy this starter into your AI chat, then describe the website you want.
-No clone, repository access or npm is needed to give the AI this first task.
+- **Researcher:** saves the shared library before the other roles work.
+- **Coordinator:** accepts evidence, owns the brief and routes each handoff.
+- **Designer:** extracts brand rules and presents the visual directions.
+- **Graphics:** produces assets and records rights, formats and exports.
+- **Builder:** implements the chosen direction and reproduces review findings.
+- **Optimizer:** checks search, answer-engine and discovery requirements.
+- **Reviewer:** reviews the fixed candidate read-only from a different model family.
 
-```text
-Use option 1: Teach my AI. Help me build a website with Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove, Protect, Challenge and Ship. First act as Researcher: establish the request date from host evidence, then research the site's design, accessibility, performance, security, stack and search needs using current opened sources. Save a library with source URLs, publication dates or unknown, access dates, disagreements and checklists. If you lack search, say research is BLOCKED and return a query plan. If you lack files, return named bodies for me to save and reattach before passing the save gate. Only then confirm my brief, extract my brand or request profile/banner screenshots, and show three visual mockups. Wait for my named selection before site code. Choose the smallest fitting stack. Keep evidence and handoffs between roles. Protect means security headers and the ship security checklist; Challenge means a different model family reviews a fixed candidate read-only, and I authorize release. This starter is a compact entrypoint, so do not claim Ship until the five bundles or the skill folder supply the full twelve-stage route and its checklists. Start with the site request I provide next; ask only for missing inputs that change the work.
-```
+## Works with whatever your AI has
 
-For the complete method, paste or attach the five local bundles:
-[method](docs/bundles/method.md), [prompts](docs/bundles/prompts.md),
-[playbooks](docs/bundles/playbooks.md), [checklists](docs/bundles/checklists.md),
-and [team](docs/bundles/team.md).
-From another machine, read them from the public repository: browse [the bundle folder](https://github.com/aunysillyme/website-build-skill/tree/main/docs/bundles),
-download [the main archive](https://github.com/aunysillyme/website-build-skill/archive/refs/heads/main.zip), or open one raw file such as
-`https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/bundles/method.md`.
-Those paths serve the files; whether a given host can fetch and load a URL by itself is UNVERIFIED.
-The starter is a compact entrypoint, not a substitute for all stage instructions.
+| Your AI has | You get |
+|---|---|
+| Web search | Research current to the date of your request |
+| File access | A research library saved in your project and read back |
+| Image tools | Three visual designs to choose from |
+| A second AI from another model family | An independent review before release |
+| A browser or terminal | Your AI runs speed, accessibility and live checks |
+| Separate agents | The seven-role team working in parallel |
+| Deploy access | Your AI ships the authorized site and checks it live |
+
+With any of these missing, the AI hands you the exact next step (a query plan, file contents to save, a review packet, commands to run) and the stage continues when you bring the result back.
 
 ## Choose your host
 
-Manual copy means copy the **entire** `skills/website-build-skill/` folder into a new destination,
-including its manifest and subdirectories. Preserve conflicting files; do not merge blindly.
-Native discovery, tool permissions and team automation are UNVERIFIED until a real client trial.
+Each guide below has a documented setup with its own loading check; native loading on every
+host is awaiting a real-client trial, and [compatibility](docs/COMPATIBILITY.md) tracks
+current status host by host.
 
-| Host | What to run, copy or upload now | What you get |
-| --- | --- | --- |
-| [Claude Code](adapters/claude-code.md) | Copy the full folder to `.claude/skills/website-build-skill/`; explicitly ask the host to read SKILL.md | Method files; candidate native invocation `/website-build-skill` is UNVERIFIED |
-| [Codex](adapters/codex.md) | Copy the full folder to `.agents/skills/website-build-skill/`; ask it to read the entrypoint | SOLO method; native discovery is UNVERIFIED |
-| [Hermes](adapters/hermes.md) | Copy to `.agents/skills/website-build-skill/`; verify project trust and loading | Shared candidate core; native activation and alias behavior are UNVERIFIED |
-| [Antigravity](adapters/antigravity.md) | Copy to `.website-build-skill/`; explicitly ask the session to read SKILL.md | Portable core; native seven-role generation is planned |
-| [Grok Bot](adapters/grok.md) | Attach the five bundles and paste the adapter's team request; use its manual New-Bot fallback where needed | Seven role instructions; Bot creation and routing are UNVERIFIED |
-| [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instruction block | SOLO method; account-level skill ZIP upload is UNVERIFIED |
-| [ChatGPT](adapters/chatgpt-project.md) | Put the instruction block in Project instructions and attach the five bundles; [custom GPT route](adapters/custom-gpt.md) | SOLO reference packet; account controls and file access are UNVERIFIED |
+| Host | Set it up | What you get |
+|---|---|---|
+| [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
+| [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
+| [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust and loading steps | Shared method files; TEAM adds the full role bundles |
+| [Antigravity](adapters/antigravity.md) | Install with `--target antigravity`; read `.website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
+| [Grok Bot](adapters/grok.md) | Attach the five bundles and follow the manual team setup | Complete role instructions and addressed handoffs |
+| [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instructions | The SOLO method in your chat |
+| [ChatGPT](adapters/chatgpt-project.md) | Add the instructions and five bundles to a Project or [custom GPT](adapters/custom-gpt.md) | The SOLO method and saved state packets |
 
-Install from npm. These commands copy files and write a receipt; they do not activate a host:
+See [compatibility](docs/COMPATIBILITY.md) for tested hosts, documented setups and the evidence for each.
+For manual copying, preserve the complete skill folder, its manifest and its subdirectories in a new destination.
+
+## Where your work is saved
+
+Choose an existing local directory during setup: a folder in your Obsidian vault, your website project or another local destination.
+That output root holds `site-work/`, including research, source dates, brand decisions, checklists and handoffs.
+Notion is an export destination with an authoritative local working copy.
+For headless setup, `--output-dir` records the existing output root; otherwise Researcher asks before writing.
+Reopen that library for later pages and refresh claims against the date of the new request.
+
+## Part of a set
+
+Three open-source tools that work on their own and fit together:
+
+| Repo | What it gives you |
+|---|---|
+| [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | One interview writes the profile and rules every AI you use reads, kept in sync from one source. |
+| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Routing rules that tell your agent which model handles each task, so frontier models do the hard work and cheaper tiers do the rest. |
+| **website-build-skill** | A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security. |
+
+## Tips
+
+- **Brand:** supply approved assets and review screenshot-derived guesses before they become rules.
+- **Choice:** compare hierarchy, density, typography and imagery across the mockups.
+- **Reuse:** reopen research and refresh stale claims before another page or role.
+- **Scope:** keep one primary action and choose the smallest fitting stack.
+- **Evidence:** save each measured result beside its command and candidate revision.
+
+[More tips](docs/TIPS.md) · [documentation index](docs/README.md).
+
+## For agents
+
+Read [llms.txt](llms.txt) for the source catalog and [AGENTS.md](AGENTS.md) for repository instructions.
+For a headless project install, name SOLO or TEAM:
 
 ```bash
 npx website-build-skill --solo --target codex --dir . --yes
 npx website-build-skill --team --target claude-code --dir . --yes
 ```
 
-For unreleased changes, run from the public repository instead:
-`npx github:aunysillyme/website-build-skill`, with `#<reviewed-commit-sha>` appended
-for a reproducible install.
+Follow the installed `SKILL.md` and the recorded mode and output root in the receipt.
+The [installer contract](docs/INSTALLER.md) defines preflight checks, exit codes and receipt-based removal.
 
-Omit flags for the interactive mode, host and save-location questions. Save locations
-must be existing directories; paths retain their case. Notion is a recorded export
-destination, with an authoritative local working copy and no automatic upload.
-With `--yes`, add `--output-dir` to record an existing output root, or let the host ask
-before research. Add `--dry-run` to see every path first, and
-`--uninstall` to remove only the files it wrote and left untouched.
-It copies files. It does not start seven workers, supply an independent model provider, or
-prove a host loaded anything; activation stays UNVERIFIED until a real client trial.
+## Common questions
 
-## What you get
+**How do I teach Claude Code or Codex to build better websites?** Run `npx website-build-skill`, pick your host and let it copy the skill pack into your host's folder, then ask your AI to read the installed `SKILL.md`. It learns current practice in research, design, code, accessibility, performance, search and security before it touches your site.
 
-- **Method:** research current to the request date, learn and ingest it, confirm scope, match the brand, compare three mockups, choose a stack, build, prove, protect, challenge and ship.
-- **Researcher:** saves the shared thirteen-domain library before any other role works.
-- **Coordinator:** accepts evidence, owns the brief and routes handoffs at every gate.
-- **Designer:** extracts brand rules and presents three visual directions before code.
-- **Graphics:** produces assets and records rights, formats and exports.
-- **Builder:** implements the selected direction and reproduces review findings.
-- **Optimizer:** researches and checks search, answer-engine and discovery requirements.
-- **Reviewer:** challenges a fixed candidate read-only, using a different model family.
-- **Your library:** grouped findings, opened URLs, source/access dates, disagreements, domain checklists, staleness schedule, memory packet and stage receipts in your project.
+**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM adds native routes for Claude Code, Codex, Hermes, Antigravity and Grok Bot; see [Choose your host](#choose-your-host) for each setup guide.
 
-Every agent runs its own research pass before it touches your site, so it works from what is
-true as of the date of your ask, not from what its model happens to remember.
-This is a required workflow, not evidence that a host automatically performs it.
-SOLO follows the same seven jobs with saved self-handoffs. TEAM needs real separate routes.
-[Method details](docs/METHOD.md) · [fictional brief](skills/website-build-skill/examples/fictional-studio-brief.md).
+**What does my AI research before it builds?** It researches thirteen domains current to the day of your request, from design and accessibility to performance, security, stack and search, and saves a library with source URLs and access dates so later pages can refresh stale claims. See [What your AI learns](#what-your-ai-learns) for the full list.
 
-## Honest limits
+**Can one AI run it, or does it need a team?** Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM gives each of the seven jobs its own session, starting with a researcher that gets them all current. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
 
-| Missing capability | Useful next step | Gate that remains incomplete |
-| --- | --- | --- |
-| Search | Review supplied sources and return a query plan | Current research, even with an old library |
-| File writing | Return named bodies for the user to save and reattach | Persistence until read-back |
-| Image tools | Prepare a designer handoff and wireframes | Three inspected visual mockups |
-| A second model family | Return an INTERNAL critique and external review packet | Independent review and shipment |
-| Execution or browser | Draft code and exact verification commands | Measurements, functional checks and live QA |
-| Separate workers | Run the seven roles sequentially with self-handoffs | TEAM activation |
-| Deployment access | Prepare an operator handoff | Public release and live verification |
+**How do I remove it?** Run `npx website-build-skill --uninstall --target <your target> --dir . --yes`, using the target and directory from your install; it removes only the files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
 
-See [compatibility](docs/COMPATIBILITY.md) for the evidence required before a support claim.
-No release, score, hosted CI result or clean-client trial is claimed here.
+## Contributing, credits and license
 
-## Tips and next steps
-
-- **Brand:** supply approved assets; review screenshot-derived guesses before they become rules.
-- **Choice:** compare hierarchy, density, typography and imagery across the three mockups.
-- **Reuse:** reopen saved research and invalidate stale claims before another page or another role.
-- **Scope:** keep one primary action and use the smallest stack that earns its complexity.
-- **Evidence:** keep the measured result beside the command and exact candidate that produced it.
-
-[More tips](docs/TIPS.md) · [provenance](docs/PROVENANCE.md) · [evaluation](docs/EVALUATION.md).
-
-## Contribute and license
-
+Contributions welcome: reproducible defects, clearer instructions, accessible examples and host evidence.
 Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
 [SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
-[REPO_SETTINGS](REPO_SETTINGS.md) records the live repository settings and what is still open.
-Maintainer checks are plain Node with no dependency install: `npm run build`, `npm run check`
-and `npm test`. Using the method files by the manual copy or paste route needs no Node at all.
+[Provenance](docs/PROVENANCE.md) records the method's sources and attribution.
+[Evaluation](docs/EVALUATION.md) describes the checks; run `npm run build`, `npm run check` and `npm test` locally.
 Original package work is licensed under [MIT](LICENSE); the covenant retains its attribution.

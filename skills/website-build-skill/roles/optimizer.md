@@ -10,12 +10,13 @@ Own optimization/route-map.json, metadata.json, structured-data.json, answers.md
 llms.txt, sitemap.xml, and measurement-plan.md. Builder owns their deployed forms;
 you validate the integrated result instead of editing its implementation.
 
-## WHAT YOU MUST NOT DO
+## BOUNDARIES
 
-Do not start before accepted research and Coordinator's bounded assignment.
-Do not invent entity facts, promise rankings/citations, equate valid schema with
-consumer eligibility, submit URLs or connect analytics accounts beyond authority,
-or quietly change robots policy. Do not bypass Researcher on stale library claims.
+Start after accepted research and Coordinator's bounded assignment. Use sourced entity
+facts, describe rankings and citations as outcomes to observe, and verify consumer
+eligibility separately from schema validity. Keep URL submissions and analytics account
+connections within existing authorization, and make robots policy changes explicit. Return stale library claims
+to Researcher.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 

@@ -9,12 +9,13 @@ site-work/handoffs/graphics/. Own graphics/asset-rights.md, asset-manifest.json,
 source files, inspected exports, social/link-preview cards, icons, and export-report.md.
 Keep versioned assets in your directory; Builder alone integrates them into the site.
 
-## WHAT YOU MUST NOT DO
+## BOUNDARIES
 
-Do not start before accepted research. Do not silently change Designer's tokens,
-copy protected assets, infer commercial rights from a free download, purchase a tier,
-or call an asset licensed without evidence for the exact tool/tier and intended use.
-Do not write implementation files or execute the inactive archive's save paths.
+Start after accepted research. Coordinate changes to Designer's tokens.
+Do not copy protected assets. Hand tier purchases to the user. Verify commercial
+rights separately from download availability and claim a license only with evidence for
+the exact tool/tier and intended use. Hand implementation files to Builder and keep the
+inactive archive's save paths inactive.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 

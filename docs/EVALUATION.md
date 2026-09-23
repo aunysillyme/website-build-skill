@@ -52,6 +52,9 @@ A change to the ledger itself requires code-owner review. No content checker can
 The gate scans every public file, including hidden community metadata, fixtures and generated bundles.
 It rejects personal paths, private identifiers, personal names and email addresses without echoing their values.
 Production exceptions are exact license authorship and repository URL namespaces.
+The related public repository allowlist contains exactly `agent-personalizer` and
+`model-orchestrator`, for GitHub URLs, raw file URLs and npm GitHub shorthand.
+The privacy regression rejects a third repository, longer names and adjacent private text.
 The supported public product name and exact CODEOWNERS handle are narrow, resolved
 exceptions implemented by privacyIssues. Path-shaped uses remain rejected. These
 exceptions do not permit personal identifiers elsewhere.

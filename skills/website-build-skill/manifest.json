@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.0",
+  "packageVersion": "0.1.1",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a9778cb747ebf96c8283bd4d814037b74df77e9256166159cbf39be6c05ef91c"
+      "sha256": "14083527283bb68e11a073776e48aa758514e934064ec24e0f83d131549eec76"
     },
     {
       "path": "manifest.json",
@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a505d4678267dbace9bbd38eb8ed35f4ce46cfb13318317aa521df7a733c750b"
+      "sha256": "f9be73afb8f0e7746f2e24db5131270ab6cbf7cf3e7636473b51962a679bdfe3"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -60,7 +60,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "233b0834ecd4a0c47f7d300c6e0f57c896a92b6c10899d985a676e246452c8b1"
+      "sha256": "3577554da4ddf2be09783e72a45fc84d39d79673b414408eee7a16c57efdb7c4"
     },
     {
       "path": "archive/graphics-design-original.md",
@@ -240,7 +240,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "b03951027d4c51cfcba27ea2245b635a3e254b912639f13e58a3002df65c6005"
+      "sha256": "245b0ee036e2c73619bab2c3b7585cf7b1cc7c5f9b7364dcd48a613ff2d1be78"
     },
     {
       "path": "roles/coordinator.md",
@@ -255,7 +255,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "8278f418fe13d8ee6ae554c28a2a3bdfe506952bbdf11b4059d9ba05ae19e0ac"
+      "sha256": "1049ee3d1d85976ed943d767d89814d9d83463707591c3bd0268a8be02f7fdca"
     },
     {
       "path": "roles/designer.md",
@@ -270,7 +270,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "1b416b4adc69b8e0a2f8a5c95249dbcd7fe6631459383d4f01f84f99ba89ed6f"
+      "sha256": "6b5cd29f2bdb3fa04fe09e336f9d4a9a02344b6afba7e8a33537dfd2f90b419a"
     },
     {
       "path": "roles/graphics.md",
@@ -285,7 +285,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "28f306cf62351bc9cd658323ab87fa6499b32d3c2f8bcfded67ec1c2502cb433"
+      "sha256": "7804f45877b93885c7b58767b2827f11164bd9a05728ef8f20db3a4c08e42428"
     },
     {
       "path": "roles/builder.md",
@@ -300,7 +300,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "391e2a89a6e9fe42a9481a6e9bef2f8254fb71fdc3c038fa82cc1a0894d04d9f"
+      "sha256": "7f7e957e65e2cff0d73baf6fd4dff5eb9468d451dbde792ddf4d5c143c6909b1"
     },
     {
       "path": "roles/optimizer.md",
@@ -315,7 +315,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "ae6f7dd1c9695c3f2b599ae04a6c32a84a5a3ea7489bac4463252fb6e0fe0470"
+      "sha256": "8ce2c1a4059f774df089a3716bc3e117e455e79aaeebb2021d394710bda981fb"
     },
     {
       "path": "roles/reviewer.md",
@@ -330,7 +330,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a912bb208a4759c70709fad92442fc4af094104d33d1a68556b30ba1d9161a05"
+      "sha256": "85e8355c2b7996ec1304024db3760ff489f3fdfbc1f962e9d54649b647eae599"
     },
     {
       "path": "playbooks/choose-stack.md",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "3bf9c16c76d8741b27926eff45c122dbc75c1e8d470a99d751e799ab5714a3f2"
+      "sha256": "9ff5f322e6f80b8bf9d1daa39e9416933fa7c6b911c27a0b1a134e2714ba434b"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -512,7 +512,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "4fa0f64ed012aa15aad274f7be330bcdcc676c069f660e1095f57984d557837e"
+      "sha256": "2bfc2be84723071e21dbcaa0eb607d5f08ef944b0eecc712f1ea16f95118c2a8"
     },
     {
       "path": "checklists/brand-and-mockups.md",
@@ -617,7 +617,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "30279786edb49ebdf4fd1116d326071f3fa84c25cc5575433f723150ca209ea8"
+      "sha256": "75f57202b34466534effc4f05918e51c9073b15c57e7d1c765426f68db4cfa25"
     },
     {
       "path": "references/stacks/scripted-static.md",
@@ -632,7 +632,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c45a7f8f32254e3be4933be90ca729bbfabdde9c203db81ce4cff24fc40795ca"
+      "sha256": "277eb746a20d8185cc5e07cdd10702f85e68a3f6172dbf04b2b20b415a77cf9f"
     },
     {
       "path": "references/stacks/framework.md",
@@ -647,7 +647,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "1f8b528af930748a2d68d4cdd290ad9413a8e5ad05466d8a9b9f67bc9e099fc3"
+      "sha256": "059ed2167912c80787fcc72cceb14ec8bea2c991056f95e03c7be4f25dab30cc"
     },
     {
       "path": "templates/install-choice.txt",
@@ -662,7 +662,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "86e729beecba45c1e08da6e3aa91c4e968fa86a08c1f3a27873bb29c56415a9e"
+      "sha256": "d90a9274f6f34126a5a8816f9ba3905b7f38435ccf2296b446ec67962ce0b518"
     },
     {
       "path": "templates/brief.md",
@@ -722,7 +722,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c29019ab6e1294c74c66642297da95eafb61c6c5e2b2e19fde449d354213017f"
+      "sha256": "9bb043eb71a2f9f1c8b293efa91bb1b5b844db91456571cab01e6e2f6bd60f9f"
     },
     {
       "path": "templates/handoff.yaml",

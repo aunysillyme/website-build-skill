@@ -61,11 +61,15 @@ digits, underscores and hyphens. Escape literal cell pipes with a backslash.
 ```
 
 Published matches the receipt's published field exactly. Status is OPENED or
-UNVERIFIED; `Verified` without a receipt is a gate failure. Run
-`website-build-skill check-library <root>/site-work` and record command, exit code
-and output. Without a shell, record Reviewer's manual equivalent of the five
-rules in checklists/research.md. Zero exit does not release acted-on UNVERIFIED
-claims: those keep research acceptance BLOCKED.
+UNVERIFIED; `Verified` without a receipt is a gate failure. Use this checker ladder;
+the five-rule manual equivalent is in checklists/research.md:
+
+1. `website-build-skill check-library <root>/site-work`, when that command is on PATH.
+2. Otherwise `npx -y website-build-skill@<packageVersion> check-library <root>/site-work`, where `<packageVersion>` is read from the installed `manifest.json`. Never write the literal version into prose, or it goes stale on every bump.
+3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
+4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
+
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
 
 ## Reuse and expiry record
 

@@ -1,8 +1,8 @@
 # Antigravity
 
-Status: UNVERIFIED. Candidate schema, paths, orchestration and enforcement need clean-client trials.
+Check the installed client schema, paths, orchestration and permissions before using native roles.
 Manual SOLO: copy the canonical folder into `.website-build-skill/` and explicitly ask the session to read its SKILL.md.
-Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --team --target antigravity --dir . --scope project --yes`.
+Install the files: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
 ## Planned definition contract
 
@@ -12,7 +12,7 @@ Never automatically fall back to the user-level candidate `~/.gemini/config/agen
 ```yaml
 ---
 name: <agent_name>
-description: "<one line: what it does, when to use it, what it never does>"
+description: "<one line: what it does, when to use it, its permission boundaries>"
 subagent: true
 mainAgent: false
 model: inherit
@@ -27,14 +27,14 @@ tools:
 ```
 
 Resolve method references to `.website-build-skill/`; retain project-relative artifact paths.
-Quote the policy string and round-trip all role text. A declaration is not evidence of enforcement.
+Quote the policy string and round-trip all role text. Verify the declared policy with a permission probe.
 Keep Coordinator dormant while the parent coordinates. `mainAgent: true` and worker creation need separate verification.
-Candidate inspection, UNVERIFIED: `/agents`; then route the first assignment to Website Researcher.
+If the installed client exposes it, inspect with: `/agents`; then route the first assignment to Website Researcher.
 
 ## Candidate tool mapping
 
-The supplied format observation is a design input, not current package evidence.
-Use only tools the installed client exposes. Do not interpret text-reading as image viewing or file writing as execution.
+Use the supplied format as a design input and check it against the installed client.
+Use only tools the installed client exposes. Check image viewing and code execution separately from text reading and file writing.
 
 | Role | Declared observed tools| Reason and permission scope | Capability without an observed name; section 5.7 route |
 | --- | --- | --- | --- |
@@ -56,13 +56,14 @@ Use only tools the installed client exposes. Do not interpret text-reading as im
 - References: [subagents](https://antigravity.google/docs/subagents), [agent manager](https://antigravity.google/docs/cli/commands/agents).
 
 
-## Common limits and smoke check
+## Check that it loaded
 
-Status: UNVERIFIED. Instructions and candidate paths do not establish native support.
+Native loading on this host is awaiting a real-client trial; the check below confirms it on yours. Current status: [compatibility](../docs/COMPATIBILITY.md).
+
 Give the host a synthetic brief and ask it to identify the entrypoint and complete asset list.
 Record client version, date, exact path, tool availability and the observed invocation.
 Start Researcher, verify saved library read-back, then confirm Coordinator waits for its gate.
 For TEAM, record seven separate routes and families; an inherited family leaves independent review BLOCKED.
 Never grant a Reviewer write access just to persist findings. Return text for Coordinator to capture.
-No search blocks current research; no files requires saved-and-reattached bodies; no images blocks visual mockups.
+When a tool is absent, keep current research BLOCKED until opened sources return; save and reattach named file bodies before the save gate; return inspected images before the visual gate.
 Read the [method](../docs/METHOD.md), [compatibility](../docs/COMPATIBILITY.md) and [installer contract](../docs/INSTALLER.md).

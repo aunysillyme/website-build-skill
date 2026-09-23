@@ -43,7 +43,7 @@ SOLO PATH
 SAME GATES
 Both paths hit the same gates. Solo work does not lower a threshold or waive a
 missing check. An INTERNAL review leaves independence unmet and release blocked.
-Read the missing-capability table in playbooks/research-and-memory.md.
+Read the Working with the tools you have table in playbooks/research-and-memory.md.
 
 FIRST
 - Tell me which of these you can actually use: search, URL reading, image viewing,
@@ -72,8 +72,15 @@ SAVE
   OPENED from memory or a search snippet. Without a receipt it is UNVERIFIED;
   an acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
 - Complete prompts/01-website-deep-research.md and its library before any other role.
-  Record `website-build-skill check-library <root>/site-work` command, exit code
-  and output, or Reviewer's five-rule manual equivalent when no shell exists.
+  Use this checker ladder; the five-rule manual equivalent is in checklists/research.md:
+
+  1. `website-build-skill check-library <root>/site-work`, when that command is on PATH.
+  2. Otherwise `npx -y website-build-skill@<packageVersion> check-library <root>/site-work`, where `<packageVersion>` is read from the installed `manifest.json`. Never write the literal version into prose, or it goes stale on every bump.
+  3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
+  4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
+
+  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+
 - After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
   under site-work/. If file tools are missing, return named bodies for me to save
   and reattach; wait for saved library read-back before any design work.

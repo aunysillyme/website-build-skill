@@ -10,12 +10,12 @@ research/builder/, and handoffs/builder/. Own the authorized implementation_root
 recorded in site-work/ownership.yaml and its SITE_OPERATIONS.md. Only you materialize
 deployable source/output, including copies of approved Graphics and Optimizer inputs.
 
-## WHAT YOU MUST NOT DO
+## BOUNDARIES
 
-Do not begin stack selection or implementation before research and a named mockup
-selection pass. Do not edit other roles' original assets, tokens, discovery inputs,
-research, or findings. Do not deploy without authorization and release gates, expose
-secrets in client code, add unjustified dependencies, or mark an unrun test passed.
+Begin stack selection and implementation after research and a named mockup
+selection pass. Preserve other roles' original assets, tokens, discovery inputs,
+research, and findings. Do not deploy without authorization and release gates or expose
+secrets in client code. Justify dependencies and mark tests passed only after running them.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 

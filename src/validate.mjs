@@ -3,7 +3,7 @@ import { posix } from 'node:path';
 import { CORE, ARCHIVE, ARCHIVE_SHA, digest, files, read, manifest, generated, owned } from './bundle.mjs';
 
 const roles = ['researcher', 'coordinator', 'designer', 'graphics', 'builder', 'optimizer', 'reviewer'];
-const headings = ['IDENTITY', 'WHAT YOU OWN', 'WHAT YOU MUST NOT DO', 'WHAT YOU NEED TO KNOW BEFORE YOU START', 'WHAT YOU MUST LEARN', 'WHAT YOU MUST RESEARCH', 'YOUR TOOLS', 'YOUR INPUTS', 'YOUR OUTPUTS', 'YOUR GATE', 'YOUR HANDOFF', 'HOW YOU FAIL'];
+const headings = ['IDENTITY', 'WHAT YOU OWN', 'BOUNDARIES', 'WHAT YOU NEED TO KNOW BEFORE YOU START', 'WHAT YOU MUST LEARN', 'WHAT YOU MUST RESEARCH', 'YOUR TOOLS', 'YOUR INPUTS', 'YOUR OUTPUTS', 'YOUR GATE', 'YOUR HANDOFF', 'HOW YOU FAIL'];
 const owner = ['au', 'ny', 'sillyme'].join('');
 const personal = ['au', 'ny'].join('');
 const product = ['Claude', 'Code'].join(' ');
@@ -36,6 +36,14 @@ export function privacyIssues(name, text, options = {}) {
     // manager takes, so it is exempt in exactly that spelling and no other.
     line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/website-build-skill(?=[/\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
     line = line.replace(new RegExp(`github:${owner}/website-build-skill(?=[\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
+    // Related public tools share this owner, but the allowance ends at each exact
+    // repository name. A third repository or a longer name still fails closed.
+    const siblings = '(?:agent-personalizer|model-orchestrator)';
+    // Aligned with the self-repo lookahead above by adding the same sentence-ending period,
+    // but only when nothing word-shaped follows it: a bare trailing "." closes a sentence,
+    // while ".private" is a different, unexempted name and must still fail closed.
+    line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/${siblings}(?=[/#?\\s)"'\\x60]|\\.(?!\\w)|$)`, 'g'), 'REPOSITORY');
+    line = line.replace(new RegExp(`github:${owner}/${siblings}(?=[\\s)"'\\x60]|\\.(?!\\w)|$)`, 'g'), 'REPOSITORY');
     if (privacyPattern.test(line) || /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(line)) issues.push(`PRIVACY:${name}:${i + 1}`);
     if (line.includes(String.fromCharCode(0x2014))) issues.push(`VOICE:${name}:${i + 1}`);
   }

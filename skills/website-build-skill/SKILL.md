@@ -1,6 +1,6 @@
 ---
 name: website-build-skill
-description: Research, design, build, audit, and prepare websites for release. Use for a new website, redesign, or whole-site review, including brand extraction and three visual mockups before site code. For a small isolated fix, load only the relevant audit or playbook.
+description: "Current website-building expertise for an AI: research, design, code, accessibility, performance, search and security. Research, design, build, audit, and prepare websites for release. Use for a new website, redesign, or whole-site review, including brand extraction and three visual mockups before site code. For a small isolated fix, load only the relevant audit or playbook."
 ---
 
 # Website Build Skill
@@ -15,7 +15,7 @@ How do you want to work?
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
                           One command installs their files; you open each session yourself.
 
-Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
+Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
 Where should the work be saved?
 
@@ -110,15 +110,16 @@ An INTERNAL critique cannot pass independence or a completed ship checklist.
 Reproduce findings, record ROUND 1 dispositions, and test fixes without an automatic second audit.
 Keep all project content and generated output outside the installed method directory.
 
-## Missing capabilities and support status
+## Working with the tools you have
 
-Use the complete missing-capability table in playbooks/research-and-memory.md.
+Use the complete tool table in playbooks/research-and-memory.md.
 Return named artifacts and exact settling checks for unavailable tools.
-No images means the mockup gate remains incomplete; no execution means untested code.
+Complete the mockup gate with inspected images and mark code tested after execution.
 A saved-file claim requires a successful write and read-back; memory needs its own receipt.
-No deployment access yields an operator handoff, not a released site.
-Native loading, installation, automated team creation, permissions and host integrations
-are UNVERIFIED until a recorded test proves them on the chosen surface.
-The install question describes the intended setup; definitions do not start workers
-or supply an independent model provider. Portable role prose is not a permission boundary.
-
+Hand deployment to an authorized operator when deploy access is unavailable.
+Check the chosen host's loading, installation, team creation, permissions and integrations
+with a recorded trial. See the repository's docs/COMPATIBILITY.md for host evidence.
+After installation, open the role sessions and provide a different model family for
+independent review. Enforce permissions through the host's own controls.
+Role text guides behaviour; real permissions come from the host's own settings and
+tools. Definitions start no workers and supply no second model provider.

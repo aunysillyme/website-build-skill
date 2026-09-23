@@ -58,7 +58,7 @@ When repeated structure or metadata requires recurring copy/edit work, revisit t
 scripted-static recipe before duplicating a growing set of pages.
 Record how shared navigation and discovery files remain consistent in the interim.
 
-## Limits and exit
+## When to move to a bigger stack
 
 Browser JavaScript cannot safely store server secrets or enforce private authorization.
 Use a separately justified endpoint or reconsider the framework branch for server state.

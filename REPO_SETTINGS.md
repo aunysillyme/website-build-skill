@@ -16,24 +16,24 @@ Research-first website-building skill: learn the craft, match the brand, compare
 - [x] All twenty topics below are applied. Read back 2026-09-21. They describe adapter coverage and method scope, not verified host support.
 
 - agent-skills
-- website-builder
+- ai-skills
+- llm-skills
+- claude-skills
+- skill-pack
 - web-design
 - web-development
 - claude-code
 - codex
-- hermes-agent
-- antigravity
-- grok
 - chatgpt
-- claude-desktop
+- grok
+- antigravity
 - multi-agent
-- prompt-engineering
-- design-systems
-- brand-design
 - accessibility
 - web-performance
 - seo
 - aeo
+- design-systems
+- brand-design
 - research-workflow
 
 ## Creation and access

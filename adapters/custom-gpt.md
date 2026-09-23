@@ -1,8 +1,8 @@
 # Custom GPT
 
-Status: UNVERIFIED for this package. In an eligible account, put the block below in Instructions and the bundles in Knowledge.
+In an eligible account, put the block below in Instructions and the bundles in Knowledge.
 Enable only available, authorized research/file tools. Use Preview to exercise a synthetic brief through research and mockups.
-Do not promise memory across chats. Save and reattach a state packet.
+Save and reattach a state packet in each new chat.
 
 ## Instruction block
 
@@ -21,7 +21,7 @@ Choose the smallest stack that meets the approved requirements.
 Load playbooks.md only for the topic being implemented or checked.
 Keep one primary action and truthful content consistent across every route.
 Never describe a proposed file, test, memory write, or deployment as completed.
-When you cannot search, write, test, or remember, state that limit and produce a handoff.
+For each tool the next stage needs, use it or return the exact handoff for a capable runner.
 Follow the human's recorded install choice; this upload selects SOLO.
 A later switch to TEAM uses the chosen host's setup and verified separate workers.
 Read all seven complete role bodies in team.md on either path. Before each job, complete
@@ -30,7 +30,7 @@ Name the previous framing you are clearing when changing solo jobs.
 An independent pre-release reviewer must use a different model family from the builder.
 Keep project data in this project; do not upload it to public examples or repositories.
 Do not publish beyond the user's recorded authorization.
-Finish each stage with artifacts, completed checks, remaining limits, and the next owner.
+Finish each stage with artifacts, completed checks, next steps, and the next owner.
 ```
 
 ## Upload these files from one revision
@@ -45,13 +45,14 @@ Supply private brief/brand files separately in the user's own project.
 For provenance only, supply the [inactive archive](../skills/website-build-skill/archive/graphics-design-original.md) separately if needed; never execute it.
 
 
-## Common limits and smoke check
+## Check that it loaded
 
-Status: UNVERIFIED. Instructions and candidate paths do not establish native support.
+Native loading on this host is awaiting a real-client trial; the check below confirms it on yours. Current status: [compatibility](../docs/COMPATIBILITY.md).
+
 Give the host a synthetic brief and ask it to identify the entrypoint and complete asset list.
 Record client version, date, exact path, tool availability and the observed invocation.
 Start Researcher, verify saved library read-back, then confirm Coordinator waits for its gate.
 For TEAM, record seven separate routes and families; an inherited family leaves independent review BLOCKED.
 Never grant a Reviewer write access just to persist findings. Return text for Coordinator to capture.
-No search blocks current research; no files requires saved-and-reattached bodies; no images blocks visual mockups.
+When a tool is absent, keep current research BLOCKED until opened sources return; save and reattach named file bodies before the save gate; return inspected images before the visual gate.
 Read the [method](../docs/METHOD.md), [compatibility](../docs/COMPATIBILITY.md) and [installer contract](../docs/INSTALLER.md).
