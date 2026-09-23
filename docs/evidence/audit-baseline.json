@@ -1,0 +1,61 @@
+{
+  "command": "node scripts/check.mjs && node --test test/*.test.mjs; gh api commit check-runs",
+  "environment": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "node": "v22.22.3"
+  },
+  "date": "2026-09-23T02:47:12.096887+00:00",
+  "exitCode": 0,
+  "artifactRevision": "b19926eeac2caf5d91dd6a493eddb2a53bc0d973",
+  "artifactSha256": "1620187ebd4b3a6f209eadbcaf4c2877785e7ee96c5c387ebf28d2d9c2615c61",
+  "digestMethod": "SHA-256 of git archive <artifactRevision> (tar bytes).",
+  "observed": {
+    "localCheck": "PASS",
+    "localTests": {
+      "pass": 64,
+      "fail": 0,
+      "todo": 2
+    },
+    "hostedChecks": [
+      {
+        "name": "Repository checks (Node 22.22.3)",
+        "conclusion": "success",
+        "headSha": "b19926eeac2caf5d91dd6a493eddb2a53bc0d973",
+        "url": "https://github.com/aunysillyme/website-build-skill/actions/runs/35664732705/job/106547817314"
+      },
+      {
+        "name": "Repository checks (Node 24)",
+        "conclusion": "success",
+        "headSha": "b19926eeac2caf5d91dd6a493eddb2a53bc0d973",
+        "url": "https://github.com/aunysillyme/website-build-skill/actions/runs/35664732705/job/106547817222"
+      },
+      {
+        "name": "Repository checks (Node 18)",
+        "conclusion": "success",
+        "headSha": "b19926eeac2caf5d91dd6a493eddb2a53bc0d973",
+        "url": "https://github.com/aunysillyme/website-build-skill/actions/runs/35664732705/job/106547817215"
+      },
+      {
+        "name": "Repository checks (Node 20)",
+        "conclusion": "success",
+        "headSha": "b19926eeac2caf5d91dd6a493eddb2a53bc0d973",
+        "url": "https://github.com/aunysillyme/website-build-skill/actions/runs/35664732705/job/106547817004"
+      }
+    ],
+    "registry": {
+      "commandExitCode": 1,
+      "errorCode": "E404",
+      "package": "website-build-skill",
+      "note": "Observed during audit; registry state can change."
+    },
+    "actionTags": {
+      "actions/checkout": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "actions/setup-node": "820762786026740c76f36085b0efc47a31fe5020"
+    }
+  },
+  "limitations": [
+    "Historical baseline only; not validation of later commits.",
+    "No native host activation, end-to-end website outcome, or publication is established."
+  ]
+}

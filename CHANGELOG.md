@@ -24,14 +24,14 @@ No version has shipped. Metadata version 0.1.0 identifies an unreleased draft.
 - Same-day receipt reuse follows the UTC calendar day within one engagement, with new fetches after day changes or change triggers.
 
 - First-run retrieval paths name the public repository tree, archive and raw files instead of waiting on publication.
-- The install choice card states manual host setup today, because no one-command installer ships.
+- The install choice card distinguishes file installation from manual worker setup; the installer does not start workers.
 - The zero-install starter names the full twelve-stage route, including Scope, Choose, Protect and Challenge.
-- Maintainer scripts fail with an explicit Node 22 message instead of the runtime's `bad option` error.
+- Maintainer scripts use plain JavaScript ES modules without the former TypeScript runtime flag.
 - Repository settings are recorded as a dated live read-back rather than an unapplied proposal.
 
 - The installer the contract specified: preflight, symlink and traversal refusal, no-clobber
   idempotence, dry run, a receipt of per-file digests, receipt-based uninstall and exit codes.
-- Public npm package with a real `bin`, an engine floor continuous integration actually runs,
+- Publishable package metadata with a real `bin`, an engine floor continuous integration runs,
   and a `v*` tag that publishes with provenance through npm trusted publishing.
 - Sources renamed from `.ts` to `.mjs`, since none of them contained TypeScript. The
   `--experimental-strip-types` flag, its runtime guard and the Node 22.6 floor are gone.

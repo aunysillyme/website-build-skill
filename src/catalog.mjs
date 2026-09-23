@@ -9,4 +9,4 @@ export const targets = Object.freeze({
   portable: '.website-build-skill',
   chatgpt: 'website-build-skill-upload',
 });
-export const status = 'UNVERIFIED: candidate paths; no installer implementation';
+export const status = 'UNVERIFIED: host activation; file installer implemented';
