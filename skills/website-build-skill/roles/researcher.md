@@ -38,7 +38,7 @@ the research gate BLOCKED. No other role begins because a partial packet exists.
 ## WHAT YOU MUST LEARN
 
 Read prompts/01-website-deep-research.md first: it is your primary instrument.
-Read prompts/02-graphics-design-original.md as the source of the graphics domain,
+Read archive/graphics-design-original.md as the source of the graphics domain,
 including its emphasis on brief interpretation, taste, brand extraction, and rights.
 It stays a verbatim inactive archive; its historical save destination is not active.
 Learn evidence handling from playbooks/research-and-memory.md and templates/evidence.md.
@@ -90,151 +90,15 @@ Apply these standards to every domain and top-up:
 Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
 
-Research all thirteen domains below current as of the ASK DATE. Paths in the domain
-artifacts are relative to site-work/research/library/. Survey each domain, even when
-its implementation checks become NOT APPLICABLE with a reason. Expand relevant
-questions for auth, databases, payment flows, content operations, localization,
-privacy, testing, observability, and recovery; do not treat this list as a ceiling.
-Keep the legal pass light and make evidence gaps visible.
+Use [the research prompt](../prompts/01-website-deep-research.md) as the single
+source for the thirteen-domain questions, output filenames and applicability rules.
+Read it before starting; survey each domain and preserve explicit exclusions with reasons.
+Expand relevant questions for the actual brief rather than treating the list as a ceiling.
 
-1. Reference codebases and real implementations.
-   Questions: open real repositories and read the entrypoints, routes, templates,
-   data models, build scripts, tests, and deploy configuration. Which patterns recur
-   in well-built sites as of the ASK DATE? What is minimal for this brief, and what is over-built?
-   Compare a no-build site, a scripted static site, and an application where useful.
-   Record repository URL, inspected revision, exact file links, license, and the
-   behavior the code actually implements. Reading a README alone is not inspection.
-   Artifact: 01-codebases-and-stacks.md, domain 1 implementation comparison and
-   inspected-file ledger; checklists/01-codebases.md with reuse and complexity checks.
-2. Stacks and frameworks.
-   Questions: which current versions and APIs fit this brief? What changed recently,
-   what is deprecated, what are the browser/runtime support and upgrade costs, and
-   what does each stack actually do well? When is no framework the right answer?
-   Include data-plus-template publishing, tests, content ownership, localization if
-   needed, integrations, and maintenance. Do not select a stack before a mockup.
-   Artifact: 01-codebases-and-stacks.md, domain 2 dated comparison and migration
-   notes; checklists/02-stacks.md mapping every proposed layer to a requirement.
-3. Design.
-   Questions: inspect award-winning sites from the last two to three years relative
-   to the ASK DATE, the award criteria, and the actual live work. What wins and
-   why does it work for its audience? Study grids, whitespace, type pairing/scales,
-   color systems, tokens, message hierarchy, and copy-visual relationships.
-   Look past the generic AI template; visit threejs.org examples to see what a browser
-   can really do. Evaluate capability, interaction cost, and a simpler alternative.
-   Go deepest on translating a brief into concrete visual choices. Go deep on taste
-   and critique, and on brand-kit extraction: observed, inferred, and approved rules.
-   Artifact: 02-design-and-experience.md, domain 3 case studies and decision rubric;
-   how-to-read-a-brand-kit.md; checklists/03-design.md with brand and mockup tests.
-4. Graphics skills.
-   Questions: what can current image tools actually create or edit, at what pricing,
-   and with which COMMERCIAL RIGHTS PER TIER? Verify the exact product/tier's terms,
-   inputs, outputs, attribution, redistribution, and relevant exclusions separately.
-   What are the social/link-preview sizes and safe zones as of the ASK DATE? Study
-   formats, vector versus raster, compression, responsive crops, export hygiene,
-   icon consistency, font embedding/subsetting, and stock licensing. Inspect output.
-   Use prompts/02-graphics-design-original.md as the archived source of this domain;
-   learn its standards and deep areas without executing its historical SAVE paths.
-   Artifact: 03-graphics-and-rights.md, domain 4 tool/tier/rights matrix and format
-   specifications; checklists/04-graphics.md with export, crop, and rights gates.
-5. UI and UX.
-   Questions: what interaction and navigation patterns fit the site's main task?
-   Research forms, validation, empty/error/loading/success states, recovery, motion
-   and when it hurts, mobile/touch behavior, content hierarchy, and localization.
-   What do observed users actually do versus designer assumptions? Distinguish
-   usability evidence from taste and hypotheses; specify tests for unknown behavior.
-   Artifact: 02-design-and-experience.md, domain 5 journey/state matrix and evidence
-   limits; checklists/05-ui-ux.md with primary-task and recovery scenarios.
-6. Accessibility.
-   Questions: what is the current WCAG version and applicable target level? Which
-   criteria cover this project's content and controls? Compute contrast instead of
-   eyeballing it; identify thresholds by actual text/control context. Research
-   keyboard paths, visible/restored focus, screen-reader semantics, reduced motion,
-   touch targets, reflow, media alternatives, and manual versus automated testing.
-   Artifact: 04-accessibility-and-performance.md, domain 6 criteria/test matrix;
-   checklists/06-accessibility.md naming calculator inputs and manual journeys.
-7. Performance.
-   Questions: what are the current Core Web Vitals thresholds, measurement windows,
-   device segmentation, and lab-versus-field limits? Which image formats, responsive
-   sizing, loading priorities, font strategy, caching, and third-party costs affect
-   this site? What interventions have measured effects rather than score folklore?
-   Include network/CPU constraints, realistic route budgets, and repeatable runs.
-   Artifact: 04-accessibility-and-performance.md, domain 7 dated measurement plan
-   and budget proposals; checklists/07-performance.md with tools and evidence fields.
-8. SEO.
-   Questions: what is the current documented indexing/ranking behavior relevant to
-   these pages? Which structured-data types are supported by which consumers and
-   validators? Research crawlable HTML, canonical/redirect behavior, robots rules,
-   sitemaps, internal linking, search intent, content quality, and site migrations.
-   What can a small site realistically win? Distinguish documented eligibility,
-   observed indexing, and speculative ranking claims; promise none as guaranteed.
-   Artifact: 05-search-and-answers.md, domain 8 route/discovery requirements and
-   validator map; checklists/08-seo.md with rendered-page and live-response checks.
-9. AEO and AI citation.
-   Questions: as of the ASK DATE, how do answer engines select and cite sources, and which parts
-   are documented, experimentally observed, or unknown? Study answer-first and
-   standalone-quotable structure, provenance, entity graphs, and source freshness.
-   What is the current state of the llms.txt proposal, actual adoption evidence,
-   and AI crawler behavior? Separate training, search, and user-triggered retrieval
-   where sources distinguish them. Do not infer citation from crawler access.
-   Artifact: 05-search-and-answers.md, domain 9 evidence/uncertainty table, entity
-   guidance, and crawler policy options; checklists/09-aeo.md with parity tests.
-10. Security.
-    Questions: what headers and exact CSP syntax does each candidate host use for
-    static, dynamic, redirect, and error responses? Which current attack classes
-    apply to this site's inputs, dependencies, forms, auth, payments, or uploads?
-    Study context-safe rendering of fallible data, script-bound JSON, URL schemes,
-    secret boundaries, authorization, supply-chain exposure, and scanner grading.
-    Record what a grade cannot prove; verify functionality with the policy enforced.
-    Artifact: 06-security-and-delivery.md, domain 10 threat/surface matrix and dated
-    host syntax; checklists/10-security.md with adverse cases and response checks.
-11. Hosting, deploy and DNS.
-    Questions: which current platforms fit, with what configuration/header syntax,
-    build commands, preview isolation, rollback, runtime limits, and free-versus-paid
-    conditions? Research custom domains, DNS records/TTL/propagation, HTTPS, redirects,
-    caching, environment separation, monitoring, backups, and recovery where needed.
-    Include commercial-use restrictions and ongoing maintenance costs. Do not create
-    accounts, alter DNS, incur charges, or deploy while researching these options.
-    Artifact: 06-security-and-delivery.md, domain 11 host comparison and release/
-    recovery plan; checklists/11-hosting.md with domain, preview, and rollback tests.
-12. Measurement.
-    Questions: how should analytics and search consoles be set up for this project?
-    What primary action, event taxonomy, conversion path, and receiving property
-    should be checked? Research delivery verification, consent/data minimization,
-    retention, sampling, bots, attribution, small samples, and field-data lag.
-    What can each number tell us, and what causal claim cannot follow from it?
-    Include an owner and cadence for checking results and instrumentation failures.
-    Artifact: 07-measurement-and-operations.md, event plan and interpretation limits;
-    checklists/12-measurement.md with receiving-property proof and privacy checks.
-13. Legal, kept light.
-    Questions: which font and stock licenses cover the intended use and redistribution?
-    What commercial rights and restrictions apply to the exact AI imagery tool/tier,
-    and what remains uncertain about generated content or trademarks? Identify
-    jurisdiction-specific privacy/consent or commerce questions only where the brief
-    makes them relevant, cite authoritative sources, and refer unresolved legal
-    determinations to the owner or qualified adviser. Do not claim legal clearance.
-    Artifact: 03-graphics-and-rights.md, domain 13 rights ledger requirements and
-    unresolved questions; checklists/13-legal.md with evidence and escalation paths.
-
-Freshness table: generated from playbooks/research-and-memory.md#ask-date-rule;
-write the identical table into staleness.md. These are reuse defaults, not guarantees.
-Use its date arithmetic, current-version triggers, same-day checks, and prior-library
-procedure; record the earliest-expiring domain, window and ASK DATE-relative due date.
-
-| Domain | Freshness window relative to ASK DATE | Why this window and what triggers an earlier recheck |
-| --- | --- | --- |
-| 1. Reference codebases and real implementations | 30 days for pattern comparisons; verify revision and maintenance status at first reuse. | Structural lessons outlast releases, but a moving branch may change the inspected implementation. New revision, license or security advisory triggers a recheck. |
-| 2. Stacks and frameworks | 7 days for landscape comparisons; same-day check for selected versions, APIs, deprecations and support. | Framework releases and exact API contracts can change within a build; confirm the current supported version before coding against it. |
-| 3. Design | 365 days for typography, colour theory, gestalt and grids; 90 days for awards, trends and anti-trends. | Fundamentals decay slowly; examples and trends need a fresher view. Award selection always covers the last two to three years relative to ASK DATE. |
-| 4. Graphics skills | Same-day check for tool capabilities, pricing, commercial rights per tier and destination specs; 90 days for export craft. | Product tiers, safe zones and rights can change without changing a tool's name; stable compression principles need less repetition. |
-| 5. UI and UX | 180 days for tested interaction principles; 30 days for browser/device interaction behavior. | Task and recovery principles persist; platform behavior changes. A new input mode, audience or observed usability failure triggers a recheck. |
-| 6. Accessibility | 365 days for fundamentals; current-version check at first reliance and after 30 days. | Age alone does not invalidate contrast or keyboard principles. Confirm the current standard release, target level and relevant errata as of ASK DATE, and again before applying any newly discovered release. |
-| 7. Performance | 30 days for measurement strategy; same-day check for CWV thresholds, metric definitions and selected tooling. | Loading principles are durable, while current metric semantics and measurement tools can change; distinguish field evidence from lab results. |
-| 8. SEO | 7 days for general documented behavior; same-day check for search features, schema eligibility and indexing interfaces. | A supported feature can retire or change independently of basic crawlability; platform announcements trigger immediate recheck. |
-| 9. AEO and AI citation | Same-day check for crawler policies, citation behavior, search behavior and proposal adoption. | Consumer behavior and documentation change quickly and evidence is incomplete; a prior observation never proves present citation behavior. |
-| 10. Security | 7 days for the threat landscape; same-day check for advisories, host header/CSP syntax and scanner criteria. | Structural escaping remains useful, but new exposure or configuration behavior can invalidate a safe-looking baseline. Surface changes trigger immediate review. |
-| 11. Hosting, deploy and DNS | Same-day check for platform capabilities, plan prices/restrictions, header syntax and deploy configuration; 90 days for DNS fundamentals. | Commercial limits and deployment contracts change quickly; name-resolution principles change slowly. Recheck the actual target before release. |
-| 12. Measurement | 30 days for setup and interpretation guidance; same-day check for selected event APIs, consent settings and receiving-property behavior. | Statistical caveats persist; vendor interfaces and active configuration do not. Changed instrumentation or property triggers verification. |
-| 13. Legal, kept light | Same-day check for exact font/stock/AI tool licenses and intended-use rights; 30 days for background guidance. | Rights attach to a particular asset, version and tier; a previously allowed use is not evidence for a new use. Changed terms or jurisdiction triggers review. |
+Use [the canonical freshness rule](../playbooks/research-and-memory.md#ask-date-rule)
+for the thirteen-domain table, date arithmetic, current-version triggers, same-day checks
+and prior-library pass. Copy that table into the project's staleness.md, with claim-level
+revalidation and the earliest-expiring domain. Never maintain a separate policy table here.
 
 ## YOUR TOOLS
 
@@ -271,7 +135,7 @@ expected evidence, source IDs, owner, status, and exclusion reason per check.
 Write website-qa-checklist.md and how-to-read-a-brand-kit.md so research is executable.
 Write surprises.md as a short sourced summary for the user, and learning.md as your
 record of learned rules. Every research output is Markdown with the dated opener.
-Write staleness.md with the thirteen-domain table below, claim/domain, ASK DATE,
+Write staleness.md with the canonical playbook's thirteen-domain table, claim/domain, ASK DATE,
 window, original access, last revalidation, next-check date, trigger, reason, owner,
 affected receipts, and the earliest-expiring domain and its ASK DATE-relative due date. Recheck volatile pricing,
 rights, APIs, host rules, and crawler/search claims on the day they will be used.

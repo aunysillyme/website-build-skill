@@ -3,7 +3,7 @@ import { resolve, relative, dirname, sep, posix } from 'node:path';
 import { createHash } from 'node:crypto';
 
 export const CORE = 'skills/website-build-skill';
-export const ARCHIVE = 'prompts/02-graphics-design-original.md';
+export const ARCHIVE = 'archive/graphics-design-original.md';
 export const ARCHIVE_SHA = 'd985b6fcaf5c0de9c6d60f2511bb9fa5728ad0d2d543a64a673962647ea5388a';
 export const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 

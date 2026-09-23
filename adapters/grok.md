@@ -17,7 +17,7 @@ Give me the team (option 2). Use the attached team.md and create Website Researc
 **Prepare the files and workspace**
 
 - Get the complete `docs/bundles/team.md`, `method.md`, `prompts.md`, `playbooks.md`, and `checklists.md` from the same release. The team bundle contains the seven complete role bodies and this guide; the prompts bundle contains active prompts.
-- Get `skills/website-build-skill/prompts/02-graphics-design-original.md` separately for Researcher's provenance reading. Keep its inactive header and do not execute its historical save instructions.
+- Get `skills/website-build-skill/archive/graphics-design-original.md` separately for Researcher's provenance reading. Keep its inactive header and do not execute its historical save instructions.
 - Choose the private project workspace where `site-work/` will live. Keep its research and brand files out of the public skill repository and deployment output.
 - Open your host's Bots area. Use **New** to create one Bot at a time; set its name and paste the entire named role body into its instruction field, then save. These are semantic field instructions; exact field labels in your account must be checked. A missing **New**, instruction field, or group control is an UNVERIFIED setup limit, not permission to invent an API.
 - Give each Bot the method, prompt, playbook and checklist bundles as files or pasted text through controls your account actually provides. If a filename inside an instruction is inaccessible, attach or paste that file's contents with its label before work starts. Shared group membership alone does not prove file access.

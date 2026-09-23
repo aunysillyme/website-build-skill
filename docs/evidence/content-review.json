@@ -55,7 +55,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/chatgpt-project.md": {
-      "sha256": "71bc6e2dbc77c58f9286dd7f82d2b0f1158cc4e74e8eba4983153fa33b456e02",
+      "sha256": "3d2ddc63d3b4b49f40f5efeb684c6f94dd48a874ef92a3b605a92854e163858a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-code.md": {
@@ -63,7 +63,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-desktop.md": {
-      "sha256": "784165915ac2c2a486a8f0d9b1f33a8a30ee2d81105d74fbdcd6bcb44c32eab9",
+      "sha256": "1fd8cf190c3ab4c46b9c4fab9f033d4958542ea930b67f9013cb5c78b5fbb20b",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/codex.md": {
@@ -71,11 +71,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/custom-gpt.md": {
-      "sha256": "b31dafccdc76e91c4037e2d911194c7ea6f205fab0aec115896e6e5df8030dd8",
+      "sha256": "ca76ba3718628833235e08528baae8705f96b50e4370ec72fb917c1fc18673eb",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/grok.md": {
-      "sha256": "e4dc7aa9ff4991a4e4610812faa476f267167c3470a3f728105b09da3ec5e24c",
+      "sha256": "6d0422e852b01d105a677d9fb465c87efee322f235b7376b30c752191b857808",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/hermes.md": {
@@ -115,7 +115,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/PROVENANCE.md": {
-      "sha256": "691d37b62a67c6f627b9c238d5832ac88af88875998dd8e779fe7599726ac595",
+      "sha256": "a4d8039968d64163c78997e15b1a9dc8cc5b1e7aa6995a0f07e789758b2e7cb4",
       "disposition": "evidence-backed",
       "claims": [
         {
