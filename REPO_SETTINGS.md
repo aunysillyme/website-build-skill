@@ -7,9 +7,9 @@ trusting any row; a checklist is only as current as its last read.
 
 ## Description
 
-- [x] Repository description set to this one line. Read back 2026-09-21; it matches.
+- [x] Repository description set to this one line, identical to package.json and npm. Read back 2026-09-23; it matches.
 
-Research-first website-building skill: learn the craft, match the brand, compare three mockups, then build and verify. Use one AI or a seven-role team with reusable research, design, accessibility, SEO and release checklists.
+Skills that make your AI an expert website builder: current research, design, accessibility, performance, SEO, security and code, for any LLM or agent.
 
 ## Topics
 

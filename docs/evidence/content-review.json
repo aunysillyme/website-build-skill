@@ -10,9 +10,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "89f975db648fa714f2855a1e921ef240752f2db946ef53253e556ad468d50c2a",
+      "sha256": "a459e172980dc7c72d410017d6ed5474902e39c72d19f48d26eb3f5f0359da79",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
     },
     "CLAUDE.md": {
       "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
@@ -36,13 +36,14 @@
       "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "RELEASING.md": {
-      "sha256": "c09c6fe815997615f0242d580430d8c83175b3ef2c0b0b929f9bd4d6284def2a",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "7e89b30d20fef7570fc0485f80844c651a861a18956efd43e1555967f3e8dde4",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.3: reviewed the same-commit description update and explicit GitHub command against the task specification; no live repository setting was changed in this offline implementation pass. Implementation-agent editorial review; independent review remains pending. The command uses the exact repository URL to preserve the existing privacy allowance for public repository references."
     },
     "REPO_SETTINGS.md": {
-      "sha256": "d3ca77b4497f879efd18b316f721b28074e0778246f93e99d4c5889013d0e33b",
+      "sha256": "f0a405e61c2361c9b746a867279dc2ca28a983a14899d14b249286c486e989de",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Topic list changed to match the skill-pack framing and package.json keywords (20 topics). Reviewed by Claude against the check TOPICS rule."
+      "review": "Topic list changed to match the skill-pack framing and package.json keywords (20 topics). Reviewed by Claude against the check TOPICS rule. 0.1.3: matched the Description text to package.json and added the requested 2026-09-23 read-back row from the maintainer task bundle; GitHub and npm were not independently queried in this offline implementation pass. Implementation-agent editorial review; independent review remains pending."
     },
     "SECURITY.md": {
       "sha256": "9e0a9064cd020c23ae82f4c734ceab24bb9e4297073227a49ecc41414e33f8b7",
@@ -89,9 +90,9 @@
       "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/hermes.md": {
-      "sha256": "14675d43a1561d2ad43f6b2cdda47e7312d1ba9aba3354ecec4c1545bcccb90d",
+      "sha256": "eeba94a78d84587d8a5fefea75692ff9ae4c2efaeb119a8672b22e18b5ad8724",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed team-aliases placement and the destination boundary against src/install.mjs plan/safePath and the extended installer regression; native loading status is unchanged. Implementation-agent editorial review; independent review remains pending."
     },
     "adapters/zero-install.md": {
       "sha256": "7ac8fb37969ecbc321be6e74f6193d04d61ed4760ca7951975ab6d636d227699",
@@ -121,9 +122,9 @@
       "review": "Reviewed the exact two-sibling allowlist against production privacy rules and rejection regressions. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/INSTALLER.md": {
-      "sha256": "87b5c2e78fe62d626d7b25987552124a71d94797670314dbeba7b22b63acb6d5",
+      "sha256": "85944c760b696080cb2ba8b6d381af13da3aeafa517965c7c7e28dd4625b10c6",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending."
+      "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending. 0.1.3: reviewed the installed skill folder resolution root, exit 3 and Path escapes destination root message against src/install.mjs and the installer regression. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/METHOD.md": {
       "sha256": "c316397d190cb1b86e6167914106e6fd71db97b7d18e1af09e5f18b36e04b266",

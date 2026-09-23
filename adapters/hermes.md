@@ -6,7 +6,8 @@ For explicit loading, ask the session to read its SKILL.md directly.
 After confirming the installed CLI supports it, try preload: `hermes -s website-build-skill` after discovery is confirmed.
 After checking the installed CLI help, use its trust operation: `hermes skills trust`; this changes trust state and requires the user's authorization.
 Do not create version-control state or alter global settings during a copy.
-Install the files: `npx website-build-skill --team --target hermes --dir . --scope project --yes --bundle-dir ./team-aliases`.
+Install the files: `npx website-build-skill --team --target hermes --dir . --scope project --yes --bundle-dir team-aliases`.
+The path is relative to the installed skill folder, so the alias files land in `.agents/skills/website-build-skill/team-aliases/` and the path must stay inside that folder.
 
 ## Two planned branches
 

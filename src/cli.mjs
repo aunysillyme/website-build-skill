@@ -8,7 +8,7 @@ check-library <site-work-dir> (read-only receipt validation)
 --solo | --team  --target ${Object.keys(targets).join('|')}
 --dir <path>  --scope project|user  --output-dir <path>
 --yes  --dry-run  --receipt <path>  --uninstall  --help  --version
---bundle-dir <path> (Hermes TEAM only)
+--bundle-dir <path> (Hermes TEAM only; relative to the installed skill folder)
 Headless installs require explicit mode, target and --dir.
 Activation remains UNVERIFIED.`;
 

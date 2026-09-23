@@ -351,6 +351,9 @@ export function check(root, options = {}) {
     if (/they are ready/i.test(choice)) issues.push('CHOICE_HONESTY:no installer creates a running worker');
     if (!p.bin && !/one-command install is planned/i.test(choice)) issues.push('CHOICE_HONESTY:manual-setup statement missing');
     const settings = read(root, 'REPO_SETTINGS.md');
+    const description = settings.split(/^## Description\r?$/m)[1]?.split(/^## /m)[0]
+      .split(/\r?\n/).filter(line => line.trim() && !/^- \[[ x]\] /.test(line)).join('\n');
+    if (description !== p.description) issues.push('DESCRIPTION_DRIFT:REPO_SETTINGS.md');
     const topics = settings.split('## Topics')[1].split('## Creation')[0].split('\n').filter(s => /^- [a-z0-9-]+$/.test(s)).map(s => s.slice(2));
     if (JSON.stringify(topics) !== JSON.stringify(p.keywords) || topics.length > 20 || topics.some(t => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(t) || t.length >= 50)) issues.push('TOPICS:invalid or mismatched keywords');
     if (p.description.length >= 350) issues.push('DESCRIPTION:too long');
