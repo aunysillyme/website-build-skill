@@ -10,7 +10,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "d6153194f54442b81f04087b3bae7970b023b29ace0a88d2f3f904fe6db475a5",
+      "sha256": "26189880cd8fd05ffebbe91dc337b1ad75ff011ded9d0246fd0fe3018fcb8708",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     },
