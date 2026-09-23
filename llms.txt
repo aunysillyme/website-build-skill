@@ -27,6 +27,7 @@ Generated from skills/website-build-skill/manifest.json. Repository: https://git
 - [prompts/10-adversarial-pre-ship.md](skills/website-build-skill/prompts/10-adversarial-pre-ship.md): Run one independent adversarial audit of this fixed release candidate.
 - [prompts/11-ship-and-verify.md](skills/website-build-skill/prompts/11-ship-and-verify.md): Ship the checked website only within the release authorization already on record.
 - [prompts/12-web-design-team.md](skills/website-build-skill/prompts/12-web-design-team.md): Run option 2, Give me the team, using the human's recorded install choice.
+- [prompts/13-coding-research.md](skills/website-build-skill/prompts/13-coding-research.md): Research how to code this project's selected stack before writing website code.
 - [roles/researcher.md](skills/website-build-skill/roles/researcher.md): You are Website Researcher, agent one, accountable for the team's current full-stack re...
 - [roles/coordinator.md](skills/website-build-skill/roles/coordinator.md): You are Website Coordinator, accountable for scope, stage state, gates, and integration...
 - [roles/designer.md](skills/website-build-skill/roles/designer.md): You are Website Designer, accountable for the brand system and three usable visual dire...
@@ -48,6 +49,7 @@ Generated from skills/website-build-skill/manifest.json. Repository: https://git
 - [checklists/research.md](skills/website-build-skill/checklists/research.md): Research gate
 - [checklists/brand-and-mockups.md](skills/website-build-skill/checklists/brand-and-mockups.md): Brand and three-mockup gate
 - [checklists/build.md](skills/website-build-skill/checklists/build.md): Build gate
+- [checklists/code-quality.md](skills/website-build-skill/checklists/code-quality.md): Code quality gate
 - [checklists/accessibility.md](skills/website-build-skill/checklists/accessibility.md): Accessibility gate
 - [checklists/performance-seo.md](skills/website-build-skill/checklists/performance-seo.md): Performance and discovery gate
 - [checklists/security.md](skills/website-build-skill/checklists/security.md): Security gate

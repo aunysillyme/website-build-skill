@@ -27,7 +27,7 @@ roles:
     owns: [graphics, research/graphics, handoffs/graphics]
   builder:
     instructions: roles/builder.md
-    owns: [stack.md, build, qa/build, qa/site-audit.md, qa/accessibility.md, qa/contrast.md, qa/security-headers.md, audit, release, research/builder, handoffs/builder]
+    owns: [stack.md, coding-standards.md, build, qa/build, qa/site-audit.md, qa/accessibility.md, qa/contrast.md, qa/security-headers.md, audit, release, research/builder, handoffs/builder]
     external_owns: [implementation_root, implementation_root/SITE_OPERATIONS.md]
   optimizer:
     instructions: roles/optimizer.md

@@ -94,6 +94,10 @@ NEXT
 - Without web search, say so, write the query plan and unresolved-claim ledger, and
   stop at the research gate; do not present unresearched output as researched.
 - Then extract the brand and show three visual mockups before writing website code.
+- Builder follows prompts/05-stack-and-build.md and runs
+  [prompts/13-coding-research.md](13-coding-research.md) after Choose, before Build.
+  Learn site-work/coding-standards.md before coding and apply
+  [checklists/code-quality.md](../checklists/code-quality.md) during Build and Challenge.
 - Finish with the current stage, its evidence, and the next concrete action.
 
 EVIDENCE

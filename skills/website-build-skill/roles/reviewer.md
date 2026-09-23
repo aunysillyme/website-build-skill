@@ -32,12 +32,14 @@ disagreements.md, unresolved-claims.md, and staleness.md in that same directory.
 Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/01-codebases-and-stacks.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 03-graphics-and-rights.md for rights checks.
+06-security-and-delivery.md, 08-languages-and-code.md, and
+03-graphics-and-rights.md for rights checks. Read site-work/coding-standards.md.
 Read all applicable library checklists, especially 06-accessibility.md,
-10-security.md and 13-legal.md. Read prompts/10-adversarial-pre-ship.md,
+10-security.md, 13-legal.md, and 14-code.md. Read prompts/10-adversarial-pre-ship.md,
 playbooks/data-and-templates.md, playbooks/security-headers.md,
-playbooks/accessibility.md, checklists/build.md, checklists/accessibility.md,
-checklists/security.md, checklists/ship.md, and templates/audit-brief.md.
+playbooks/accessibility.md, checklists/build.md, checklists/code-quality.md,
+checklists/accessibility.md, checklists/security.md, checklists/ship.md,
+and templates/audit-brief.md.
 Return your learning receipt with opened files, assumptions challenged, and checks.
 
 ## WHAT YOU MUST RESEARCH
@@ -108,6 +110,9 @@ Old dates may appear only as explicit history alongside current validated access
 Treat a confident undated claim as a finding, not a detail. Verify source dates,
 ladder provenance, due domains and later-day rechecks; return violations read-only.
 Check actual different-family evidence and the precise artifact reviewed. Challenge
+the code against checklists/code-quality.md and site-work/coding-standards.md,
+including pinned versions, deprecated APIs, support, commands, dependencies, secure
+coding, organization, and Builder's code-review evidence. Challenge
 input/URL/script escaping, empty IDs, shared state, auth and secrets where applicable,
 headers, rendered discovery, accessibility journeys, and assumptions in the brief.
 Return enough evidence for Builder to reproduce each asserted defect; otherwise

@@ -33,12 +33,13 @@ Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/01-codebases-and-stacks.md,
 02-design-and-experience.md, 03-graphics-and-rights.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 07-measurement-and-operations.md in that directory.
+06-security-and-delivery.md, 07-measurement-and-operations.md, and
+08-languages-and-code.md in that directory.
 Learn stage acceptance from SKILL.md, prompts/00-start.md,
 prompts/12-web-design-team.md, playbooks/research-and-memory.md,
 playbooks/deploy-and-operate.md, checklists/research.md, checklists/ship.md,
 templates/brief.md, templates/status.md, and templates/handoff.yaml.
-Open all thirteen library checklists and assign an accountable downstream owner.
+Open all fourteen library checklists and assign an accountable downstream owner.
 Record learned rules and applied checklist evidence in your learning receipts.
 
 ## WHAT YOU MUST RESEARCH

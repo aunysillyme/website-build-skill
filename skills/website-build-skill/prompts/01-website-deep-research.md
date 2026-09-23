@@ -29,7 +29,7 @@ STANDARDS
 - Research outputs are Markdown. All paths below are relative to
   site-work/research/library/ in the user's agreed project, never this skill package.
 
-RESEARCH THESE 13 AREAS
+RESEARCH THESE 14 AREAS
 1. Reference codebases and real implementations.
    Questions: open real repositories and read the entrypoints, routes, templates,
    data models, build scripts, tests, and deploy configuration. Which patterns recur
@@ -147,10 +147,26 @@ RESEARCH THESE 13 AREAS
     determinations to the owner or qualified adviser. Do not claim legal clearance.
     Artifact: 03-graphics-and-rights.md, domain 13 rights ledger requirements and
     unresolved questions; checklists/13-legal.md with evidence and escalation paths.
+14. Languages and coding practice.
+    Questions: as of the ASK DATE, which current HTML semantics and elements fit
+    this project? Which CSS layout features, container queries, cascade layers, and
+    nesting patterns fit its browser targets, and what is each feature's Baseline
+    status? Which JavaScript and TypeScript language features, module format, and
+    build or bundling defaults suit the selected versions? What idioms, deprecated
+    APIs, and upgrade notes apply to the chosen framework version? Research unit,
+    integration, and end-to-end testing; linting, formatting, and type-checking;
+    lockfiles, version pinning, dependency audits, and minimal dependencies; secure
+    template and script escaping, URL validation, and keeping inline secrets out
+    of code; and code organization and review. Use primary sources: MDN, web.dev
+    Baseline status, WHATWG and W3C specifications, TC39 finished proposals,
+    TypeScript release notes, and official runtime, tooling, and selected-framework
+    documentation and changelogs. Verify support separately from proposal status.
+    Artifact: 08-languages-and-code.md, domain 14 dated language/support matrix and
+    coding guidance; checklists/14-code.md with version, quality, and secure-code checks.
 
 SAVE THE RESULTS - two places, both required:
 A. Markdown files in site-work/research/library/:
-   - Write the seven grouped domain files named above, with all thirteen sections.
+   - Write the eight grouped domain files named above, with all fourteen sections.
      Survey every domain; mark genuinely inapplicable project checks with reasons.
      Extend these domains for databases, auth, payments, content workflows,
      internationalization, testing, privacy, or operations when the brief needs them.
@@ -171,7 +187,7 @@ A. Markdown files in site-work/research/library/:
      evidence needed to settle it, and current disposition. Never average claims.
    - query-plan.md and unresolved-claims.md: searches, unanswered questions, missing
      sources/tools, affected decisions, and a named next verification action.
-   - checklists/01-codebases.md through checklists/13-legal.md: exact filenames
+   - checklists/01-codebases.md through checklists/14-code.md: exact filenames
      named above. One checklist per domain, with criterion, method, expected evidence,
      source claim IDs, assigned downstream owner, PASS/FAIL/BLOCKED/NOT APPLICABLE,
      and a reason for exclusions. These are applied checks, not remembered prose.
@@ -180,7 +196,7 @@ A. Markdown files in site-work/research/library/:
      concrete type, color, spacing, imagery, and motion decisions out.
    - surprises.md: a short user-facing summary of the most surprising findings,
      each linked to a claim ID and its practical consequence for this site.
-   - staleness.md: the canonical thirteen-domain freshness table from
+   - staleness.md: the canonical fourteen-domain freshness table from
      playbooks/research-and-memory.md, then claim/domain, ASK DATE, window, original
      access, last revalidation, next-check date, reason, owner and dependent receipts.
      Identify the earliest-expiring domain, its window, and its ASK DATE-relative due date.

@@ -6,6 +6,15 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-09-23
+
+### Added
+
+- Fourteenth research domain covering languages and coding practice, with dated primary-source research and a saved library checklist.
+- Coding-research prompt that turns the selected stack and versions into project coding standards before implementation.
+- Code-quality checklist wired into Builder and Reviewer gates, covering tests, linting, formatting, type-checking, dependencies and secure code.
+- Regression coverage for fourteen-domain research and freshness tables, and coding-research manifest and build links.
+
 ## [0.1.3] - 2026-09-23
 
 ### Fixed

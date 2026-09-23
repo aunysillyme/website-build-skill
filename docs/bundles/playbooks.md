@@ -924,6 +924,7 @@ same-calendar-day currency. A decision explicitly requiring that proof stays BLO
 | 11. Hosting, deploy and DNS | Same-day check for platform capabilities, plan prices/restrictions, header syntax and deploy configuration; 90 days for DNS fundamentals. | Commercial limits and deployment contracts change quickly; name-resolution principles change slowly. Recheck the actual target before release. |
 | 12. Measurement | 30 days for setup and interpretation guidance; same-day check for selected event APIs, consent settings and receiving-property behavior. | Statistical caveats persist; vendor interfaces and active configuration do not. Changed instrumentation or property triggers verification. |
 | 13. Legal, kept light | Same-day check for exact font/stock/AI tool licenses and intended-use rights; 30 days for background guidance. | Rights attach to a particular asset, version and tier; a previously allowed use is not evidence for a new use. Changed terms or jurisdiction triggers review. |
+| 14. Languages and coding practice | Same-day check for selected language, runtime and framework versions, Baseline status of features in use, and security advisories; 30 days for testing, linting and tooling guidance; 365 days for fundamentals such as semantic HTML and structural escaping. | Language support, framework idioms and advisories can change during a build; stable semantics and escaping principles need less repetition. A selected-version, browser-target or security change triggers an earlier recheck. |
 
 - Versioned standards: identify the authoritative current release as of ASK DATE and at each scheduled refresh; record release/version, target level, source and applicability. An old but still-current standard is not stale merely because its publication is old. A new relevant release triggers review before reuse even inside a nominal window.
 - Staleness artifact: generate this full table into `staleness.md`, add all applicable claims, original accesses, last revalidations, window/expiry, trigger, reason, owner and dependent receipts. Name the earliest-expiring applicable domain (all ties), its window, and concrete recheck date with the ASK DATE-relative expression. Same-day domains are due before use that day. Do not average domain windows or let a slow domain hide a fast subclaim.
@@ -1078,7 +1079,7 @@ site-work/
     library/                              Researcher-owned canonical library.
       README.md                           Dated index, headline findings, role reading map.
       scope.md                            ASK DATE, ladder rung/raw evidence, workspace root, request, tools, applicability.
-      coverage.md                         Thirteen domains, files, checklist and source coverage.
+      coverage.md                         Fourteen domains, files, checklist and source coverage.
       01-codebases-and-stacks.md           Domains 1 and 2; code reads and current stacks.
       02-design-and-experience.md          Domains 3 and 5; design and UI/UX.
       03-graphics-and-rights.md            Domains 4 and 13; graphics and light legal.
@@ -1086,6 +1087,7 @@ site-work/
       05-search-and-answers.md             Domains 8 and 9; SEO and AEO.
       06-security-and-delivery.md          Domains 10 and 11; threats, hosts, deploy, DNS.
       07-measurement-and-operations.md     Domain 12; analytics and operational follow-through.
+      08-languages-and-code.md             Domain 14; language support, coding practice and verification.
       sources.md                          Claim IDs, opened URLs, source/access dates, scope.
       receipts/
         <CLAIM-ID>.md                     Per-claim page fetch fields and verbatim supporting excerpt.
@@ -1095,7 +1097,7 @@ site-work/
       how-to-read-a-brand-kit.md           Evidence into checkable design decisions.
       website-qa-checklist.md              Cross-domain blocker-first index of applied checks.
       surprises.md                        Short findings and implications for the user.
-      staleness.md                        Thirteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
+      staleness.md                        Fourteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
       learning.md                         Opened evidence, learned rules, applied checklist IDs.
       recipes.md                          Commands that actually ran, with tool version and what they produced.
       memory-proposal.md                  Durable rules and location, not a completed save.
@@ -1114,6 +1116,7 @@ site-work/
         11-hosting.md                     Preview, DNS, HTTPS, rollback, plan restrictions.
         12-measurement.md                 Receiving-property proof and interpretation limits.
         13-legal.md                       Font, stock, AI imagery, trademark evidence.
+        14-code.md                        Supported features, tests, tooling, dependencies and secure code.
     coordinator/                          Coordinator top-ups, flags, learning and QA receipts.
     designer/                             Designer top-ups, flags, learning and QA receipts.
     graphics/                             Graphics top-ups, flags, learning and QA receipts.
@@ -1126,7 +1129,7 @@ site-work/
   MEMORY.md                               Coordinator's consolidated durable-memory proposal.
 ```
 
-- Coverage: map all thirteen domains to grouped files, source claims, checks, and downstream owners.
+- Coverage: map all fourteen domains to grouped files, source claims, checks, and downstream owners.
 - Exclusions: survey every domain; justify any project-specific NOT APPLICABLE check.
 - Checklists: each domain check names criterion, method, expected evidence, claim IDs, owner, status, and exclusion reason.
 - Blockers: website-qa-checklist.md collects unresolved critical checks before quality scoring.

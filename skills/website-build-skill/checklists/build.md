@@ -30,6 +30,7 @@ Date rule: [ASK DATE, source evidence, and revalidation](../playbooks/research-a
 | B08: integration and design fidelity | Integrated assets/discovery drift from approved revisions or selected mockup. | Read source handoffs and compare rendered mobile/desktop output; preserve producer files and identify copied revisions. |
 | B09: critical journeys and states | The main action, validation, empty/error/loading/success state, or no-JavaScript content fails. | Exercise each applicable state on the exact candidate and retain route, environment, screenshots, and functional outcomes. Apply accessibility and performance/discovery gates. |
 | B10: truthful handoff | Unrun tests are called passed or output lacks reproduction commands. | Open build receipts, QA reports, limitations, artifact digest, next owners, and the audit packet. BLOCKED checks remain visible. |
+| B11: code quality | Any required code-quality check is FAIL or BLOCKED. | Apply [checklists/code-quality.md](code-quality.md) CQ01-CQ06 to the exact candidate and coding-standards.md revision; reopen the standards, command output, dependency/security evidence, and Builder's review receipt before handoff. |
 
 ## Gate receipt
 

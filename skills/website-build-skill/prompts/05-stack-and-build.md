@@ -16,6 +16,12 @@ CHOOSE
 - Record alternatives, dependencies, host constraints, and the next-page editing path
   in site-work/stack.md. Verify current APIs before writing against them.
 
+LEARN CODING PRACTICE
+- Run [prompts/13-coding-research.md](13-coding-research.md) for the exact selected
+  stack and versions after CHOOSE and before IMPLEMENT.
+- Read back site-work/coding-standards.md and record the rules learned before writing
+  code. Current sourced standards are required; unresolved research blocks coding.
+
 IMPLEMENT
 - Keep content, shared rendering, assets, and generated output separate.
 - Make the next page a data change wherever pages share a structure.
@@ -35,6 +41,8 @@ VERIFY
 - Exercise empty IDs, quotes, ampersands, script-terminator text, long copy,
   missing optional assets, and date boundaries using synthetic records.
 - Check the selected design at mobile and desktop sizes and preserve the evidence.
+- Apply [checklists/code-quality.md](../checklists/code-quality.md) against
+  site-work/coding-standards.md and record command output and code-review evidence.
 - Do not deploy. Continue through experience, discovery, headers, and audit gates.
 
 HANDOFF

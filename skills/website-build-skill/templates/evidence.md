@@ -16,7 +16,7 @@ Record the scope link, library revision, engagement identifier, producer role an
 | Field | Required value and evidence |
 | --- | --- |
 | claim_id | Stable identifier referenced by decisions, checks and findings. |
-| domain | One of the thirteen research domains, with additional scoped concerns as needed. |
+| domain | One of the fourteen research domains, with additional scoped concerns as needed. |
 | statement | Exact bounded claim, including relevant version, tier, consumer or use. |
 | kind | Evidence, inference, proposed default, measurement, or UNVERIFIED. |
 | source_url | Opened authoritative URL; a search snippet does not satisfy this field. |
