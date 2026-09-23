@@ -57,6 +57,24 @@
           ]
         }
       }
+    },
+    "required-check": {
+      "name": "Repository checks",
+      "needs": [
+        "checks"
+      ],
+      "if": "${{ always() }}",
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 2,
+      "steps": [
+        {
+          "name": "Require every matrix check to succeed",
+          "env": {
+            "CHECKS_RESULT": "${{ needs.checks.result }}"
+          },
+          "run": "test \"$CHECKS_RESULT\" = success"
+        }
+      ]
     }
   }
 }
