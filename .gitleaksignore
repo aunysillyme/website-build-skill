@@ -8,3 +8,8 @@
 # 64-hex value in the file is likewise a content hash of a file in this repository.
 # No credential, token or key is stored anywhere in this repository.
 52f1de0165d6ac856688a1ba8137aa64ea7c1799:docs/evidence/local-checks.json:generic-api-key:131
+#
+# docs/evidence/library-check.json embeds the same sourceHashes map through the recorded
+# check output. Verified 2026-09-23: the flagged 64-hex value equals
+# `shasum -a 256 skills/website-build-skill/templates/tokens.json` exactly. A content hash, not a credential.
+b9c36702267ea3ae87e6838b983fa10dcab032b7:docs/evidence/library-check.json:generic-api-key:135
