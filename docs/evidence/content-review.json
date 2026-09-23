@@ -91,7 +91,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/EVALUATION.md": {
-      "sha256": "f74fd00e75215ad735ca640b7947170598a417a9ec8b7e3405cc90b5ff1c8e45",
+      "sha256": "16d95c874efa94c8040164d04ffb74361bbd1be847423d5a78e0a4c3ab40f7bd",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/INSTALLER.md": {
@@ -114,6 +114,10 @@
       "sha256": "8aca9f1dcc5d99b47099ca58e9a5c7af6ad808415d7ebb6d5aa8d930d212a698",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
+    },
+    "docs/evaluation/host-trial.md": {
+      "sha256": "770b5663a7c0bfe71919a4c4d9a53df31cbe8a9aac54b193ae7ba092cec23b41",
+      "disposition": "instructions-and-qualified-status-only"
     }
   }
 }
