@@ -21,7 +21,9 @@ Record exact client/runtime version, actual trial date, operating system, artifa
 installed file list and hashes, invocation, observed outputs, negative cases and limitations.
 Retain a sanitized receipt in this repository before promoting the claim.
 Documentation alone cannot establish native loading, enforcement or automatic worker creation.
-Hosted CI, Linux/Windows trials, registry delivery, ZIP upload and raw-URL bootstrap remain UNVERIFIED.
+Hosted repository checks have a [revision-bound baseline receipt](evidence/audit-baseline.json).
+Those Linux CI checks do not establish client activation. Windows/client trials, registry
+delivery, ZIP upload and raw-URL bootstrap remain UNVERIFIED.
 The maintainer runtime is Node 22.22.3. The package declares Node 18 or newer, and the check
 matrix runs 18, 20, 22.22.3 and 24; no other runtime is claimed.
 

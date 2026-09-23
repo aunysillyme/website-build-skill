@@ -2,7 +2,9 @@
 
 Local deterministic checks and live agent behavior are different claims.
 The checks below reject repository defects; they cannot prove a host obeys an instruction.
-Hosted CI, platform support, package publication and live model behavior remain UNVERIFIED.
+The [baseline receipt](evidence/audit-baseline.json) records a hosted CI run for one
+exact revision. Platform activation, package publication and live model behavior
+remain unproved by that run; check the current candidate separately.
 
 ## Run the repository gates
 
@@ -50,8 +52,9 @@ A change to the ledger itself requires code-owner review. No content checker can
 The gate scans every public file, including hidden community metadata, fixtures and generated bundles.
 It rejects personal paths, private identifiers, personal names and email addresses without echoing their values.
 Production exceptions are exact license authorship and repository URL namespaces.
-The required public product wording and CODEOWNERS handle conflict with the literal ban.
-Their exceptions remain pending clarification; CI does not silently allow them.
+The supported public product name and exact CODEOWNERS handle are narrow, resolved
+exceptions implemented by privacyIssues. Path-shaped uses remain rejected. These
+exceptions do not permit personal identifiers elsewhere.
 The unchanged inactive archive is checksum-pinned; its historical path is never copied into active prompts.
 Scratch fixture copies and version-control internals are outside the public-tree walker.
 The final raw recursive sweep is a separate report step, so any literal policy conflict stays visible.
@@ -61,7 +64,7 @@ The final raw recursive sweep is a separate report step, so any literal policy c
 Manifest assets must exist, match digests and contain all seven populated role bodies.
 The README question must match the canonical template. Every generated bundle uses manifest order.
 The workflow validator accepts the JSON subset of YAML, checks every action reference recursively,
-requires read-only permissions at workflow and job scope, disables persisted checkout credentials,
+requires read-only permissions except the release publish job's scoped OIDC token, disables persisted checkout credentials,
 and requires concurrency cancellation and job timeouts. Other YAML syntax fails closed pending parser review.
 External URL reachability is outside the offline link check.
 
@@ -86,13 +89,14 @@ and a reproducible trial are reviewed; adding the protocol does not establish su
 | Reviewer allegation | Reproduces before recording a confirmed defect |
 | Date ladder and reuse | Rejects every inactive ASK DATE fixture and passes genuine evidence controls |
 
-These are evaluation specifications, not completed trials. The test runner reports the unavailable installer,
-fresh-package and live-date evaluations as TODO rather than pretending they passed.
+These are evaluation specifications, not completed trials. Installer regressions run
+as ordinary tests. Cross-platform fresh-package and live-date evaluations remain TODO.
 Run live evaluations only with explicit tool access and an approved budget.
 
 ## File and evidence index
 
-- [Recorded local run](evidence/local-checks.json): actual commands, exits and sanitized output; strict privacy blockage is retained.
+- [Historical local run](evidence/local-checks.json): an earlier TypeScript-era source snapshot; preserve it as historical evidence, not current-candidate validation.
+- [Audit baseline](evidence/audit-baseline.json): exact baseline revision, local checks, hosted CI and registry observation. Rerun gates after changes.
 
 - [Floor coverage register](evidence/floor.json): exhaustive section-4 filenames and implementation scope.
 - [Content regressions](../test/content.test.mjs), [privacy regressions](../test/privacy.test.mjs).

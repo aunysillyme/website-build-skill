@@ -10,7 +10,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "ef50e0b6625c39251589305f48f2cb39bb9cbd84bdafa0e3dabf68da3a716b26",
+      "sha256": "d6153194f54442b81f04087b3bae7970b023b29ace0a88d2f3f904fe6db475a5",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     },
@@ -23,7 +23,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CONTRIBUTING.md": {
-      "sha256": "4e20d3e212fc2567b5fd60677a0d94586bdc4b6b75fe99a3c97af464f76e9dfb",
+      "sha256": "d77f293d947f4b60569f4dff4b9eb410c214d20107a0c7049f7ec63ebd4ba860",
       "disposition": "instructions-and-qualified-status-only"
     },
     "MAINTAINERS.md": {
@@ -35,11 +35,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
-      "sha256": "7a8bee3bb86d2f1df2ce08ca6a85618bddabf5bd2639e4fa6d837232d803b7d6",
+      "sha256": "c09c6fe815997615f0242d580430d8c83175b3ef2c0b0b929f9bd4d6284def2a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
-      "sha256": "bd7c2349901aa171338085a8c47759f6f6e80e32ee1f2fedce5a11ec6d4b8a1a",
+      "sha256": "84937c24362bac215a2edff4c259224df1c37f8444da3f4bcde305c5ba84b0bd",
       "disposition": "instructions-and-qualified-status-only"
     },
     "SECURITY.md": {
@@ -87,12 +87,24 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "b204206e5d981e58caa89dcda9595c8a0dab573761cf99cbad5fcc9ddb3be145",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "02c48474302f399c98014984895a75c8954f52a2c98be03331c899197752d354",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "Hosted repository checks have a [revision-bound baseline receipt](evidence/audit-baseline.json).",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/EVALUATION.md": {
-      "sha256": "16d95c874efa94c8040164d04ffb74361bbd1be847423d5a78e0a4c3ab40f7bd",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "f5a2912cd4dc443bf10ba6de74266b314ccd6f0c4f48e7aa7216c8c7e00c1d33",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "The [baseline receipt](evidence/audit-baseline.json) records a hosted CI run for one",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/INSTALLER.md": {
       "sha256": "de102b6fbf2ddf525d04a9a8d71937a02fe83b7da649aa2ade07663ee77bad95",
@@ -103,8 +115,14 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/PROVENANCE.md": {
-      "sha256": "98eef5479eaa9855703893907f4933b668e76770ae87d7dc98119d1cee60d11d",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "691d37b62a67c6f627b9c238d5832ac88af88875998dd8e779fe7599726ac595",
+      "disposition": "evidence-backed",
+      "claims": [
+        {
+          "text": "The checkout v7.0.1 tag points to commit `3d3c42e5aac5ba805825da76410c181273ba90b1`.",
+          "evidence": "docs/evidence/audit-baseline.json"
+        }
+      ]
     },
     "docs/TIPS.md": {
       "sha256": "d74d14021a72135ef8331a111557921c696695ba90451efaa6a67132abf89d1a",
