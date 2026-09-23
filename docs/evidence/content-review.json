@@ -27,7 +27,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "MAINTAINERS.md": {
-      "sha256": "8d24df77301222d4fe37764bdb7b13a66d80a6d8445e8acd39e15af9913f0900",
+      "sha256": "8632008661d5ad3d60300ea2028715217c298d24d3d66af7224c52b6e0e24552",
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
@@ -97,7 +97,7 @@
       ]
     },
     "docs/EVALUATION.md": {
-      "sha256": "f5a2912cd4dc443bf10ba6de74266b314ccd6f0c4f48e7aa7216c8c7e00c1d33",
+      "sha256": "05cda6eae321c5f4ea982fbcbd0b669921b53bca31d31daed190947de74b1304",
       "disposition": "evidence-backed",
       "claims": [
         {

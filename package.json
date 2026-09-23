@@ -52,7 +52,14 @@
     "CHANGELOG.md",
     "SECURITY.md",
     "llms.txt",
-    ".claude-plugin/"
+    ".claude-plugin/",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "MAINTAINERS.md",
+    "RELEASING.md",
+    "REPO_SETTINGS.md"
   ],
   "homepage": "https://github.com/aunysillyme/website-build-skill",
   "bugs": {
