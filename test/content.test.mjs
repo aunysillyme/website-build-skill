@@ -40,11 +40,16 @@ const cases = [
   ['RED19 a lifecycle hook that runs on the consumer machine', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, preinstall: 'node -e 0' } }, null, 2) + '\n')],
   ['RED20 a publish-time hook that can change the tested bytes', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, prepublishOnly: 'node -e 0' } }, null, 2) + '\n')],
   ['RED21 a negated files entry that empties a published path', 'PACKAGE_FILES:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), files: [...JSON.parse(s).files, '!src/**'] }, null, 2) + '\n')],
+  ['RED23 SKILL.md loses the verbatim install card the agent shows the user', 'CHOICE_DRIFT:', r => change(r, `${CORE}/SKILL.md`, s => s.replace('How do you want to work?', 'How would you like to work?'))],
   ['RED22 a runtime step that ignores the matrix it claims to run', 'ENGINE_UNTESTED:', r => change(r, '.github/workflows/check.yml', s => s.replace('"node-version": "${{ matrix.node }}"', '"node-version": "24"'))],
 ];
 for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   mutate(r);
   assert.ok(check(r).some(i => i.startsWith(gate)), `expected ${gate}`);
+}));
+
+test('README summarizes the install card as a table, SKILL.md keeps it verbatim', () => fixture(r => {
+  assert.ok(!check(r).some(i => i.startsWith('CHOICE_DRIFT:')), 'README without the verbatim card passes');
 }));
 
 test('RED09 also rejects new documents and altered measurements', () => fixture(r => {

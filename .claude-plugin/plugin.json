@@ -1,6 +1,6 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security.",
   "author": {
     "name": "website-build-skill contributors"
