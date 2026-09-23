@@ -2,7 +2,7 @@
 
 Status: UNVERIFIED. Candidate schema, paths, orchestration and enforcement need clean-client trials.
 Manual SOLO: copy the canonical folder into `.website-build-skill/` and explicitly ask the session to read its SKILL.md.
-Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
+Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
 ## Planned definition contract
 

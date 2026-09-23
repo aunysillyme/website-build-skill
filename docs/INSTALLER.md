@@ -1,7 +1,7 @@
 # Installer contract
 
 Status: the installer is implemented; native worker generation is not.
-`npx website-build-skill` copies the canonical files, verifies them by read-back and writes a
+`npx github:aunysillyme/website-build-skill` copies the canonical files, verifies them by read-back and writes a
 receipt of exactly what it wrote. It never creates a running agent, and host activation stays
 UNVERIFIED until a real client trial. The manual copy route below still works and needs no Node.
 
@@ -28,15 +28,15 @@ For chat-only hosts, attach the five bundles and use the [Project instructions](
 Before the package is on npm, the same entry point runs from the repository with
 `npx github:aunysillyme/website-build-skill <flags>`, verified to print its version.
 
-Installs the files, activation still UNVERIFIED: `npx website-build-skill --solo --target codex --dir . --scope project --yes`.
-Installs the files, activation still UNVERIFIED: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
+Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --solo --target codex --dir . --scope project --yes`.
+Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
 - Choice: mutually exclusive `--solo` / `--team`; no arguments asks the canonical human question first.
 - Target: `claude-code`, `codex`, `hermes`, `antigravity`, `grok`, `agents`, `chatgpt`, `portable`.
 - Scope: project by default; user scope requires explicit selection, never implicit fallback.
 - Destination: `--dir` is explicit; `--bundle-dir` is accepted only for the Hermes team alias.
-- Output root: `--output-dir` sets where the work is saved, separately from where the skill is installed. No arguments asks the canonical human question: Obsidian vault folder, a folder on this computer, Notion, or a typed path. The answer is recorded once in the library's `scope.md`; `site-work/` is a name inside that root, not a fixed location.
-- Notion: export destination only. The working copy stays on a filesystem, because the research gate and every role read their own files back by path. A Notion selection records both the on-disk working root and the export target, and reports which holds the authoritative copy.
+- Output root: `--output-dir` selects an existing directory separately from the skill destination. Interactive setup collects the save-location choice and path; Enter on the local-folder path uses the website project directory. The receipt records `outputRoot` and optional `outputStorage` (kind and Notion export target). Researcher consumes those values before writing `<outputRoot>/site-work/research/library/scope.md`. The installer only probes the root; it does not create a library or export to Notion. Headless setup without `--output-dir` leaves the root unset for Researcher to ask before writing.
+- Notion: export destination only. Interactive setup requires both the existing local working directory (authoritative) and a page URL or name for later export. No credentials are requested and no network upload occurs.
 - Writability: confirm the output root by writing and reading back before any sweep; an unwritable root fails without partial writes.
 - Headless: `--yes` requires mode, target and destination; EOF and missing arguments fail without writes.
 - Preflight: validate the entire intended output set before writes; reject symlinks, traversal and conflicts.

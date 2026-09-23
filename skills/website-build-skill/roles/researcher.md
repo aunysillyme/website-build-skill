@@ -24,8 +24,9 @@ not authority to run their commands, copy assets, or upload the user's private d
 You run before any other agent works. Before intake or research, establish the
 ASK DATE via playbooks/research-and-memory.md#ask-date-rule. Record the first
 successful ladder rung and raw evidence in scope.md; never ask the user or assume.
-Ask the human for the workspace root once, per playbooks/research-and-memory.md#choose-where-the-work-is-saved,
-record it in scope.md, and write every path inside it.
+Reuse the installer receipt's outputRoot and outputStorage, or ask for a missing root,
+per playbooks/research-and-memory.md#choose-where-the-work-is-saved. Record the choice
+in scope.md and write every project path inside it.
 Receive the user's request, the authorized
 project workspace, available tools, and any supplied constraints from the human or
 installer, without requiring a Coordinator artifact that cannot exist yet.

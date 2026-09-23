@@ -31,7 +31,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "38878afded2265272900d0328570c2713732a9a9fa10608b216f2d58c6309ed5",
+      "sha256": "4826c35954178fd6ca6064bf25d0892be7a8534612fd644956aa1292b4978bc5",
       "disposition": "instructions-and-qualified-status-only"
     },
     "RELEASING.md": {
@@ -47,11 +47,11 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/agents-md.md": {
-      "sha256": "2ac19d8c482d98ae91218ea5c5a058aaadd57aef3b85d7d76868e98e296e182f",
+      "sha256": "c2175a6b0f11d702b82af67a1566ca5e5a5890f0063047fab258aaad34608e04",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/antigravity.md": {
-      "sha256": "4359c79048c9bbfef700c0ac1d0fcf34b9a7edd6d63a0b58bede950d454e5b6c",
+      "sha256": "4e11eaffd5f0a98f663c6a351a6e730c28748a0ef50855e277c722fcf5822df0",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/chatgpt-project.md": {
@@ -59,7 +59,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-code.md": {
-      "sha256": "a8517cff15070fbb86e8f401c2af31271f876fe06025edfdf5ea5b69809ef327",
+      "sha256": "3399b055c0247e82b521a8e6b83111ddc198d439f4b514a36c1dd7eac9f0b150",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/claude-desktop.md": {
@@ -67,7 +67,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/codex.md": {
-      "sha256": "06cd6275718e4bd51f329084199fd58f9ee072b213c05fd260e7c3711a874fa9",
+      "sha256": "f5d0a7921551fcf1e74edb2151cdfe609fe28289e427f11c721abc53253b4fa9",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/custom-gpt.md": {
@@ -79,7 +79,7 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/hermes.md": {
-      "sha256": "eee6b7009b8f4448c84fa55c11939248e0bc5a5f119b746816443e988db53ba5",
+      "sha256": "357e141650c6ba0ae25f82eac32f410314d2195aa024176772f9bbfcb21c8e54",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/zero-install.md": {
@@ -107,7 +107,7 @@
       ]
     },
     "docs/INSTALLER.md": {
-      "sha256": "de102b6fbf2ddf525d04a9a8d71937a02fe83b7da649aa2ade07663ee77bad95",
+      "sha256": "29f3c7ba1ece6d8776838702d517e4d2dd5122d2ef439b722ea367962eed15df",
       "disposition": "instructions-and-qualified-status-only"
     },
     "docs/METHOD.md": {

@@ -52,24 +52,42 @@ export async function main(args = process.argv.slice(2), { input = process.stdin
       return install(request);
     }
     if (request.yes && (!request.mode || !request.target || !request.dir)) throw Error('--yes requires mode, target and --dir; it never prompts');
-    if (!request.mode || !request.target) {
+    if (!request.mode || !request.target || (!request.yes && !request.outputDir)) {
       const reader = createInterface({ input, crlfDelay: Infinity });
       const answers = reader[Symbol.asyncIterator]();
       const ask = async text => {
         output.write(text);
         const answer = await answers.next();
         if (answer.done) throw Error('Invalid input: stdin ended before an answer (EOF)');
-        return answer.value.trim().toLowerCase();
+        // Paths and export destinations can be case-sensitive. Normalize choices only.
+        return answer.value.trim();
       };
       try {
         if (!request.mode) {
-          const answer = await ask(choiceText());
+          const answer = (await ask(choiceText() + '\nWork mode (1 or 2):\n')).toLowerCase();
           request.mode = ({ '1': 'solo', solo: 'solo', '2': 'team', team: 'team' })[answer];
           if (!request.mode) throw Error('Invalid mode answer');
         }
         if (!request.target) {
-          request.target = await ask(`Target (${Object.keys(targets).join(', ')}):\n`);
+          request.target = (await ask(`Target (${Object.keys(targets).join(', ')}):\n`)).toLowerCase();
           if (!Object.hasOwn(targets, request.target)) throw Error('Invalid target answer');
+        }
+        if (!request.yes && !request.outputDir) {
+          const answer = await ask('Save location: 1 Obsidian, 2 local folder, 3 Notion export, 4 another local destination:\n');
+          const kind = ({ '1': 'obsidian', '2': 'folder', '3': 'notion', '4': 'other' })[answer];
+          if (!kind) throw Error('Invalid save-location answer');
+          const label = kind === 'obsidian' ? 'Existing folder inside your Obsidian vault'
+            : kind === 'notion' ? 'Existing local working directory (authoritative copy)'
+            : 'Existing output directory';
+          const path = await ask(`${label}${kind === 'folder' ? ' (Enter uses the website project folder)' : ''}:\n`);
+          if (!path && kind !== 'folder') throw Error('An existing output directory is required');
+          request.outputDir = path || request.dir || process.cwd();
+          request.outputStorage = { kind };
+          if (kind === 'notion') {
+            const exportTarget = await ask('Notion export destination (page URL or name; no upload is performed):\n');
+            if (!exportTarget) throw Error('Notion export destination is required');
+            request.outputStorage.exportTarget = exportTarget;
+          }
         }
       } finally { reader.close(); }
     }

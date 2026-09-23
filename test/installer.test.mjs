@@ -109,13 +109,36 @@ test('5 Interactive questions preserve canonical text and EOF or incomplete --ye
     assert.equal(result.status, 2);
     assert.equal(result.stdout, '');
   }
-  for (const input of ['', 'nonsense\n', '1\n', '1\nunknown\n']) assert.equal(cli(['--dir', dir], input).status, 2);
+  for (const input of ['', 'nonsense\n', '1\n', '1\nunknown\n', '1\ncodex\n', '1\ncodex\n2\n', '1\ncodex\n9\n']) assert.equal(cli(['--dir', dir], input).status, 2);
   assert.deepEqual(fs.readdirSync(dir), []);
   let output = '';
-  const result = await main(['--dir', dir], { input: Readable.from(['1\ncodex\n']), output: new Writable({ write(chunk, encoding, done) { output += chunk; done(); } }) });
+  const result = await main(['--dir', dir], { input: Readable.from(['1\ncodex\n2\n\n']), output: new Writable({ write(chunk, encoding, done) { output += chunk; done(); } }) });
   assert.equal(result.code, 0);
   assert.ok(output.startsWith(fs.readFileSync(resolve(root, CORE, 'templates/install-choice.txt'), 'utf8')));
   assert.match(output, /Target \(/);
+  assert.equal(receipt(dir).outputRoot, fs.realpathSync(dir));
+  assert.deepEqual(receipt(dir).outputStorage, { kind: 'folder' });
+}));
+
+test('Interactive storage records each destination without changing path case or uploading', () => workspace(dir => {
+  for (const [choice, kind] of [['1', 'obsidian'], ['2', 'folder'], ['3', 'notion'], ['4', 'other']]) {
+    const project = resolve(dir, `project-${choice}`), output = resolve(dir, `My Work ${choice}`);
+    fs.mkdirSync(project); fs.mkdirSync(output);
+    const exportTarget = 'https://www.notion.so/ExamplePage';
+    const input = `1\nCODEX\n${choice}\n${output}\n${choice === '3' ? exportTarget + '\n' : ''}`;
+    const result = cli(['--dir', project], input);
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(receipt(project).outputRoot, fs.realpathSync(output));
+    assert.deepEqual(receipt(project).outputStorage, kind === 'notion' ? { kind, exportTarget } : { kind });
+    assert.deepEqual(fs.readdirSync(output), [], 'installer only probes; the host writes the library');
+  }
+}));
+
+test('Incomplete Notion selection and missing output directory fail before installation', () => workspace(dir => {
+  for (const input of [`1\ncodex\n3\n${dir}\n`, `1\ncodex\n3\n${dir}\n\n`, `1\ncodex\n1\n\n`, `1\ncodex\n2\n${resolve(dir, 'absent')}\n`]) {
+    assert.equal(cli(['--dir', dir], input).status, 2);
+    assert.deepEqual(fs.readdirSync(dir), []);
+  }
 }));
 
 test('6 Output root probe is read back before writes and unwritable roots leave no partial install', () => workspace(dir => {
