@@ -75,16 +75,16 @@ Native discovery, tool permissions and team automation are UNVERIFIED until a re
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instruction block | SOLO method; account-level skill ZIP upload is UNVERIFIED |
 | [ChatGPT](adapters/chatgpt-project.md) | Put the instruction block in Project instructions and attach the five bundles; [custom GPT route](adapters/custom-gpt.md) | SOLO reference packet; account controls and file access are UNVERIFIED |
 
-Run directly from the public repository while registry publication is pending.
-These commands copy files and write a receipt; they do not activate a host:
+Install from npm. These commands copy files and write a receipt; they do not activate a host:
 
 ```bash
-npx github:aunysillyme/website-build-skill --solo --target codex --dir . --yes
-npx github:aunysillyme/website-build-skill --team --target claude-code --dir . --yes
+npx website-build-skill --solo --target codex --dir . --yes
+npx website-build-skill --team --target claude-code --dir . --yes
 ```
 
-For a reproducible install, append `#<reviewed-commit-sha>` to the GitHub package
-specifier. Use the registry package name only after a published version is verified.
+For unreleased changes, run from the public repository instead:
+`npx github:aunysillyme/website-build-skill`, with `#<reviewed-commit-sha>` appended
+for a reproducible install.
 
 Omit flags for the interactive mode, host and save-location questions. Save locations
 must be existing directories; paths retain their case. Notion is a recorded export
