@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "23f9cbc3f43011df7b8fe78d986649e89a9c3a62afe52fb784733fccfb9ccae2"
+      "sha256": "0a3104c79e721929b3bced98e52c4f286de2548dc5e48eee41872e56d050f45b"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -60,7 +60,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "7f174ed03b29e2fc1afa58b988a031854812f9e42217d71fe4979d2a79ffd17c"
+      "sha256": "b66381261865a2b9c5927c86b2bc3a3d6b84329f8665e147ad016872ca3759c4"
     },
     {
       "path": "prompts/02-graphics-design-original.md",
@@ -104,7 +104,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "01dadb70cd93381edf711807f24ee579416d443ef5049b7041fc29c1599ce5e3"
+      "sha256": "dfb45d8862133df938da722c10295b7a48819da9ea40c9d94d3ef2908e6d948b"
     },
     {
       "path": "prompts/05-stack-and-build.md",
@@ -240,7 +240,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "41d1948531e9a898c4d332b3918771484624632ba8c0d0264d3e0ab16e1e6275"
+      "sha256": "3cc2dcf24d10998da4d7559f2317b0e99eb71f96778b28fb73ddad7904e90cb1"
     },
     {
       "path": "roles/coordinator.md",
@@ -482,7 +482,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f37405f14891512e10330c26621ba13e3731e72b75c3537a854c944d8505c4c7"
+      "sha256": "9b8431878ca8c8f24852bd1bbcd436824a53d817143910075d5185487dca7f57"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -512,7 +512,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "bffacaf68f9ae13cc76f525c8862123e4bf5816b21753a1ede1ac7d442091f26"
+      "sha256": "4fa0f64ed012aa15aad274f7be330bcdcc676c069f660e1095f57984d557837e"
     },
     {
       "path": "checklists/brand-and-mockups.md",
@@ -527,7 +527,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f3fa751a47e0358c758c262b2c2e3e4d51747606cc5283af94cd5023802067fa"
+      "sha256": "44e83577edf2fb1166f25c680d13bcf85245e347c89cf711b24578ce9abba5f5"
     },
     {
       "path": "checklists/build.md",
@@ -722,7 +722,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9b7bb6bdb818c3576912856efe41f77783094bdcc8c91d4464443a128633ba73"
+      "sha256": "c29019ab6e1294c74c66642297da95eafb61c6c5e2b2e19fde449d354213017f"
     },
     {
       "path": "templates/handoff.yaml",

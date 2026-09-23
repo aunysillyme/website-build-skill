@@ -90,8 +90,14 @@ BRIEF
 SAVE
 - As Researcher, ask where the work should be saved (Obsidian vault, a folder on this
   computer, Notion, or a typed path), then save that root with the request and tool limits
-  to <root>/research/library/scope.md. Notion receives an export; the working copy stays on disk.
+  to <root>/site-work/research/library/scope.md. Notion receives an export; the working copy stays on disk.
+- At each page fetch, write `site-work/research/library/receipts/<CLAIM-ID>.md`
+  using templates/evidence.md. Never write the receipt afterward or mark a claim
+  OPENED from memory or a search snippet. Without a receipt it is UNVERIFIED;
+  an acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
 - Complete prompts/01-website-deep-research.md and its library before any other role.
+  Record `website-build-skill check-library <root>/site-work` command, exit code
+  and output, or Reviewer's five-rule manual equivalent when no shell exists.
 - After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
   under site-work/. If file tools are missing, return named bodies for me to save
   and reattach; wait for saved library read-back before any design work.
@@ -138,6 +144,10 @@ STANDARDS
 - Every output file opens with "Research as of <ASK DATE>".
 - Where sources disagree, record the disagreement. Never average it.
 - Mark anything unverified as UNVERIFIED.
+- Write `site-work/research/library/receipts/<CLAIM-ID>.md` at page fetch time,
+  never afterward. Follow templates/evidence.md for every field and the verbatim
+  supporting excerpt of at least 80 characters. Never mark a claim OPENED from
+  memory or a search snippet; only a fetched page with a receipt qualifies.
 - Open each cited source. Prefer standards, official docs, original research, and
   real code. Record source publication/update date and the actual access date separately.
 - Separate evidence, inference, proposed defaults, and observed project measurements.
@@ -275,9 +285,13 @@ A. Markdown files in site-work/research/library/:
      applicability. Research-only assumptions may describe scope, never the date.
    - coverage.md: each domain, group file, checklist, applicable questions, source
      coverage, exclusions with reasons, blockers, and downstream owners.
-   - sources.md: stable claim ID, claim, URL, source date, access date, scope, status,
-     and links to decisions/checklists relying on it. Unknown source dates say unknown;
-     the actual access date is still required. Never invent a publication date.
+   - sources.md: use the exact Claim ID, Domain, Statement, URL, Published, Accessed,
+     Status, Dependents table from templates/evidence.md. Status is OPENED with a
+     receipt or UNVERIFIED without one. Keep applicability in the per-claim record.
+     Unknown source dates say unknown; the actual access date is still required.
+     Never invent a publication date. Each known date must appear in its receipt excerpt.
+   - receipts/<CLAIM-ID>.md: one fetch-time receipt for each cited claim's opened
+     source, with url, fetched_at, tool, result, published and excerpt.
    - disagreements.md: competing claims and dated sources, affected decision,
      evidence needed to settle it, and current disposition. Never average claims.
    - query-plan.md and unresolved-claims.md: searches, unanswered questions, missing
@@ -315,7 +329,12 @@ B. Your memory: propose durable rules and the library location, then save throug
 RESEARCH GATE
 Apply checklists/research.md AD01 through AD08 and the canonical ASK DATE rule;
 record allowed rung/raw evidence, two-date claim coverage, matching openers,
-earliest expiry and per-claim reuse decisions. Independent AD09 runs before ship.
+earliest expiry and per-claim reuse decisions. Run
+`website-build-skill check-library <root>/site-work` and save command, exit code
+and output; PASS needs exit 0. Without a shell record Reviewer's five-rule manual
+equivalent from checklists/research.md. Zero exit does not release acted-on
+UNVERIFIED claims: they keep research acceptance BLOCKED. Independent AD09 runs
+before ship with live re-fetches of the required acted-on source sample.
 The library exists on disk, every domain this project touches has a substantive
 file and checklist, and every claim that will be acted on carries an opened source
 URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. Apply checklists/research.md from the skill and the coverage matrix.
@@ -422,7 +441,9 @@ THREE DIRECTIONS
 
 QUALITY
 - Check the design against brand roles and computed contrast where tools permit.
-- Present visual files I can inspect. Text descriptions alone are not mockups.
+- Present one image file (PNG, JPEG, WebP or SVG) per direction and viewport,
+  with an optional static HTML preview. Text descriptions alone are not mockups.
+  Preview markup is a mockup artifact, not application markup or scaffolding.
 - If you cannot produce or view visual files, return a designer handoff and mark
   this stage incomplete. Do not claim three visual mockups from three paragraphs.
 

@@ -10,8 +10,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "e126f9f614bafdf266b78d42ea4e8f15828389b788883b2fd4c6674f04b0394a",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "ef50e0b6625c39251589305f48f2cb39bb9cbd84bdafa0e3dabf68da3a716b26",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     },
     "CLAUDE.md": {
       "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
@@ -108,6 +109,11 @@
     "docs/TIPS.md": {
       "sha256": "d74d14021a72135ef8331a111557921c696695ba90451efaa6a67132abf89d1a",
       "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/LIBRARY-CHECK.md": {
+      "sha256": "8aca9f1dcc5d99b47099ca58e9a5c7af6ad808415d7ebb6d5aa8d930d212a698",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     }
   }
 }

@@ -23,7 +23,9 @@ THREE DIRECTIONS
 
 QUALITY
 - Check the design against brand roles and computed contrast where tools permit.
-- Present visual files I can inspect. Text descriptions alone are not mockups.
+- Present one image file (PNG, JPEG, WebP or SVG) per direction and viewport,
+  with an optional static HTML preview. Text descriptions alone are not mockups.
+  Preview markup is a mockup artifact, not application markup or scaffolding.
 - If you cannot produce or view visual files, return a designer handoff and mark
   this stage incomplete. Do not claim three visual mockups from three paragraphs.
 

@@ -74,8 +74,10 @@ newly checked domain, the first due date is ASK DATE plus the window; a later ac
 check advances the next due date from that check. Store both the concrete due date
 and its offset from ASK DATE using date tooling. At or beyond expiry, recheck before
 reliance. A shorter known vendor change date or relevant version release wins.
-Same-day means recheck on every day of reliance; it does not grant 24 hours from a
-late check. In derived-floor mode, re-open fast-domain sources in the current work
+Same-day means that within one engagement, reuse the receipt when reliance falls
+on the same UTC calendar date as its `fetched_at`. Fetch again when reliance falls
+on a later calendar day or a change trigger fires, even within the same day. It
+does not grant 24 hours from a late check. In derived-floor mode, re-open fast-domain sources in the current work
 session and recheck them at every resumed session because elapsed days cannot be
 proved. This can satisfy only a visibly qualified lower-bound gate; it never proves
 same-calendar-day currency. A decision explicitly requiring that proof stays BLOCKED.
@@ -156,6 +158,51 @@ A search result is a discovery lead. Open its source before recording it as evid
 Label evidence, inference, proposed default, measurement, and UNVERIFIED separately.
 A proposed default can guide a draft only when no blocked external claim supports it.
 
+Use this exact table header in `sources.md`; keep applicability and evidence kind
+in the per-claim record. Escape literal pipes in table cells with a backslash.
+
+```text
+| Claim ID | Domain | Statement | URL | Published | Accessed | Status | Dependents |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+```
+
+Use stable `CLAIM-` IDs containing only letters, digits, underscores and hyphens.
+Status is `OPENED` only with a receipt, otherwise `UNVERIFIED`. A `Verified` label
+without a receipt fails the gate; it cannot stand in for proof of a fetch.
+
+**Fetch receipts.** At fetch time, write one receipt per cited claim's opened
+source to `research/library/receipts/<CLAIM-ID>.md`, relative to `site-work/`.
+Never reconstruct receipts later or mark a claim OPENED from memory or a search
+snippet. Search results are discovery leads; the page itself must be fetched.
+The receipt starts with the library's dated opener, followed by these plain fields:
+
+```text
+url: <exact URL in the claim row>
+fetched_at: <UTC timestamp from the environment, YYYY-MM-DDTHH:MM:SSZ>
+tool: <fetch tool actually used>
+result: <HTTP status or actual tool outcome>
+published: <date copied verbatim from the excerpt, or unknown>
+excerpt: |
+  <verbatim supporting page passage of at least 80 characters>
+```
+
+Indent each excerpt line by two spaces. Include quoted page date text in the
+excerpt when claiming a publication/update date; otherwise use `unknown`. The
+row's Published value must match the receipt's published value exactly. Optional
+milliseconds in fetched_at use three digits before Z. If the environment cannot
+supply a UTC timestamp, leave that claim UNVERIFIED; never invent precision.
+An existing qualified ASK DATE does not authorize a fabricated fetch timestamp.
+
+**Check before reliance.** Run `website-build-skill check-library <root>/site-work`
+when a shell exists. From a repository checkout the equivalent is
+`node bin/website-build-skill.mjs check-library <site-work-dir>`. Save the exact
+command, exit code and output with the research gate evidence. Exit 0 means
+receipt consistency, not proof that a passage is true or supports a decision;
+exit 2 reports problems, one per line. The checker lists UNVERIFIED rows even
+when it exits 0. Any acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
+Without a shell, Reviewer records the same five checks in
+checklists/research.md by hand. Independent AD09 re-fetching remains required.
+
 Example: a provider's paid-tier export right needs the exact tier's current terms,
 the asset's origin, intended use, a source-opening receipt, and required notices.
 A review of the provider's image quality cannot establish any of those rights.
@@ -180,7 +227,8 @@ read-back. Keep the working copy on disk and export the finished library, record
 same way as any other save, with status and read-back. Announce that split when Notion is chosen,
 and record which destination holds the authoritative copy.
 
-Confirm the root is writable by writing scope.md and reading it back before the sweep begins.
+Confirm the root is writable by writing `<root>/site-work/research/library/scope.md`
+and reading it back before the sweep begins.
 
 ## Produce the complete library
 
@@ -204,6 +252,8 @@ site-work/
       06-security-and-delivery.md          Domains 10 and 11; threats, hosts, deploy, DNS.
       07-measurement-and-operations.md     Domain 12; analytics and operational follow-through.
       sources.md                          Claim IDs, opened URLs, source/access dates, scope.
+      receipts/
+        <CLAIM-ID>.md                     Per-claim page fetch fields and verbatim supporting excerpt.
       disagreements.md                    Conflicting sources, affected decisions, dispositions.
       query-plan.md                       Search questions and missing-source actions.
       unresolved-claims.md                UNVERIFIED claims and blocked downstream decisions.

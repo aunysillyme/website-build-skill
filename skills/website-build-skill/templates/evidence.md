@@ -23,14 +23,49 @@ Record the scope link, library revision, engagement identifier, producer role an
 | published | Source publication/update date and kind if visible, otherwise unknown. |
 | source_date_proof | Supporting date text/location; never infer a date from footer, URL or HTTP header. |
 | accessed | Actual opening date on or after ASK DATE within this engagement, or qualified derived floor. |
-| opening_receipt | Tool/session event and supporting passage, file revision, or response evidence. |
+| opening_receipt | `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, written at fetch time with the fields below. |
 | precision | Exact date/timezone supplied, or exact access unavailable plus opening sequence and lower bound. |
 | applicability | Brief, version, tier, jurisdiction or content scope that makes this relevant. |
-| status | Verified within named scope, disputed, superseded, or UNVERIFIED. |
+| status | OPENED with a fetch receipt, otherwise UNVERIFIED. Record disputes and supersession separately. |
 | dependents | Decision IDs, checklist IDs, role outputs and gate receipts relying on this claim. |
 
 Preserve observations separately from interpretations.
 A familiar fact without URL and actual access evidence fails AD03/AD04.
+
+## Fetch receipt and ledger
+
+For each cited claim, write `site-work/research/library/receipts/<CLAIM-ID>.md`
+when fetching the page itself, never after the fact. Search snippets and memory
+cannot support OPENED. Begin with the dated library opener, then plain fields:
+
+```text
+url: <exact claim row URL>
+fetched_at: <environment UTC timestamp, YYYY-MM-DDTHH:MM:SSZ>
+tool: <fetch tool actually used>
+result: <HTTP status or tool outcome>
+published: <date copied verbatim from excerpt text, or unknown>
+excerpt: |
+  <verbatim supporting page text, at least 80 characters>
+```
+
+Indent every excerpt line by two spaces. Optional fractional seconds use three
+digits before Z. If a publication date appears elsewhere in quoted page text,
+include that text in the excerpt too; absent date evidence means `unknown`.
+Missing UTC timestamp evidence leaves the claim UNVERIFIED, never guessed.
+Use this header in `sources.md` and stable `CLAIM-` IDs containing only letters,
+digits, underscores and hyphens. Escape literal cell pipes with a backslash.
+
+```text
+| Claim ID | Domain | Statement | URL | Published | Accessed | Status | Dependents |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+```
+
+Published matches the receipt's published field exactly. Status is OPENED or
+UNVERIFIED; `Verified` without a receipt is a gate failure. Run
+`website-build-skill check-library <root>/site-work` and record command, exit code
+and output. Without a shell, record Reviewer's manual equivalent of the five
+rules in checklists/research.md. Zero exit does not release acted-on UNVERIFIED
+claims: those keep research acceptance BLOCKED.
 
 ## Reuse and expiry record
 
