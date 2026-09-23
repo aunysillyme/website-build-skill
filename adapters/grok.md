@@ -81,7 +81,7 @@ Begin user-request-to-researcher. You are the first working agent.
 My site request: <paste the actual audience, main action, pages, and known constraints>
 My authorized project workspace: <chosen workspace>
 Supplied materials: <attach any existing brief, brand materials, or source links>
-Use your full role and prompts/01-website-deep-research.md to cover all thirteen
+Use your full role and prompts/01-website-deep-research.md to cover all fourteen
 research domains current as of the ASK DATE. Ask for only missing inputs needed to research.
 Write the grouped library, README headlines, per-domain checklists, source/date and
 disagreement ledgers, surprises, memory proposal/receipt, and staleness schedule.

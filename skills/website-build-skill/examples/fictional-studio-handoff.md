@@ -58,6 +58,7 @@ framing_reset: "Treat draft direction names as questions to explore, not approve
 - Hosting: compare preview, HTTPS, form endpoint, response headers and rollback behavior.
 - Measurement: identify receiving-property proof for a successful inquiry.
 - Legal: verify exact font, image and intended-use rights; keep uncertain questions visible.
+- Coding: research current language support, tests, linting and secure code; refine the rules for the exact stack after Choose.
 
 ## Unresolved claims included in the packet
 
@@ -81,7 +82,7 @@ Optional memory status: pending proposal only; there is no durable-save claim.
 ## Complete the research-to-design transition
 
 After a capable Researcher establishes date provenance and opens current sources,
-it saves all grouped files, all thirteen checklists, claim ledgers, learning and staleness.
+it saves all grouped files, all fourteen checklists, claim ledgers, learning and staleness.
 It reads them back, applies AD01 through AD08 and R01 through R06, and issues a new revision.
 Coordinator reopens those artifacts before recording acceptance.
 Only then does scope-to-designer carry the approved brief, accepted library revision,

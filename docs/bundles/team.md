@@ -61,7 +61,7 @@ SET UP
 RESEARCHER
 - Own site-work/research/library/ and handoffs/researcher/; own both research resources.
 - Run prompts/01-website-deep-research.md, with the inactive graphics original as
-  provenance. Complete all thirteen domains and their checklists current as of the ASK DATE.
+  provenance. Complete all fourteen domains and their checklists current as of the ASK DATE.
 - Save the library before any other role works. Gate: the library exists on disk,
   every domain this project touches has a substantive file and checklist, and every
   acted-on claim has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. UNVERIFIED cannot pass a claim.
@@ -92,7 +92,9 @@ GRAPHICS
 
 BUILDER
 - After mockup selection, learn codebase/stack, accessibility/performance and
-  security/delivery research; top up chosen APIs, headers, and measurement rules.
+  security/delivery and language/coding research; top up chosen APIs, headers, and measurement rules.
+- After Choose and before Build, run prompts/13-coding-research.md and read
+  site-work/coding-standards.md; apply checklists/code-quality.md to the implementation.
 - Own stack choice, implementation, performance, headers, build evidence and release.
 - Integrate Graphics and Optimizer outputs without editing their original sources.
 - Prepare the immutable candidate/audit brief; reproduce findings and test fixes.
@@ -108,6 +110,7 @@ REVIEWER
 - Last before ship, use a different model family or return INTERNAL, gate BLOCKED.
 - Learn the relevant library and top up current attack, accessibility and scanner facts.
 - Review the fixed candidate read-only; return findings and research without edits.
+- Check code against site-work/coding-standards.md and checklists/code-quality.md.
 - Return reproducible evidence or an explicit scoped no-findings result.
 - Apply checklists/ship.md ASK DATE checks to library and top-ups; reject undated,
   stale-access and stamped-but-unrevalidated claims as findings.
@@ -270,12 +273,12 @@ Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
 
 Use [the research prompt](../../skills/website-build-skill/prompts/01-website-deep-research.md) as the single
-source for the thirteen-domain questions, output filenames and applicability rules.
+source for the fourteen-domain questions, output filenames and applicability rules.
 Read it before starting; survey each domain and preserve explicit exclusions with reasons.
 Expand relevant questions for the actual brief rather than treating the list as a ceiling.
 
 Use [the canonical freshness rule](../../skills/website-build-skill/playbooks/research-and-memory.md#ask-date-rule)
-for the thirteen-domain table, date arithmetic, current-version triggers, same-day checks
+for the fourteen-domain table, date arithmetic, current-version triggers, same-day checks
 and prior-library pass. Copy that table into the project's staleness.md, with claim-level
 revalidation and the earliest-expiring domain. Never maintain a separate policy table here.
 
@@ -301,20 +304,21 @@ resolve the canonical record; never silently erase an earlier disagreement.
 
 ## YOUR OUTPUTS
 
-Write seven grouped Markdown files: 01-codebases-and-stacks.md,
+Write eight grouped Markdown files: 01-codebases-and-stacks.md,
 02-design-and-experience.md, 03-graphics-and-rights.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 07-measurement-and-operations.md under your library.
+06-security-and-delivery.md, 07-measurement-and-operations.md, and
+08-languages-and-code.md under your library.
 Write README.md with headline findings and each role's reading order; scope.md and
-coverage.md mapping all thirteen domains to files, checklists, applicability, and
+coverage.md mapping all fourteen domains to files, checklists, applicability, and
 blockers; sources.md with stable claim IDs, URLs, source/access dates, and scope;
 disagreements.md, query-plan.md, and unresolved-claims.md with next verification steps.
-Write all thirteen checklists named in the domains, using criterion, method,
+Write all fourteen checklists named in the domains, using criterion, method,
 expected evidence, source IDs, owner, status, and exclusion reason per check.
 Write website-qa-checklist.md and how-to-read-a-brand-kit.md so research is executable.
 Write surprises.md as a short sourced summary for the user, and learning.md as your
 record of learned rules. Every research output is Markdown with the dated opener.
-Write staleness.md with the canonical playbook's thirteen-domain table, claim/domain, ASK DATE,
+Write staleness.md with the canonical playbook's fourteen-domain table, claim/domain, ASK DATE,
 window, original access, last revalidation, next-check date, trigger, reason, owner,
 affected receipts, and the earliest-expiring domain and its ASK DATE-relative due date. Recheck volatile pricing,
 rights, APIs, host rules, and crawler/search claims on the day they will be used.
@@ -345,7 +349,7 @@ your self-check must cover the same evidence without claiming independent review
   backed by actual current source access. Do not restamp unrevalidated content.
 - No search means BLOCKED with query-plan.md and unresolved-claims.md, including
   for an existing library. Never ask the user for the date to clear a failed rung.
-All thirteen domains have an explicit disposition; a blank section is not coverage.
+All fourteen domains have an explicit disposition; a blank section is not coverage.
 Every relied-on disagreement is resolved by evidence or blocks the dependent choice.
 UNVERIFIED claims remain visible but cannot authorize work. Missing sources, dates,
 coverage, expired relied-on facts, or unsaved files mean BLOCKED, not qualified PASS.
@@ -421,12 +425,13 @@ Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/01-codebases-and-stacks.md,
 02-design-and-experience.md, 03-graphics-and-rights.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 07-measurement-and-operations.md in that directory.
+06-security-and-delivery.md, 07-measurement-and-operations.md, and
+08-languages-and-code.md in that directory.
 Learn stage acceptance from SKILL.md, prompts/00-start.md,
 prompts/12-web-design-team.md, playbooks/research-and-memory.md,
 playbooks/deploy-and-operate.md, checklists/research.md, checklists/ship.md,
 templates/brief.md, templates/status.md, and templates/handoff.yaml.
-Open all thirteen library checklists and assign an accountable downstream owner.
+Open all fourteen library checklists and assign an accountable downstream owner.
 Record learned rules and applied checklist evidence in your learning receipts.
 
 ## WHAT YOU MUST RESEARCH
@@ -798,7 +803,7 @@ You are Website Builder, accountable for implementation, performance, headers, a
 
 ## WHAT YOU OWN
 
-Write site-work/stack.md, build/, qa/build/, qa/site-audit.md,
+Write site-work/stack.md, coding-standards.md, build/, qa/build/, qa/site-audit.md,
 qa/accessibility.md, qa/contrast.md, qa/security-headers.md, audit/, release/,
 research/builder/, and handoffs/builder/. Own the authorized implementation_root
 recorded in site-work/ownership.yaml and its SITE_OPERATIONS.md. Only you materialize
@@ -825,18 +830,22 @@ disagreements.md, unresolved-claims.md, and staleness.md in that same directory.
 Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/01-codebases-and-stacks.md,
 04-accessibility-and-performance.md, 06-security-and-delivery.md,
-07-measurement-and-operations.md, and 05-search-and-answers.md for integration.
+07-measurement-and-operations.md, 08-languages-and-code.md, and
+05-search-and-answers.md for integration.
 Apply library checklists/01-codebases.md, 02-stacks.md, 05-ui-ux.md,
-06-accessibility.md, 07-performance.md, 10-security.md, and 11-hosting.md.
+06-accessibility.md, 07-performance.md, 10-security.md, 11-hosting.md, and 14-code.md.
 Learn the smallest-stack decision from playbooks/choose-stack.md and
 references/stacks/static-html.md, scripted-static.md, and framework.md.
 Read site-work/research/library/recipes.md for build and asset commands already proven here,
 and append the ones you get working.
 Read playbooks/data-and-templates.md, image-pipeline.md, self-hosted-fonts.md,
 embed-facades.md, security-headers.md, performance-budgets.md, accessibility.md,
-and deploy-and-operate.md. Read checklists/build.md, accessibility.md, security.md,
-ship.md; prompts/05-stack-and-build.md, 09-security-headers.md,
-10-adversarial-pre-ship.md, 11-ship-and-verify.md; templates/audit-brief.md.
+and deploy-and-operate.md. Read checklists/build.md, code-quality.md,
+accessibility.md, security.md, ship.md; prompts/05-stack-and-build.md, 09-security-headers.md,
+10-adversarial-pre-ship.md, 11-ship-and-verify.md, 13-coding-research.md;
+templates/audit-brief.md. After choosing the stack, run prompts/13-coding-research.md,
+then read and ingest site-work/coding-standards.md before writing code. Record the
+standards revision and learned rules in research/builder/learning.md.
 Record the checklist IDs and research decisions used before coding.
 
 ## WHAT YOU MUST RESEARCH
@@ -889,7 +898,8 @@ For release, require release-to-builder with authority and final gate receipts.
 
 ## YOUR OUTPUTS
 
-Produce stack.md with alternatives and requirement mapping; source and generated
+Produce stack.md with alternatives and requirement mapping; coding-standards.md
+with current selected-stack rules and source evidence; source and generated
 artifact at implementation_root; reproducible build/tests, QA evidence, response
 headers, audit/AUDIT_BRIEF.md with ROUND 1 dispositions, release receipt/rollback
 identity, and SITE_OPERATIONS.md. Name what watches the site, including nothing.
@@ -900,8 +910,9 @@ learned rules, source IDs, and applied checks. A proposal is not a completed sav
 
 ## YOUR GATE
 
-Before coding, require selected mockup plus current sourced research. Validate
-fallible data, context-specific escaping, script terminators, URL schemes, empty IDs,
+Before coding, require selected mockup, current sourced research, and saved/read-back
+coding-standards.md. Apply checklists/code-quality.md to the candidate before handoff.
+Validate fallible data, context-specific escaping, script terminators, URL schemes, empty IDs,
 and shared state. Prove the next repeated page is a data change. Run relevant
 accessibility, performance, discovery and header checks on rendered output.
 Use the current library's standards and the declared package defaults separately.
@@ -1109,12 +1120,14 @@ disagreements.md, unresolved-claims.md, and staleness.md in that same directory.
 Verify the research gate and current revision before doing your job. Then read
 site-work/research/library/01-codebases-and-stacks.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 03-graphics-and-rights.md for rights checks.
+06-security-and-delivery.md, 08-languages-and-code.md, and
+03-graphics-and-rights.md for rights checks. Read site-work/coding-standards.md.
 Read all applicable library checklists, especially 06-accessibility.md,
-10-security.md and 13-legal.md. Read prompts/10-adversarial-pre-ship.md,
+10-security.md, 13-legal.md, and 14-code.md. Read prompts/10-adversarial-pre-ship.md,
 playbooks/data-and-templates.md, playbooks/security-headers.md,
-playbooks/accessibility.md, checklists/build.md, checklists/accessibility.md,
-checklists/security.md, checklists/ship.md, and templates/audit-brief.md.
+playbooks/accessibility.md, checklists/build.md, checklists/code-quality.md,
+checklists/accessibility.md, checklists/security.md, checklists/ship.md,
+and templates/audit-brief.md.
 Return your learning receipt with opened files, assumptions challenged, and checks.
 
 ## WHAT YOU MUST RESEARCH
@@ -1185,6 +1198,9 @@ Old dates may appear only as explicit history alongside current validated access
 Treat a confident undated claim as a finding, not a detail. Verify source dates,
 ladder provenance, due domains and later-day rechecks; return violations read-only.
 Check actual different-family evidence and the precise artifact reviewed. Challenge
+the code against checklists/code-quality.md and site-work/coding-standards.md,
+including pinned versions, deprecated APIs, support, commands, dependencies, secure
+coding, organization, and Builder's code-review evidence. Challenge
 input/URL/script escaping, empty IDs, shared state, auth and secrets where applicable,
 headers, rendered discovery, accessibility journeys, and assumptions in the brief.
 Return enough evidence for Builder to reproduce each asserted defect; otherwise
@@ -1353,6 +1369,7 @@ same-calendar-day currency. A decision explicitly requiring that proof stays BLO
 | 11. Hosting, deploy and DNS | Same-day check for platform capabilities, plan prices/restrictions, header syntax and deploy configuration; 90 days for DNS fundamentals. | Commercial limits and deployment contracts change quickly; name-resolution principles change slowly. Recheck the actual target before release. |
 | 12. Measurement | 30 days for setup and interpretation guidance; same-day check for selected event APIs, consent settings and receiving-property behavior. | Statistical caveats persist; vendor interfaces and active configuration do not. Changed instrumentation or property triggers verification. |
 | 13. Legal, kept light | Same-day check for exact font/stock/AI tool licenses and intended-use rights; 30 days for background guidance. | Rights attach to a particular asset, version and tier; a previously allowed use is not evidence for a new use. Changed terms or jurisdiction triggers review. |
+| 14. Languages and coding practice | Same-day check for selected language, runtime and framework versions, Baseline status of features in use, and security advisories; 30 days for testing, linting and tooling guidance; 365 days for fundamentals such as semantic HTML and structural escaping. | Language support, framework idioms and advisories can change during a build; stable semantics and escaping principles need less repetition. A selected-version, browser-target or security change triggers an earlier recheck. |
 
 - Versioned standards: identify the authoritative current release as of ASK DATE and at each scheduled refresh; record release/version, target level, source and applicability. An old but still-current standard is not stale merely because its publication is old. A new relevant release triggers review before reuse even inside a nominal window.
 - Staleness artifact: generate this full table into `staleness.md`, add all applicable claims, original accesses, last revalidations, window/expiry, trigger, reason, owner and dependent receipts. Name the earliest-expiring applicable domain (all ties), its window, and concrete recheck date with the ASK DATE-relative expression. Same-day domains are due before use that day. Do not average domain windows or let a slow domain hide a fast subclaim.
@@ -1507,7 +1524,7 @@ site-work/
     library/                              Researcher-owned canonical library.
       README.md                           Dated index, headline findings, role reading map.
       scope.md                            ASK DATE, ladder rung/raw evidence, workspace root, request, tools, applicability.
-      coverage.md                         Thirteen domains, files, checklist and source coverage.
+      coverage.md                         Fourteen domains, files, checklist and source coverage.
       01-codebases-and-stacks.md           Domains 1 and 2; code reads and current stacks.
       02-design-and-experience.md          Domains 3 and 5; design and UI/UX.
       03-graphics-and-rights.md            Domains 4 and 13; graphics and light legal.
@@ -1515,6 +1532,7 @@ site-work/
       05-search-and-answers.md             Domains 8 and 9; SEO and AEO.
       06-security-and-delivery.md          Domains 10 and 11; threats, hosts, deploy, DNS.
       07-measurement-and-operations.md     Domain 12; analytics and operational follow-through.
+      08-languages-and-code.md             Domain 14; language support, coding practice and verification.
       sources.md                          Claim IDs, opened URLs, source/access dates, scope.
       receipts/
         <CLAIM-ID>.md                     Per-claim page fetch fields and verbatim supporting excerpt.
@@ -1524,7 +1542,7 @@ site-work/
       how-to-read-a-brand-kit.md           Evidence into checkable design decisions.
       website-qa-checklist.md              Cross-domain blocker-first index of applied checks.
       surprises.md                        Short findings and implications for the user.
-      staleness.md                        Thirteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
+      staleness.md                        Fourteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
       learning.md                         Opened evidence, learned rules, applied checklist IDs.
       recipes.md                          Commands that actually ran, with tool version and what they produced.
       memory-proposal.md                  Durable rules and location, not a completed save.
@@ -1543,6 +1561,7 @@ site-work/
         11-hosting.md                     Preview, DNS, HTTPS, rollback, plan restrictions.
         12-measurement.md                 Receiving-property proof and interpretation limits.
         13-legal.md                       Font, stock, AI imagery, trademark evidence.
+        14-code.md                        Supported features, tests, tooling, dependencies and secure code.
     coordinator/                          Coordinator top-ups, flags, learning and QA receipts.
     designer/                             Designer top-ups, flags, learning and QA receipts.
     graphics/                             Graphics top-ups, flags, learning and QA receipts.
@@ -1555,7 +1574,7 @@ site-work/
   MEMORY.md                               Coordinator's consolidated durable-memory proposal.
 ```
 
-- Coverage: map all thirteen domains to grouped files, source claims, checks, and downstream owners.
+- Coverage: map all fourteen domains to grouped files, source claims, checks, and downstream owners.
 - Exclusions: survey every domain; justify any project-specific NOT APPLICABLE check.
 - Checklists: each domain check names criterion, method, expected evidence, claim IDs, owner, status, and exclusion reason.
 - Blockers: website-qa-checklist.md collects unresolved critical checks before quality scoring.
@@ -1728,7 +1747,7 @@ Begin user-request-to-researcher. You are the first working agent.
 My site request: <paste the actual audience, main action, pages, and known constraints>
 My authorized project workspace: <chosen workspace>
 Supplied materials: <attach any existing brief, brand materials, or source links>
-Use your full role and prompts/01-website-deep-research.md to cover all thirteen
+Use your full role and prompts/01-website-deep-research.md to cover all fourteen
 research domains current as of the ASK DATE. Ask for only missing inputs needed to research.
 Write the grouped library, README headlines, per-domain checklists, source/date and
 disagreement ledgers, surprises, memory proposal/receipt, and staleness schedule.
@@ -1779,7 +1798,7 @@ roles:
     owns: [graphics, research/graphics, handoffs/graphics]
   builder:
     instructions: roles/builder.md
-    owns: [stack.md, build, qa/build, qa/site-audit.md, qa/accessibility.md, qa/contrast.md, qa/security-headers.md, audit, release, research/builder, handoffs/builder]
+    owns: [stack.md, coding-standards.md, build, qa/build, qa/site-audit.md, qa/accessibility.md, qa/contrast.md, qa/security-headers.md, audit, release, research/builder, handoffs/builder]
     external_owns: [implementation_root, implementation_root/SITE_OPERATIONS.md]
   optimizer:
     instructions: roles/optimizer.md

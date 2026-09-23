@@ -10,9 +10,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "a459e172980dc7c72d410017d6ed5474902e39c72d19f48d26eb3f5f0359da79",
+      "sha256": "e4416113d528ffd9f11ff703ed5f1a7645032ef592f22e72f0a82aa9d6ef4f97",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
     },
     "CLAUDE.md": {
       "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
@@ -31,9 +31,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "472e92ac17d396170904caca2cc3b200cd84c2e7a329eaaf812d496598edaa7e",
+      "sha256": "d4886bebd3d73a9545466fdfce1cac7a7ff0464ee14151cb6adb4ab1dd76df98",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
     },
     "RELEASING.md": {
       "sha256": "7e89b30d20fef7570fc0485f80844c651a861a18956efd43e1555967f3e8dde4",
@@ -85,9 +85,9 @@
       "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/grok.md": {
-      "sha256": "73ea05c6ded22c6c9a13d772f81da43e8b0ab042a00a1f7e9a3f2de47a05e7e6",
+      "sha256": "a139a99650ca2a4d16fd862a184a6ea736ad72999ef4947fd3701b1d6d6e69a6",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
     },
     "adapters/hermes.md": {
       "sha256": "eeba94a78d84587d8a5fefea75692ff9ae4c2efaeb119a8672b22e18b5ad8724",
@@ -127,8 +127,9 @@
       "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending. 0.1.3: reviewed the installed skill folder resolution root, exit 3 and Path escapes destination root message against src/install.mjs and the installer regression. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/METHOD.md": {
-      "sha256": "c316397d190cb1b86e6167914106e6fd71db97b7d18e1af09e5f18b36e04b266",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "fe97181fb1be0ea37223fa792c2949832082cd9054e6c9c4bc87cfe4b11706ee",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/PROVENANCE.md": {
       "sha256": "a4d8039968d64163c78997e15b1a9dc8cc5b1e7aa6995a0f07e789758b2e7cb4",
@@ -157,6 +158,116 @@
       "sha256": "2d3511777a1fdf7a42821b7644d4d018c2b4250c6567f07dfecc218f4062a772",
       "disposition": "instructions-and-qualified-status-only",
       "review": "Reviewed guide descriptions and relative links against existing documentation and bundle membership. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/bundles/checklists.md": {
+      "sha256": "901f259236bdcd29b9ced21be9a195708d38bef4c186783bed3f193285e573ea",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/bundles/method.md": {
+      "sha256": "a704e2e73cac7b7b080cbc1e3cf33df6561a205334b39c453241fbe353606db1",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/bundles/playbooks.md": {
+      "sha256": "88fa3ac16eaa736bca4580e820748197a64c75aac2c96745b673c283349078dc",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/bundles/prompts.md": {
+      "sha256": "4a2cdc64c6773d153f32e20e611945f0500350cede2a438864075e5dce7cec24",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/bundles/team.md": {
+      "sha256": "ae64ddac5ff331d7e304f0e4372cd8d4d0c17e92955b345ebb433490ad5b0fbb",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/SKILL.md": {
+      "sha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/checklists/build.md": {
+      "sha256": "4492d1576d276f73dcab9be83e525acf690984bb058f2139c1c703967fe1eccf",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/checklists/code-quality.md": {
+      "sha256": "6a0346ef6678b0ed3c64ff04df93e466ae5acd8c26e34c802b78505091ae62c3",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/checklists/research.md": {
+      "sha256": "ce3ea09b3aea6c1e1ad046bfc32c11c5502f3a206349f149b51925ae7ff4bde1",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/checklists/ship.md": {
+      "sha256": "24e633228248eccb69fb4aa5c6a4afd6481ddcbe72f3ac095cc10d53e4367dba",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/examples/fictional-studio-handoff.md": {
+      "sha256": "190e80ee0e8447923e71120ebb24e656168db1311f72da5049a27ac7a4229963",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/playbooks/research-and-memory.md": {
+      "sha256": "dbac7440d87a85d1f8970b10938d91baa7203b5a596f1f902dfe347b5baecaad",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/prompts/00-start.md": {
+      "sha256": "d5ed2a92d5bd7071895658ebbf4d7d696aeddb3735aa8d9153d0405c517f7b9c",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/prompts/01-website-deep-research.md": {
+      "sha256": "6289264065a504551c0f6d20f7cfecc6a916880df8d91f1b4f5b04684c481cab",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/prompts/05-stack-and-build.md": {
+      "sha256": "7b49af1c5286281b58aa37fa3ff0215750cc4ca3efc97ff550992c616cd3cbf8",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/prompts/12-web-design-team.md": {
+      "sha256": "58a53b49b1da1039195d0ecaa24dff296668d9c4c4a52545d40836ddf8d6d388",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/prompts/13-coding-research.md": {
+      "sha256": "d1de4c7ed85b4109a35b60d5d2aedd2db5178ed6d198cbdca0c31250cf469ed4",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/roles/builder.md": {
+      "sha256": "c02abff4b072d9a95eec7e2303c27bd6908f59b3c895cac5f1ea52ebb403c4be",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/roles/coordinator.md": {
+      "sha256": "0bddf3b4477c224fe0dfb75b8370e213e51f939871fd973e4ff0ff88cba3b822",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/roles/researcher.md": {
+      "sha256": "741a5200fbef577c8e8da4dec7eb4d738cca9ead11928260ca610a67bdb98106",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/roles/reviewer.md": {
+      "sha256": "8d77a3f3db3eb127ae931e1b92ed8cc30da3f5bd095b0af84d76acd15430c66b",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "skills/website-build-skill/templates/evidence.md": {
+      "sha256": "2b3476d038ee0b067ea38006bcad6819ab219b5751de92f911820abe53ab501f",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
     }
   }
 }

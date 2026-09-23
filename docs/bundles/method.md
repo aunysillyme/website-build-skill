@@ -115,11 +115,11 @@ The graphics original is inactive provenance, excluded from every active stage r
 | Intake and research | Researcher | 00-start, then 01-website-deep-research | research.md AD01-AD08, R01-R06 |
 | Scope acceptance | Coordinator | 00-start, after research receipt | research.md acceptance; brief and ownership |
 | Match and mock | Designer with Graphics | 03-extract-brand-kit, then 04-three-mockups | brand-and-mockups.md |
-| Choose and build | Builder | 05-stack-and-build | build.md |
+| Choose and build | Builder | 05-stack-and-build; [13-coding-research](../../skills/website-build-skill/prompts/13-coding-research.md) after Choose, before Build | build.md; [code-quality.md](../../skills/website-build-skill/checklists/code-quality.md) |
 | Prove experience | Builder with Designer | 06-site-audit, then 07-accessibility-contrast | accessibility.md; performance-seo.md |
 | Prove discovery | Optimizer with Builder | 08-seo-aeo | performance-seo.md |
 | Protect | Builder | 09-security-headers | security.md |
-| Challenge | Different-family Reviewer | 10-adversarial-pre-ship | research.md AD09; ship.md SH01-SH03 |
+| Challenge | Different-family Reviewer | 10-adversarial-pre-ship | research.md AD09; [code-quality.md](../../skills/website-build-skill/checklists/code-quality.md); ship.md SH01-SH03 |
 | Ship | Coordinator acceptance, Builder release | 11-ship-and-verify | ship.md, pre-promotion then live checks |
 | Team setup | Human or installer | 12-web-design-team | Seven route acknowledgements; no downstream work yet |
 
@@ -296,6 +296,7 @@ same-calendar-day currency. A decision explicitly requiring that proof stays BLO
 | 11. Hosting, deploy and DNS | Same-day check for platform capabilities, plan prices/restrictions, header syntax and deploy configuration; 90 days for DNS fundamentals. | Commercial limits and deployment contracts change quickly; name-resolution principles change slowly. Recheck the actual target before release. |
 | 12. Measurement | 30 days for setup and interpretation guidance; same-day check for selected event APIs, consent settings and receiving-property behavior. | Statistical caveats persist; vendor interfaces and active configuration do not. Changed instrumentation or property triggers verification. |
 | 13. Legal, kept light | Same-day check for exact font/stock/AI tool licenses and intended-use rights; 30 days for background guidance. | Rights attach to a particular asset, version and tier; a previously allowed use is not evidence for a new use. Changed terms or jurisdiction triggers review. |
+| 14. Languages and coding practice | Same-day check for selected language, runtime and framework versions, Baseline status of features in use, and security advisories; 30 days for testing, linting and tooling guidance; 365 days for fundamentals such as semantic HTML and structural escaping. | Language support, framework idioms and advisories can change during a build; stable semantics and escaping principles need less repetition. A selected-version, browser-target or security change triggers an earlier recheck. |
 
 - Versioned standards: identify the authoritative current release as of ASK DATE and at each scheduled refresh; record release/version, target level, source and applicability. An old but still-current standard is not stale merely because its publication is old. A new relevant release triggers review before reuse even inside a nominal window.
 - Staleness artifact: generate this full table into `staleness.md`, add all applicable claims, original accesses, last revalidations, window/expiry, trigger, reason, owner and dependent receipts. Name the earliest-expiring applicable domain (all ties), its window, and concrete recheck date with the ASK DATE-relative expression. Same-day domains are due before use that day. Do not average domain windows or let a slow domain hide a fast subclaim.
@@ -450,7 +451,7 @@ site-work/
     library/                              Researcher-owned canonical library.
       README.md                           Dated index, headline findings, role reading map.
       scope.md                            ASK DATE, ladder rung/raw evidence, workspace root, request, tools, applicability.
-      coverage.md                         Thirteen domains, files, checklist and source coverage.
+      coverage.md                         Fourteen domains, files, checklist and source coverage.
       01-codebases-and-stacks.md           Domains 1 and 2; code reads and current stacks.
       02-design-and-experience.md          Domains 3 and 5; design and UI/UX.
       03-graphics-and-rights.md            Domains 4 and 13; graphics and light legal.
@@ -458,6 +459,7 @@ site-work/
       05-search-and-answers.md             Domains 8 and 9; SEO and AEO.
       06-security-and-delivery.md          Domains 10 and 11; threats, hosts, deploy, DNS.
       07-measurement-and-operations.md     Domain 12; analytics and operational follow-through.
+      08-languages-and-code.md             Domain 14; language support, coding practice and verification.
       sources.md                          Claim IDs, opened URLs, source/access dates, scope.
       receipts/
         <CLAIM-ID>.md                     Per-claim page fetch fields and verbatim supporting excerpt.
@@ -467,7 +469,7 @@ site-work/
       how-to-read-a-brand-kit.md           Evidence into checkable design decisions.
       website-qa-checklist.md              Cross-domain blocker-first index of applied checks.
       surprises.md                        Short findings and implications for the user.
-      staleness.md                        Thirteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
+      staleness.md                        Fourteen freshness windows relative to ASK DATE, earliest expiry, reuse decisions.
       learning.md                         Opened evidence, learned rules, applied checklist IDs.
       recipes.md                          Commands that actually ran, with tool version and what they produced.
       memory-proposal.md                  Durable rules and location, not a completed save.
@@ -486,6 +488,7 @@ site-work/
         11-hosting.md                     Preview, DNS, HTTPS, rollback, plan restrictions.
         12-measurement.md                 Receiving-property proof and interpretation limits.
         13-legal.md                       Font, stock, AI imagery, trademark evidence.
+        14-code.md                        Supported features, tests, tooling, dependencies and secure code.
     coordinator/                          Coordinator top-ups, flags, learning and QA receipts.
     designer/                             Designer top-ups, flags, learning and QA receipts.
     graphics/                             Graphics top-ups, flags, learning and QA receipts.
@@ -498,7 +501,7 @@ site-work/
   MEMORY.md                               Coordinator's consolidated durable-memory proposal.
 ```
 
-- Coverage: map all thirteen domains to grouped files, source claims, checks, and downstream owners.
+- Coverage: map all fourteen domains to grouped files, source claims, checks, and downstream owners.
 - Exclusions: survey every domain; justify any project-specific NOT APPLICABLE check.
 - Checklists: each domain check names criterion, method, expected evidence, claim IDs, owner, status, and exclusion reason.
 - Blockers: website-qa-checklist.md collects unresolved critical checks before quality scoring.
@@ -825,7 +828,7 @@ Record the scope link, library revision, engagement identifier, producer role an
 | Field | Required value and evidence |
 | --- | --- |
 | claim_id | Stable identifier referenced by decisions, checks and findings. |
-| domain | One of the thirteen research domains, with additional scoped concerns as needed. |
+| domain | One of the fourteen research domains, with additional scoped concerns as needed. |
 | statement | Exact bounded claim, including relevant version, tier, consumer or use. |
 | kind | Evidence, inference, proposed default, measurement, or UNVERIFIED. |
 | source_url | Opened authoritative URL; a search snippet does not satisfy this field. |
@@ -1293,6 +1296,7 @@ framing_reset: "Treat draft direction names as questions to explore, not approve
 - Hosting: compare preview, HTTPS, form endpoint, response headers and rollback behavior.
 - Measurement: identify receiving-property proof for a successful inquiry.
 - Legal: verify exact font, image and intended-use rights; keep uncertain questions visible.
+- Coding: research current language support, tests, linting and secure code; refine the rules for the exact stack after Choose.
 
 ## Unresolved claims included in the packet
 
@@ -1316,7 +1320,7 @@ Optional memory status: pending proposal only; there is no durable-save claim.
 ## Complete the research-to-design transition
 
 After a capable Researcher establishes date provenance and opens current sources,
-it saves all grouped files, all thirteen checklists, claim ledgers, learning and staleness.
+it saves all grouped files, all fourteen checklists, claim ledgers, learning and staleness.
 It reads them back, applies AD01 through AD08 and R01 through R06, and issues a new revision.
 Coordinator reopens those artifacts before recording acceptance.
 Only then does scope-to-designer carry the approved brief, accepted library revision,

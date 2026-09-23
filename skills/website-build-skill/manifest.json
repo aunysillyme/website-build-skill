@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.3",
+  "packageVersion": "0.1.4",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "14083527283bb68e11a073776e48aa758514e934064ec24e0f83d131549eec76"
+      "sha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1"
     },
     {
       "path": "manifest.json",
@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f9be73afb8f0e7746f2e24db5131270ab6cbf7cf3e7636473b51962a679bdfe3"
+      "sha256": "d5ed2a92d5bd7071895658ebbf4d7d696aeddb3735aa8d9153d0405c517f7b9c"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -60,7 +60,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "3577554da4ddf2be09783e72a45fc84d39d79673b414408eee7a16c57efdb7c4"
+      "sha256": "6289264065a504551c0f6d20f7cfecc6a916880df8d91f1b4f5b04684c481cab"
     },
     {
       "path": "archive/graphics-design-original.md",
@@ -119,7 +119,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "4a7b4120f37922eee98db9160cdab13f104f422d58c2f8e235ad8697f8079efa"
+      "sha256": "7b49af1c5286281b58aa37fa3ff0215750cc4ca3efc97ff550992c616cd3cbf8"
     },
     {
       "path": "prompts/06-site-audit.md",
@@ -225,7 +225,22 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "e6e7cad7d31ee51879a82f14b82ef7d0a171c67ab1763140a69e2b63e5d0c93f"
+      "sha256": "58a53b49b1da1039195d0ecaa24dff296668d9c4c4a52545d40836ddf8d6d388"
+    },
+    {
+      "path": "prompts/13-coding-research.md",
+      "version": "0.1.4",
+      "kind": "prompt",
+      "active": true,
+      "bundles": [
+        "prompts"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "d1de4c7ed85b4109a35b60d5d2aedd2db5178ed6d198cbdca0c31250cf469ed4"
     },
     {
       "path": "roles/researcher.md",
@@ -240,7 +255,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "245b0ee036e2c73619bab2c3b7585cf7b1cc7c5f9b7364dcd48a613ff2d1be78"
+      "sha256": "741a5200fbef577c8e8da4dec7eb4d738cca9ead11928260ca610a67bdb98106"
     },
     {
       "path": "roles/coordinator.md",
@@ -255,7 +270,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "1049ee3d1d85976ed943d767d89814d9d83463707591c3bd0268a8be02f7fdca"
+      "sha256": "0bddf3b4477c224fe0dfb75b8370e213e51f939871fd973e4ff0ff88cba3b822"
     },
     {
       "path": "roles/designer.md",
@@ -300,7 +315,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "7f7e957e65e2cff0d73baf6fd4dff5eb9468d451dbde792ddf4d5c143c6909b1"
+      "sha256": "c02abff4b072d9a95eec7e2303c27bd6908f59b3c895cac5f1ea52ebb403c4be"
     },
     {
       "path": "roles/optimizer.md",
@@ -330,7 +345,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "85e8355c2b7996ec1304024db3760ff489f3fdfbc1f962e9d54649b647eae599"
+      "sha256": "8d77a3f3db3eb127ae931e1b92ed8cc30da3f5bd095b0af84d76acd15430c66b"
     },
     {
       "path": "playbooks/choose-stack.md",
@@ -482,7 +497,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9ff5f322e6f80b8bf9d1daa39e9416933fa7c6b911c27a0b1a134e2714ba434b"
+      "sha256": "dbac7440d87a85d1f8970b10938d91baa7203b5a596f1f902dfe347b5baecaad"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -512,7 +527,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "2bfc2be84723071e21dbcaa0eb607d5f08ef944b0eecc712f1ea16f95118c2a8"
+      "sha256": "ce3ea09b3aea6c1e1ad046bfc32c11c5502f3a206349f149b51925ae7ff4bde1"
     },
     {
       "path": "checklists/brand-and-mockups.md",
@@ -542,7 +557,22 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "bf41f87f56761f15a3528a27ba56052ddfcc50a68a45766d84b61fddbba8e0d1"
+      "sha256": "4492d1576d276f73dcab9be83e525acf690984bb058f2139c1c703967fe1eccf"
+    },
+    {
+      "path": "checklists/code-quality.md",
+      "version": "0.1.4",
+      "kind": "checklist",
+      "active": true,
+      "bundles": [
+        "checklists"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "6a0346ef6678b0ed3c64ff04df93e466ae5acd8c26e34c802b78505091ae62c3"
     },
     {
       "path": "checklists/accessibility.md",
@@ -602,7 +632,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "16e71886e51957db9e4c18758fcb5de7ba1d85ab930a199ce77e3ce9b6a08902"
+      "sha256": "24e633228248eccb69fb4aa5c6a4afd6481ddcbe72f3ac095cc10d53e4367dba"
     },
     {
       "path": "references/stacks/static-html.md",
@@ -722,7 +752,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9bb043eb71a2f9f1c8b293efa91bb1b5b844db91456571cab01e6e2f6bd60f9f"
+      "sha256": "2b3476d038ee0b067ea38006bcad6819ab219b5751de92f911820abe53ab501f"
     },
     {
       "path": "templates/handoff.yaml",
@@ -813,7 +843,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d1caaa1ecb36de1fa19439d30f18dd68f29ca512e3c9c7252804367ad128c8d3"
+      "sha256": "190e80ee0e8447923e71120ebb24e656168db1311f72da5049a27ac7a4229963"
     },
     {
       "path": "examples/audit-cases.md",
@@ -1004,6 +1034,7 @@
       "assets": [
         "roles/builder.md",
         "prompts/05-stack-and-build.md",
+        "prompts/13-coding-research.md",
         "playbooks/choose-stack.md",
         "playbooks/data-and-templates.md",
         "playbooks/image-pipeline.md",
@@ -1012,7 +1043,8 @@
         "references/stacks/static-html.md",
         "references/stacks/scripted-static.md",
         "references/stacks/framework.md",
-        "checklists/build.md"
+        "checklists/build.md",
+        "checklists/code-quality.md"
       ],
       "requires": [
         "research",
@@ -1029,10 +1061,18 @@
         "B07",
         "B08",
         "B09",
-        "B10"
+        "B10",
+        "B11",
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ04",
+        "CQ05",
+        "CQ06"
       ],
       "runtimeOutputs": [
         "site-work/stack.md",
+        "site-work/coding-standards.md",
         "site-work/build/",
         "site-work/qa/build/",
         "authorized implementation_root"
@@ -1135,7 +1175,8 @@
         "prompts/10-adversarial-pre-ship.md",
         "templates/audit-brief.md",
         "checklists/research.md",
-        "checklists/ship.md"
+        "checklists/ship.md",
+        "checklists/code-quality.md"
       ],
       "requires": [
         "experience",
@@ -1147,7 +1188,13 @@
         "AD09",
         "SH01",
         "SH02",
-        "SH03"
+        "SH03",
+        "CQ01",
+        "CQ02",
+        "CQ03",
+        "CQ04",
+        "CQ05",
+        "CQ06"
       ],
       "runtimeOutputs": [
         "Returned read-only findings/research/handoff; Coordinator captures site-work/review/"
@@ -1215,7 +1262,8 @@
       "prompts/09-security-headers.md",
       "prompts/10-adversarial-pre-ship.md",
       "prompts/11-ship-and-verify.md",
-      "prompts/12-web-design-team.md"
+      "prompts/12-web-design-team.md",
+      "prompts/13-coding-research.md"
     ],
     "playbooks": [
       "playbooks/choose-stack.md",
@@ -1237,6 +1285,7 @@
       "checklists/research.md",
       "checklists/brand-and-mockups.md",
       "checklists/build.md",
+      "checklists/code-quality.md",
       "checklists/accessibility.md",
       "checklists/performance-seo.md",
       "checklists/security.md",
@@ -1274,6 +1323,7 @@
         "prompts/10-adversarial-pre-ship.md",
         "prompts/11-ship-and-verify.md",
         "prompts/12-web-design-team.md",
+        "prompts/13-coding-research.md",
         "roles/researcher.md",
         "roles/coordinator.md",
         "roles/designer.md",
@@ -1295,6 +1345,7 @@
         "checklists/research.md",
         "checklists/brand-and-mockups.md",
         "checklists/build.md",
+        "checklists/code-quality.md",
         "checklists/accessibility.md",
         "checklists/performance-seo.md",
         "checklists/security.md",
@@ -1335,6 +1386,7 @@
         "prompts/10-adversarial-pre-ship.md",
         "prompts/11-ship-and-verify.md",
         "prompts/12-web-design-team.md",
+        "prompts/13-coding-research.md",
         "roles/researcher.md",
         "roles/coordinator.md",
         "roles/designer.md",
@@ -1356,6 +1408,7 @@
         "checklists/research.md",
         "checklists/brand-and-mockups.md",
         "checklists/build.md",
+        "checklists/code-quality.md",
         "checklists/accessibility.md",
         "checklists/performance-seo.md",
         "checklists/security.md",
@@ -1396,6 +1449,7 @@
         "prompts/10-adversarial-pre-ship.md",
         "prompts/11-ship-and-verify.md",
         "prompts/12-web-design-team.md",
+        "prompts/13-coding-research.md",
         "roles/researcher.md",
         "roles/coordinator.md",
         "roles/designer.md",
@@ -1417,6 +1471,7 @@
         "checklists/research.md",
         "checklists/brand-and-mockups.md",
         "checklists/build.md",
+        "checklists/code-quality.md",
         "checklists/accessibility.md",
         "checklists/performance-seo.md",
         "checklists/security.md",

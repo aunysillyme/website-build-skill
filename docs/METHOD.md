@@ -5,7 +5,7 @@ The [canonical skill](../skills/website-build-skill/SKILL.md) owns the method.
 
 | Stage | Owner | Reviewable result |
 | --- | --- | --- |
-| Research | Researcher | Saved library, thirteen-domain coverage, sources and gate receipt |
+| Research | Researcher | Saved library, fourteen-domain coverage, sources and gate receipt |
 | Learn and ingest | Every role | Reopened library, applied checklist and learning receipt |
 | Scope | Coordinator | Brief, capabilities and artifact ownership |
 | Match | Designer | Brand rules, tokens, conflicts and approved inferences |

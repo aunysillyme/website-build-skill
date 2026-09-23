@@ -97,12 +97,12 @@ Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
 
 Use [the research prompt](../prompts/01-website-deep-research.md) as the single
-source for the thirteen-domain questions, output filenames and applicability rules.
+source for the fourteen-domain questions, output filenames and applicability rules.
 Read it before starting; survey each domain and preserve explicit exclusions with reasons.
 Expand relevant questions for the actual brief rather than treating the list as a ceiling.
 
 Use [the canonical freshness rule](../playbooks/research-and-memory.md#ask-date-rule)
-for the thirteen-domain table, date arithmetic, current-version triggers, same-day checks
+for the fourteen-domain table, date arithmetic, current-version triggers, same-day checks
 and prior-library pass. Copy that table into the project's staleness.md, with claim-level
 revalidation and the earliest-expiring domain. Never maintain a separate policy table here.
 
@@ -128,20 +128,21 @@ resolve the canonical record; never silently erase an earlier disagreement.
 
 ## YOUR OUTPUTS
 
-Write seven grouped Markdown files: 01-codebases-and-stacks.md,
+Write eight grouped Markdown files: 01-codebases-and-stacks.md,
 02-design-and-experience.md, 03-graphics-and-rights.md,
 04-accessibility-and-performance.md, 05-search-and-answers.md,
-06-security-and-delivery.md, and 07-measurement-and-operations.md under your library.
+06-security-and-delivery.md, 07-measurement-and-operations.md, and
+08-languages-and-code.md under your library.
 Write README.md with headline findings and each role's reading order; scope.md and
-coverage.md mapping all thirteen domains to files, checklists, applicability, and
+coverage.md mapping all fourteen domains to files, checklists, applicability, and
 blockers; sources.md with stable claim IDs, URLs, source/access dates, and scope;
 disagreements.md, query-plan.md, and unresolved-claims.md with next verification steps.
-Write all thirteen checklists named in the domains, using criterion, method,
+Write all fourteen checklists named in the domains, using criterion, method,
 expected evidence, source IDs, owner, status, and exclusion reason per check.
 Write website-qa-checklist.md and how-to-read-a-brand-kit.md so research is executable.
 Write surprises.md as a short sourced summary for the user, and learning.md as your
 record of learned rules. Every research output is Markdown with the dated opener.
-Write staleness.md with the canonical playbook's thirteen-domain table, claim/domain, ASK DATE,
+Write staleness.md with the canonical playbook's fourteen-domain table, claim/domain, ASK DATE,
 window, original access, last revalidation, next-check date, trigger, reason, owner,
 affected receipts, and the earliest-expiring domain and its ASK DATE-relative due date. Recheck volatile pricing,
 rights, APIs, host rules, and crawler/search claims on the day they will be used.
@@ -172,7 +173,7 @@ your self-check must cover the same evidence without claiming independent review
   backed by actual current source access. Do not restamp unrevalidated content.
 - No search means BLOCKED with query-plan.md and unresolved-claims.md, including
   for an existing library. Never ask the user for the date to clear a failed rung.
-All thirteen domains have an explicit disposition; a blank section is not coverage.
+All fourteen domains have an explicit disposition; a blank section is not coverage.
 Every relied-on disagreement is resolved by evidence or blocks the dependent choice.
 UNVERIFIED claims remain visible but cannot authorize work. Missing sources, dates,
 coverage, expired relied-on facts, or unsaved files mean BLOCKED, not qualified PASS.

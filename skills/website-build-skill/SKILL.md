@@ -86,11 +86,11 @@ The graphics original is inactive provenance, excluded from every active stage r
 | Intake and research | Researcher | 00-start, then 01-website-deep-research | research.md AD01-AD08, R01-R06 |
 | Scope acceptance | Coordinator | 00-start, after research receipt | research.md acceptance; brief and ownership |
 | Match and mock | Designer with Graphics | 03-extract-brand-kit, then 04-three-mockups | brand-and-mockups.md |
-| Choose and build | Builder | 05-stack-and-build | build.md |
+| Choose and build | Builder | 05-stack-and-build; [13-coding-research](prompts/13-coding-research.md) after Choose, before Build | build.md; [code-quality.md](checklists/code-quality.md) |
 | Prove experience | Builder with Designer | 06-site-audit, then 07-accessibility-contrast | accessibility.md; performance-seo.md |
 | Prove discovery | Optimizer with Builder | 08-seo-aeo | performance-seo.md |
 | Protect | Builder | 09-security-headers | security.md |
-| Challenge | Different-family Reviewer | 10-adversarial-pre-ship | research.md AD09; ship.md SH01-SH03 |
+| Challenge | Different-family Reviewer | 10-adversarial-pre-ship | research.md AD09; [code-quality.md](checklists/code-quality.md); ship.md SH01-SH03 |
 | Ship | Coordinator acceptance, Builder release | 11-ship-and-verify | ship.md, pre-promotion then live checks |
 | Team setup | Human or installer | 12-web-design-team | Seven route acknowledgements; no downstream work yet |
 

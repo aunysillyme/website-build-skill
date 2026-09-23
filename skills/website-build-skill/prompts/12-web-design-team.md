@@ -36,7 +36,7 @@ SET UP
 RESEARCHER
 - Own site-work/research/library/ and handoffs/researcher/; own both research resources.
 - Run prompts/01-website-deep-research.md, with the inactive graphics original as
-  provenance. Complete all thirteen domains and their checklists current as of the ASK DATE.
+  provenance. Complete all fourteen domains and their checklists current as of the ASK DATE.
 - Save the library before any other role works. Gate: the library exists on disk,
   every domain this project touches has a substantive file and checklist, and every
   acted-on claim has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. UNVERIFIED cannot pass a claim.
@@ -67,7 +67,9 @@ GRAPHICS
 
 BUILDER
 - After mockup selection, learn codebase/stack, accessibility/performance and
-  security/delivery research; top up chosen APIs, headers, and measurement rules.
+  security/delivery and language/coding research; top up chosen APIs, headers, and measurement rules.
+- After Choose and before Build, run prompts/13-coding-research.md and read
+  site-work/coding-standards.md; apply checklists/code-quality.md to the implementation.
 - Own stack choice, implementation, performance, headers, build evidence and release.
 - Integrate Graphics and Optimizer outputs without editing their original sources.
 - Prepare the immutable candidate/audit brief; reproduce findings and test fixes.
@@ -83,6 +85,7 @@ REVIEWER
 - Last before ship, use a different model family or return INTERNAL, gate BLOCKED.
 - Learn the relevant library and top up current attack, accessibility and scanner facts.
 - Review the fixed candidate read-only; return findings and research without edits.
+- Check code against site-work/coding-standards.md and checklists/code-quality.md.
 - Return reproducible evidence or an explicit scoped no-findings result.
 - Apply checklists/ship.md ASK DATE checks to library and top-ups; reject undated,
   stale-access and stamped-but-unrevalidated claims as findings.

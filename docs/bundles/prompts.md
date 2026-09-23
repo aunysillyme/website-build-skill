@@ -20,6 +20,7 @@ Project paths resolve only in the authorized website workspace. See [host setup 
 - [prompts/10-adversarial-pre-ship.md](../../skills/website-build-skill/prompts/10-adversarial-pre-ship.md)
 - [prompts/11-ship-and-verify.md](../../skills/website-build-skill/prompts/11-ship-and-verify.md)
 - [prompts/12-web-design-team.md](../../skills/website-build-skill/prompts/12-web-design-team.md)
+- [prompts/13-coding-research.md](../../skills/website-build-skill/prompts/13-coding-research.md)
 
 <!-- BEGIN SOURCE: prompts/00-start.md -->
 
@@ -121,6 +122,10 @@ NEXT
 - Without web search, say so, write the query plan and unresolved-claim ledger, and
   stop at the research gate; do not present unresearched output as researched.
 - Then extract the brand and show three visual mockups before writing website code.
+- Builder follows prompts/05-stack-and-build.md and runs
+  [prompts/13-coding-research.md](../../skills/website-build-skill/prompts/13-coding-research.md) after Choose, before Build.
+  Learn site-work/coding-standards.md before coding and apply
+  [checklists/code-quality.md](../../skills/website-build-skill/checklists/code-quality.md) during Build and Challenge.
 - Finish with the current stage, its evidence, and the next concrete action.
 
 EVIDENCE
@@ -164,7 +169,7 @@ STANDARDS
 - Research outputs are Markdown. All paths below are relative to
   site-work/research/library/ in the user's agreed project, never this skill package.
 
-RESEARCH THESE 13 AREAS
+RESEARCH THESE 14 AREAS
 1. Reference codebases and real implementations.
    Questions: open real repositories and read the entrypoints, routes, templates,
    data models, build scripts, tests, and deploy configuration. Which patterns recur
@@ -282,10 +287,26 @@ RESEARCH THESE 13 AREAS
     determinations to the owner or qualified adviser. Do not claim legal clearance.
     Artifact: 03-graphics-and-rights.md, domain 13 rights ledger requirements and
     unresolved questions; checklists/13-legal.md with evidence and escalation paths.
+14. Languages and coding practice.
+    Questions: as of the ASK DATE, which current HTML semantics and elements fit
+    this project? Which CSS layout features, container queries, cascade layers, and
+    nesting patterns fit its browser targets, and what is each feature's Baseline
+    status? Which JavaScript and TypeScript language features, module format, and
+    build or bundling defaults suit the selected versions? What idioms, deprecated
+    APIs, and upgrade notes apply to the chosen framework version? Research unit,
+    integration, and end-to-end testing; linting, formatting, and type-checking;
+    lockfiles, version pinning, dependency audits, and minimal dependencies; secure
+    template and script escaping, URL validation, and keeping inline secrets out
+    of code; and code organization and review. Use primary sources: MDN, web.dev
+    Baseline status, WHATWG and W3C specifications, TC39 finished proposals,
+    TypeScript release notes, and official runtime, tooling, and selected-framework
+    documentation and changelogs. Verify support separately from proposal status.
+    Artifact: 08-languages-and-code.md, domain 14 dated language/support matrix and
+    coding guidance; checklists/14-code.md with version, quality, and secure-code checks.
 
 SAVE THE RESULTS - two places, both required:
 A. Markdown files in site-work/research/library/:
-   - Write the seven grouped domain files named above, with all thirteen sections.
+   - Write the eight grouped domain files named above, with all fourteen sections.
      Survey every domain; mark genuinely inapplicable project checks with reasons.
      Extend these domains for databases, auth, payments, content workflows,
      internationalization, testing, privacy, or operations when the brief needs them.
@@ -306,7 +327,7 @@ A. Markdown files in site-work/research/library/:
      evidence needed to settle it, and current disposition. Never average claims.
    - query-plan.md and unresolved-claims.md: searches, unanswered questions, missing
      sources/tools, affected decisions, and a named next verification action.
-   - checklists/01-codebases.md through checklists/13-legal.md: exact filenames
+   - checklists/01-codebases.md through checklists/14-code.md: exact filenames
      named above. One checklist per domain, with criterion, method, expected evidence,
      source claim IDs, assigned downstream owner, PASS/FAIL/BLOCKED/NOT APPLICABLE,
      and a reason for exclusions. These are applied checks, not remembered prose.
@@ -315,7 +336,7 @@ A. Markdown files in site-work/research/library/:
      concrete type, color, spacing, imagery, and motion decisions out.
    - surprises.md: a short user-facing summary of the most surprising findings,
      each linked to a claim ID and its practical consequence for this site.
-   - staleness.md: the canonical thirteen-domain freshness table from
+   - staleness.md: the canonical fourteen-domain freshness table from
      playbooks/research-and-memory.md, then claim/domain, ASK DATE, window, original
      access, last revalidation, next-check date, reason, owner and dependent receipts.
      Identify the earliest-expiring domain, its window, and its ASK DATE-relative due date.
@@ -501,6 +522,12 @@ CHOOSE
 - Record alternatives, dependencies, host constraints, and the next-page editing path
   in site-work/stack.md. Verify current APIs before writing against them.
 
+LEARN CODING PRACTICE
+- Run [prompts/13-coding-research.md](../../skills/website-build-skill/prompts/13-coding-research.md) for the exact selected
+  stack and versions after CHOOSE and before IMPLEMENT.
+- Read back site-work/coding-standards.md and record the rules learned before writing
+  code. Current sourced standards are required; unresolved research blocks coding.
+
 IMPLEMENT
 - Keep content, shared rendering, assets, and generated output separate.
 - Make the next page a data change wherever pages share a structure.
@@ -520,6 +547,8 @@ VERIFY
 - Exercise empty IDs, quotes, ampersands, script-terminator text, long copy,
   missing optional assets, and date boundaries using synthetic records.
 - Check the selected design at mobile and desktop sizes and preserve the evidence.
+- Apply [checklists/code-quality.md](../../skills/website-build-skill/checklists/code-quality.md) against
+  site-work/coding-standards.md and record command output and code-review evidence.
 - Do not deploy. Continue through experience, discovery, headers, and audit gates.
 
 HANDOFF
@@ -893,7 +922,7 @@ SET UP
 RESEARCHER
 - Own site-work/research/library/ and handoffs/researcher/; own both research resources.
 - Run prompts/01-website-deep-research.md, with the inactive graphics original as
-  provenance. Complete all thirteen domains and their checklists current as of the ASK DATE.
+  provenance. Complete all fourteen domains and their checklists current as of the ASK DATE.
 - Save the library before any other role works. Gate: the library exists on disk,
   every domain this project touches has a substantive file and checklist, and every
   acted-on claim has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. UNVERIFIED cannot pass a claim.
@@ -924,7 +953,9 @@ GRAPHICS
 
 BUILDER
 - After mockup selection, learn codebase/stack, accessibility/performance and
-  security/delivery research; top up chosen APIs, headers, and measurement rules.
+  security/delivery and language/coding research; top up chosen APIs, headers, and measurement rules.
+- After Choose and before Build, run prompts/13-coding-research.md and read
+  site-work/coding-standards.md; apply checklists/code-quality.md to the implementation.
 - Own stack choice, implementation, performance, headers, build evidence and release.
 - Integrate Graphics and Optimizer outputs without editing their original sources.
 - Prepare the immutable candidate/audit brief; reproduce findings and test fixes.
@@ -940,6 +971,7 @@ REVIEWER
 - Last before ship, use a different model family or return INTERNAL, gate BLOCKED.
 - Learn the relevant library and top up current attack, accessibility and scanner facts.
 - Review the fixed candidate read-only; return findings and research without edits.
+- Check code against site-work/coding-standards.md and checklists/code-quality.md.
 - Return reproducible evidence or an explicit scoped no-findings result.
 - Apply checklists/ship.md ASK DATE checks to library and top-ups; reject undated,
   stale-access and stamped-but-unrevalidated claims as findings.
@@ -998,3 +1030,93 @@ Never invent a platform capability to fill a setup gap.
 
 
 <!-- END SOURCE: prompts/12-web-design-team.md -->
+
+<!-- BEGIN SOURCE: prompts/13-coding-research.md -->
+
+## Source: prompts/13-coding-research.md
+
+ASK DATE prerequisite: follow playbooks/research-and-memory.md#ask-date-rule.
+Researcher establishes it before intake or research; later roles read scope.md.
+Never ask the user for the date or infer it from model knowledge. Apply the
+same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
+
+Research how to code this project's selected stack before writing website code.
+Run as Builder after CHOOSE in [prompts/05-stack-and-build.md](../../skills/website-build-skill/prompts/05-stack-and-build.md)
+and before IMPLEMENT. Require accepted research, a named mockup selection, and
+site-work/stack.md with the selected stack and exact versions.
+
+LEARN
+- Read site-work/research/library/README.md, scope.md, coverage.md, sources.md,
+  staleness.md, 08-languages-and-code.md, and checklists/14-code.md.
+- Read the approved brief, browser targets, host constraints, and stack.md.
+  Top up the chosen path and its unresolved questions against the saved library.
+- Return stale or wrong library claims to Researcher with claim IDs and evidence;
+  resume affected decisions after a corrected library receipt.
+
+RESEARCH
+- Open primary sources as of the ASK DATE: MDN, web.dev Baseline status, WHATWG
+  and W3C specifications, TC39 finished proposals, TypeScript release notes, and
+  the selected runtime, framework, package manager, and tools' official docs,
+  changelogs, upgrade guides, and security advisories.
+- Verify the exact selected language targets, runtime and framework versions,
+  supported combinations, module format, and build or bundling defaults. For
+  living standards, record the dated specification and browser targets; for an
+  absent runtime, compiler, or framework, record NOT APPLICABLE with a reason.
+- Research current HTML semantics and elements; CSS layout, container queries,
+  cascade layers, and nesting; and JavaScript/TypeScript features for this stack.
+  Record each proposed feature's Baseline or target browser/runtime support and
+  the fallback or exclusion when support misses the project's targets. For
+  compiler-only features, mark Baseline NOT APPLICABLE and cite compiler support.
+  Verify implementation support separately from a proposal being finished.
+- Identify the selected framework version's idioms, deprecated APIs, replacement
+  patterns, and upgrade notes. Map organization rules to this project's routes,
+  components, data, rendering, tests, and generated output.
+- Select unit, integration, and end-to-end checks for the actual failure modes.
+  Verify lint, format, and type-check tools and commands for the pinned versions.
+  Give any inapplicable test level or tool a project-specific reason.
+- Define dependency hygiene: justify each dependency, pin direct versions and
+  toolchain versions, preserve the lockfile, use reproducible install commands,
+  audit advisories, and record findings, owners, and update/recheck decisions.
+- Research secure template and script handling for the actual stack: structural
+  escaping by output context, script-safe serialization, URL scheme validation,
+  input validation, and secrets supplied through the server-side environment.
+  Keep secrets out of inline scripts, client bundles, source, and recorded output.
+- For every dated claim, save the opened URL, publication/update date or unknown,
+  actual access date, and supporting evidence under site-work/research/builder/.
+  Record fetched-page receipts when opening sources using templates/evidence.md.
+  Keep disagreements and unresolved claims explicit. Apply the canonical freshness
+  windows and later-day rechecks before using a claim.
+
+SAVE AND INGEST
+Write site-work/coding-standards.md, opening with "Research as of <ASK DATE>".
+Include these sections:
+1. Pinned language, runtime, framework, and tooling versions or dated targets,
+   with source URLs, source dates, access dates, and relevant claim IDs.
+2. Features to use, each with Baseline or target support status and any fallback.
+3. Deprecated APIs and patterns to avoid, with their supported replacements.
+4. Project commands for unit, integration, and end-to-end tests, linting,
+   formatting, and type-checking, including working directory and prerequisites.
+   Label commands PLANNED until executed; link actual command output after Build.
+5. Dependency policy, lockfile and pinning rules, install/audit commands, advisory
+   handling, and the reason each dependency is needed.
+6. Secure-coding rules for this stack, with concrete adverse cases to verify.
+7. Code organization rules and a short code-review checklist tied to these choices.
+
+Reopen the standards file and record its revision, learned rules, and applied
+claim/check IDs in site-work/research/builder/learning.md before implementation.
+Use [checklists/code-quality.md](../../skills/website-build-skill/checklists/code-quality.md) during Build and
+include its receipts and the standards file in the Reviewer packet. Revalidate
+affected standards when selected versions, requirements, or source freshness change.
+
+BLOCKED RESEARCH
+If search or source access is unavailable, follow playbooks/research-and-memory.md:
+return a query plan and unresolved-claim ledger for the selected stack, keep research
+BLOCKED, and stop before implementation. Training memory or a previous library
+does not pass current research. If file writing is unavailable, return named file
+bodies for saving and read-back before the standards gate can pass.
+
+EVIDENCE
+Never report a measured, saved, installed, or deployed result without evidence.
+Apply the stage route and named checks in manifest.json before handing off.
+
+<!-- END SOURCE: prompts/13-coding-research.md -->
