@@ -67,6 +67,11 @@ External URL reachability is outside the offline link check.
 
 ## Planned live behavior evaluation
 
+Run the [end-to-end host trial](evaluation/host-trial.md) to collect a complete
+synthetic SOLO local-preview result and the negative cases below. Its receipt template
+is deliberately NOT RUN. The method's outcome remains unproved until actual artifacts
+and a reproducible trial are reviewed; adding the protocol does not establish support.
+
 | Scenario | Required observation |
 | --- | --- |
 | Missing brand kit | Requests suitable screenshots and labels inferences |

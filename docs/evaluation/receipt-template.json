@@ -1,0 +1,18 @@
+{
+  "status": "NOT RUN",
+  "trialId": null,
+  "packageCommit": null,
+  "client": { "host": null, "version": null, "os": null, "modelFamily": null },
+  "mode": "solo",
+  "invocation": "explicit file read",
+  "scope": "synthetic local preview; no public release",
+  "startedAt": null,
+  "finishedAt": null,
+  "commands": [],
+  "boundaries": [],
+  "negativeTrials": [],
+  "artifacts": [],
+  "review": { "candidateSha256": null, "modelFamily": null, "findings": [], "dispositions": [] },
+  "limitations": ["No trial has been run. No host support or website outcome is established."],
+  "reproduction": null
+}
