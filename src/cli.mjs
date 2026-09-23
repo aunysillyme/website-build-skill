@@ -1,8 +1,10 @@
 import { createInterface } from 'node:readline';
 import { install, packageInfo, choiceText } from './install.mjs';
 import { targets } from './catalog.mjs';
+import { checkLibrary } from './library-check.mjs';
 
 const help = `website-build-skill ${packageInfo.version}
+check-library <site-work-dir> (read-only receipt validation)
 --solo | --team  --target ${Object.keys(targets).join('|')}
 --dir <path>  --scope project|user  --output-dir <path>
 --yes  --dry-run  --receipt <path>  --uninstall  --help  --version
@@ -38,6 +40,10 @@ export function parseArgs(args) {
 export async function main(args = process.argv.slice(2), { input = process.stdin, output = process.stdout } = {}) {
   let request;
   try {
+    if (args[0] === 'check-library') {
+      if (args.length !== 2 || !args[1] || args[1].startsWith('--')) throw Error('Usage: website-build-skill check-library <site-work-dir>');
+      return checkLibrary(args[1]);
+    }
     request = parseArgs(args);
     if (request.help) return { code: 0, message: help };
     if (request.version) return { code: 0, message: packageInfo.version };

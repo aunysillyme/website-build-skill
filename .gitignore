@@ -10,6 +10,8 @@ node_modules/
 .build-local/
 site-work/
 research/
+!test/fixtures/library-red/research/
+!test/fixtures/library-green/research/
 brand-kit/
 screenshots/
 coverage/

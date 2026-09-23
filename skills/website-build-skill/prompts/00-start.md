@@ -63,8 +63,14 @@ BRIEF
 SAVE
 - As Researcher, ask where the work should be saved (Obsidian vault, a folder on this
   computer, Notion, or a typed path), then save that root with the request and tool limits
-  to <root>/research/library/scope.md. Notion receives an export; the working copy stays on disk.
+  to <root>/site-work/research/library/scope.md. Notion receives an export; the working copy stays on disk.
+- At each page fetch, write `site-work/research/library/receipts/<CLAIM-ID>.md`
+  using templates/evidence.md. Never write the receipt afterward or mark a claim
+  OPENED from memory or a search snippet. Without a receipt it is UNVERIFIED;
+  an acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
 - Complete prompts/01-website-deep-research.md and its library before any other role.
+  Record `website-build-skill check-library <root>/site-work` command, exit code
+  and output, or Reviewer's five-rule manual equivalent when no shell exists.
 - After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
   under site-work/. If file tools are missing, return named bodies for me to save
   and reattach; wait for saved library read-back before any design work.

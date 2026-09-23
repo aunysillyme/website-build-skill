@@ -76,6 +76,16 @@ Apply these standards to every domain and top-up:
 - Every output file opens with "Research as of <ASK DATE>".
 - Where sources disagree, record the disagreement. Never average it.
 - Mark anything unverified as UNVERIFIED.
+- At page fetch time, write `site-work/research/library/receipts/<CLAIM-ID>.md`
+  using templates/evidence.md. Never reconstruct the receipt afterward or mark
+  a claim OPENED from memory or a search snippet. Copy a verbatim supporting
+  excerpt of at least 80 characters from the fetched page.
+- Use the templates/evidence.md sources.md table: OPENED requires a receipt;
+  otherwise use UNVERIFIED. Unknown publication dates remain unknown.
+- Before handoff, run `website-build-skill check-library <root>/site-work` and
+  save command, exit code and output. Without a shell, obtain Reviewer's recorded
+  five-rule manual equivalent from checklists/research.md. A zero exit cannot
+  release acted-on UNVERIFIED claims; those keep research acceptance BLOCKED.
 Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
 
