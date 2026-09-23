@@ -1,7 +1,7 @@
 # Maintainers
 
 Owner: the public repository account at [website-build-skill](https://github.com/aunysillyme/website-build-skill).
-Path ownership: [.github/CODEOWNERS](.github/CODEOWNERS).
+Path ownership: [.github/CODEOWNERS](https://github.com/aunysillyme/website-build-skill/blob/main/.github/CODEOWNERS).
 
 - Scope: canonical method, adapters, generated bundles, content checks and release review.
 - Contributors: reproduce defects, preserve source attribution and supply sanitized evidence.

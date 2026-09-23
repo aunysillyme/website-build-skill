@@ -19,18 +19,18 @@ Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
 
 Where should the work be saved?
 
-  1  Obsidian vault       Give the vault path and a folder inside it. The library is
+  1  Obsidian vault       Give an existing folder inside your vault. The library is
                           plain Markdown, so it opens and links natively.
 
   2  A folder on this computer
-                          Give any path. The default is a site-work folder beside
-                          the website project.
+                          Give an existing directory. The default is the
+                          website project folder.
 
   3  Notion               Working copy still lives in a folder on this computer,
                           because every gate reads its own files back by path.
                           Notion receives an export of the finished library.
 
-  4  Somewhere else       Type the destination yourself.
+  4  Somewhere else       Type an existing local destination yourself.
 
 Whatever you pick becomes the workspace root. Everything below is written inside it.
 
@@ -65,65 +65,15 @@ For TEAM, read prompts/12-web-design-team.md after all seven role files; for SOL
 For a site review, begin with prompts/06-site-audit.md after loading the brief.
 Before release, require checklists/ship.md and the independent review receipt.
 
-## ASK DATE and the six-rung ladder
+## Date provenance and research freshness
 
-ASK DATE is the externally established date of the user's request, fixed at engagement start.
-Researcher alone records it before intake or research in site-work/research/library/scope.md.
-Never ask the user for the date or infer it from training knowledge.
-The ladder below is a copy of the canonical rule, not an independent policy.
-
-**Date-source ladder.** Try in this order and stop establishing the date at the
-first successful rung. Record failed/unavailable earlier rungs and the successful
-rung's raw evidence. Capturing the first HTTP header remains a cross-check after
-an earlier rung succeeds; it does not restart the ladder or a later day's engagement.
-
-1. **Host environment (`host-environment`).** Use a current date explicitly injected by the host into this request/session. Record the exact supplied value and its host-context location. A date the model believes it remembers, an old saved session's date, or a date typed by the user is not host evidence. Preserve any supplied timezone; do not invent a time of day when only a date is supplied.
-2. **System clock (`system-clock`).** Through an available command runner, execute `date -u '+%Y-%m-%dT%H:%M:%SZ'`. Expected output is one UTC line shaped `YYYY-MM-DDTHH:MM:SSZ`; take its `YYYY-MM-DD` part as the date and preserve the whole output. On a Windows-only runner, use `powershell -NoProfile -Command "[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')"` with the same output shape. Unsupported or failed execution advances the ladder, never invents output.
-3. **HTTP response (`http-date`).** Capture the raw `Date` response header on the first URL fetch of this run, including requested URL, final URL, status, raw header and any cache/Age evidence. Its expected HTTP-date shape is `Day, DD Mon YYYY HH:MM:SS GMT`. Parse that server-supplied value and normalize to UTC. Where command execution is available, `curl --silent --show-error --dump-header - --output /dev/null '<source-url>'` shows response headers; retain only date provenance fields, never cookies or credentials. A fetch API that hides headers cannot satisfy this rung; missing, malformed or demonstrably stale cached headers advance it. Do not claim every fetch tool exposes a usable header or fabricate one from page content.
-4. **Filesystem (`filesystem-mtime`).** If writing and metadata reading are available but command execution is not, write a new scratch file at `site-work/research/library/.ask-date-probe` and read its modification timestamp through the file tool. Record the exact raw mtime, timezone/precision, relative path and fresh-write result; derive the date from that timestamp. Reusing an old file's mtime does not count. If metadata cannot be read, advance the ladder. Remove only this owned scratch file if supported; it is never deployed or published.
-5. **Derived floor (`derived-floor`).** If none of the earlier rungs is available, take the most recent credible publication/update date actually visible in sources opened this run. Record `ASK DATE: derived-floor <date>` with source URLs, observed date text and why it is credible. Collect only the minimum source evidence needed to establish this rung before the full research pass. Future scheduled dates, snippets, model knowledge and guessed dates are not observations. This is a lower bound, not proof of the actual day: research is current at least to that date, and currency beyond it is unproven. Every output opens with `Research as of derived-floor <date>; currency beyond this floor is unproven.` Every gate repeats that qualification; never silently promote it to an exact date. As more credible source dates are opened during initial establishment, take the latest before finalizing the one scope record; retain the candidate trail.
-6. **Nothing available (`unavailable`, never a successful date rung).** No host date, command execution, usable URL fetch or filesystem means no current research capability either. Write or return `query-plan.md` and `unresolved-claims.md`, state the tool limit, and record the research gate BLOCKED. If URLs can be opened but no credible publication date or earlier rung can be obtained, date provenance is still BLOCKED. A missing date is not a separate softer exception, and cannot be solved by asking the user.
-
-**Cross-check, and never let a fetched source move the date.** A first-fetch HTTP Date
-comes from a server you do not control, and the first source of a run can be chosen by
-whatever you were pointed at. Treat it as evidence, never as authority.
-
-- **A local rung wins.** When a host date or a system clock is available, it sets ASK DATE.
-  A disagreeing HTTP Date is recorded as a discrepancy with both values; it does not
-  become the chosen rung and does not change ASK DATE.
-- **A fetched date later than the local clock is rejected.** No source knows the future.
-  Record it as `rejected: future http-date`, keep the local rung, and treat that source as
-  unreliable for dating anything else it says.
-- **A fetched date earlier than the local clock** is usually a cached or proxied response.
-  Record it, keep the local rung, and prefer a direct fetch for anything date-sensitive.
-- **Only when rungs 1 and 2 are both unavailable** can `http-date` be the chosen rung, and
-  then it needs corroboration: a second HTTP Date from an independent host, agreeing within
-  24 hours. Without that second source, do not adopt it; fall through to `derived-floor`
-  and carry its qualification.
-- **A clock error is established, not assumed.** Two independent fetched sources agreeing
-  with each other and disagreeing with the local clock by more than 24 hours is the only
-  evidence that promotes a correction, and the correction is an explicit recorded decision
-  that invalidates dependent receipts. Never a silent reset, and never averaged.
-- Normal passage of days in an engagement is not a conflicting start timestamp.
-
-**Why this rule is shaped this way.** Preferring the server unconditionally lets a single
-attacker-controlled page set ASK DATE into the future, after which every genuine access date
-looks stale and the research gate blocks the engagement. A source supplies evidence about
-itself; it never supplies authority over your own state.
-
-
-Record the real calendar date, successful rung, raw evidence, precision, timezone,
-failed earlier attempts, cross-check disposition and stable engagement identifier.
-Every research Markdown file opens with the stored ASK DATE, including any floor qualifier.
-Every acted-on claim has an opened URL, supporting evidence, separate publication/update
-date or unknown, and an actual current-engagement access date on or after ASK DATE.
-Preserve original accesses and record current source-opening/revalidation when reusing work.
-Never promote a new stamp into proof of a refreshed library.
-Keep ASK DATE fixed across sessions and recheck expired or changed domains before reliance.
-The thirteen freshness windows, full scope fields, reuse pass, and derived-floor access
-procedure live in playbooks/research-and-memory.md#ask-date-rule.
-No web access means research BLOCKED, including when an old library exists.
-Apply research AD01 through AD08 before downstream work and independent AD09 before ship.
+Before research, load [the canonical ASK DATE rule](playbooks/research-and-memory.md#ask-date-rule).
+It owns the date-source ladder, raw evidence, clock discrepancies, derived floors,
+freshness windows and prior-library reuse procedure. Keep the engagement date fixed;
+record actual new source access separately. Never let a fetched source move the date;
+apply the canonical discrepancy procedure. Missing evidence keeps research BLOCKED.
+Apply research AD01-AD08 before dependent work and independent AD09 before shipment.
+Do not reconstruct the rule from memory or maintain another copy in this entrypoint.
 
 ## Use the stage route
 

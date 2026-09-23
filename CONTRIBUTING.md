@@ -23,9 +23,10 @@ Use synthetic fixtures and reserved example domains. Never paste real project tr
 
 ## Run locally
 
-Prerequisite: Node, no dependency install. Continuous integration pins Node 22.22.3;
-other runtimes and hosted runners are UNVERIFIED until actual runs are recorded.
-No dependency install is required. No npm installer is provided.
+Prerequisite: Node 18 or newer; no dependency install is required. The check matrix
+covers Node 18, 20, 22.22.3 and 24. The file installer is implemented; native worker
+generation and client activation remain UNVERIFIED. Registry publication is a separate
+release step, not something inferred from a working local executable.
 
 ```sh
 node scripts/build.mjs

@@ -71,4 +71,4 @@ Generated from skills/website-build-skill/manifest.json. Published at https://gi
 
 ## Inactive provenance
 
-- [Graphics original](skills/website-build-skill/prompts/02-graphics-design-original.md): archive only; never execute
+- [Graphics original](skills/website-build-skill/archive/graphics-design-original.md): archive only; never execute

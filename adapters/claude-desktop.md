@@ -18,7 +18,7 @@ Reference target: [Use skills](https://support.claude.com/en/articles/12512180-u
 - [team.md](../docs/bundles/team.md)
 
 Supply private brief/brand files separately in the user's own project.
-For provenance only, supply the [inactive archive](../skills/website-build-skill/prompts/02-graphics-design-original.md) separately if needed; never execute it.
+For provenance only, supply the [inactive archive](../skills/website-build-skill/archive/graphics-design-original.md) separately if needed; never execute it.
 
 
 ## Common limits and smoke check

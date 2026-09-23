@@ -63,7 +63,7 @@ sole maintainer can still push directly while force pushes, deletions and a red 
 - [ ] Require pull requests and an approving review for `main`: not applied, same reason.
 - [ ] Require code-owner review for source, workflow and publication changes: not applied.
 - [ ] Restrict the repository to selected actions, or require SHA pinning at the repository level: not applied. `allowed_actions` is `all`; the pinning that exists is in the workflow files.
-- [ ] Release dispatch stays read-only and publication disabled until an authorized release implementation is reviewed. No release has been published.
+- [ ] Publication setup: release.yml implements publishing on a matching version tag; only its publish job receives id-token: write. Registry bootstrap and trusted-publisher configuration require maintainer completion. No publication is established by the baseline receipt.
 - [ ] Maintainer notifications for failed Actions runs: delivery UNVERIFIED, no intentional safe failure has been sent.
 
 ## Social preview
