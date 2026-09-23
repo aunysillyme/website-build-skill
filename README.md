@@ -87,36 +87,14 @@ Every site follows the same twelve stages, so your AI researches before it desig
 
 ## Two ways to work
 
-```text
-How do you want to work?
-
-  1  Teach my AI          One AI learns the whole thing and does every job itself.
-                          Works with any AI: Claude, ChatGPT, Grok, Cursor, Copilot.
-                          Nothing else to install.
-
-  2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
-                          Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
-                          One command installs their files; you open each session yourself.
+| Choice | What happens | Works with |
+|---|---|---|
+| **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
+| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job, starting with a researcher that gets them all current. One command installs their files; you open each session yourself. | Claude Code, Codex, Hermes, Antigravity, Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
-Where should the work be saved?
-
-  1  Obsidian vault       Give an existing folder inside your vault. The library is
-                          plain Markdown, so it opens and links natively.
-
-  2  A folder on this computer
-                          Give an existing directory. The default is the
-                          website project folder.
-
-  3  Notion               Working copy still lives in a folder on this computer,
-                          because every gate reads its own files back by path.
-                          Notion receives an export of the finished library.
-
-  4  Somewhere else       Type an existing local destination yourself.
-
-Whatever you pick becomes the workspace root. Everything below is written inside it.
-```
+The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root.
 
 SOLO follows the same jobs with saved self-handoffs. TEAM gives each job a separate route:
 

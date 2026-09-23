@@ -6,6 +6,12 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-23
+
+### Changed
+
+- README "Two ways to work" is a two-row table in place of the raw installer prompt; the save-location choices are one sentence. SKILL.md keeps the card verbatim because the agent shows it to the user, and the drift check now requires it there only.
+
 ## [0.1.1] - 2026-09-23
 
 ### Added

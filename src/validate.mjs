@@ -270,7 +270,9 @@ export function check(root, options = {}) {
       }
     }
     const question = read(root, `${CORE}/templates/install-choice.txt`).trimEnd();
-    if (!read(root, 'README.md').includes(question) || !read(root, `${CORE}/SKILL.md`).includes(question)) issues.push('CHOICE_DRIFT:verbatim question');
+    // The agent shows this card to the user, so SKILL.md carries it verbatim. The README
+    // summarizes the same two choices as a table for human readers.
+    if (!read(root, `${CORE}/SKILL.md`).includes(question)) issues.push('CHOICE_DRIFT:verbatim question');
     const prompts = read(root, 'docs/bundles/prompts.md');
     if (prompts.includes(`BEGIN SOURCE: ${ARCHIVE}`) || prompts.includes(read(root, `${CORE}/${ARCHIVE}`).split('\n').slice(8).join('\n').trim())) issues.push('ARCHIVE_EXCLUSION:active prompt bundle');
   });
