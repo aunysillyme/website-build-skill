@@ -8,7 +8,7 @@ How do you want to work?
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
                           One command installs their files; you open each session yourself.
 
-Not sure? Pick 1. Moving to 2 later costs you nothing you have already done.
+Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
 Where should the work be saved?
 

@@ -9,11 +9,12 @@ and site-work/handoffs/designer/. Own BRAND.md, tokens.json, contrast.md,
 asset-inventory.md, mockup files, comparison.md, and selection.md in those directories.
 Graphics owns final assets and their authoritative rights ledger; Builder owns code.
 
-## WHAT YOU MUST NOT DO
+## BOUNDARIES
 
-Do not start before accepted research. Do not turn your inference into an approved
-brand rule, copy another site's identity, select the user's mockup, write production
-code, or edit Graphics' rights records. Screenshots do not establish font licensing.
+Start after accepted research. Present brand inferences for approval, create an
+original identity, and let the user select the mockup. Hand production code to Builder
+and rights records to Graphics. Verify font licensing with a license document or
+purchase record; a screenshot shows the font in use, and licensing needs the license itself.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 

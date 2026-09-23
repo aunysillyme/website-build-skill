@@ -1,15 +1,16 @@
 # Grok
 
-Status: UNVERIFIED. No Bot importer or automatic team creator is supplied.
+Set up Bots through the account controls using the complete roles and manual relay below.
+See [compatibility](../docs/COMPATIBILITY.md) for setup evidence and host trials.
 
 - SOLO: paste the starter in [zero-install](zero-install.md), or give a file-capable session the complete canonical skill.
 - TEAM: attach all five [bundles](../docs/bundles/team.md), then paste the setup request below.
-- Native skill candidate: `.grok/skills/website-build-skill/`; discovery and invocation require a clean-client check.
+- Native skill candidate: `.grok/skills/website-build-skill/`; discovery and invocation require a clean-client check. Native loading on this host is awaiting a real-client trial; the check above confirms it on yours. Current status: [compatibility](../docs/COMPATIBILITY.md).
 - Independence: workers from one model family leave the independent release gate BLOCKED.
-- Reference: [Bot setup](https://docs.x.ai/grok-bot/bots), [collaboration](https://docs.x.ai/grok-bot/chat-and-collaboration), [skills](https://docs.x.ai/build/features/skills-plugins-marketplaces). These are verification targets, not package test evidence.
+- Reference: [Bot setup](https://docs.x.ai/grok-bot/bots), [collaboration](https://docs.x.ai/grok-bot/chat-and-collaboration), [skills](https://docs.x.ai/build/features/skills-plugins-marketplaces). Use these references when checking the installed controls.
 
 ```text
-Give me the team (option 2). Use the attached team.md and create Website Researcher first, then Website Coordinator, Website Designer, Website Graphics, Website Builder, Website Optimizer, and Website Reviewer with their complete role bodies. Use only controls actually available in this account. Return seven setup acknowledgements with routes, model families and tool limits. If Bot creation is unavailable, show the manual fallback. Give my request to Researcher first; every other worker waits for the saved-library gate. An inherited model does not establish independent review.
+Give me the team (option 2). Use the attached team.md and create Website Researcher first, then Website Coordinator, Website Designer, Website Graphics, Website Builder, Website Optimizer, and Website Reviewer with their complete role bodies. Use only controls actually available in this account. Return seven setup acknowledgements with routes, model families and tool limits. If Bot creation is unavailable, show the manual fallback. Give my request to Researcher first; every other worker waits for the saved-library gate. Use a reviewer from a different model family for independent review.
 ```
 
 ## Manual fallback
@@ -19,9 +20,9 @@ Give me the team (option 2). Use the attached team.md and create Website Researc
 - Get the complete `docs/bundles/team.md`, `method.md`, `prompts.md`, `playbooks.md`, and `checklists.md` from the same release. The team bundle contains the seven complete role bodies and this guide; the prompts bundle contains active prompts.
 - Get `skills/website-build-skill/archive/graphics-design-original.md` separately for Researcher's provenance reading. Keep its inactive header and do not execute its historical save instructions.
 - Choose the private project workspace where `site-work/` will live. Keep its research and brand files out of the public skill repository and deployment output.
-- Open your host's Bots area. Use **New** to create one Bot at a time; set its name and paste the entire named role body into its instruction field, then save. These are semantic field instructions; exact field labels in your account must be checked. A missing **New**, instruction field, or group control is an UNVERIFIED setup limit, not permission to invent an API.
-- Give each Bot the method, prompt, playbook and checklist bundles as files or pasted text through controls your account actually provides. If a filename inside an instruction is inaccessible, attach or paste that file's contents with its label before work starts. Shared group membership alone does not prove file access.
-- Request only a setup acknowledgement: name, received role, route, actual model family if known, tools, and inaccessible files. For all Bots except Researcher add: `Wait for the research gate; do not begin your role yet.` Setup acknowledgements do not pass work gates.
+- Open your host's Bots area. Use **New** to create one Bot at a time; set its name and paste the entire named role body into its instruction field, then save. These are semantic field instructions; exact field labels in your account must be checked. If **New**, the instruction field or group controls are absent, use separate chats and relay the complete role packets manually rather than inventing an API.
+- Give each Bot the method, prompt, playbook and checklist bundles as files or pasted text through controls your account actually provides. If a filename inside an instruction is inaccessible, attach or paste that file's contents with its label before work starts. Confirm file access separately for each Bot.
+- Request only a setup acknowledgement: name, received role, route, actual model family if known, tools, and inaccessible files. For all Bots except Researcher add: `Wait for the research gate; do not begin your role yet.` Pass each work gate using its own required evidence.
 
 **Create these seven Bots in this exact order**
 
@@ -33,11 +34,11 @@ Give me the team (option 2). Use the attached team.md and create Website Researc
 6. **Website Optimizer.** Click **New**, name it `Website Optimizer`, paste `roles/optimizer.md` in full, and save. Check source retrieval, validators and rendered-page access. It works with and after Builder on its bounded discovery assignment.
 7. **Website Reviewer.** Click **New**, name it `Website Reviewer`, paste `roles/reviewer.md` in full, and save. Use read-only permissions where the host supports them; otherwise use a read-only artifact packet and returned text. Record the actual model family. If the host cannot supply a family different from Builder's, keep this Bot INTERNAL and relay the final packet to an actual different-family reviewer. The release gate stays BLOCKED until that review happens.
 
-**Connect the group without inventing orchestration**
+**Connect the group and verify its routes**
 
 - If your account exposes group creation, create `Website Design` and add the seven saved Bots in the same order, Researcher first. Record the actual route for each. Verify one bounded setup message reaches the intended recipient using the host's documented addressing controls.
-- If group routing or automated handoff is unavailable, use separate Bot chats and relay each handoff and its attachments manually. This still uses distinct workers; labels inside one chat do not create a team. Ordinary single-chat work uses SOLO.
-- If group messages are text-only, attach mockups and assets directly to the receiving Bot. A text path to an image is not visual access.
+- If group routing or automated handoff is unavailable, use separate Bot chats and relay each handoff and its attachments manually. Keep distinct workers on separate routes; separate workers need separate routes, and labels inside one chat stay one worker. Ordinary single-chat work uses SOLO.
+- If group messages are text-only, attach mockups and assets directly to the receiving Bot. Image review needs the Bot to open the image itself; a text path alone gives it only the path, so confirm the receiving Bot can inspect the image directly.
 - Give Coordinator this complete contract after replacing each angle-bracket route with the real saved Bot/chat reference. Unresolved placeholders keep setup incomplete.
 
 ```text
@@ -73,7 +74,7 @@ If routing fails, return the complete addressed packet for me to relay manually.
 
 **Trigger the first work handoff**
 
-Send this to **Website Researcher**, not the group or Coordinator:
+Send this directly to **Website Researcher**:
 
 ```text
 Begin user-request-to-researcher. You are the first working agent.
@@ -88,13 +89,13 @@ If you cannot search, say so, provide query-plan.md and unresolved-claims.md, an
 leave the research gate BLOCKED. If you cannot save files, return named file bodies
 for me to save and reattach; wait for read-back before passing the disk gate.
 Pass only when the saved library covers every touched domain and every claim we
-will act on has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. A proposal is not a completed save.
+will act on has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. Read back the actual saved files before confirming persistence.
 Then send research-to-coordinator to <actual Coordinator route> using all handoff
 fields and readable artifacts. No other role starts before this research gate.
 ```
 
 - First receipt: Researcher supplies `site-work/handoffs/researcher/research-<revision>.yaml` and its library. If automatic delivery fails, copy the whole receipt and attach the library to Coordinator yourself.
 - First acceptance: Coordinator opens the files, checks coverage and source dates, and writes PASS or BLOCKED in `site-work/status.md`. Only PASS releases downstream scope handoffs.
-- First design: Designer and Graphics read their named library files, return learning/top-up receipts, and apply their domain checklists. They do not start from a research summary pasted without its evidence.
-- Persistence: no Bot is assumed to remember a group chat. Preserve the files and receipts, and reattach the current revision in each new session. A durable-memory proposal remains pending until an actual supported save is read back.
+- First design: Designer and Graphics read their named library files, return learning/top-up receipts, and apply their domain checklists. They open the evidence behind the research summary before starting.
+- Persistence: preserve the files and receipts, and reattach the current revision in each new session. Carry state in the saved files, since a Bot may not remember a group chat. A durable-memory proposal remains pending until an actual supported save is read back.
 - Completion: report seven saved definitions, seven setup acknowledgements, actual routes and families, research-gate status, and all remaining capability limits separately. Never call the whole team ready from definition creation alone.

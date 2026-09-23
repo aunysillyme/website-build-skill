@@ -1,65 +1,72 @@
 # website-build-skill
 
-> Research-first website instructions, role boundaries and evidence gates.
+> A skill pack that turns your AI into an expert website builder. It teaches your LLM or agent current, researched practice in design, brand, accessibility, performance, search, security, stacks and code, so the sites it builds look and work like a professional made them.
 
-Generated from skills/website-build-skill/manifest.json. Published at https://github.com/aunysillyme/website-build-skill. Host loading is UNVERIFIED.
+Generated from skills/website-build-skill/manifest.json. Repository: https://github.com/aunysillyme/website-build-skill.
+
+## Start here
+
+- [Quick start](README.md#quick-start): run `npx website-build-skill` or paste the starter into your AI
+- [Installer](docs/INSTALLER.md): headless setup, destinations, receipts, exit codes and uninstall
+- [Compatibility](docs/COMPATIBILITY.md): host setup routes and the evidence for each
+- [Documentation](docs/README.md): method, tips, provenance and evaluation
 
 ## Active sources
 
-- [SKILL.md](skills/website-build-skill/SKILL.md): entrypoint
+- [SKILL.md](skills/website-build-skill/SKILL.md): Website Build Skill
 - [manifest.json](skills/website-build-skill/manifest.json): manifest
-- [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): prompt
-- [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): prompt
-- [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): prompt
-- [prompts/04-three-mockups.md](skills/website-build-skill/prompts/04-three-mockups.md): prompt
-- [prompts/05-stack-and-build.md](skills/website-build-skill/prompts/05-stack-and-build.md): prompt
-- [prompts/06-site-audit.md](skills/website-build-skill/prompts/06-site-audit.md): prompt
-- [prompts/07-accessibility-contrast.md](skills/website-build-skill/prompts/07-accessibility-contrast.md): prompt
-- [prompts/08-seo-aeo.md](skills/website-build-skill/prompts/08-seo-aeo.md): prompt
-- [prompts/09-security-headers.md](skills/website-build-skill/prompts/09-security-headers.md): prompt
-- [prompts/10-adversarial-pre-ship.md](skills/website-build-skill/prompts/10-adversarial-pre-ship.md): prompt
-- [prompts/11-ship-and-verify.md](skills/website-build-skill/prompts/11-ship-and-verify.md): prompt
-- [prompts/12-web-design-team.md](skills/website-build-skill/prompts/12-web-design-team.md): prompt
-- [roles/researcher.md](skills/website-build-skill/roles/researcher.md): role
-- [roles/coordinator.md](skills/website-build-skill/roles/coordinator.md): role
-- [roles/designer.md](skills/website-build-skill/roles/designer.md): role
-- [roles/graphics.md](skills/website-build-skill/roles/graphics.md): role
-- [roles/builder.md](skills/website-build-skill/roles/builder.md): role
-- [roles/optimizer.md](skills/website-build-skill/roles/optimizer.md): role
-- [roles/reviewer.md](skills/website-build-skill/roles/reviewer.md): role
-- [playbooks/choose-stack.md](skills/website-build-skill/playbooks/choose-stack.md): playbook
-- [playbooks/data-and-templates.md](skills/website-build-skill/playbooks/data-and-templates.md): playbook
-- [playbooks/image-pipeline.md](skills/website-build-skill/playbooks/image-pipeline.md): playbook
-- [playbooks/self-hosted-fonts.md](skills/website-build-skill/playbooks/self-hosted-fonts.md): playbook
-- [playbooks/embed-facades.md](skills/website-build-skill/playbooks/embed-facades.md): playbook
-- [playbooks/security-headers.md](skills/website-build-skill/playbooks/security-headers.md): playbook
-- [playbooks/structured-data-and-llms.md](skills/website-build-skill/playbooks/structured-data-and-llms.md): playbook
-- [playbooks/performance-budgets.md](skills/website-build-skill/playbooks/performance-budgets.md): playbook
-- [playbooks/accessibility.md](skills/website-build-skill/playbooks/accessibility.md): playbook
-- [playbooks/research-and-memory.md](skills/website-build-skill/playbooks/research-and-memory.md): playbook
-- [playbooks/deploy-and-operate.md](skills/website-build-skill/playbooks/deploy-and-operate.md): playbook
-- [checklists/research.md](skills/website-build-skill/checklists/research.md): checklist
-- [checklists/brand-and-mockups.md](skills/website-build-skill/checklists/brand-and-mockups.md): checklist
-- [checklists/build.md](skills/website-build-skill/checklists/build.md): checklist
-- [checklists/accessibility.md](skills/website-build-skill/checklists/accessibility.md): checklist
-- [checklists/performance-seo.md](skills/website-build-skill/checklists/performance-seo.md): checklist
-- [checklists/security.md](skills/website-build-skill/checklists/security.md): checklist
-- [checklists/ship.md](skills/website-build-skill/checklists/ship.md): checklist
-- [references/stacks/static-html.md](skills/website-build-skill/references/stacks/static-html.md): reference
-- [references/stacks/scripted-static.md](skills/website-build-skill/references/stacks/scripted-static.md): reference
-- [references/stacks/framework.md](skills/website-build-skill/references/stacks/framework.md): reference
-- [templates/install-choice.txt](skills/website-build-skill/templates/install-choice.txt): template
-- [templates/brief.md](skills/website-build-skill/templates/brief.md): template
-- [templates/brand.md](skills/website-build-skill/templates/brand.md): template
-- [templates/tokens.json](skills/website-build-skill/templates/tokens.json): template
-- [templates/evidence.md](skills/website-build-skill/templates/evidence.md): template
-- [templates/handoff.yaml](skills/website-build-skill/templates/handoff.yaml): template
-- [templates/audit-brief.md](skills/website-build-skill/templates/audit-brief.md): template
-- [templates/site-operations.md](skills/website-build-skill/templates/site-operations.md): template
-- [templates/status.md](skills/website-build-skill/templates/status.md): template
-- [examples/fictional-studio-brief.md](skills/website-build-skill/examples/fictional-studio-brief.md): example
-- [examples/fictional-studio-handoff.md](skills/website-build-skill/examples/fictional-studio-handoff.md): example
-- [examples/audit-cases.md](skills/website-build-skill/examples/audit-cases.md): example
+- [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): Help me build a website using Research. Learn. Ingest. Execute: Match. Mock. Build. Pro...
+- [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): Deep Research prompt to make your agent good at building websites:
+- [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): Turn my approved materials into a brand kit that a website builder can use and test.
+- [prompts/04-three-mockups.md](skills/website-build-skill/prompts/04-three-mockups.md): Show me three visual mockups for this website before writing any website code.
+- [prompts/05-stack-and-build.md](skills/website-build-skill/prompts/05-stack-and-build.md): Build the selected design using the smallest stack that meets the approved brief.
+- [prompts/06-site-audit.md](skills/website-build-skill/prompts/06-site-audit.md): Audit this website against the current brief, learned design research, and brand kit.
+- [prompts/07-accessibility-contrast.md](skills/website-build-skill/prompts/07-accessibility-contrast.md): Audit accessibility on the built site, with WCAG 2.2 AA as the stated baseline target.
+- [prompts/08-seo-aeo.md](skills/website-build-skill/prompts/08-seo-aeo.md): Research and implement discoverability for this site's actual audience and content.
+- [prompts/09-security-headers.md](skills/website-build-skill/prompts/09-security-headers.md): Configure security headers for the real host and built site, then verify their behavior.
+- [prompts/10-adversarial-pre-ship.md](skills/website-build-skill/prompts/10-adversarial-pre-ship.md): Run one independent adversarial audit of this fixed release candidate.
+- [prompts/11-ship-and-verify.md](skills/website-build-skill/prompts/11-ship-and-verify.md): Ship the checked website only within the release authorization already on record.
+- [prompts/12-web-design-team.md](skills/website-build-skill/prompts/12-web-design-team.md): Run option 2, Give me the team, using the human's recorded install choice.
+- [roles/researcher.md](skills/website-build-skill/roles/researcher.md): You are Website Researcher, agent one, accountable for the team's current full-stack re...
+- [roles/coordinator.md](skills/website-build-skill/roles/coordinator.md): You are Website Coordinator, accountable for scope, stage state, gates, and integration...
+- [roles/designer.md](skills/website-build-skill/roles/designer.md): You are Website Designer, accountable for the brand system and three usable visual dire...
+- [roles/graphics.md](skills/website-build-skill/roles/graphics.md): You are Website Graphics, accountable for usable image assets, exports, and rights evid...
+- [roles/builder.md](skills/website-build-skill/roles/builder.md): You are Website Builder, accountable for implementation, performance, headers, and veri...
+- [roles/optimizer.md](skills/website-build-skill/roles/optimizer.md): You are Website Optimizer, accountable for truthful SEO/AEO inputs and measured discove...
+- [roles/reviewer.md](skills/website-build-skill/roles/reviewer.md): You are Website Reviewer, accountable for the last independent adversarial gate before...
+- [playbooks/choose-stack.md](skills/website-build-skill/playbooks/choose-stack.md): Choose the smallest stack
+- [playbooks/data-and-templates.md](skills/website-build-skill/playbooks/data-and-templates.md): Make repeated pages data changes
+- [playbooks/image-pipeline.md](skills/website-build-skill/playbooks/image-pipeline.md): Deliver images for their actual slots
+- [playbooks/self-hosted-fonts.md](skills/website-build-skill/playbooks/self-hosted-fonts.md): Serve licensed fonts from the site
+- [playbooks/embed-facades.md](skills/website-build-skill/playbooks/embed-facades.md): Load providers after deliberate activation
+- [playbooks/security-headers.md](skills/website-build-skill/playbooks/security-headers.md): Tailor headers to the real response
+- [playbooks/structured-data-and-llms.md](skills/website-build-skill/playbooks/structured-data-and-llms.md): Keep discovery content truthful
+- [playbooks/performance-budgets.md](skills/website-build-skill/playbooks/performance-budgets.md): Measure the experience against explicit budgets
+- [playbooks/accessibility.md](skills/website-build-skill/playbooks/accessibility.md): Test whether people can complete the task
+- [playbooks/research-and-memory.md](skills/website-build-skill/playbooks/research-and-memory.md): Research and memory
+- [playbooks/deploy-and-operate.md](skills/website-build-skill/playbooks/deploy-and-operate.md): Promote an exact, operable release
+- [checklists/research.md](skills/website-build-skill/checklists/research.md): Research gate
+- [checklists/brand-and-mockups.md](skills/website-build-skill/checklists/brand-and-mockups.md): Brand and three-mockup gate
+- [checklists/build.md](skills/website-build-skill/checklists/build.md): Build gate
+- [checklists/accessibility.md](skills/website-build-skill/checklists/accessibility.md): Accessibility gate
+- [checklists/performance-seo.md](skills/website-build-skill/checklists/performance-seo.md): Performance and discovery gate
+- [checklists/security.md](skills/website-build-skill/checklists/security.md): Security gate
+- [checklists/ship.md](skills/website-build-skill/checklists/ship.md): Ship gate
+- [references/stacks/static-html.md](skills/website-build-skill/references/stacks/static-html.md): Static HTML recipe
+- [references/stacks/scripted-static.md](skills/website-build-skill/references/stacks/scripted-static.md): Scripted static recipe
+- [references/stacks/framework.md](skills/website-build-skill/references/stacks/framework.md): Framework recipe
+- [templates/install-choice.txt](skills/website-build-skill/templates/install-choice.txt): How do you want to work?
+- [templates/brief.md](skills/website-build-skill/templates/brief.md): Website brief
+- [templates/brand.md](skills/website-build-skill/templates/brand.md): Brand rules
+- [templates/tokens.json](skills/website-build-skill/templates/tokens.json): Synthetic starting values for mapping primitive and semantic roles, not an approved brand.
+- [templates/evidence.md](skills/website-build-skill/templates/evidence.md): Claim and source evidence contract
+- [templates/handoff.yaml](skills/website-build-skill/templates/handoff.yaml): Package-owned transport contract, not a native vendor import format.
+- [templates/audit-brief.md](skills/website-build-skill/templates/audit-brief.md): Independent audit brief
+- [templates/site-operations.md](skills/website-build-skill/templates/site-operations.md): Site operations
+- [templates/status.md](skills/website-build-skill/templates/status.md): Website stage status
+- [examples/fictional-studio-brief.md](skills/website-build-skill/examples/fictional-studio-brief.md): Fictional Studio: paper workshop website
+- [examples/fictional-studio-handoff.md](skills/website-build-skill/examples/fictional-studio-handoff.md): Fictional Studio: research-to-design handoff walkthrough
+- [examples/audit-cases.md](skills/website-build-skill/examples/audit-cases.md): Synthetic audit cases
 
 ## Bundles
 

@@ -204,11 +204,17 @@ B. Your memory: propose durable rules and the library location, then save throug
 RESEARCH GATE
 Apply checklists/research.md AD01 through AD08 and the canonical ASK DATE rule;
 record allowed rung/raw evidence, two-date claim coverage, matching openers,
-earliest expiry and per-claim reuse decisions. Run
-`website-build-skill check-library <root>/site-work` and save command, exit code
-and output; PASS needs exit 0. Without a shell record Reviewer's five-rule manual
-equivalent from checklists/research.md. Zero exit does not release acted-on
-UNVERIFIED claims: they keep research acceptance BLOCKED. Independent AD09 runs
+earliest expiry and per-claim reuse decisions. Use this checker ladder; the
+five-rule manual equivalent is in checklists/research.md:
+
+1. `website-build-skill check-library <root>/site-work`, when that command is on PATH.
+2. Otherwise `npx -y website-build-skill@<packageVersion> check-library <root>/site-work`, where `<packageVersion>` is read from the installed `manifest.json`. Never write the literal version into prose, or it goes stale on every bump.
+3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
+4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
+
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+
+Independent AD09 runs
 before ship with live re-fetches of the required acted-on source sample.
 The library exists on disk, every domain this project touches has a substantive
 file and checklist, and every claim that will be acted on carries an opened source

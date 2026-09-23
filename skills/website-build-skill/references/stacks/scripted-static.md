@@ -62,7 +62,7 @@ Keep adverse cases for quotes, script terminators, unsafe schemes, empty IDs,
 duplicate slugs, missing assets, long copy, and publication boundaries.
 Apply checklists/build.md and the remaining QA/security/ship gates.
 
-## Limits and exit
+## When to move to a bigger stack
 
 A generated page changes only when rebuilt and promoted.
 A browser interaction cannot keep a private server credential.

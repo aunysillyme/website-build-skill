@@ -62,7 +62,7 @@ Keep client work small; add it for actual interaction rather than all page conte
 - Release: freeze a candidate, obtain different-family read-only review, reproduce findings,
   verify fixes, then promote the checked artifact within existing authorization.
 
-## Limits and exit
+## When to move to a bigger stack
 
 More runtime means more dependency, patching, secret, and operational responsibility.
 Record the upgrade cadence, watchers, failure recipient, and tested recovery commands.

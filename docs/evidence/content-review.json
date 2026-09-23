@@ -10,9 +10,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "26189880cd8fd05ffebbe91dc337b1ad75ff011ded9d0246fd0fe3018fcb8708",
+      "sha256": "ab824090287fb7dfd4810e5715ea474699d0845dc3b6ef8bef1ffcff3cd8c9ee",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
+      "review": "Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "CLAUDE.md": {
       "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
@@ -31,84 +31,99 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "86e39b66f0051c655966fa882d4ffc0e6bebd8d6aa35476e4caaf6ae5eb4308f",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "32eb1581711d83bfaa94286a2012f992a174df9b9dfcbc6668b92354eaff3bb9",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "RELEASING.md": {
       "sha256": "c09c6fe815997615f0242d580430d8c83175b3ef2c0b0b929f9bd4d6284def2a",
       "disposition": "instructions-and-qualified-status-only"
     },
     "REPO_SETTINGS.md": {
-      "sha256": "84937c24362bac215a2edff4c259224df1c37f8444da3f4bcde305c5ba84b0bd",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "d3ca77b4497f879efd18b316f721b28074e0778246f93e99d4c5889013d0e33b",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Topic list changed to match the skill-pack framing and package.json keywords (20 topics). Reviewed by Claude against the check TOPICS rule."
     },
     "SECURITY.md": {
       "sha256": "9e0a9064cd020c23ae82f4c734ceab24bb9e4297073227a49ecc41414e33f8b7",
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/agents-md.md": {
-      "sha256": "c2175a6b0f11d702b82af67a1566ca5e5a5890f0063047fab258aaad34608e04",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "fc2d939ab3a278742410f181894d083e8bfe95504cd8829b78341e5fdb0bba3d",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/antigravity.md": {
-      "sha256": "4e11eaffd5f0a98f663c6a351a6e730c28748a0ef50855e277c722fcf5822df0",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "9da29d296864f9ddeeb3e0504c0f9146310e7cfbfae1b790a96d2f53c2807d38",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/chatgpt-project.md": {
-      "sha256": "3d2ddc63d3b4b49f40f5efeb684c6f94dd48a874ef92a3b605a92854e163858a",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "3838b3b56471a5d89edf55c388c139557e6914c2ff9b030759340ac715d85292",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/claude-code.md": {
-      "sha256": "3399b055c0247e82b521a8e6b83111ddc198d439f4b514a36c1dd7eac9f0b150",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "301a022d230fdb324bb35c3ca278bf11b8abdd34bb4081463217764095809938",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/claude-desktop.md": {
-      "sha256": "1fd8cf190c3ab4c46b9c4fab9f033d4958542ea930b67f9013cb5c78b5fbb20b",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "500a21b58ae56e4a07b6505ea858787a417aab1fd37bd01b7484b1110742e680",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/codex.md": {
-      "sha256": "f5d0a7921551fcf1e74edb2151cdfe609fe28289e427f11c721abc53253b4fa9",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "fdbc2c38b1ff2542518c6f9ccaac289d768857cef1b139c25219d0face9b258a",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/custom-gpt.md": {
-      "sha256": "ca76ba3718628833235e08528baae8705f96b50e4370ec72fb917c1fc18673eb",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "2a918b423b3ae322644ff2e7c014f97d2e02deedb0838ec73e7023d2b5a6c435",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/grok.md": {
-      "sha256": "6d0422e852b01d105a677d9fb465c87efee322f235b7376b30c752191b857808",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "73ea05c6ded22c6c9a13d772f81da43e8b0ab042a00a1f7e9a3f2de47a05e7e6",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/hermes.md": {
-      "sha256": "357e141650c6ba0ae25f82eac32f410314d2195aa024176772f9bbfcb21c8e54",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "14675d43a1561d2ad43f6b2cdda47e7312d1ba9aba3354ecec4c1545bcccb90d",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "adapters/zero-install.md": {
-      "sha256": "7bc2b91aa7b72fa70d5a4d5eaf5452489122289f6461cac40eac6bec0cfe28ef",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "7ac8fb37969ecbc321be6e74f6193d04d61ed4760ca7951975ab6d636d227699",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "02c48474302f399c98014984895a75c8954f52a2c98be03331c899197752d354",
+      "sha256": "09f802f0be36b0938389f455fcb5f3e6fd1b78193d5781b48998cbe12c62c268",
       "disposition": "evidence-backed",
       "claims": [
         {
           "text": "Hosted repository checks have a [revision-bound baseline receipt](evidence/audit-baseline.json).",
           "evidence": "docs/evidence/audit-baseline.json"
         }
-      ]
+      ],
+      "review": "Reviewed documented setup routes and required trial evidence; retained the existing revision-bound hosted-check claim and receipt. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "docs/EVALUATION.md": {
-      "sha256": "05cda6eae321c5f4ea982fbcbd0b669921b53bca31d31daed190947de74b1304",
+      "sha256": "cb34b13e24b906496d0f05ef20187695bd51defe75b25abb7df8d5ad2935c32d",
       "disposition": "evidence-backed",
       "claims": [
         {
           "text": "The [baseline receipt](evidence/audit-baseline.json) records a hosted CI run for one",
           "evidence": "docs/evidence/audit-baseline.json"
         }
-      ]
+      ],
+      "review": "Reviewed the exact two-sibling allowlist against production privacy rules and rejection regressions. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/INSTALLER.md": {
-      "sha256": "29f3c7ba1ece6d8776838702d517e4d2dd5122d2ef439b722ea367962eed15df",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "87b5c2e78fe62d626d7b25987552124a71d94797670314dbeba7b22b63acb6d5",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/METHOD.md": {
       "sha256": "c316397d190cb1b86e6167914106e6fd71db97b7d18e1af09e5f18b36e04b266",
@@ -136,6 +151,11 @@
     "docs/evaluation/host-trial.md": {
       "sha256": "770b5663a7c0bfe71919a4c4d9a53df31cbe8a9aac54b193ae7ba092cec23b41",
       "disposition": "instructions-and-qualified-status-only"
+    },
+    "docs/README.md": {
+      "sha256": "2d3511777a1fdf7a42821b7644d4d018c2b4250c6567f07dfecc218f4062a772",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed guide descriptions and relative links against existing documentation and bundle membership. Implementation-agent editorial review; independent review remains pending."
     }
   }
 }

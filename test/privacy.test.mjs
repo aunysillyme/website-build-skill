@@ -29,6 +29,27 @@ test('The npm repository shorthand is exempt in one spelling only', () => {
   assert.ok(privacyIssues('README.md', `see ${owner} for details`).length, 'the bare handle still fails');
 });
 
+test('Sibling links allow exactly the two related repositories and preserve privacy boundaries', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  for (const repo of ['agent-personalizer', 'model-orchestrator']) {
+    for (const prefix of ['https://github.com/', 'https://raw.githubusercontent.com/', 'github:']) {
+      assert.deepEqual(privacyIssues('README.md', `${prefix}${owner}/${repo}`), [], `${prefix}${repo}`);
+      for (const suffix of ['-private', '_private', '.private']) {
+        assert.ok(privacyIssues('README.md', `${prefix}${owner}/${repo}${suffix}`).length, suffix);
+      }
+      assert.ok(privacyIssues('README.md', `${prefix}${owner}/${repo} ${owner}`).length, 'adjacent private text');
+    }
+  }
+  assert.ok(privacyIssues('README.md', `npx github:${owner}/another-repo`).length, 'third repository must fail');
+  assert.ok(privacyIssues('README.md', `https://github.com/${owner}/another-repo`).length, 'third repository URL must fail');
+});
+
+test('Sibling exemption lookahead matches the self-repo one: a sentence-ending period is allowed', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  assert.deepEqual(privacyIssues('README.md', `See https://github.com/${owner}/agent-personalizer.`), []);
+  assert.ok(privacyIssues('README.md', `See https://github.com/${owner}/another-repo.`).length, 'a third repository name must still fail with a trailing period');
+});
+
 test('License exception is exact; arbitrary authorship elsewhere fails', () => {
   const line = 'Copyright (c) 2026 ' + ['Au', 'ny'].join('');
   assert.deepEqual(privacyIssues('LICENSE', line), []);

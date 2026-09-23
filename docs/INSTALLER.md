@@ -1,35 +1,39 @@
 # Installer contract
 
-Status: the installer is implemented; native worker generation is not.
-`npx github:aunysillyme/website-build-skill` copies the canonical files, verifies them by read-back and writes a
-receipt of exactly what it wrote. It never creates a running agent, and host activation stays
-UNVERIFIED until a real client trial. The manual copy route below still works and needs no Node.
+`npx website-build-skill` copies the canonical files, verifies them by read-back and writes a
+receipt of exactly what it wrote. Open the chosen host and ask it to read the installed entrypoint.
+See [compatibility](COMPATIBILITY.md) for host setup evidence and loading checks.
+For TEAM, use the complete role bundles with separate sessions and manual handoffs.
 
-## Manual copy available now
+## Manual copy
 
 Copy the complete `skills/website-build-skill/` directory into a new, empty destination:
 
-| Target | Project destination | Activation status |
+| Target | Project destination | Loading step |
 | --- | --- | --- |
-| Claude Code | `.claude/skills/website-build-skill/` | UNVERIFIED; read back the entrypoint and assets |
-| Codex | `.agents/skills/website-build-skill/` | UNVERIFIED; inspect discovery and invocation |
-| Hermes | `.agents/skills/website-build-skill/` | UNVERIFIED; trust and shared discovery need a trial |
-| Antigravity | `.website-build-skill/` | Explicit file-reading route; native definitions planned |
-| Generic agent | `.website-build-skill/` | Ask it to read the entrypoint; preserve existing routers |
-| Grok file-capable host | `.grok/skills/website-build-skill/` | UNVERIFIED; otherwise paste bundles |
+| Claude Code | `.claude/skills/website-build-skill/` | Read back the entrypoint and assets |
+| Codex | `.agents/skills/website-build-skill/` | Inspect discovery and invocation |
+| Hermes | `.agents/skills/website-build-skill/` | Check trust and shared discovery |
+| Antigravity | `.website-build-skill/` | Ask the session to read the entrypoint |
+| Generic agent | `.website-build-skill/` | Read the entrypoint and preserve existing routers |
+| Grok file-capable host | `.grok/skills/website-build-skill/` | Read back the entrypoint, or paste the bundles |
 
 Do not merge into a conflicting directory. Compare and preserve existing files first.
 Copy a router pointer into existing project instructions only with authorization; do not replace them.
-A copied file is prepared content. Discovery and activation require a separate read-back.
+Confirm the host can read the copied entrypoint and assets before beginning.
 For chat-only hosts, attach the five bundles and use the [Project instructions](../adapters/chatgpt-project.md).
 
 ## Command interface
 
-Before the package is on npm, the same entry point runs from the repository with
-`npx github:aunysillyme/website-build-skill <flags>`, verified to print its version.
+Install from npm:
 
-Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --solo --target codex --dir . --scope project --yes`.
-Installs the files, activation still UNVERIFIED: `npx github:aunysillyme/website-build-skill --team --target antigravity --dir . --scope project --yes`.
+```bash
+npx website-build-skill --solo --target codex --dir . --scope project --yes
+npx website-build-skill --team --target antigravity --dir . --scope project --yes
+```
+
+For unreleased changes, use `npx github:aunysillyme/website-build-skill` with the same flags.
+Append `#<reviewed-commit-sha>` to the repository reference for a reproducible install.
 
 - Choice: mutually exclusive `--solo` / `--team`; no arguments asks the canonical human question first.
 - Target: `claude-code`, `codex`, `hermes`, `antigravity`, `grok`, `agents`, `chatgpt`, `portable`.
@@ -61,13 +65,10 @@ Hermes branch A requires verified declarative role support. Branch B uses separa
 Both branches keep Researcher first, seven acknowledgements, a blocked downstream gate and a different-family Reviewer.
 See [Antigravity](../adapters/antigravity.md), [Hermes](../adapters/hermes.md) and [team ownership](../adapters/team.yaml).
 
-## What is proven, and what is not
+## Verify the installation
 
-Proven by the test suite and by hand on macOS: traversal and symlink refusal at and below the
-project root, whole-set conflict refusal, idempotent reruns, dry run writing nothing, an
-unwritable output root failing before any skill file, receipt digests matching the bytes on
-disk, uninstall keeping a changed file, router files left untouched with exit 5.
-
-Not proven by anyone: host discovery or activation on any client, a fresh tarball trial on
-Linux or Windows, and the native worker generation described below. Record actual results
-before changing a compatibility row.
+Run the local checks with `npm run check` and `npm test`. The installer tests cover traversal
+and symlink refusal, whole-set conflict refusal, idempotent reruns, dry-run behavior, output-root
+writability, receipt digests, changed-file preservation during uninstall and router integration.
+After installing, compare the receipt with files on disk and follow your adapter's loading check.
+Record client-trial evidence in [compatibility](COMPATIBILITY.md).
