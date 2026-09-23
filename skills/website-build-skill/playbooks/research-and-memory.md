@@ -214,11 +214,13 @@ If evidence cannot settle a material conflict, block that decision with a next a
 
 ## Choose where the work is saved
 
-Ask the human for the workspace root before the first write, using templates/install-choice.txt.
-Offered destinations: an Obsidian vault folder, a folder on this computer, Notion, or a typed path.
-Researcher records the chosen root once in scope.md beside ASK DATE, and a later role reads it
-instead of choosing again. Every path in this playbook, including site-work/, is written inside
-that root. A missing answer means the default site-work folder beside the website project.
+Read outputRoot and optional outputStorage from the install receipt before the first write.
+Reuse that choice without asking again. If it is absent, ask the human using
+templates/install-choice.txt: an Obsidian vault folder, local folder, Notion export, or
+another local destination. An explicitly accepted default uses the website project folder;
+a missing answer is not consent. Researcher records the root and any export target in
+site-work/research/library/scope.md beside ASK DATE. Every project path, including
+site-work/, resolves inside that root. Later roles read this record instead of choosing again.
 
 An Obsidian vault and a plain folder both work directly, because the library is Markdown on disk.
 Notion is an export destination, never the working copy: the research gate, the prior-library pass

@@ -64,6 +64,10 @@ function validate(request) {
   if (!['solo', 'team'].includes(request.mode)) throw Error('Mode must be solo or team');
   if (!['project', 'user'].includes(request.scope ?? 'project')) throw Error('Scope must be project or user');
   if (request.bundleDir !== undefined && (request.mode !== 'team' || request.target !== 'hermes')) throw Error('--bundle-dir requires --team --target hermes');
+  if (request.outputStorage !== undefined) {
+    if (!request.outputDir || !['obsidian', 'folder', 'notion', 'other'].includes(request.outputStorage?.kind)) throw Error('Invalid output storage');
+    if (request.outputStorage.kind === 'notion' && (typeof request.outputStorage.exportTarget !== 'string' || !request.outputStorage.exportTarget.trim())) throw Error('Notion export destination is required');
+  }
 }
 
 function plan(request, destination) {
@@ -274,6 +278,7 @@ export function install(request = {}) {
   const receipt = {
     schemaVersion: 1, package: packageInfo, date: new Date().toISOString(), mode: request.mode,
     target: request.target, scope: request.scope ?? 'project', destination, outputRoot,
+    ...(request.outputStorage ? { outputStorage: request.outputStorage } : {}),
     files: entries.map(entry => ({ path: entry.path, sha256: digest(entry.bytes), action: entry.action })),
     directories: [], integration, activation: 'UNVERIFIED',
   };
@@ -288,7 +293,7 @@ export function install(request = {}) {
     }
     receipt.directories.push(...oldReceipt.directories);
   }
-  const sameReceipt = oldReceipt && ['mode', 'target', 'scope', 'outputRoot'].every(key => oldReceipt[key] === receipt[key]) && JSON.stringify(oldReceipt.package) === JSON.stringify(receipt.package) && JSON.stringify(oldReceipt.integration) === JSON.stringify(integration) && oldReceipt.files.length === receipt.files.length && receipt.files.every(entry => oldReceipt.files.some(old => old.path === entry.path && old.sha256 === entry.sha256));
+  const sameReceipt = oldReceipt && ['mode', 'target', 'scope', 'outputRoot'].every(key => oldReceipt[key] === receipt[key]) && JSON.stringify(oldReceipt.outputStorage) === JSON.stringify(receipt.outputStorage) && JSON.stringify(oldReceipt.package) === JSON.stringify(receipt.package) && JSON.stringify(oldReceipt.integration) === JSON.stringify(integration) && oldReceipt.files.length === receipt.files.length && receipt.files.every(entry => oldReceipt.files.some(old => old.path === entry.path && old.sha256 === entry.sha256));
   const noChanges = entries.every(entry => !entry.wrote) && sameReceipt;
   const lines = entries.map(entry => `${entry.wrote ? 'write' : 'identical'}: ${entry.path}`);
   lines.push(`${noChanges ? 'identical' : 'write'} receipt: ${receiptPath}`);
