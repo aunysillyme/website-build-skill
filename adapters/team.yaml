@@ -1,3 +1,5 @@
+# TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+# This roster records ownership and handoff fields for the human to relay.
 schema_version: 1
 team: website-design-team
 coordinator: coordinator

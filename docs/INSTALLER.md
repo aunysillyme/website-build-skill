@@ -3,7 +3,7 @@
 `npx website-build-skill` copies the canonical files, verifies them by read-back and writes a
 receipt of exactly what it wrote. Open the chosen host and ask it to read the installed entrypoint.
 See [compatibility](COMPATIBILITY.md) for host setup evidence and loading checks.
-For TEAM, use the complete role bundles with separate sessions and manual handoffs.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 
 ## Manual copy
 
@@ -57,12 +57,15 @@ Append `#<reviewed-commit-sha>` to the repository reference for a reproducible i
 - Read-back: every file is re-read from disk and digested after the write pass. A digest taken from the bytes the installer meant to write is a record of the intention, not of what is on disk, and the receipt only ever carries the second one.
 - Ownership across runs: a reinstall that writes fewer files keeps owning what an earlier run wrote, so a SOLO install over a TEAM install does not orphan the bundles.
 
-## Native team branches
+## TEAM sessions and handoffs
 
-Generate complete canonical bodies, never independent role summaries.
-Antigravity uses per-role Markdown only after schema, path and permission tests.
-Hermes branch A requires verified declarative role support. Branch B uses separate-session packets and an explicitly scoped skill alias; alias loading never proves worker creation.
-Both branches keep Researcher first, seven acknowledgements, a blocked downstream gate and a different-family Reviewer.
+The command copies the complete role files and five bundles. Open each worker's session
+yourself and supply its complete role body, readable resources and current handoff.
+Start Researcher first; carry its passing receipt and library to Coordinator before
+passing assignments to later workers. Record seven setup acknowledgements and use a
+different-family Reviewer. Enforce read-only review through host controls or a read-only packet.
+The Hermes alias copies bundles into the explicitly selected directory inside the skill folder.
+Session references and permissions require your own checks in the chosen host.
 See [Antigravity](../adapters/antigravity.md), [Hermes](../adapters/hermes.md) and [team ownership](../adapters/team.yaml).
 
 ## Verify the installation

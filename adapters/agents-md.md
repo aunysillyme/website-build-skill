@@ -1,5 +1,7 @@
 # Generic agent router
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
 SOLO: give a file-reading agent the root [AGENTS.md](../AGENTS.md) in this repository.
 For another project, copy the canonical folder intact into a new `.website-build-skill/` and merge this pointer into existing instructions:
 

@@ -17,4 +17,4 @@ test('Inactive date fixtures never enter active bundles', () => {
   for (const members of Object.values(manifest(root).bundles)) assert.ok(members.every(p => !p.includes('fixtures/')));
 });
 
-test.todo('Live AD01-AD09 behavior: ladder evidence, clock override, no-search blockage, stale claims, derived floors and multi-day expiry');
+test('Live AD01-AD09 behavior: ladder evidence, clock override, no-search blockage, stale claims, derived floors and multi-day expiry', { skip: 'needs a live host: manual gate in docs/evaluation/host-gate.md' }, () => {});

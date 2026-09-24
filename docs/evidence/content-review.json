@@ -10,30 +10,52 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "e4416113d528ffd9f11ff703ed5f1a7645032ef592f22e72f0a82aa9d6ef4f97",
+      "sha256": "4e1c9fd46f9f759efa2f1bb8d782d7110985a485194b4214716cae9d94a5a5c5",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the #15 Fixed line for the symlinked-parent receipt path against src/install.mjs and installer tests 7e-7g, and the #15 Added line against the two receipts. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. 0.1.5 release heading moved the Unreleased lines under [0.1.5] - 2026-09-24 unchanged."
     },
     "CLAUDE.md": {
-      "sha256": "502ce6fb03a6032d4a03198288e10906d38c73124937950e34176d44a7f52440",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "983dd28a6ba815adef9201351d7845f6cf5567e0be92be975ee74d98b4ee346a",
+      "disposition": "status-claims-bound-to-receipts",
+      "claims": [
+        {
+          "text": "Native SOLO loading is tested on Claude Code and Codex",
+          "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
+        },
+        {
+          "text": "(one run each, receipts in docs/evidence/)",
+          "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
+        }
+      ],
+      "review": "0.1.5 (#15): status line narrowed to the two SOLO loading receipts; other hosts, TEAM, account tools and independent review stay UNVERIFIED. Claude editorial review."
     },
     "CODE_OF_CONDUCT.md": {
       "sha256": "9b32964f09663dbcf16e5ce39b4522928ba4c74d13c49f3fe6a9fb131b8ddd31",
       "disposition": "instructions-and-qualified-status-only"
     },
     "CONTRIBUTING.md": {
-      "sha256": "d77f293d947f4b60569f4dff4b9eb410c214d20107a0c7049f7ec63ebd4ba860",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "f72ebfa07c6a23bb06778c708633b31b2628f2d287b3d02e3248f72ce88fe1e7",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "MAINTAINERS.md": {
       "sha256": "8632008661d5ad3d60300ea2028715217c298d24d3d66af7224c52b6e0e24552",
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "d4886bebd3d73a9545466fdfce1cac7a7ff0464ee14151cb6adb4ab1dd76df98",
-      "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
+      "sha256": "362773785e80e089e8311429cc045243747e0943bdad9601e54f882314ca6777",
+      "disposition": "status-claims-bound-to-receipts",
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding.",
+      "claims": [
+        {
+          "text": "Native loading is tested",
+          "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
+        },
+        {
+          "text": "on Claude Code and Codex with dated receipts",
+          "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
+        }
+      ]
     },
     "RELEASING.md": {
       "sha256": "7e89b30d20fef7570fc0485f80844c651a861a18956efd43e1555967f3e8dde4",
@@ -50,49 +72,61 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "adapters/agents-md.md": {
-      "sha256": "fc2d939ab3a278742410f181894d083e8bfe95504cd8829b78341e5fdb0bba3d",
+      "sha256": "c00b15550493055d21c44cccc213a9315514649f45df0ac42b3370d470b661af",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/antigravity.md": {
-      "sha256": "9da29d296864f9ddeeb3e0504c0f9146310e7cfbfae1b790a96d2f53c2807d38",
+      "sha256": "3cef0375be38e6c587c9175463f2e94424244f66e423555cf8819a6ca266269e",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/chatgpt-project.md": {
-      "sha256": "3838b3b56471a5d89edf55c388c139557e6914c2ff9b030759340ac715d85292",
+      "sha256": "e8faa8762cd4501f3400d81cd90bca91d09b43e51ad74d8b03a7e1a0a6cdfa30",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/claude-code.md": {
-      "sha256": "301a022d230fdb324bb35c3ca278bf11b8abdd34bb4081463217764095809938",
-      "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "sha256": "1a811ad3ca4520f1a87f1d66a09d7d21456eb9d9fbbf1697146410e223d3d5c1",
+      "disposition": "status-claims-bound-to-receipts",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding.",
+      "claims": [
+        {
+          "text": "Native loading was tested on Claude Code 2.1.281 (macOS, SOLO, 2026-09-24;",
+          "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
+        }
+      ]
     },
     "adapters/claude-desktop.md": {
-      "sha256": "500a21b58ae56e4a07b6505ea858787a417aab1fd37bd01b7484b1110742e680",
+      "sha256": "d2164e37eea26dad680a63d7f534ea588fd40500b9e1af858de3b86a5a8e6793",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/codex.md": {
-      "sha256": "fdbc2c38b1ff2542518c6f9ccaac289d768857cef1b139c25219d0face9b258a",
-      "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "sha256": "005d05bfec4d1765e5d7e1048f086b344fa9ea6e50321ad8fd154001cc0f47fe",
+      "disposition": "status-claims-bound-to-receipts",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding.",
+      "claims": [
+        {
+          "text": "Native loading was tested on Codex CLI 0.154.0 (macOS, SOLO, 2026-09-24;",
+          "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
+        }
+      ]
     },
     "adapters/custom-gpt.md": {
-      "sha256": "2a918b423b3ae322644ff2e7c014f97d2e02deedb0838ec73e7023d2b5a6c435",
+      "sha256": "c7fa5fc40413d2803a6e682e81bd1d39a5b24dbf1d21e41c7f401788d44cee51",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/grok.md": {
-      "sha256": "a139a99650ca2a4d16fd862a184a6ea736ad72999ef4947fd3701b1d6d6e69a6",
+      "sha256": "66e869b434ec1857b3abcda064f2e4162e41bdd5f9765496095caafeadd4bdaa",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/hermes.md": {
-      "sha256": "eeba94a78d84587d8a5fefea75692ff9ae4c2efaeb119a8672b22e18b5ad8724",
+      "sha256": "bfb7624ce627d7a59328a16a663ed71aa96dbe24ede160bc349f13dd08cd1578",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed team-aliases placement and the destination boundary against src/install.mjs plan/safePath and the extended installer regression; native loading status is unchanged. Implementation-agent editorial review; independent review remains pending."
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed team-aliases placement and the destination boundary against src/install.mjs plan/safePath and the extended installer regression; native loading status is unchanged. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/zero-install.md": {
       "sha256": "7ac8fb37969ecbc321be6e74f6193d04d61ed4760ca7951975ab6d636d227699",
@@ -100,15 +134,19 @@
       "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "09f802f0be36b0938389f455fcb5f3e6fd1b78193d5781b48998cbe12c62c268",
-      "disposition": "evidence-backed",
+      "sha256": "3b7fa6f4e1c0576beb6ec6cc6af7365318affc41fe162066936f9332d998eaf8",
+      "disposition": "status-claims-bound-to-receipts",
       "claims": [
         {
-          "text": "Hosted repository checks have a [revision-bound baseline receipt](evidence/audit-baseline.json).",
-          "evidence": "docs/evidence/audit-baseline.json"
+          "text": "| Claude Code | 2.1.281, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 |",
+          "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
+        },
+        {
+          "text": "| Codex CLI | 0.154.0, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 |",
+          "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
         }
       ],
-      "review": "Reviewed documented setup routes and required trial evidence; retained the existing revision-bound hosted-check claim and receipt. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
+      "review": "Reviewed documented setup routes and required trial evidence; retained the existing revision-bound hosted-check claim and receipt. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding."
     },
     "docs/EVALUATION.md": {
       "sha256": "cb34b13e24b906496d0f05ef20187695bd51defe75b25abb7df8d5ad2935c32d",
@@ -122,14 +160,14 @@
       "review": "Reviewed the exact two-sibling allowlist against production privacy rules and rejection regressions. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/INSTALLER.md": {
-      "sha256": "85944c760b696080cb2ba8b6d381af13da3aeafa517965c7c7e28dd4625b10c6",
+      "sha256": "4a6c7c35729d0031a9c26bc7610ad6b0de9ae1ff7cc7da4c3a7fcf05d96e3e1f",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending. 0.1.3: reviewed the installed skill folder resolution root, exit 3 and Path escapes destination root message against src/install.mjs and the installer regression. Implementation-agent editorial review; independent review remains pending."
+      "review": "Reviewed npm commands and loading instructions against the CLI contract and existing installer tests; flags and exit policy preserved. Implementation-agent editorial review; independent review remains pending. 0.1.3: reviewed the installed skill folder resolution root, exit 3 and Path escapes destination root message against src/install.mjs and the installer regression. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/METHOD.md": {
-      "sha256": "fe97181fb1be0ea37223fa792c2949832082cd9054e6c9c4bc87cfe4b11706ee",
+      "sha256": "3b45db282de20f327c903e86f6d7da9440b5913907dfb75cadedf5e6b7210f95",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/PROVENANCE.md": {
       "sha256": "a4d8039968d64163c78997e15b1a9dc8cc5b1e7aa6995a0f07e789758b2e7cb4",
@@ -151,13 +189,14 @@
       "review": "Self-attested by the implementation agent for this change; independent editorial review remains pending."
     },
     "docs/evaluation/host-trial.md": {
-      "sha256": "770b5663a7c0bfe71919a4c4d9a53df31cbe8a9aac54b193ae7ba092cec23b41",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "0f45d1e9d2a118990a9f5ac724ea8383ba70f6e3d823c5117388d1ffc5daf9d8",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/README.md": {
-      "sha256": "2d3511777a1fdf7a42821b7644d4d018c2b4250c6567f07dfecc218f4062a772",
+      "sha256": "eee5835dc95cd0d757ef6e011160d404368e7b0168b9fd2fd92c9bc67a84c92d",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed guide descriptions and relative links against existing documentation and bundle membership. Implementation-agent editorial review; independent review remains pending."
+      "review": "Reviewed guide descriptions and relative links against existing documentation and bundle membership. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/bundles/checklists.md": {
       "sha256": "901f259236bdcd29b9ced21be9a195708d38bef4c186783bed3f193285e573ea",
@@ -165,9 +204,9 @@
       "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/bundles/method.md": {
-      "sha256": "a704e2e73cac7b7b080cbc1e3cf33df6561a205334b39c453241fbe353606db1",
+      "sha256": "a069bba587b980223ff84ba7f1eb0f9c6b3183ac4690cba34a61deb93d7e7dc0",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/bundles/playbooks.md": {
       "sha256": "88fa3ac16eaa736bca4580e820748197a64c75aac2c96745b673c283349078dc",
@@ -175,19 +214,19 @@
       "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
     },
     "docs/bundles/prompts.md": {
-      "sha256": "4a2cdc64c6773d153f32e20e611945f0500350cede2a438864075e5dce7cec24",
+      "sha256": "a140f44d194b1b62108877344fe67b490c4f253ec0c5a64a19f341ef2bbfd2fe",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/bundles/team.md": {
-      "sha256": "ae64ddac5ff331d7e304f0e4372cd8d4d0c17e92955b345ebb433490ad5b0fbb",
+      "sha256": "020e009e1cb6404468a749802ceb33da6485019dd42a33007e77138d9d9ef62e",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed generated content against the canonical manifest, fourteen-domain coverage, coding-research prompt, code-quality gate and team ownership roster; generated copies carry the source instructions. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "skills/website-build-skill/SKILL.md": {
-      "sha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+      "sha256": "71cb5b229d68ae1b91a11d4168c6093a88d0c0f7da2dbcab0c933cb6a333c81b",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "skills/website-build-skill/checklists/build.md": {
       "sha256": "4492d1576d276f73dcab9be83e525acf690984bb058f2139c1c703967fe1eccf",
@@ -220,9 +259,9 @@
       "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
     },
     "skills/website-build-skill/prompts/00-start.md": {
-      "sha256": "d5ed2a92d5bd7071895658ebbf4d7d696aeddb3735aa8d9153d0405c517f7b9c",
+      "sha256": "9de537723108ad71b608c467d78c7ba6edb54880d0429f5321d490cba9c900cb",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "skills/website-build-skill/prompts/01-website-deep-research.md": {
       "sha256": "6289264065a504551c0f6d20f7cfecc6a916880df8d91f1b4f5b04684c481cab",
@@ -235,9 +274,9 @@
       "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
     },
     "skills/website-build-skill/prompts/12-web-design-team.md": {
-      "sha256": "58a53b49b1da1039195d0ecaa24dff296668d9c4c4a52545d40836ddf8d6d388",
+      "sha256": "a1b1460deea3520d25245d805521019f758b905b97e73ac97e7020cead861837",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+      "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "skills/website-build-skill/prompts/13-coding-research.md": {
       "sha256": "d1de4c7ed85b4109a35b60d5d2aedd2db5178ed6d198cbdca0c31250cf469ed4",
@@ -268,6 +307,11 @@
       "sha256": "2b3476d038ee0b067ea38006bcad6819ab219b5751de92f911820abe53ab501f",
       "disposition": "instructions-and-qualified-status-only",
       "review": "0.1.4: reviewed against the coding-research task specification for fourteen-domain coverage, selected-stack standards before implementation, freshness, evidence and role ownership; no current language version or feature status is asserted. Implementation-agent editorial review; independent review remains pending."
+    },
+    "docs/evaluation/host-gate.md": {
+      "disposition": "instructions-and-qualified-status-only",
+      "sha256": "9b3655277a8ed181310247e2536888b221547590537715393d88ea0cc4c7af3f",
+      "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     }
   }
 }

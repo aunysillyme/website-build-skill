@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { resolve, relative, dirname, basename, sep } from 'node:path';
+import { resolve, relative, dirname, basename, join, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import { CORE, files, owned, digest } from './bundle.mjs';
@@ -58,6 +58,22 @@ export function safePath(root, name) {
 
 const receiptName = '.website-build-skill-receipt.json';
 const result = (code, message) => ({ code, message });
+
+function canonicalReceipt(path, root, destination, outputRoot) {
+  const boundaries = [destination, outputRoot].filter(Boolean);
+  // Resolve the user's root spelling, but inspect its suffix before using the canonical
+  // receipt parent: otherwise a planted link below an output or destination root disappears.
+  // An ancestor that resolves anywhere INSIDE a root (an alias to a subdirectory, not only
+  // to the root itself) is walked from that root, so no link below it is skipped.
+  for (let parent = dirname(path); ; parent = dirname(parent)) {
+    const base = canonical(parent);
+    for (const boundary of boundaries) {
+      if (inside(boundary, base)) safePath(boundary, join(relative(boundary, base), relative(parent, path)));
+    }
+    if (dirname(parent) === parent) break;
+  }
+  return safePath(root, resolve(root, basename(path)));
+}
 
 function validate(request) {
   if (!Object.hasOwn(targets, request.target)) throw Error('Unknown or missing target');
@@ -240,11 +256,12 @@ export function install(request = {}) {
       destination = resolve(project, targets[request.target]);
       receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
       receiptRoot = request.receipt ? canonical(dirname(receiptPath)) : destination;
-      outputRoot = request.outputDir === undefined ? null : canonical(request.outputDir);
     }
+    outputRoot = request.outputDir === undefined ? null : canonical(request.outputDir);
   } catch (error) { return result(2, error.message); }
-  if (request.uninstall) return uninstall(request, destination, receiptPath, receiptRoot);
   try {
+    if (request.receipt) receiptPath = canonicalReceipt(receiptPath, receiptRoot, destination, outputRoot);
+    if (request.uninstall) return uninstall(request, destination, receiptPath, receiptRoot);
     safePath(project, targets[request.target]);
     if (request.receipt) safePath(receiptRoot, receiptPath);
     if (inside(destination, receiptPath) && receiptPath === destination) throw Error('Receipt collides with destination');
@@ -274,7 +291,7 @@ export function install(request = {}) {
       if (info && entry.wrote) conflicts.push(entry.path);
     }
     if (conflicts.length) return result(3, `Preflight conflicts; nothing written:\n${conflicts.join('\n')}`);
-  } catch (error) { return result(3, `Preflight refused; nothing written: ${error.message}`); }
+  } catch (error) { return request.uninstall ? result(2, error.message) : result(3, `Preflight refused; nothing written: ${error.message}`); }
   const receipt = {
     schemaVersion: 1, package: packageInfo, date: new Date().toISOString(), mode: request.mode,
     target: request.target, scope: request.scope ?? 'project', destination, outputRoot,

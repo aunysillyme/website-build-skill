@@ -1,39 +1,23 @@
 # Antigravity
 
-Check the installed client schema, paths, orchestration and permissions before using native roles.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
+Check the installed client's file access and session permissions before starting.
 Manual SOLO: copy the canonical folder into `.website-build-skill/` and explicitly ask the session to read its SKILL.md.
 Install the files: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
-## Planned definition contract
+## Open the workers
 
-One complete canonical body per file at `.agents/agents/website-<role>.md`.
-Never automatically fall back to the user-level candidate `~/.gemini/config/agents/`.
-
-```yaml
----
-name: <agent_name>
-description: "<one line: what it does, when to use it, its permission boundaries>"
-subagent: true
-mainAgent: false
-model: inherit
-commandExecutionPolicy: "off"
-tools:
-  - <tool name>
-  - <tool name>
----
-
-# Agent System Instructions
-<the complete canonical role body>
-```
-
-Resolve method references to `.website-build-skill/`; retain project-relative artifact paths.
-Quote the policy string and round-trip all role text. Verify the declared policy with a permission probe.
-Keep Coordinator dormant while the parent coordinates. `mainAgent: true` and worker creation need separate verification.
-If the installed client exposes it, inspect with: `/agents`; then route the first assignment to Website Researcher.
+Open seven sessions yourself, Researcher first. In each session, load the complete
+`roles/<role>.md` from `.website-build-skill/`, plus the linked resources and current handoff.
+Use the [manual relay](grok.md#manual-fallback) to carry packets and attachments.
+Record each session reference, actual model family and available tools.
+Keep command execution off by default; verify the host setting with a permission probe.
+Give Reviewer a read-only session or candidate packet and return findings to Coordinator.
 
 ## Candidate tool mapping
 
-Use the supplied format as a design input and check it against the installed client.
+Use this checklist to inspect each session; tool names below remain candidates until observed.
 Use only tools the installed client exposes. Check image viewing and code execution separately from text reading and file writing.
 
 | Role | Declared observed tools| Reason and permission scope | Capability without an observed name; section 5.7 route |
@@ -48,10 +32,10 @@ Use only tools the installed client exposes. Check image viewing and code execut
 
 ## Settling checks
 
-- Parse and discover every role; record exact client version and expanded candidate path.
+- Open each complete role file; record exact client version and the path each session read.
 - Probe excluded Reviewer writes and execution through every inherited route; unchanged bytes are required.
 - Probe image inspection, generation, browser, build and source retrieval separately.
-- Verify parent routing, concurrency limits and research-first handoffs without duplicate Coordinators.
+- Verify each manually delivered handoff, concurrency limits and the research gate before Coordinator works.
 - Preserve source bytes and return a path-by-path receipt. Missing capability produces BLOCKED work.
 - References: [subagents](https://antigravity.google/docs/subagents), [agent manager](https://antigravity.google/docs/cli/commands/agents).
 

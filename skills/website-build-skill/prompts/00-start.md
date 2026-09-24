@@ -15,10 +15,11 @@ Do not repeat the install question mid-method. If no choice is recorded, return
 its install entrypoint to the human before starting work.
 
 TEAM SETUP
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 - Read roles/researcher.md, roles/coordinator.md, roles/designer.md, roles/graphics.md, roles/builder.md,
   roles/optimizer.md, and roles/reviewer.md.
-- Run prompts/12-web-design-team.md to establish workers, ownership, and handoffs.
-- Installer or human checks routes during setup; create Researcher first. Coordinator
+- Follow prompts/12-web-design-team.md while the human opens the sessions and carries handoffs.
+- The human checks session references during setup and opens Researcher first. Coordinator
   records families and working readiness after the research gate passes.
 - Role labels within one conversation are option 1; if separate workers are unavailable,
   say so, record SOLO, and continue below. Missing independent review alone blocks

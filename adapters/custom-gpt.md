@@ -1,5 +1,7 @@
 # Custom GPT
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
 In an eligible account, put the block below in Instructions and the bundles in Knowledge.
 Enable only available, authorized research/file tools. Use Preview to exercise a synthetic brief through research and mockups.
 Save and reattach a state packet in each new chat.
@@ -23,7 +25,7 @@ Keep one primary action and truthful content consistent across every route.
 Never describe a proposed file, test, memory write, or deployment as completed.
 For each tool the next stage needs, use it or return the exact handoff for a capable runner.
 Follow the human's recorded install choice; this upload selects SOLO.
-A later switch to TEAM uses the chosen host's setup and verified separate workers.
+A later switch to TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them, with Researcher first.
 Read all seven complete role bodies in team.md on either path. Before each job, complete
 its learning and dated research; save and reopen handoffs, including self-handoffs.
 Name the previous framing you are clearing when changing solo jobs.

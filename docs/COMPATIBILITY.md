@@ -2,7 +2,17 @@
 
 ## Tested hosts
 
-No host below has a completed real-client trial yet. Each host has a documented setup and
+Two hosts have a dated native-loading receipt. Each covers SOLO skill discovery and loading
+on the exact version below, from one run under the operator's existing client configuration
+(each receipt lists its limitations); the full SOLO build route, TEAM and deployment stay
+documented until a trial records them.
+
+| Host | Version and system | Mode and scope | Date | Receipt |
+|---|---|---|---|---|
+| Claude Code | 2.1.281, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 | [receipt](evidence/host-trial-claude-code-2026-09-24.json) |
+| Codex CLI | 0.154.0, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 | [receipt](evidence/host-trial-codex-2026-09-24.json) |
+
+Every other host has a documented setup and
 a check you run, in its own adapter guide, to confirm it loaded on yours. A host moves from
 documented to tested when its receipt records the client/runtime version, trial date,
 operating system, package revision, installed paths and hashes, invocation, observed
@@ -30,7 +40,7 @@ when its receipt demonstrates loading, file access, tool permissions and the sel
 
 - **Documentation:** save the opened official source, version, access date and setup facts it supports.
 - **Native loading:** record the actual entrypoint and every resource the client can read.
-- **TEAM:** record separate routes, setup acknowledgements, model families and permission probes.
+- **TEAM:** one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first. Record separate session references, setup acknowledgements, model families and permission probes.
 - **Delivery:** record fresh package installs for each operating system being claimed, including Linux and Windows.
 - **Uploads and URLs:** verify account ZIP controls and raw-URL retrieval in the actual client.
 - **Runtime:** the package declares Node 18 or newer; [the check workflow](https://github.com/aunysillyme/website-build-skill/blob/main/.github/workflows/check.yml) defines its runtime matrix.

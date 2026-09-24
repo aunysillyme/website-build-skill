@@ -24,7 +24,8 @@ A derived floor is a qualified lower bound, never proof of the actual day or lat
 Missing provenance or current research keeps dependent work BLOCKED.
 
 SOLO follows all seven roles sequentially with self-handoffs and a framing reset.
-TEAM needs separate routes and acknowledgements, one writer per artifact, and a saved research gate.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+Record seven setup acknowledgements, one writer per artifact, and a saved research gate.
 Neither mode earns independent review from a second name in the same model family.
 Use PASS, FAIL, BLOCKED or NOT APPLICABLE with evidence. Never convert absence into a pass.
 

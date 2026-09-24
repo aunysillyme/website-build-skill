@@ -43,10 +43,11 @@ Do not repeat the install question mid-method. If no choice is recorded, return
 its install entrypoint to the human before starting work.
 
 TEAM SETUP
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 - Read roles/researcher.md, roles/coordinator.md, roles/designer.md, roles/graphics.md, roles/builder.md,
   roles/optimizer.md, and roles/reviewer.md.
-- Run prompts/12-web-design-team.md to establish workers, ownership, and handoffs.
-- Installer or human checks routes during setup; create Researcher first. Coordinator
+- Follow prompts/12-web-design-team.md while the human opens the sessions and carries handoffs.
+- The human checks session references during setup and opens Researcher first. Coordinator
   records families and working readiness after the research gate passes.
 - Role labels within one conversation are option 1; if separate workers are unavailable,
   say so, record SOLO, and continue below. Missing independent review alone blocks
@@ -890,6 +891,7 @@ Never ask the user for the date or infer it from model knowledge. Apply the
 same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
 
 Run option 2, Give me the team, using the human's recorded install choice.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot. Follow the setup line for that host.
 
 Every agent runs its own research pass before it touches your site, so it works from what is
@@ -902,22 +904,21 @@ SET UP
 - Read roles/researcher.md first, then roles/coordinator.md, roles/designer.md,
   roles/graphics.md, roles/builder.md, roles/optimizer.md, roles/reviewer.md,
   and templates/handoff.yaml. Use each complete body, not these short summaries.
-- Create or identify Website Researcher first, then Website Coordinator,
+- The human opens Website Researcher first, then Website Coordinator,
   Website Designer, Website Graphics, Website Builder, Website Optimizer, and
-  Website Reviewer as separate sessions, Bots, or terminals. Parent may coordinate
-  only after the research gate. Use supported setup mechanisms, not invented imports.
-- Installer or human checks routes and obtains seven setup acknowledgements.
+  Website Reviewer as separate sessions, Bots, or terminals. Coordinator works
+  only after the research gate. Use available session controls and complete role files.
+- The human checks each session reference and obtains seven setup acknowledgements.
   These confirm receipt of instructions, not permission to start downstream work.
 - A role label in one conversation is option 1. Record SOLO and use prompts/00-start.md
   if separate workers cannot be reached. A same-family team remains a team but
   cannot pass independent review. Respect host concurrency limits.
-- Antigravity setup uses generated agent definitions and per-role tool declarations;
-  Hermes setup uses the verified definition branch or generated session packets and
-  bundle alias. Read the host adapter and receipt; pending discovery, trust, tools,
-  or independent review checks cannot be reported as a ready team.
+- Read the host adapter and receipt. The installer supplies role files and bundles;
+  the human opens sessions, checks trust and tools, and supplies each worker's files.
+  Pending discovery, trust, tools or independent review checks remain explicit limits.
 - Supply the request, authorized workspace, source assets, and tools to Researcher.
-  All other roles wait. Use the manual fallback in the team bundle if setup cannot
-  be automated; actual package integration remains UNVERIFIED until tested.
+  All other roles wait. Carry the complete packets using the manual setup below;
+  actual host loading remains UNVERIFIED until tested.
 
 RESEARCHER
 - Own site-work/research/library/ and handoffs/researcher/; own both research resources.
@@ -1000,9 +1001,9 @@ Never report a measured, saved, installed, or deployed result without evidence.
 Apply checklists/research.md before downstream dispatch and checklists/ship.md before release.
 
 PORTABLE MANUAL SETUP
-Use this fallback when native adapters or generated bundles are not supplied.
-Native loading, automatic worker creation, routing, tool enforcement and different-family
-availability are UNVERIFIED until the actual host/session checks succeed.
+Use this setup for TEAM on every host. You open each session and carry every handoff.
+Host loading, file access, tool enforcement and different-family availability remain
+UNVERIFIED until the actual host/session checks succeed.
 A missing host adapter does not authorize inventing a native file format or import API.
 
 1. Open the host's verified worker/session creation surface, if available.
@@ -1014,8 +1015,8 @@ A missing host adapter does not authorize inventing a native file format or impo
    with evidence, tools, inaccessible files, and owned paths. Keep downstream work pending.
 5. Give Reviewer a read-only candidate packet or verified read-only session. Broad
    inherited tools do not become restricted because role prose says read-only.
-6. Verify a bounded setup message reaches each intended route through supported controls.
-   When group automation is absent, the human can relay addressed packets and attachments.
+6. Deliver a bounded setup message to each session yourself. Relay addressed packets
+   and attachments, and verify each receiving worker can open them.
 7. Give the user's actual request, authorized workspace, assets and constraints to
    Researcher alone. It establishes ASK DATE and completes the library and gate first.
 8. Relay its complete passing receipt and readable library to Coordinator. Coordinator
@@ -1024,7 +1025,7 @@ A missing host adapter does not authorize inventing a native file format or impo
 Preserve seven acknowledgements separately from research and work-readiness receipts.
 A text-only group requires direct image attachments to each receiving visual reviewer.
 Inaccessible files or routes keep the relevant handoff BLOCKED.
-No automatic creation support means a manual setup limit, not a claimed ready team.
+Completed file installation means the files are available; session setup is the human's next step.
 No separate workers means SOLO; no independent family means independent review BLOCKED.
 Never invent a platform capability to fill a setup gap.
 

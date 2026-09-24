@@ -40,7 +40,8 @@ true as of the date of your ask, not from what its model happens to remember.
 This question is for the human at install, displayed by the README or installer.
 Follow the recorded --solo / --team choice or the option named in the user's setup prompt.
 Do not repeat it during the method. If no choice exists, return to the install entrypoint.
-Option 2 requires Claude Code, Codex, Hermes, Antigravity, or Grok Bot; its setup checks actual workers.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+Option 2 uses Claude Code, Codex, Hermes, Antigravity, or Grok Bot; the human checks each session.
 Both options use the same gates. Solo review is INTERNAL until a different family reviews.
 
 Read prompts/00-start.md to give Researcher the request and available tools.
@@ -92,7 +93,7 @@ The graphics original is inactive provenance, excluded from every active stage r
 | Protect | Builder | 09-security-headers | security.md |
 | Challenge | Different-family Reviewer | 10-adversarial-pre-ship | research.md AD09; [code-quality.md](checklists/code-quality.md); ship.md SH01-SH03 |
 | Ship | Coordinator acceptance, Builder release | 11-ship-and-verify | ship.md, pre-promotion then live checks |
-| Team setup | Human or installer | 12-web-design-team | Seven route acknowledgements; no downstream work yet |
+| Team setup | Human opens sessions and carries handoffs | 12-web-design-team | Seven route acknowledgements; no downstream work yet |
 
 Use full filenames and asset order from manifest.json; the table abbreviates prompt suffixes.
 For limited audits, load the relevant current research and checks without inventing redesign work.

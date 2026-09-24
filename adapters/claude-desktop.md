@@ -1,5 +1,7 @@
 # Claude Desktop
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
 Check the upload controls and menu labels in your account.
 Available manual route: attach the five bundles and paste the [shared instructions](chatgpt-project.md#instruction-block).
 For skill ZIP upload, prepare an archive with one complete `website-build-skill/` directory, including its manifest and relative resources.

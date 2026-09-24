@@ -29,6 +29,7 @@ Never ask the user for the date or infer it from model knowledge. Apply the
 same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
 
 Run option 2, Give me the team, using the human's recorded install choice.
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot. Follow the setup line for that host.
 
 Every agent runs its own research pass before it touches your site, so it works from what is
@@ -41,22 +42,21 @@ SET UP
 - Read roles/researcher.md first, then roles/coordinator.md, roles/designer.md,
   roles/graphics.md, roles/builder.md, roles/optimizer.md, roles/reviewer.md,
   and templates/handoff.yaml. Use each complete body, not these short summaries.
-- Create or identify Website Researcher first, then Website Coordinator,
+- The human opens Website Researcher first, then Website Coordinator,
   Website Designer, Website Graphics, Website Builder, Website Optimizer, and
-  Website Reviewer as separate sessions, Bots, or terminals. Parent may coordinate
-  only after the research gate. Use supported setup mechanisms, not invented imports.
-- Installer or human checks routes and obtains seven setup acknowledgements.
+  Website Reviewer as separate sessions, Bots, or terminals. Coordinator works
+  only after the research gate. Use available session controls and complete role files.
+- The human checks each session reference and obtains seven setup acknowledgements.
   These confirm receipt of instructions, not permission to start downstream work.
 - A role label in one conversation is option 1. Record SOLO and use prompts/00-start.md
   if separate workers cannot be reached. A same-family team remains a team but
   cannot pass independent review. Respect host concurrency limits.
-- Antigravity setup uses generated agent definitions and per-role tool declarations;
-  Hermes setup uses the verified definition branch or generated session packets and
-  bundle alias. Read the host adapter and receipt; pending discovery, trust, tools,
-  or independent review checks cannot be reported as a ready team.
+- Read the host adapter and receipt. The installer supplies role files and bundles;
+  the human opens sessions, checks trust and tools, and supplies each worker's files.
+  Pending discovery, trust, tools or independent review checks remain explicit limits.
 - Supply the request, authorized workspace, source assets, and tools to Researcher.
-  All other roles wait. Use the manual fallback in the team bundle if setup cannot
-  be automated; actual package integration remains UNVERIFIED until tested.
+  All other roles wait. Carry the complete packets using the manual setup below;
+  actual host loading remains UNVERIFIED until tested.
 
 RESEARCHER
 - Own site-work/research/library/ and handoffs/researcher/; own both research resources.
@@ -139,9 +139,9 @@ Never report a measured, saved, installed, or deployed result without evidence.
 Apply checklists/research.md before downstream dispatch and checklists/ship.md before release.
 
 PORTABLE MANUAL SETUP
-Use this fallback when native adapters or generated bundles are not supplied.
-Native loading, automatic worker creation, routing, tool enforcement and different-family
-availability are UNVERIFIED until the actual host/session checks succeed.
+Use this setup for TEAM on every host. You open each session and carry every handoff.
+Host loading, file access, tool enforcement and different-family availability remain
+UNVERIFIED until the actual host/session checks succeed.
 A missing host adapter does not authorize inventing a native file format or import API.
 
 1. Open the host's verified worker/session creation surface, if available.
@@ -153,8 +153,8 @@ A missing host adapter does not authorize inventing a native file format or impo
    with evidence, tools, inaccessible files, and owned paths. Keep downstream work pending.
 5. Give Reviewer a read-only candidate packet or verified read-only session. Broad
    inherited tools do not become restricted because role prose says read-only.
-6. Verify a bounded setup message reaches each intended route through supported controls.
-   When group automation is absent, the human can relay addressed packets and attachments.
+6. Deliver a bounded setup message to each session yourself. Relay addressed packets
+   and attachments, and verify each receiving worker can open them.
 7. Give the user's actual request, authorized workspace, assets and constraints to
    Researcher alone. It establishes ASK DATE and completes the library and gate first.
 8. Relay its complete passing receipt and readable library to Coordinator. Coordinator
@@ -163,7 +163,7 @@ A missing host adapter does not authorize inventing a native file format or impo
 Preserve seven acknowledgements separately from research and work-readiness receipts.
 A text-only group requires direct image attachments to each receiving visual reviewer.
 Inaccessible files or routes keep the relevant handoff BLOCKED.
-No automatic creation support means a manual setup limit, not a claimed ready team.
+Completed file installation means the files are available; session setup is the human's next step.
 No separate workers means SOLO; no independent family means independent review BLOCKED.
 Never invent a platform capability to fill a setup gap.
 
@@ -1681,6 +1681,8 @@ Never report a measured, saved, installed, or deployed result without evidence.
 
 ## Manual fallback
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first. This manual relay is the TEAM workflow.
+
 **Prepare the files and workspace**
 
 - Get the complete `docs/bundles/team.md`, `method.md`, `prompts.md`, `playbooks.md`, and `checklists.md` from the same release. The team bundle contains the seven complete role bodies and this guide; the prompts bundle contains active prompts.
@@ -1703,7 +1705,7 @@ Never report a measured, saved, installed, or deployed result without evidence.
 **Connect the group and verify its routes**
 
 - If your account exposes group creation, create `Website Design` and add the seven saved Bots in the same order, Researcher first. Record the actual route for each. Verify one bounded setup message reaches the intended recipient using the host's documented addressing controls.
-- If group routing or automated handoff is unavailable, use separate Bot chats and relay each handoff and its attachments manually. Keep distinct workers on separate routes; separate workers need separate routes, and labels inside one chat stay one worker. Ordinary single-chat work uses SOLO.
+- Use separate Bot chats and relay each handoff and its attachments manually, including when the account offers a group view. Keep distinct workers on separate routes; separate workers need separate routes, and labels inside one chat stay one worker. Ordinary single-chat work uses SOLO.
 - If group messages are text-only, attach mockups and assets directly to the receiving Bot. Image review needs the Bot to open the image itself; a text path alone gives it only the path, so confirm the receiving Bot can inspect the image directly.
 - Give Coordinator this complete contract after replacing each angle-bracket route with the real saved Bot/chat reference. Unresolved placeholders keep setup incomplete.
 
@@ -1735,7 +1737,7 @@ with Builder's route/content inputs. Send the fixed final candidate to Reviewer
 only after pre-review gates pass. Different-family review remains mandatory.
 Read every returned artifact. Preserve Reviewer returns unchanged. Use every field
 in templates/handoff.yaml and record gate acceptance only in site-work/status.md.
-If routing fails, return the complete addressed packet for me to relay manually.
+Return every complete addressed packet for me to relay manually.
 ```
 
 **Trigger the first work handoff**
@@ -1756,11 +1758,11 @@ leave the research gate BLOCKED. If you cannot save files, return named file bod
 for me to save and reattach; wait for read-back before passing the disk gate.
 Pass only when the saved library covers every touched domain and every claim we
 will act on has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. Read back the actual saved files before confirming persistence.
-Then send research-to-coordinator to <actual Coordinator route> using all handoff
-fields and readable artifacts. No other role starts before this research gate.
+Then return research-to-coordinator addressed to <actual Coordinator route> for me
+to relay, using all handoff fields and readable artifacts. No other role starts before this research gate.
 ```
 
-- First receipt: Researcher supplies `site-work/handoffs/researcher/research-<revision>.yaml` and its library. If automatic delivery fails, copy the whole receipt and attach the library to Coordinator yourself.
+- First receipt: Researcher supplies `site-work/handoffs/researcher/research-<revision>.yaml` and its library. Copy the whole receipt and attach the library to Coordinator yourself.
 - First acceptance: Coordinator opens the files, checks coverage and source dates, and writes PASS or BLOCKED in `site-work/status.md`. Only PASS releases downstream scope handoffs.
 - First design: Designer and Graphics read their named library files, return learning/top-up receipts, and apply their domain checklists. They open the evidence behind the research summary before starting.
 - Persistence: preserve the files and receipts, and reattach the current revision in each new session. Carry state in the saved files, since a Bot may not remember a group chat. A durable-memory proposal remains pending until an actual supported save is read back.
@@ -1769,6 +1771,8 @@ fields and readable artifacts. No other role starts before this research gate.
 ## Artifact ownership roster
 
 ```yaml
+# TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+# This roster records ownership and handoff fields for the human to relay.
 schema_version: 1
 team: website-design-team
 coordinator: coordinator

@@ -24,8 +24,10 @@ Use synthetic fixtures and reserved example domains. Never paste real project tr
 ## Run locally
 
 Prerequisite: Node 18 or newer; no dependency install is required. The check matrix
-covers Node 18, 20, 22.22.3 and 24. The file installer is implemented; native worker
-generation and client activation remain UNVERIFIED. Registry publication is a separate
+covers Node 18, 20, 22.22.3 and 24 on Ubuntu, plus packed installs on macOS and Windows
+with Node 22.22.3. The file installer is implemented; live host
+session loading remains UNVERIFIED. TEAM installs files; you open each session yourself
+and carry the handoffs, with Researcher first. Registry publication is a separate
 release step, not something inferred from a working local executable.
 
 ```sh
@@ -35,7 +37,9 @@ node --test test/*.test.mjs
 ```
 
 Build rewrites only the five bundles and the index. Check is read-only and fails on drift.
-Tests use synthetic temporary directories inside this checkout and remove them afterward.
+Tests use synthetic temporary directories inside this checkout or the OS temporary
+directory and remove them afterward. Live host behaviour is verified by receipts, not
+by `npm test`; follow the [manual host gate](docs/evaluation/host-gate.md) for each skip.
 For a new check, demonstrate a failing fixture and a valid control. See [evaluation](docs/EVALUATION.md).
 The Markdown gate checks file targets, reference links, images, HTML links and heading anchors.
 External URLs require a separate live review; offline success does not prove availability.
