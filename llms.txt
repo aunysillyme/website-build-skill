@@ -11,6 +11,8 @@ Generated from skills/website-build-skill/manifest.json. Repository: https://git
 - [Compatibility](docs/COMPATIBILITY.md): host setup routes and the evidence for each
 - [Documentation](docs/README.md): method, tips, provenance and evaluation
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
 ## Active sources
 
 - [SKILL.md](skills/website-build-skill/SKILL.md): Website Build Skill

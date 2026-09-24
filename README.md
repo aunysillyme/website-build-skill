@@ -91,13 +91,13 @@ Every site follows the same twelve stages, so your AI researches before it desig
 | Choice | What happens | Works with |
 |---|---|---|
 | **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
-| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job, starting with a researcher that gets them all current. One command installs their files; you open each session yourself. | Claude Code, Codex, Hermes, Antigravity, Grok Bot |
+| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Antigravity, Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
 The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root.
 
-SOLO follows the same jobs with saved self-handoffs. TEAM gives each job a separate route:
+SOLO follows the same jobs with saved self-handoffs. TEAM uses seven sessions you open yourself, with handoffs you carry between them and Researcher first:
 
 - **Researcher:** saves the shared library before the other roles work.
 - **Coordinator:** accepts evidence, owns the brief and routes each handoff.
@@ -123,8 +123,8 @@ With any of these missing, the AI hands you the exact next step (a query plan, f
 
 ## Choose your host
 
-Each guide below has a documented setup with its own loading check; native loading on every
-host is awaiting a real-client trial, and [compatibility](docs/COMPATIBILITY.md) tracks
+Each guide below has a documented setup with its own loading check. Native loading is tested
+on Claude Code and Codex with dated receipts (one run each, limitations listed), and [compatibility](docs/COMPATIBILITY.md) tracks
 current status host by host.
 
 | Host | Set it up | What you get |
@@ -185,11 +185,11 @@ The [installer contract](docs/INSTALLER.md) defines preflight checks, exit codes
 
 **How do I teach Claude Code or Codex to build better websites?** Run `npx website-build-skill`, pick your host and let it copy the skill pack into your host's folder, then ask your AI to read the installed `SKILL.md`. It learns current practice in research, design, code, accessibility, performance, search and security before it touches your site.
 
-**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM adds native routes for Claude Code, Codex, Hermes, Antigravity and Grok Bot; see [Choose your host](#choose-your-host) for each setup guide.
+**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Antigravity and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
 
 **What does my AI research before it builds?** It researches fourteen domains current to the day of your request, from design and accessibility to performance, security, stack and search, and saves a library with source URLs and access dates so later pages can refresh stale claims. See [What your AI learns](#what-your-ai-learns) for the full list.
 
-**Can one AI run it, or does it need a team?** Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM gives each of the seven jobs its own session, starting with a researcher that gets them all current. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
+**Can one AI run it, or does it need a team?** Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them. Researcher goes first. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
 
 **How do I remove it?** Run `npx website-build-skill --uninstall --target <your target> --dir . --yes`, using the target and directory from your install; it removes only the files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
 

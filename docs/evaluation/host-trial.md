@@ -2,6 +2,8 @@
 
 Status: NOT RUN. This protocol is an acceptance test, not evidence of host support.
 A passing repository test suite or a copied skill folder cannot promote this status.
+Use the [manual host gate](host-gate.md) for the suite's live-host skips, per-OS loading
+checks, ZIP trials and required receipts.
 
 ## Scope and authority
 
@@ -14,7 +16,8 @@ Use a local preview. Production release and live-host checks remain BLOCKED.
 The operator supplies the visual selection and a separate model family for review.
 If either is unavailable, record the exact boundary reached; do not manufacture a PASS.
 The first useful milestone is one complete SOLO local-preview trial on one named host.
-TEAM requires a separate trial with seven observed routes and cannot inherit that result.
+TEAM requires a separate trial with seven sessions the human opens and handoffs they
+carry, with Researcher first; it cannot inherit the SOLO result.
 
 ## Prepare and invoke
 

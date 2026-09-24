@@ -1,0 +1,58 @@
+{
+  "status": "PASS (native loading only)",
+  "packageCommit": "c5ab86a70f76dd37b266081d511475dd942e0a1d",
+  "packageVersion": "0.1.4 (npm, installed with npx website-build-skill@0.1.4)",
+  "mode": "solo",
+  "scope": "Native skill discovery and loading in a clean temporary project with a synthetic brief. No website was built; research, mockup, build, review and handoff boundaries were not exercised.",
+  "negativeTrials": [],
+  "review": {
+    "candidateSha256": null,
+    "modelFamily": null,
+    "findings": [],
+    "dispositions": []
+  },
+  "trialId": "2026-09-24-codex-solo-load",
+  "client": {
+    "host": "Codex CLI",
+    "version": "codex-cli 0.154.0",
+    "os": "macOS 26.6.2 arm64",
+    "modelFamily": "OpenAI GPT (gpt-6-astra, effort medium)"
+  },
+  "invocation": "native project skill: installer wrote .agents/skills/website-build-skill/; headless codex exec (read-only sandbox) asked to list project skills and load website-build-skill through its native skill mechanism",
+  "startedAt": "2026-09-24T02:16:00Z",
+  "finishedAt": "2026-09-24T02:16:56Z",
+  "commands": [
+    "npx --yes website-build-skill@0.1.4 --solo --target codex --dir <trial-project> --output-dir <trial-output> --receipt <trial-output>/install-receipt.json --yes",
+    "codex exec --sandbox read-only '<synthetic loading brief>'"
+  ],
+  "artifacts": [
+    "installed SKILL.md sha256 ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+    "57 files installed under .agents/skills/website-build-skill/"
+  ],
+  "boundaries": [
+    {
+      "boundary": "Load",
+      "result": "PASS",
+      "observed": "Reported website-build-skill offered natively in the available-skills catalog with no path guessing; entrypoint <trial-project>/.agents/skills/website-build-skill/SKILL.md; all 57 manifest assets READ; docs/COMPATIBILITY.md UNREADABLE (absent from the installed skill)."
+    },
+    {
+      "boundary": "First job",
+      "result": "PASS",
+      "observed": "Named Researcher first: evidenced ASK DATE, saved and reopened research library, researcher handoff, AD01-AD08 and R01-R06 before downstream work."
+    }
+  ],
+  "limitations": [
+    "Run through the operator's cli-run wrapper, which adds a task-bundle frame to the prompt.",
+    "SOLO loading only: TEAM, research, build and release boundaries are untested.",
+    "One run; no negative trials.",
+    "finishedAt is approximate to the minute (wrapper reported 56.0s)."
+  ],
+  "transcriptExcerpt": "1. **Project skill:** `website-build-skill`. It was offered natively in the available-skills catalog; no path guessing was needed.\n\n2. **Loaded entrypoint:** `<trial-project>/.agents/skills/website-build-skill/SKILL.md`\n\nComplete manifest asset list, relative to that directory:\n\n- READ `SKILL.md`\n- READ `manifest.json`\n- READ `prompts/00-start.md`\n- READ `prompts/01-website-deep-research.md`\n- READ `archive/graphics-design-original.md`\n- READ `prompts/03-extract-brand-kit.md`\n- READ `prompts/04-three-mockups.md`\n- READ `prompts/05-stack-and-build.md`\n- READ `prompts/06-site-audit.md`\n- READ `prompts/07-accessibility-contrast.md`\n- READ `prompts/08-seo-aeo.md`\n- READ `prompts/09-security-headers.md`\n- READ `prompts/10-adversarial-pre-ship.md`\n- READ `prompts/11-ship-and-verify.md`\n- READ `prompts/12-web-design-team.md`\n- READ `prompts/13-coding-research.md`\n- READ `roles/researcher.md`\n- READ `roles/coordinator.md`\n- READ `roles/designer.md`\n- READ `roles/graphics.md`\n- READ `roles/builder.md`\n- READ `roles/optimizer.md`\n- READ `roles/reviewer.md`\n- READ `playbooks/choose-stack.md`\n- READ `playbooks/data-and-templates.md`\n- READ `playbooks/image-pipeline.md`\n- READ `playbooks/self-hosted-fonts.md`\n- READ `playbooks/embed-facades.md`\n- READ `playbooks/security-headers.md`\n- READ `playbooks/structured-data-and-llms.md`\n- READ `playbooks/performance-budgets.md`\n- READ `playbooks/accessibility.md`\n- READ `playbooks/research-and-memory.md`\n- READ `playbooks/deploy-and-operate.md`\n- READ `checklists/research.md`\n- READ `checklists/brand-and-mockups.md`\n- READ `checklists/build.md`\n- READ `checklists/code-quality.md`\n- READ `checklists/accessibility.md`\n- READ `checklists/performance-seo.md`\n- READ `checklists/security.md`\n- READ `checklists/ship.md`\n- READ `references/stacks/static-html.md`\n- READ `references/stacks/scripted-static.md`\n- READ `references/stacks/framework.md`\n- READ `templates/install-choice.txt`\n- READ `templates/brief.md`\n- READ `templates/brand.md`\n- READ `templates/tokens.json`\n- READ `templates/evidence.md`\n- READ `templates/handoff.yaml`\n- READ `templates/audit-brief.md`\n- READ `templates/site-operations.md`\n- READ `templates/status.md`\n- READ `examples/fictional-studio-brief.md`\n- READ `examples/fictional-studio-handoff.md`\n- READ `examples/audit-cases.md`\n\nAdditional entrypoint reference:\n\n- UNREADABLE `docs/COMPATIBILITY.md`: absent from installed skill.\n\n3. **First job: Researcher.** Establish evidenced ASK DATE, then produce and reopen `site-work/research/library/`: sourced research, domain checklists, coverage, freshness, learning, and evidence receipts. Produce the researcher handoff and pass AD01–AD08 and R01–R06 before downstream work; Coordinator verifies acceptance. No website work was performed.\n",
+  "reproduction": "docs/evaluation/host-trial.md steps 1-4 with the loading brief recorded in this receipt",
+  "command": "codex exec --sandbox read-only '<synthetic loading brief>' (after npx --yes website-build-skill@0.1.4 --solo --target codex)",
+  "environment": "Codex CLI 0.154.0 (gpt-6-astra), macOS 26.6.2 arm64, Node v22.22.3",
+  "date": "2026-09-24",
+  "exitCode": 0,
+  "artifactSha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+  "observed": "website-build-skill offered natively in the available-skills catalog; entrypoint .agents/skills/website-build-skill/SKILL.md; all 57 manifest assets read; Researcher named as the first job"
+}

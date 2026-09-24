@@ -1,0 +1,57 @@
+{
+  "status": "PASS (native loading only)",
+  "packageCommit": "c5ab86a70f76dd37b266081d511475dd942e0a1d",
+  "packageVersion": "0.1.4 (npm, installed with npx website-build-skill@0.1.4)",
+  "mode": "solo",
+  "scope": "Native skill discovery and loading in a clean temporary project with a synthetic brief. No website was built; research, mockup, build, review and handoff boundaries were not exercised.",
+  "negativeTrials": [],
+  "review": {
+    "candidateSha256": null,
+    "modelFamily": null,
+    "findings": [],
+    "dispositions": []
+  },
+  "trialId": "2026-09-24-claude-code-solo-load",
+  "client": {
+    "host": "Claude Code",
+    "version": "2.1.281",
+    "os": "macOS 26.6.2 arm64",
+    "modelFamily": "Anthropic Claude (claude-opus-5-5)"
+  },
+  "invocation": "native project skill: installer wrote .claude/skills/website-build-skill/; headless claude -p asked to list project skills and invoke website-build-skill through its native skill mechanism",
+  "startedAt": "2026-09-24T02:13:07Z",
+  "finishedAt": "2026-09-24T02:14:32Z",
+  "commands": [
+    "npx --yes website-build-skill@0.1.4 --solo --target claude-code --dir <trial-project> --output-dir <trial-output> --receipt <trial-output>/install-receipt.json --yes",
+    "claude -p '<synthetic loading brief>' --output-format json"
+  ],
+  "artifacts": [
+    "installed SKILL.md sha256 ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+    "57 files installed under .claude/skills/website-build-skill/"
+  ],
+  "boundaries": [
+    {
+      "boundary": "Load",
+      "result": "PASS",
+      "observed": "Listed website-build-skill as the only project-scoped skill; entrypoint <trial-project>/.claude/skills/website-build-skill/SKILL.md; manifest, 14 prompts, playbooks/research-and-memory.md, 8 checklists and 8 templates READ; roles/, references/stacks/ and examples/ listed but not opened; docs/COMPATIBILITY.md UNREADABLE (source-repo file referenced from SKILL.md, absent from the installed skill)."
+    },
+    {
+      "boundary": "First job",
+      "result": "PASS",
+      "observed": "Named Researcher first: evidenced ASK DATE, saved library under site-work/research/library/ with source receipts, gate AD01-AD08 and R01-R06 plus check-library before any other job."
+    }
+  ],
+  "limitations": [
+    "The client ran with the operator's user-level configuration (about 200 other skills and hooks loaded), so this is not a clean-client install.",
+    "SOLO loading only: TEAM, research, build and release boundaries are untested.",
+    "One run; no negative trials."
+  ],
+  "transcriptExcerpt": "## 1. Skills\n\n- **Project-scoped** (`proj/.claude/skills/`): `website-build-skill` (the only one there).\n- **Session-wide**: about 200 more user, plugin and built-in skills are also loaded. I left them out to stay under 300 words and can list them if you want.\n\n## 2. Invocation\n\n- **Entrypoint**: `<trial-project>/.claude/skills/website-build-skill/SKILL.md`\n- **How I checked**: I opened each file and read its first 3 lines. I read `prompts/00-start.md` in full.\n\n**Asset files it names:**\n- **READ**: `manifest.json`\n- **READ**: `prompts/00-start.md`, `01-website-deep-research.md`, `03-extract-brand-kit.md`, `04-three-mockups.md`, `05-stack-and-build.md`, `06-site-audit.md`, `07-accessibility-contrast.md`, `08-seo-aeo.md`, `09-security-headers.md`, `10-adversarial-pre-ship.md`, `11-ship-and-verify.md`, `12-web-design-team.md`, `13-coding-research.md`\n- **READ**: `playbooks/research-and-memory.md`\n- **READ**: `checklists/research.md`, `brand-and-mockups.md`, `build.md`, `code-quality.md`, `accessibility.md`, `performance-seo.md`, `security.md`, `ship.md`\n- **READ**: `templates/brief.md`, `brand.md`, `tokens.json`, `evidence.md`, `handoff.yaml`, `audit-brief.md`, `site-operations.md`, `status.md`\n- **UNREADABLE**: `docs/COMPATIBILITY.md`. The file isn't in the package. SKILL.md says it lives in the source repository.\n- **Not opened**: SKILL.md points to three folders without naming the files: the seven role files (`roles/`), `references/stacks/` and `examples/`. The files exist (I listed them) but I didn't read them.\n\n## 3. First job\n\n- **Researcher** goes first.\n- **Step one**: set the ASK DATE (the date the work starts). It must not come from asking you or from model knowledge. The rule and the fallback steps for finding it are in `playbooks/research-and-memory.md#ask-date-rule`. The date, which step found it and the raw evidence go in `site-work/research/library/scope.md`.\n- **Must produce first**: the saved research library at `site-work/research/library/`, with a receipt for each source fetched. Its gate (research.md AD01-AD08, R01-R06, plus a `check-library` pass) must pass before any other job starts.\n\nI wrote nothing, as you asked. That includes the session's decision-log entry, which I skipped.\n\n<!-- route: main inline | inspection and briefing, no build -->",
+  "reproduction": "docs/evaluation/host-trial.md steps 1-4 with the loading brief recorded in this receipt",
+  "command": "claude -p '<synthetic loading brief>' --output-format json (after npx --yes website-build-skill@0.1.4 --solo --target claude-code)",
+  "environment": "Claude Code 2.1.281, macOS 26.6.2 arm64, Node v22.22.3",
+  "date": "2026-09-24",
+  "exitCode": 0,
+  "artifactSha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1",
+  "observed": "website-build-skill listed as the project skill and invoked natively; entrypoint .claude/skills/website-build-skill/SKILL.md; manifest, prompts, playbook, checklists and templates read; Researcher named as the first job"
+}

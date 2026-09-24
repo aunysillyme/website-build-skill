@@ -10,6 +10,7 @@ Start with the guide for the job you want to do:
 | [Tips](TIPS.md) | Brand, design, scope and research practices |
 | [Provenance](PROVENANCE.md) | Sources, attribution and the canonical file map |
 | [Evaluation](EVALUATION.md) | Repository checks and adversarial test cases |
+| [Manual host gate](evaluation/host-gate.md) | Live-host skips, per-OS loading and ZIP trials, with required receipts |
 | [Library check](LIBRARY-CHECK.md) | Validate saved research claims and source receipts |
 | [Bundles](#bundles) | The full method as files to attach or paste into a chat |
 

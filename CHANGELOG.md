@@ -6,6 +6,21 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-09-24
+
+### Added
+
+- Packed consumer-install checks for SOLO and TEAM on a Linux, macOS and Windows CI matrix, plus explicit live-host skips and a manual receipt gate ([#16](https://github.com/aunysillyme/website-build-skill/issues/16)).
+- Dated native-loading receipts for Claude Code 2.1.281 and Codex CLI 0.154.0 (SOLO, macOS, 2026-09-24) in `docs/evidence/`, linked from compatibility and both adapter pages ([#15](https://github.com/aunysillyme/website-build-skill/issues/15)).
+
+### Changed
+
+- TEAM consistently describes installing seven workers' files, opening each session yourself and carrying handoffs, with Researcher first; presentation checks guard that wording ([#17](https://github.com/aunysillyme/website-build-skill/issues/17)).
+
+### Fixed
+
+- Receipts under a symlinked parent such as macOS `/tmp` are accepted; found during the 2026-09-24 host trials for [#15](https://github.com/aunysillyme/website-build-skill/issues/15).
+
 ## [0.1.4] - 2026-09-23
 
 ### Added

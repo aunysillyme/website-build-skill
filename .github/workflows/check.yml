@@ -18,8 +18,8 @@
   },
   "jobs": {
     "checks": {
-      "name": "Repository checks (Node ${{ matrix.node }})",
-      "runs-on": "ubuntu-latest",
+      "name": "Repository checks (${{ matrix.os }}, Node ${{ matrix.node }})",
+      "runs-on": "${{ matrix.os }}",
       "timeout-minutes": 10,
       "steps": [
         {
@@ -43,7 +43,12 @@
         {
           "name": "RED cases and valid controls",
           "run": "node --test test/*.test.mjs",
-          "if": "always()"
+          "if": "${{ always() && runner.os == 'Linux' }}"
+        },
+        {
+          "name": "Packed consumer install: SOLO and TEAM",
+          "run": "node --test test/packed-artifact.test.mjs",
+          "if": "${{ runner.os != 'Linux' }}"
         }
       ],
       "strategy": {
@@ -54,6 +59,19 @@
             "20",
             "22.22.3",
             "24"
+          ],
+          "os": [
+            "ubuntu-latest"
+          ],
+          "include": [
+            {
+              "os": "macos-latest",
+              "node": "22.22.3"
+            },
+            {
+              "os": "windows-latest",
+              "node": "22.22.3"
+            }
           ]
         }
       }

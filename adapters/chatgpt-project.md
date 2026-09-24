@@ -1,5 +1,7 @@
 # ChatGPT Project
 
+TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
+
 Use an eligible account's Project instructions and file controls.
 Paste the instruction block below into project settings and attach the five bundles.
 This selects SOLO. Configure the Project through its account controls before starting.
@@ -23,7 +25,7 @@ Keep one primary action and truthful content consistent across every route.
 Never describe a proposed file, test, memory write, or deployment as completed.
 For each tool the next stage needs, use it or return the exact handoff for a capable runner.
 Follow the human's recorded install choice; this upload selects SOLO.
-A later switch to TEAM uses the chosen host's setup and verified separate workers.
+A later switch to TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them, with Researcher first.
 Read all seven complete role bodies in team.md on either path. Before each job, complete
 its learning and dated research; save and reopen handoffs, including self-handoffs.
 Name the previous framing you are clearing when changing solo jobs.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.4",
+  "packageVersion": "0.1.5",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "ed1c909f9946de0fa7a43364c84efc837b6644c0dc8334b81ddfaf031db156e1"
+      "sha256": "71cb5b229d68ae1b91a11d4168c6093a88d0c0f7da2dbcab0c933cb6a333c81b"
     },
     {
       "path": "manifest.json",
@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d5ed2a92d5bd7071895658ebbf4d7d696aeddb3735aa8d9153d0405c517f7b9c"
+      "sha256": "9de537723108ad71b608c467d78c7ba6edb54880d0429f5321d490cba9c900cb"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -225,7 +225,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "58a53b49b1da1039195d0ecaa24dff296668d9c4c4a52545d40836ddf8d6d388"
+      "sha256": "a1b1460deea3520d25245d805521019f758b905b97e73ac97e7020cead861837"
     },
     {
       "path": "prompts/13-coding-research.md",

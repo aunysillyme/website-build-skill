@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { resolve, dirname, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { Readable, Writable } from 'node:stream';
 import { install, safePath, packageInfo } from '../src/install.mjs';
 import { main } from '../src/cli.mjs';
@@ -10,8 +11,7 @@ import { CORE, files, owned, digest } from '../src/bundle.mjs';
 import { targets } from '../src/catalog.mjs';
 import { root } from './helpers.mjs';
 
-async function workspace(run) {
-  const parent = resolve(root, '.test-work');
+async function workspace(run, parent = resolve(root, '.test-work')) {
   fs.mkdirSync(parent, { recursive: true });
   const dir = fs.mkdtempSync(resolve(parent, 'installer-'));
   try { return await run(dir); } finally { mock.restoreAll(); fs.rmSync(dir, { recursive: true, force: true }); }
@@ -235,6 +235,76 @@ test('7b A symlinked ancestor of the project is resolved, while a link inside th
   const base = resolve(dir, 'link', 'project');
   assert.equal(safePath(base, 'below'), resolve(base, 'below'));
 }));
+
+test('7e Receipt install and uninstall accept a symlinked parent', () => workspace(dir => {
+  const real = resolve(dir, 'real'), link = resolve(dir, 'link');
+  fs.mkdirSync(resolve(real, 'out'), { recursive: true });
+  fs.symlinkSync(real, link, 'dir');
+  for (const tail of ['r.json', 'missing/nested/r.json']) {
+    const project = resolve(link, 'project'), output = resolve(link, 'out'), custom = resolve(output, tail);
+    const result = cli([...flags(project), '--output-dir', output, '--receipt', custom]);
+    assert.equal(result.status, 0, result.stderr);
+    const canonicalReceipt = resolve(real, 'out', tail);
+    const saved = JSON.parse(fs.readFileSync(canonicalReceipt, 'utf8'));
+    assert.equal(saved.destination, destination(resolve(real, 'project')));
+    assert.equal(saved.outputRoot, resolve(real, 'out'));
+    assert.ok(result.stdout.includes(`write receipt: ${canonicalReceipt}`));
+    const again = cli([...flags(project), '--output-dir', output, '--receipt', custom]);
+    assert.equal(again.status, 0, again.stderr);
+    assert.match(again.stdout, /Identical install/);
+    const removal = cli(['--uninstall', '--target', 'codex', '--dir', project, '--output-dir', output, '--receipt', custom, '--yes']);
+    assert.equal(removal.status, 0, removal.stderr);
+    assert.ok(!fs.existsSync(canonicalReceipt));
+    assert.ok(!fs.existsSync(resolve(saved.destination, 'SKILL.md')));
+  }
+  const project = resolve(link, 'receipt-only');
+  assert.equal(cli(flags(project)).status, 0);
+  const removal = cli(['--uninstall', '--receipt', receiptPath(project), '--yes']);
+  assert.equal(removal.status, 0, removal.stderr);
+  assert.ok(!fs.existsSync(receiptPath(project)));
+}, fs.realpathSync(tmpdir())));
+
+test('7f A receipt link escaping the output root is refused without writes', () => workspace(dir => {
+  const output = resolve(dir, 'out'), outside = resolve(dir, 'outside');
+  fs.mkdirSync(output); fs.mkdirSync(outside);
+  fs.symlinkSync(outside, resolve(output, 'escape'), 'dir');
+  fs.symlinkSync(output, resolve(dir, 'alias'), 'dir');
+  const before = snapshot(dir);
+  for (const base of [output, resolve(dir, 'alias')]) {
+    const result = cli([...flags(resolve(dir, 'project')), '--output-dir', output, '--receipt', resolve(base, 'escape', 'r.json')]);
+    assert.equal(result.status, 3, result.stderr);
+    assert.match(result.stderr, /Preflight refused; nothing written: (?:Symlink refused|Path escapes destination root)/);
+    assert.deepEqual(snapshot(dir), before);
+  }
+}, fs.realpathSync(tmpdir())));
+
+test('7g A receipt link inside the output root is refused without writes', () => workspace(dir => {
+  const output = resolve(dir, 'out');
+  fs.mkdirSync(resolve(output, 'real'), { recursive: true });
+  fs.symlinkSync(resolve(output, 'real'), resolve(output, 'planted'), 'dir');
+  fs.symlinkSync(output, resolve(dir, 'alias'), 'dir');
+  const before = snapshot(dir);
+  for (const base of [output, resolve(dir, 'alias')]) {
+    const result = cli([...flags(resolve(dir, 'project')), '--output-dir', output, '--receipt', resolve(base, 'planted', 'r.json')]);
+    assert.equal(result.status, 3, result.stderr);
+    assert.match(result.stderr, /Preflight refused; nothing written: Symlink refused/);
+    assert.deepEqual(snapshot(dir), before);
+  }
+}, fs.realpathSync(tmpdir())));
+
+test('7h A receipt reached through an alias to a subdirectory of the output root is refused at a planted link', () => workspace(dir => {
+  const output = resolve(dir, 'out'), outside = resolve(dir, 'outside');
+  fs.mkdirSync(resolve(output, 'sub'), { recursive: true });
+  fs.mkdirSync(outside);
+  fs.symlinkSync(outside, resolve(output, 'sub', 'planted'), 'dir');
+  fs.symlinkSync(resolve(output, 'sub'), resolve(dir, 'alias'), 'dir');
+  const before = snapshot(dir);
+  const result = cli([...flags(resolve(dir, 'project')), '--output-dir', output, '--receipt', resolve(dir, 'alias', 'planted', 'r.json')]);
+  assert.equal(result.status, 3, result.stderr);
+  assert.match(result.stderr, /Preflight refused; nothing written: Symlink refused/);
+  assert.equal(fs.existsSync(resolve(outside, 'r.json')), false);
+  assert.deepEqual(snapshot(dir), before);
+}, fs.realpathSync(tmpdir())));
 
 // Findings from the pre-publication review, each reproduced before it was fixed.
 test('7c A receipt that names another destination is refused, and that destination is untouched', () => workspace(dir => {

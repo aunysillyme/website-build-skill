@@ -48,4 +48,4 @@ test('Archive stays byte-identical and generated roles appear exactly once', () 
   assert.ok(!first['docs/bundles/prompts.md'].includes(`BEGIN SOURCE: ${ARCHIVE}`));
 });
 
-test.todo('Planned distribution: fresh npm tarball and ZIP installation on each claimed operating system and host');
+test('Planned distribution: fresh npm tarball and ZIP installation on each claimed operating system and host', { skip: 'needs a live host: manual gate in docs/evaluation/host-gate.md' }, () => {});

@@ -140,6 +140,7 @@ export function generated(root) {
   index += '- [Installer](docs/INSTALLER.md): headless setup, destinations, receipts, exit codes and uninstall\n';
   index += '- [Compatibility](docs/COMPATIBILITY.md): host setup routes and the evidence for each\n';
   index += '- [Documentation](docs/README.md): method, tips, provenance and evaluation\n\n';
+  index += "TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.\n\n";
   index += '## Active sources\n\n';
   for (const asset of m.assets.filter(a => a.active)) index += `- [${asset.path}](${CORE}/${asset.path}): ${describe(root, asset)}\n`;
   index += '\n## Bundles\n\n';
