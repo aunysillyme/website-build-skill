@@ -6,6 +6,16 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-09-24
+
+### Added
+
+- Dated native-loading receipt for the Grok Build CLI 1.0.40 (SOLO, macOS, trusted folder, 2026-09-24) in `docs/evidence/`, linked from compatibility and the Grok adapter ([#15](https://github.com/aunysillyme/website-build-skill/issues/15)).
+
+### Changed
+
+- The Grok adapter says to trust the project folder: Grok Build offers project skills only in a trusted folder, found during the trial. Grok Bot (the Bots app) is named separately as still awaiting its trial.
+
 ## [0.1.5] - 2026-09-24
 
 ### Added

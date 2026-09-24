@@ -7,7 +7,7 @@ See [compatibility](../docs/COMPATIBILITY.md) for setup evidence and host trials
 
 - SOLO: paste the starter in [zero-install](zero-install.md), or give a file-capable session the complete canonical skill.
 - TEAM: install or attach all five [bundles](../docs/bundles/team.md), open the seven sessions yourself, then paste the setup request below in each session.
-- Native skill candidate: `.grok/skills/website-build-skill/`; discovery and invocation require a clean-client check. Native loading on this host is awaiting a real-client trial; the check above confirms it on yours. Current status: [compatibility](../docs/COMPATIBILITY.md).
+- Native skill (Grok Build CLI): install with `--target grok`, which writes `.grok/skills/website-build-skill/`, then trust the project folder (accept the trust prompt, or run `grok --trust` there once). Grok Build offers project skills only in a trusted folder. Native loading was tested on Grok Build CLI 1.0.40 (macOS, SOLO, trusted folder, 2026-09-24; one run, limitations in the [receipt](../docs/evidence/host-trial-grok-build-2026-09-24.json)); `grok inspect --json` lists the skill with source `project` when it is available to you. Grok Bot (the Bots app) is awaiting its own trial. Current status: [compatibility](../docs/COMPATIBILITY.md).
 - Independence: workers from one model family leave the independent release gate BLOCKED.
 - Reference: [Bot setup](https://docs.x.ai/grok-bot/bots), [collaboration](https://docs.x.ai/grok-bot/chat-and-collaboration), [skills](https://docs.x.ai/build/features/skills-plugins-marketplaces). Use these references when checking the installed controls.
 

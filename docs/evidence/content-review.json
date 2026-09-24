@@ -10,24 +10,28 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CHANGELOG.md": {
-      "sha256": "4e1c9fd46f9f759efa2f1bb8d782d7110985a485194b4214716cae9d94a5a5c5",
+      "sha256": "b3dc41e64c3a2d05c81ebbfec4ecc6e559db14b7381931e539a00bf24dc7ed21",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the #15 Fixed line for the symlinked-parent receipt path against src/install.mjs and installer tests 7e-7g, and the #15 Added line against the two receipts. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. 0.1.5 release heading moved the Unreleased lines under [0.1.5] - 2026-09-24 unchanged."
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the #15 Fixed line for the symlinked-parent receipt path against src/install.mjs and installer tests 7e-7g, and the #15 Added line against the two receipts. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. 0.1.5 release heading moved the Unreleased lines under [0.1.5] - 2026-09-24 unchanged. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending."
     },
     "CLAUDE.md": {
-      "sha256": "983dd28a6ba815adef9201351d7845f6cf5567e0be92be975ee74d98b4ee346a",
+      "sha256": "4bc19853ddcdea0b2b751f82fba1d7c2451d2ae42f173dba1da2f6035df6e464",
       "disposition": "status-claims-bound-to-receipts",
       "claims": [
         {
-          "text": "Native SOLO loading is tested on Claude Code and Codex",
+          "text": "Native SOLO loading is tested on Claude Code, Codex and the Grok Build CLI",
           "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
+        },
+        {
+          "text": "Codex and the Grok Build CLI",
+          "evidence": "docs/evidence/host-trial-grok-build-2026-09-24.json"
         },
         {
           "text": "(one run each, receipts in docs/evidence/)",
           "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
         }
       ],
-      "review": "0.1.5 (#15): status line narrowed to the two SOLO loading receipts; other hosts, TEAM, account tools and independent review stay UNVERIFIED. Claude editorial review."
+      "review": "0.1.5 (#15): status line narrowed to the two SOLO loading receipts; other hosts, TEAM, account tools and independent review stay UNVERIFIED. Claude editorial review. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending."
     },
     "CODE_OF_CONDUCT.md": {
       "sha256": "9b32964f09663dbcf16e5ce39b4522928ba4c74d13c49f3fe6a9fb131b8ddd31",
@@ -43,17 +47,21 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "README.md": {
-      "sha256": "362773785e80e089e8311429cc045243747e0943bdad9601e54f882314ca6777",
+      "sha256": "15e40dd0a81edb667484500a1f2c86e747fae08a70d39410805cc52091b0ae7e",
       "disposition": "status-claims-bound-to-receipts",
-      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding.",
+      "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the requested skill-pack framing and each learning-table sentence against its linked canonical instructions; preserved the twelve stages, starter, setup card and sibling links. Demo URL awaits the separately recorded artifact. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending.",
       "claims": [
         {
           "text": "Native loading is tested",
           "evidence": "docs/evidence/host-trial-claude-code-2026-09-24.json"
         },
         {
-          "text": "on Claude Code and Codex with dated receipts",
+          "text": "on Claude Code, Codex and the Grok Build CLI with dated receipts",
           "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
+        },
+        {
+          "text": "and the Grok Build CLI with dated receipts",
+          "evidence": "docs/evidence/host-trial-grok-build-2026-09-24.json"
         }
       ]
     },
@@ -119,9 +127,15 @@
       "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "adapters/grok.md": {
-      "sha256": "66e869b434ec1857b3abcda064f2e4162e41bdd5f9765496095caafeadd4bdaa",
-      "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
+      "sha256": "1119d57dbbaafeca3b158fc58994eba867b34a2a2df446423cb131b6a720bdcc",
+      "disposition": "status-claims-bound-to-receipts",
+      "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending.",
+      "claims": [
+        {
+          "text": "Native loading was tested on Grok Build CLI 1.0.40 (macOS, SOLO, trusted folder, 2026-09-24;",
+          "evidence": "docs/evidence/host-trial-grok-build-2026-09-24.json"
+        }
+      ]
     },
     "adapters/hermes.md": {
       "sha256": "bfb7624ce627d7a59328a16a663ed71aa96dbe24ede160bc349f13dd08cd1578",
@@ -134,7 +148,7 @@
       "review": "Reviewed setup instructions, tool fallback gates and compatibility links against the previous adapter; research status and safety requirements preserved. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending."
     },
     "docs/COMPATIBILITY.md": {
-      "sha256": "3b7fa6f4e1c0576beb6ec6cc6af7365318affc41fe162066936f9332d998eaf8",
+      "sha256": "aaac6741324d456ac72618bd3d583c6211f0061958dd27daa6441997acf89425",
       "disposition": "status-claims-bound-to-receipts",
       "claims": [
         {
@@ -144,9 +158,13 @@
         {
           "text": "| Codex CLI | 0.154.0, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 |",
           "evidence": "docs/evidence/host-trial-codex-2026-09-24.json"
+        },
+        {
+          "text": "| Grok Build CLI | 1.0.40, macOS 26.6.2 arm64 | SOLO, native loading tested in a trusted folder | 2026-09-24 |",
+          "evidence": "docs/evidence/host-trial-grok-build-2026-09-24.json"
         }
       ],
-      "review": "Reviewed documented setup routes and required trial evidence; retained the existing revision-bound hosted-check claim and receipt. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding."
+      "review": "Reviewed documented setup routes and required trial evidence; retained the existing revision-bound hosted-check claim and receipt. Implementation-agent editorial review; independent review remains pending. Reviewed for the ROUND 1 audit: restored the positive, once-stated native-loading status fact for adapters, README and compatibility docs, without implying native loading is proven. Claude (builder, non-author fixer) editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. ROUND 1 (2026-09-24): added the receipts' one-run and operator-configuration limitations to the promoted wording, per the code-reviewer finding. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending."
     },
     "docs/EVALUATION.md": {
       "sha256": "cb34b13e24b906496d0f05ef20187695bd51defe75b25abb7df8d5ad2935c32d",
