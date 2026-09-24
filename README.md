@@ -124,7 +124,7 @@ With any of these missing, the AI hands you the exact next step (a query plan, f
 ## Choose your host
 
 Each guide below has a documented setup with its own loading check. Native loading is tested
-on Claude Code and Codex with dated receipts (one run each, limitations listed), and [compatibility](docs/COMPATIBILITY.md) tracks
+on Claude Code, Codex and the Grok Build CLI with dated receipts (one run each, limitations listed), and [compatibility](docs/COMPATIBILITY.md) tracks
 current status host by host.
 
 | Host | Set it up | What you get |

@@ -2,7 +2,7 @@
 
 ## Tested hosts
 
-Two hosts have a dated native-loading receipt. Each covers SOLO skill discovery and loading
+Three hosts have a dated native-loading receipt. Each covers SOLO skill discovery and loading
 on the exact version below, from one run under the operator's existing client configuration
 (each receipt lists its limitations); the full SOLO build route, TEAM and deployment stay
 documented until a trial records them.
@@ -11,6 +11,7 @@ documented until a trial records them.
 |---|---|---|---|---|
 | Claude Code | 2.1.281, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 | [receipt](evidence/host-trial-claude-code-2026-09-24.json) |
 | Codex CLI | 0.154.0, macOS 26.6.2 arm64 | SOLO, native loading tested | 2026-09-24 | [receipt](evidence/host-trial-codex-2026-09-24.json) |
+| Grok Build CLI | 1.0.40, macOS 26.6.2 arm64 | SOLO, native loading tested in a trusted folder | 2026-09-24 | [receipt](evidence/host-trial-grok-build-2026-09-24.json) |
 
 Every other host has a documented setup and
 a check you run, in its own adapter guide, to confirm it loaded on yours. A host moves from

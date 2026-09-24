@@ -13,5 +13,5 @@ node --test test/*.test.mjs
 ```
 
 The installer is real; the native worker generator is not. Do not imply seven workers start.
-Native SOLO loading is tested on Claude Code and Codex (one run each, receipts in docs/evidence/).
+Native SOLO loading is tested on Claude Code, Codex and the Grok Build CLI (one run each, receipts in docs/evidence/).
 Other hosts, TEAM, account tools and independent-review access are UNVERIFIED until a real trial.

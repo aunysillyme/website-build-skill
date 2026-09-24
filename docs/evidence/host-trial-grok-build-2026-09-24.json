@@ -1,0 +1,74 @@
+{
+  "status": "PASS (native loading only, trusted folder)",
+  "packageCommit": "28d33366f49aa0e25ef0af222c97fbf72be300c9",
+  "packageVersion": "0.1.5 (npm, installed with npx website-build-skill@0.1.5)",
+  "mode": "solo",
+  "scope": "Native skill discovery and loading by the Grok Build CLI in a clean temporary git project with a synthetic brief. No website was built; research, mockup, build, review and handoff boundaries were not exercised. Grok Bot (the Bots app) was not tested.",
+  "negativeTrials": [
+    {
+      "case": "Untrusted project folder",
+      "result": "skill not offered",
+      "observed": "grok inspect --json in the fresh project reported projectTrusted false and listed no website-build-skill; Grok Build skips project skills in untrusted folders at startup (its own docs, user-guide/08-skills.md)."
+    }
+  ],
+  "review": {
+    "candidateSha256": null,
+    "modelFamily": null,
+    "findings": [],
+    "dispositions": []
+  },
+  "trialId": "2026-09-24-grok-build-solo-load",
+  "client": {
+    "host": "Grok Build CLI",
+    "version": "grok 1.0.40 (eb1a2256660d) stable",
+    "os": "macOS 26.6.2 arm64",
+    "modelFamily": "xAI Grok (grok-4.7, recorded as modelId in the trial session transcript under ~/.grok/sessions)"
+  },
+  "invocation": "native project skill: installer wrote .grok/skills/website-build-skill/; the project folder was trusted; grok inspect --json then listed website-build-skill with source type project; headless grok -p asked to list native skills and load website-build-skill through its native skill mechanism",
+  "startedAt": "2026-09-24T07:31:08Z",
+  "finishedAt": "2026-09-24T07:34:01Z",
+  "commands": [
+    "npx --yes website-build-skill@0.1.5 --solo --target grok --dir <trial-project> --output-dir <trial-output> --receipt <trial-output>/install-receipt.json --yes",
+    "grok inspect --json (untrusted: skill absent)",
+    "trust <trial-project> (entry added to ~/.grok/trusted_folders.toml, removed after the trial)",
+    "grok inspect --json (trusted: skill listed, source project)",
+    "grok --output-format json -p '<synthetic loading brief>'"
+  ],
+  "artifacts": [
+    "installed SKILL.md sha256 71cb5b229d68ae1b91a11d4168c6093a88d0c0f7da2dbcab0c933cb6a333c81b",
+    "57 files installed under .grok/skills/website-build-skill/"
+  ],
+  "boundaries": [
+    {
+      "boundary": "Discovery",
+      "result": "PASS",
+      "observed": "Untrusted folder: not offered. Trusted folder: grok inspect lists website-build-skill with source type project and path .grok/skills/website-build-skill/SKILL.md."
+    },
+    {
+      "boundary": "Load",
+      "result": "PASS",
+      "observed": "Reported website-build-skill already in the session's native skills catalog before any file was opened; entrypoint .grok/skills/website-build-skill/SKILL.md; all 57 manifest assets READ (templates/install-choice.txt, tokens.json and handoff.yaml opened through line 3 only); docs/COMPATIBILITY.md not opened (not a manifest asset)."
+    },
+    {
+      "boundary": "First job",
+      "result": "PASS",
+      "observed": "Named Researcher first: ASK DATE from the canonical ladder, site-work/research/library/ on disk, AD01-AD08 then R01-R06 before any other role."
+    }
+  ],
+  "limitations": [
+    "Run through the operator's cli-run wrapper, which adds a task-bundle frame to the prompt.",
+    "Project skills load only in a trusted folder; the trial trusted it by a config entry, the same state the interactive trust prompt or grok --trust saves.",
+    "Grok Build has no separate load-skill tool; loading means reading the SKILL.md path the catalog supplies.",
+    "SOLO loading only: TEAM, research, build and release boundaries are untested. Grok Bot (Bots app) is untested.",
+    "One run under the operator's existing client configuration."
+  ],
+  "transcriptExcerpt": "1. Yes. `website-build-skill` was already in this session's native skills catalog before any file was opened. It was offered with the description \"Current website-building expertise for an AI: research, design, code, accessibility, performance, search and security...\" and the absolute path `.grok/skills/website-build-skill/SKILL.md`. This host has no separate load-skill tool. Loading means reading the `SKILL.md` path the catalog supplies. The filesystem was not searched to discover it.\n\n2. Entrypoint loaded: `.grok/skills/website-build-skill/SKILL.md`. `manifest.json` names 57 assets (`packageVersion` 0.1.5). Each one below was opened and returned content, so each is READ. `manifest.json` itself was opened in two reads because the first stopped at line 1000. `templates/install-choice.txt`, `templates/tokens.json`, and `templates/handoff.yaml` were opened only through line 3, so anything after line 3 in those three files is UNVERIFIED. Checksums in the manifest were not recomputed.\n\n- `SKILL.md` READ\n- `manifest.json` READ\n- `prompts/00-start.md` READ\n- `prompts/01-website-deep-research.md` READ\n- `archive/graphics-design-original.md` READ\n- `prompts/03-extract-brand-kit.md` READ\n- `prompts/04-three-mockups.md` READ\n- `prompts/05-stack-and-build.md` READ\n- `prompts/06-site-audit.md` READ\n- `prompts/07-accessibility-contrast.md` READ\n- `prompts/08-seo-aeo.md` READ\n- `prompts/09-security-headers.md` READ\n- `prompts/10-adversarial-pre-ship.md` READ\n- `prompts/11-ship-and-verify.md` READ\n- `prompts/12-web-design-team.md` READ\n- `prompts/13-coding-research.md` READ\n- `roles/researcher.md` READ\n- `roles/coordinator.md` READ\n- `roles/designer.md` READ\n- `roles/graphics.md` READ\n- `roles/builder.md` READ\n- `roles/optimizer.md` READ\n- `roles/reviewer.md` READ\n- `playbooks/choose-stack.md` READ\n- `playbooks/data-and-templates.md` READ\n- `playbooks/image-pipeline.md` READ\n- `playbooks/self-hosted-fonts.md` READ\n- `playbooks/embed-facades.md` READ\n- `playbooks/security-headers.md` READ\n- `playbooks/structured-data-and-llms.md` READ\n- `playbooks/performance-budgets.md` READ\n- `playbooks/accessibility.md` READ\n- `playbooks/research-and-memory.md` READ\n- `playbooks/deploy-and-operate.md` READ\n- `checklists/research.md` READ\n- `checklists/brand-and-mockups.md` READ\n- `checklists/build.md` READ\n- `checklists/code-quality.md` READ\n- `checklists/accessibility.md` READ\n- `checklists/performance-seo.md` READ\n- `checklists/security.md` READ\n- `checklists/ship.md` READ\n- `references/stacks/static-html.md` READ\n- `references/stacks/scripted-static.md` READ\n- `references/stacks/framework.md` READ\n- `templates/install-choice.txt` READ\n- `templates/brief.md` READ\n- `templates/brand.md` READ\n- `templates/tokens.json` READ\n- `templates/evidence.md` READ\n- `templates/handoff.yaml` READ\n- `templates/audit-brief.md` READ\n- `templates/site-operations.md` READ\n- `templates/status.md` READ\n- `examples/fictional-studio-brief.md` READ\n- `examples/fictional-studio-handoff.md` READ\n- `examples/audit-cases.md` READ\n\nThe entrypoint also names the repository file `docs/COMPATIBILITY.md`. That path is not a manifest asset. It was not opened. Whether it exists in this project is UNVERIFIED. No other entrypoint path failed to open. No website was built, no file was written, and the network was not used.\n\n3. The first job, before any downstream work, is Researcher. The manifest sets `entryRole` to `researcher`. Before intake or research, Researcher establishes ASK DATE from the canonical ladder in `playbooks/research-and-memory.md`, without asking the user and without using model knowledge, and records the rung and raw evidence in `site-work/research/library/scope.md`. Researcher then takes the request through `prompts/00-start.md` and `prompts/01-website-deep-research.md` and writes `site-work/research/library/`. No other role starts until that library exists on disk and its gate passes (AD01 through AD08, then R01 through R06). The install question about solo versus team is for the human at install and is not this first job.\n",
+  "reproduction": "docs/evaluation/host-trial.md steps 1-4 with the loadingBrief recorded in this receipt, after trusting the trial folder",
+  "command": "grok --output-format json -p '<synthetic loading brief>' (after npx --yes website-build-skill@0.1.5 --solo --target grok and trusting the folder)",
+  "environment": "Grok Build CLI 1.0.40 (grok-4.7), macOS 26.6.2 arm64, Node v22.22.3",
+  "date": "2026-09-24",
+  "exitCode": 0,
+  "artifactSha256": "71cb5b229d68ae1b91a11d4168c6093a88d0c0f7da2dbcab0c933cb6a333c81b",
+  "observed": "website-build-skill offered natively in the skills catalog once the folder was trusted; entrypoint .grok/skills/website-build-skill/SKILL.md; all 57 manifest assets read; Researcher named as the first job",
+  "loadingBrief": "## Task bundle\n\n**Context.** This is a host trial for the public npm package website-build-skill (issue #15 in this repository): does Grok Build natively discover and load the skill the installer writes to `.grok/skills/website-build-skill/`? Your current working directory is a clean temporary project where `npx website-build-skill@0.1.5 --solo --target grok` installed the skill. Matching receipts already exist for Claude Code and Codex. This is a synthetic loading trial only: no website is built.\n\n**Purpose.** Record whether the installed skill is offered and loaded natively by this Grok Build session, so the adapter claim can move past UNVERIFIED or stay there with a reason.\n\n**Scope of build.** None. Read-only trial. Deliverable is your text answer only.\n\n**Task class.** read_only\n\n**Granted scope.**\n- The current working directory and its `.grok/skills/website-build-skill/` folder.\n- Anything outside this list is out of scope.\n\n**Capabilities.** Your native skill mechanism; reading files inside the granted scope.\n\n**Vault reading.** none\n\n**The stack.** Not needed for this trial; answer from this session only.\n\n**Denied actions.** Do not write, create, move or delete any file. Do not build a website. Do not search the filesystem outside the current directory. Do not use the network.\n- Anything absent from Capabilities is denied.\n\n**Conventions you do not have.** Plain prose, no em dashes. Report only what you actually observed; say UNVERIFIED rather than guess.\n\n**Match the firmness.** Not applicable: this task interprets nothing the operator said. unrated.\n\n**Context packet.** none\n\n**Frozen invariants.** none\n\n**Resource inventory.** You hold your native skills catalog and file reads in this directory. You lack network access for this task and any tool outside this session.\n\n**Report contract.** Return exactly three numbered answers:\n1. Whether `website-build-skill` appears in the skills you were offered natively in this session, without searching the filesystem for it. Say how it was offered.\n2. Load it through your native skill mechanism. Give the entrypoint path you loaded, then list every asset named in its `manifest.json`, relative to the skill directory, each marked READ or UNREADABLE after actually opening it. Name any other file the entrypoint references that you could not read.\n3. One paragraph: what the skill says the first job is before any downstream work.\nState plainly anything you did not do or could not verify.\n\n**Exit parameters.** Stop after the three answers. Read at most the files the manifest names plus the entrypoint. If you hit a limit, report what you have and name what you did not cover.\n"
+}
