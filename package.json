@@ -1,7 +1,7 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.6",
-  "description": "Skills that make your AI an expert website builder: current research, design, accessibility, performance, SEO, security and code, for any LLM or agent.",
+  "version": "0.1.7",
+  "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.",
   "type": "module",
   "license": "MIT",
   "bin": {

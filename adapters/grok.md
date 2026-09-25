@@ -7,13 +7,39 @@ See [compatibility](../docs/COMPATIBILITY.md) for setup evidence and host trials
 
 - SOLO: paste the starter in [zero-install](zero-install.md), or give a file-capable session the complete canonical skill.
 - TEAM: install or attach all five [bundles](../docs/bundles/team.md), open the seven sessions yourself, then paste the setup request below in each session.
-- Native skill (Grok Build CLI): install with `--target grok`, which writes `.grok/skills/website-build-skill/`, then trust the project folder (accept the trust prompt, or run `grok --trust` there once). Grok Build offers project skills only in a trusted folder. Native loading was tested on Grok Build CLI 1.0.40 (macOS, SOLO, trusted folder, 2026-09-24; one run, limitations in the [receipt](../docs/evidence/host-trial-grok-build-2026-09-24.json)); `grok inspect --json` lists the skill with source `project` when it is available to you. Grok Bot (the Bots app) is awaiting its own trial. Current status: [compatibility](../docs/COMPATIBILITY.md).
+- Native skill (Grok Build CLI): install with `--target grok`, which writes `.grok/skills/website-build-skill/`, then trust the project folder (accept the trust prompt, or run `grok --trust` there once). Grok Build offers project skills only in a trusted folder. Native loading was tested on Grok Build CLI 1.0.40 (macOS, SOLO, trusted folder, 2026-09-24; one run, limitations in the [receipt](../docs/evidence/host-trial-grok-build-2026-09-24.json)); `grok inspect --json` lists the skill with source `project` when it is available to you. Grok Bot is a separate app with its own setup, below. Current status: [compatibility](../docs/COMPATIBILITY.md).
 - Independence: workers from one model family leave the independent release gate BLOCKED.
 - Reference: [Bot setup](https://docs.x.ai/grok-bot/bots), [collaboration](https://docs.x.ai/grok-bot/chat-and-collaboration), [skills](https://docs.x.ai/build/features/skills-plugins-marketplaces). Use these references when checking the installed controls.
 
 ```text
 Give me the team (option 2). I open each session myself and carry the handoffs between them, with Researcher first. Use the attached team.md and the complete role body for this session. Return its setup acknowledgement with session reference, model family and tool limits. I collect seven acknowledgements through the manual setup below. Give my request to Researcher first; every other worker waits for the saved-library gate. Use a reviewer from a different model family for independent review.
 ```
+
+## Grok Bot
+
+Grok Bot is the Bots app (desktop, iPhone and Android). It keeps skills in its own private skill library, so `--target grok` does not reach it. This setup follows xAI's [Grok Bot documentation](https://docs.x.ai/grok-bot/overview), read 2026-09-25; no trial receipt exists yet, so treat each step as the documented route and confirm it on your account.
+
+**What the app gives you**
+
+- One private skill library shared by all your Bots. Type `/` in the composer to use a saved skill; if one is missing, open **Marketplace → Your plugins → Manage plugins and skills** and look under **Private skills**.
+- One shared cloud computer for all your Bots, with a browser, a command line and a `/workspace` folder every Bot can read. Keep `site-work/` there.
+- Bots with their own conversation and memory. A Bot's standing rules live in its profile **description**.
+- Group chats of two to six Bots, `@` mentions, and direct Bot-to-Bot handoffs. Handoffs posted to a group are text only, so a Bot sends an image directly to the Bot that must inspect it.
+- Up to six attachments per message, 25 MB per document.
+- Every Bot runs on Grok: there is no model picker (reported by the operator, 2026-09-25). A reviewer from a different model family therefore sits outside Grok Bot.
+
+**SOLO**
+
+1. Choose **New** (`Cmd/Ctrl+N`), then **Create new Bot**, and use **Edit Profile** to name it `Website Builder`.
+2. Ask it to install the package into `/workspace` and learn it as a skill: `Run npx website-build-skill@latest --solo --target portable --dir /workspace/website-build-skill --yes, read /workspace/website-build-skill/.website-build-skill/SKILL.md, and save it as a private skill called website-build-skill that reads the files beside it.` The Bot learns the skill and keeps it across conversations (reported by the operator, 2026-09-25).
+3. Type `/` and confirm `website-build-skill` is listed. If it is missing, attach the five [bundles](../docs/bundles/team.md) to your first message and ask the Bot to keep them in `/workspace/website-build-skill/`.
+4. Start the build with `/website-build-skill` and your site request.
+
+**TEAM**
+
+- Create six Bots in the order below (Researcher, Coordinator, Designer, Graphics, Builder, Optimizer). Save each role body from the [team bundle](../docs/bundles/team.md) to `/workspace/site-work/roles/<role>.md` and write in each description: `You are Website <Role>. Before every task, read /workspace/site-work/roles/<role>.md and follow it.`
+- Put those six in one group, Researcher first. A Bot keeps its memory, skills and context when it joins a group (reported by the operator, 2026-09-25). Six is the group limit, and it fits: the seventh role, Reviewer, needs a different model family, so it runs outside Grok Bot and you relay the final packet to it.
+- Follow the steps below for setup acknowledgements, the research gate and the handoff contract. Since every Bot reads `/workspace`, pass file paths in handoffs rather than reattaching files.
 
 ## Manual fallback
 
@@ -24,7 +50,7 @@ TEAM: one command installs the seven workers' files; you open each session yours
 - Get the complete `docs/bundles/team.md`, `method.md`, `prompts.md`, `playbooks.md`, and `checklists.md` from the same release. The team bundle contains the seven complete role bodies and this guide; the prompts bundle contains active prompts.
 - Get `skills/website-build-skill/archive/graphics-design-original.md` separately for Researcher's provenance reading. Keep its inactive header and do not execute its historical save instructions.
 - Choose the private project workspace where `site-work/` will live. Keep its research and brand files out of the public skill repository and deployment output.
-- Open your host's Bots area. Use **New** to create one Bot at a time; set its name and paste the entire named role body into its instruction field, then save. These are semantic field instructions; exact field labels in your account must be checked. If **New**, the instruction field or group controls are absent, use separate chats and relay the complete role packets manually rather than inventing an API.
+- Open your host's Bots or agents area and create one worker at a time. Give each the entire named role body wherever your host keeps standing instructions (in Grok Bot, a role file in `/workspace` that the description points to, as in [Grok Bot](grok.md#grok-bot)), then save. If your host has no such place, use separate chats and relay the complete role packets manually rather than inventing an API.
 - Give each Bot the method, prompt, playbook and checklist bundles as files or pasted text through controls your account actually provides. If a filename inside an instruction is inaccessible, attach or paste that file's contents with its label before work starts. Confirm file access separately for each Bot.
 - Request only a setup acknowledgement: name, received role, route, actual model family if known, tools, and inaccessible files. For all Bots except Researcher add: `Wait for the research gate; do not begin your role yet.` Pass each work gate using its own required evidence.
 
@@ -40,7 +66,7 @@ TEAM: one command installs the seven workers' files; you open each session yours
 
 **Connect the group and verify its routes**
 
-- If your account exposes group creation, create `Website Design` and add the seven saved Bots in the same order, Researcher first. Record the actual route for each. Verify one bounded setup message reaches the intended recipient using the host's documented addressing controls.
+- If your host offers group chats, create `Website Design` and add the saved workers in the same order, Researcher first, up to the host's group limit (six in Grok Bot, where Reviewer runs outside the group). Record the actual route for each. Verify one bounded setup message reaches the intended recipient using the host's documented addressing controls.
 - Use separate Bot chats and relay each handoff and its attachments manually, including when the account offers a group view. Keep distinct workers on separate routes; separate workers need separate routes, and labels inside one chat stay one worker. Ordinary single-chat work uses SOLO.
 - If group messages are text-only, attach mockups and assets directly to the receiving Bot. Image review needs the Bot to open the image itself; a text path alone gives it only the path, so confirm the receiving Bot can inspect the image directly.
 - Give Coordinator this complete contract after replacing each angle-bracket route with the real saved Bot/chat reference. Unresolved placeholders keep setup incomplete.

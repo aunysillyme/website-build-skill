@@ -1,10 +1,33 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.6",
-  "description": "A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security.",
+  "version": "0.1.7",
+  "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.",
   "author": {
     "name": "website-build-skill contributors"
   },
   "repository": "https://github.com/aunysillyme/website-build-skill",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/aunysillyme/website-build-skill",
+  "keywords": [
+    "agent-skills",
+    "ai-skills",
+    "llm-skills",
+    "claude-skills",
+    "skill-pack",
+    "web-design",
+    "web-development",
+    "claude-code",
+    "codex",
+    "chatgpt",
+    "grok",
+    "antigravity",
+    "multi-agent",
+    "accessibility",
+    "web-performance",
+    "seo",
+    "aeo",
+    "design-systems",
+    "brand-design",
+    "research-workflow"
+  ]
 }
