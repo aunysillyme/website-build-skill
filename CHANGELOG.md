@@ -6,6 +6,14 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-09-25
+
+### Changed
+
+- Grok Bot has its own setup in the Grok adapter, written from xAI's Grok Bot documentation (read 2026-09-25) and the operator's own use: install the package into `/workspace`, save it as a private skill, and run TEAM as a six-Bot group with Reviewer outside Grok Bot, since every Bot runs on Grok. Grok Bot stays a documented setup with no trial receipt ([#15](https://github.com/aunysillyme/website-build-skill/issues/15)).
+- The shared manual fallback no longer names an instruction field or a seven-Bot group; it points to where each host keeps standing instructions and respects the host's group limit.
+- One description everywhere: `package.json`, the GitHub About box, npm and `.claude-plugin/plugin.json` now carry the same line, which matches the README lead and names the solo or team choice. The plugin manifest also gains the homepage and keywords.
+
 ## [0.1.6] - 2026-09-24
 
 ### Added

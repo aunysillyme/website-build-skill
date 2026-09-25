@@ -7,9 +7,9 @@ trusting any row; a checklist is only as current as its last read.
 
 ## Description
 
-- [x] Repository description set to this one line, identical to package.json and npm. Read back 2026-09-23; it matches.
+- [x] Repository description set to this one line, identical to package.json, .claude-plugin/plugin.json and npm. Set 2026-09-25 in 0.1.7.
 
-Skills that make your AI an expert website builder: current research, design, accessibility, performance, SEO, security and code, for any LLM or agent.
+A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.
 
 ## Topics
 

@@ -32,7 +32,7 @@ when its receipt demonstrates loading, file access, tool permissions and the sel
 | Codex | [Skill and explicit router](../adapters/codex.md) | Shared destination, role configuration and actual model family | [Skills](https://learn.chatgpt.com/docs/build-skills) |
 | Hermes | [Skill and separate sessions](../adapters/hermes.md) | Trust, alias semantics, routes and inherited permissions | [Skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) |
 | Antigravity | [Explicit core pointer](../adapters/antigravity.md) | Schema, paths, quoted off, routing and denied writes | [Subagents](https://antigravity.google/docs/subagents) |
-| Grok Bot | [Bundles and manual roles](../adapters/grok.md) | Account controls, routes and image relay | [Bots](https://docs.x.ai/grok-bot/bots) |
+| Grok Bot | [Private skill and six-Bot group](../adapters/grok.md#grok-bot), from the xAI docs read 2026-09-25 | `/` lists the saved skill, role files in `/workspace`, group routes; Reviewer outside Grok Bot | [Bots](https://docs.x.ai/grok-bot/bots) |
 | Claude Desktop | [Bundle attachments](../adapters/claude-desktop.md) | Account upload controls and loaded resources | [Skills](https://support.claude.com/en/articles/12512180-use-skills-in-claude) |
 | ChatGPT Project/custom GPT | [Instructions and bundles](../adapters/chatgpt-project.md) | File access, tool availability and state reattachment | [Projects](https://help.openai.com/en/articles/10169521-projects-in-chatgpt) |
 | Generic file-reading agent | [Explicit core pointer](../adapters/agents-md.md) | Router read-back and preserved instructions | [Adapter](../adapters/agents-md.md) |
