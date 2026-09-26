@@ -69,7 +69,8 @@ export function rebase(text, source, target) {
 // only falls back to the bare asset kind when nothing readable is found. Never hand-write
 // this text in llms.txt itself: it is derived here so the catalog stays truthful as files change.
 export function describe(root, asset) {
-  const truncate = s => s.length > 90 ? s.slice(0, 87).trimEnd() + '...' : s;
+  // A label ending in a colon reads as a cut-off lead-in in the catalog, so it is dropped.
+  const truncate = s => (s.length > 90 ? s.slice(0, 87).trimEnd() + '...' : s).replace(/:\s*$/, '');
   const plain = s => s.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/[`*_]/g, '').trim();
   // Several role/prompt files open with the same shared ASK DATE preamble, so it names the
   // convention every file follows rather than what that specific file teaches. Skip it when
@@ -79,6 +80,8 @@ export function describe(root, asset) {
     try {
       const data = JSON.parse(read(root, `${CORE}/${asset.path}`));
       if (typeof data.description === 'string' && data.description.trim()) return truncate(plain(data.description));
+      // The skill manifest carries no description field; name what it indexes instead of its kind.
+      if (Array.isArray(data.assets)) return `Index of all ${data.assets.length} skill assets with kind, version and bundles, plus the stage gates`;
     } catch { /* not readable JSON; fall through to kind */ }
     return asset.kind;
   }
