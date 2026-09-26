@@ -1,6 +1,6 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.",
   "type": "module",
   "license": "MIT",

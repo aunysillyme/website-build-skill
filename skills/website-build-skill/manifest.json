@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.8",
+  "packageVersion": "0.1.9",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [

@@ -16,9 +16,9 @@ TEAM: one command installs the seven workers' files; you open each session yours
 ## Active sources
 
 - [SKILL.md](skills/website-build-skill/SKILL.md): Website Build Skill
-- [manifest.json](skills/website-build-skill/manifest.json): manifest
+- [manifest.json](skills/website-build-skill/manifest.json): Index of all 57 skill assets with kind, version and bundles, plus the stage gates
 - [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): Help me build a website using Research. Learn. Ingest. Execute: Match. Mock. Build. Pro...
-- [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): Deep Research prompt to make your agent good at building websites:
+- [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): Deep Research prompt to make your agent good at building websites
 - [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): Turn my approved materials into a brand kit that a website builder can use and test.
 - [prompts/04-three-mockups.md](skills/website-build-skill/prompts/04-three-mockups.md): Show me three visual mockups for this website before writing any website code.
 - [prompts/05-stack-and-build.md](skills/website-build-skill/prompts/05-stack-and-build.md): Build the selected design using the smallest stack that meets the approved brief.

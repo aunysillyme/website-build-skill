@@ -6,6 +6,12 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.9] - 2026-09-26
+
+### Fixed
+
+- `llms.txt` labels: the manifest entry names what it indexes instead of the bare word "manifest", and a label no longer ends in a colon. A test fails if any catalog label ends in a colon or is a bare asset kind.
+
 ## [0.1.8] - 2026-09-26
 
 ### Added
