@@ -7,6 +7,9 @@ Show me three visual mockups for this website before writing any website code.
 Use the approved brief, research, brand kit, and representative real content.
 If the brand kit is missing, first ask for my profile-picture and banner screenshots.
 
+DESIGN READ
+- Before judging the three directions, note the page type, the audience, and the intended visual direction. See checklists/brand-and-mockups.md BM05.
+
 RESEARCH INTO DESIGN
 - Inspect the researched award-winning work and browser possibilities.
 - Borrow principles, not another site's identity, assets, or exact composition.

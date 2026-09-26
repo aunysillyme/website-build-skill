@@ -188,7 +188,7 @@
       "review": "0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending."
     },
     "docs/PROVENANCE.md": {
-      "sha256": "a4d8039968d64163c78997e15b1a9dc8cc5b1e7aa6995a0f07e789758b2e7cb4",
+      "sha256": "d7e464f6deaed305987e8720a64bf10ce8880f205a7bc17a0ad82840b8cccf8f",
       "disposition": "evidence-backed",
       "claims": [
         {
