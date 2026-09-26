@@ -104,7 +104,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "dfb45d8862133df938da722c10295b7a48819da9ea40c9d94d3ef2908e6d948b"
+      "sha256": "9881d8c5ae027d57288f40b50621142b5dc66efd989796ee2b12a420d6dba953"
     },
     {
       "path": "prompts/05-stack-and-build.md",
@@ -542,7 +542,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "44e83577edf2fb1166f25c680d13bcf85245e347c89cf711b24578ce9abba5f5"
+      "sha256": "774d08f3093a3668d874074f9c5cc7435d089997a3c850afb6ae0553287bcc46"
     },
     {
       "path": "checklists/build.md",
@@ -557,7 +557,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "4492d1576d276f73dcab9be83e525acf690984bb058f2139c1c703967fe1eccf"
+      "sha256": "ccc6b3de61ae7ab4b2d052b970b956695a52fba4c3fd24750439da3a8df2b69f"
     },
     {
       "path": "checklists/code-quality.md",
@@ -572,7 +572,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "6a0346ef6678b0ed3c64ff04df93e466ae5acd8c26e34c802b78505091ae62c3"
+      "sha256": "c2d1aa467a5ab9d4b8846c4fdefbd3c8efbb2f342e05d5526e2059a4ddb4d926"
     },
     {
       "path": "checklists/accessibility.md",

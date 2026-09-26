@@ -13,6 +13,20 @@ Reported historical measurements are not repeated as package evidence.
 Original package work uses [MIT](../LICENSE). The conduct text retains its own attribution and license.
 No third-party site screenshots, fonts or brand kits are included.
 
+## Design review techniques
+
+Two techniques adapted (own wording, not copied text) into checklists/brand-and-mockups.md (BM05),
+checklists/code-quality.md (CQ06), checklists/build.md (B08) and prompts/04-three-mockups.md:
+
+- Design Read (recording page type, audience and intended visual direction before judging a design)
+  and contextual landing-page layout defaults: adapted from Taste Skill,
+  [github.com/Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill), commit
+  `ce26fc25c0e5e8cab638f883de62d9a86ee5e45b`, MIT licence.
+- A named template-tell check (signs of generic AI-template output) and separating measurable
+  findings from visual judgment with in-context verification: adapted from Impeccable,
+  [github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable), commit
+  `9d715cc4f5564a990ca8345abfdd5df6dc9b41c8`, Apache-2.0 licence.
+
 ## Reference ledger
 
 These links are research entrypoints, not evidence that this package was loaded in a client.
