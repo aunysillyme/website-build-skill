@@ -22,7 +22,7 @@ push publishes. Creating the GitHub release page stays manual.
 When `package.json` description changes, update REPO_SETTINGS.md § Description in the same commit and run `gh repo edit https://github.com/aunysillyme/website-build-skill --description "<same string>"`.
 
 1. Read the candidate and resolve any source, privacy, claim-review or license defect.
-2. Run `node scripts/build.mjs` to regenerate bundles and the index.
+2. Run `node scripts/build.mjs` to regenerate bundles and the index; for intentional canonical edits, append `--rehash <asset-path> [<asset-path> ...]` and review the manifest diff.
 3. Run `node scripts/check.mjs` without rewriting outputs.
 4. Run `node --test test/*.test.mjs` for rejection cases and valid controls.
 5. Review the exact candidate with an independent model family before wiring executable changes into live automation.
@@ -58,8 +58,9 @@ The archive is an immutable input and never an active bundle member.
 
 ## Writes
 
-Build writes exactly `docs/bundles/method.md`, `prompts.md`, `playbooks.md`, `checklists.md`,
+Plain build writes exactly `docs/bundles/method.md`, `prompts.md`, `playbooks.md`, `checklists.md`,
 `team.md` below that same bundle directory, plus root `llms.txt`.
+Explicit `--rehash` also updates only the named asset digests in the canonical manifest when changed.
 Check writes nothing. Tests create synthetic scratch directories only under `.test-work/` and remove their own directories.
 The installer writes only its destination, the output root probe it removes, and its receipt.
 The check workflow has only `contents: read`. The release workflow's publish job adds exactly

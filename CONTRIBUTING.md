@@ -10,7 +10,7 @@ Use synthetic fixtures and reserved example domains. Never paste real project tr
 - Generated files: `docs/bundles/*.md` and `llms.txt`; never hand-edit them.
 - Team supplement: `adapters/grok.md` supplies the manual fallback appended by the generator.
 - Archive: preserve the inactive graphics original byte-for-byte. Keep it out of active routes and bundles.
-- Digests: after an intentional canonical edit, update only the affected manifest SHA-256 entry, review the diff, then regenerate.
+- Digests: after an intentional canonical edit, run `node scripts/build.mjs --rehash <asset-path> [<asset-path> ...]` for only the edited assets, using paths from manifest `assets[].path` relative to `skills/website-build-skill/`. Review the manifest diff and regenerated bundles. The manifest itself and archive cannot be rehashed.
 - Claims: changed storefront/reference prose requires an explicit review entry in `docs/evidence/content-review.json`. Do not regenerate that ledger as part of the build.
 - Evidence: any affirmative test, measurement, publication or compatibility claim needs a repository evidence file with command, environment, date, result and artifact identity. A URL or an invented receipt is insufficient.
 
@@ -36,7 +36,7 @@ node scripts/check.mjs
 node --test test/*.test.mjs
 ```
 
-Build rewrites only the five bundles and the index. Check is read-only and fails on drift.
+Plain build rewrites only the five bundles and the index; `--rehash` also refreshes only the named asset digests. Check is read-only and fails on drift.
 Tests use synthetic temporary directories inside this checkout or the OS temporary
 directory and remove them afterward. Live host behaviour is verified by receipts, not
 by `npm test`; follow the [manual host gate](docs/evaluation/host-gate.md) for each skip.

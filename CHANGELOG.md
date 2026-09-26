@@ -6,6 +6,16 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.10] - 2026-09-26
+
+### Added
+
+- `node scripts/build.mjs --rehash <asset-path> [<asset-path> ...]` refreshes the manifest SHA-256 for only the named canonical assets and prints each old and new digest. It refuses the manifest itself, the archive and unknown paths, and writes nothing on refusal. Plain `node scripts/build.mjs` never changes manifest digests, so an unreviewed edit still fails the source-hash check.
+
+### Changed
+
+- CONTRIBUTING and RELEASING name the `--rehash` step for intentional canonical edits.
+
 ## [0.1.9] - 2026-09-26
 
 ### Fixed
