@@ -6,6 +6,15 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-09-26
+
+### Added
+
+- Web design review in the existing checks. BM05 now names common template tells (gradient heading text, side-stripe card borders, the generic purple-to-blue palette, nested cards, icon-tile stacks, bounce easing, decorative numbered labels, thin border with a wide soft shadow) and contextual landing-page layout defaults. A recorded brand decision overrides each default, and text expansion, zoom and reflow always win.
+- CQ06 checks design-token drift and repeated copy-paste shortcuts, and asks that findings be verified in source before they are reported. B08 replays the chosen layout defaults on the built page at the recorded mobile and desktop viewports.
+- Prompt 04 opens with a one-line design read (page type, audience, direction) and points to BM05.
+- `docs/PROVENANCE.md` credits the techniques to Impeccable (Apache-2.0) and Taste Skill (MIT). No upstream text was copied and no dependency was added.
+
 ## [0.1.7] - 2026-09-25
 
 ### Changed
