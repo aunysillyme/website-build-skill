@@ -26,7 +26,7 @@ When `package.json` description changes, update REPO_SETTINGS.md § Description 
 3. Run `node scripts/check.mjs` without rewriting outputs.
 4. Run `node --test test/*.test.mjs` for rejection cases and valid controls.
 5. Review the exact candidate with an independent model family before wiring executable changes into live automation.
-6. Update `CHANGELOG.md`, then set the same version in `package.json`, `.claude-plugin/plugin.json` and the manifest's `packageVersion`; the check fails when they disagree.
+6. Update `CHANGELOG.md`, then set the same version in `package.json`, both version fields of `package-lock.json`, `.claude-plugin/plugin.json` and the manifest's `packageVersion`; the check compares `package.json` with the plugin manifest and `packageVersion`, so bump the lock by hand in the same edit (it sat at 0.1.6 through 0.1.8).
 7. Commit, then push an immutable `v<version>` tag on that commit. Leave the tag where it is: npm provenance names that exact commit, so a later history rewrite would point the provenance at a commit that no longer exists.
 8. The workflow re-runs the gates, packs the tarball, installs it in a scratch project, runs the installed entry point, and only then publishes with `--provenance`.
 9. Wait for the registry, which lagged by roughly a minute on the sibling repository, then complete the verification loop below before recording the release as complete.

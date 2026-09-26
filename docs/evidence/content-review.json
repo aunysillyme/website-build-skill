@@ -66,9 +66,9 @@
       ]
     },
     "RELEASING.md": {
-      "sha256": "7e89b30d20fef7570fc0485f80844c651a861a18956efd43e1555967f3e8dde4",
+      "sha256": "e198b30f6d744dc2172f93ee7cd6710fecc35355b837b8c4e3a39c3311556b03",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "0.1.3: reviewed the same-commit description update and explicit GitHub command against the task specification; no live repository setting was changed in this offline implementation pass. Implementation-agent editorial review; independent review remains pending. The command uses the exact repository URL to preserve the existing privacy allowance for public repository references."
+      "review": "0.1.3: reviewed the same-commit description update and explicit GitHub command against the task specification; no live repository setting was changed in this offline implementation pass. Implementation-agent editorial review; independent review remains pending. The command uses the exact repository URL to preserve the existing privacy allowance for public repository references. 0.1.9: step 6 now names both package-lock.json version fields, matching vault 05_how_we_build_repos 6.2; the lock had stayed at 0.1.6 through 0.1.8. Claude editorial review against scripts/check.mjs version comparison."
     },
     "REPO_SETTINGS.md": {
       "sha256": "4460fa8f5379df2991fc11eb55ba7ae6319ca66acc5a2f8702b3b64b6847d967",
