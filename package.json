@@ -49,6 +49,7 @@
     "docs/",
     "README.md",
     "LICENSE",
+    "CLA.md",
     "CHANGELOG.md",
     "SECURITY.md",
     "llms.txt",

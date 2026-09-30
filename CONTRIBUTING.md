@@ -44,6 +44,12 @@ For a new check, demonstrate a failing fixture and a valid control. See [evaluat
 The Markdown gate checks file targets, reference links, images, HTML links and heading anchors.
 External URLs require a separate live review; offline success does not prove availability.
 
+## Contributor License Agreement
+
+Outside contributors tick the Contributor License Agreement box in the PR description.
+You keep the copyright in what you wrote and grant Auny LLC the licenses in [CLA.md](CLA.md).
+The `cla` check passes once the box is ticked.
+
 ## Review and handoff
 
 Describe the problem, resulting behavior, exact checks and any remaining limits in the PR.
