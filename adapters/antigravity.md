@@ -1,4 +1,4 @@
-# Antigravity
+# Gemini (via Antigravity CLI)
 
 TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 

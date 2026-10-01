@@ -51,13 +51,18 @@ A change to the ledger itself requires code-owner review. No content checker can
 
 The gate scans every public file, including hidden community metadata, fixtures and generated bundles.
 It rejects personal paths, private identifiers, personal names and email addresses without echoing their values.
-Production exceptions are exact license authorship and repository URL namespaces.
-The related public repository allowlist contains exactly `agent-personalizer` and
-`model-orchestrator`, for GitHub URLs, raw file URLs and npm GitHub shorthand.
-The privacy regression rejects a third repository, longer names and adjacent private text.
-The supported public product name and exact CODEOWNERS handle are narrow, resolved
-exceptions implemented by privacyIssues. Path-shaped uses remain rejected. These
-exceptions do not permit personal identifiers elsewhere.
+Every exemption is narrow, exact and implemented once in `privacyIssues` (`src/validate.mjs`).
+The privacy tests run against that same function.
+
+- License: the one exact copyright line in `LICENSE`.
+- CODEOWNERS: the one exact owner line in `.github/CODEOWNERS`.
+- Product name: the supported host's public product name, as a name. Path-shaped uses stay rejected.
+- Own repository: `https://github.com/aunysillyme/website-build-skill` and the matching `raw.githubusercontent.com` URL, plus the npm shorthand `github:aunysillyme/website-build-skill`.
+- Funding: exactly `https://github.com/sponsors/aunysillyme`. Sentence punctuation after it (`. , ; : ] > *`) is allowed. A different handle, a longer path, a query or a fragment fails.
+- Sibling repositories: exactly `https://github.com/aunysillyme/agent-personalizer` and `https://github.com/aunysillyme/model-orchestrator`, in GitHub URL, raw file URL and npm shorthand spellings. A third repository or a longer name fails.
+
+The tests reject a third repository, longer names, other Sponsors handles and adjacent private text.
+These exemptions do not permit personal identifiers anywhere else.
 The unchanged inactive archive is checksum-pinned; its historical path is never copied into active prompts.
 Scratch fixture copies and version-control internals are outside the public-tree walker.
 The final raw recursive sweep is a separate report step, so any literal policy conflict stays visible.

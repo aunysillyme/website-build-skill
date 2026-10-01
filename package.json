@@ -1,6 +1,6 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.",
   "type": "module",
   "license": "MIT",
@@ -64,5 +64,6 @@
   "homepage": "https://github.com/aunysillyme/website-build-skill",
   "bugs": {
     "url": "https://github.com/aunysillyme/website-build-skill/issues"
-  }
+  },
+  "funding": "https://github.com/sponsors/aunysillyme"
 }

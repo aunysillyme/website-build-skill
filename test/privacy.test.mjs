@@ -29,6 +29,34 @@ test('The npm repository shorthand is exempt in one spelling only', () => {
   assert.ok(privacyIssues('README.md', `see ${owner} for details`).length, 'the bare handle still fails');
 });
 
+test('Sponsors control allows the exact public funding URL and keeps adjacent text private', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  const url = ['https://github.com', 'sponsors', owner].join('/');
+  assert.deepEqual(privacyIssues('package.json', JSON.stringify({ funding: url })), []);
+  assert.deepEqual(privacyIssues('RELEASING.md', `Funding: ${url}`), []);
+  assert.ok(privacyIssues('README.md', `${url} ${owner}`).length, 'adjacent private text must fail');
+});
+
+test('RED Sponsors allowance rejects a different handle or any extended URL', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  const other = ['someone', 'else'].join('');
+  for (const handle of [other, `${owner}-personal`, `${owner}/private`, `${owner}?private`, `${owner}#private`]) {
+    assert.ok(privacyIssues('package.json', JSON.stringify({ funding: ['https://github.com', 'sponsors', handle].join('/') })).length, handle);
+  }
+});
+
+test('Sponsors allowance tolerates trailing sentence punctuation and nothing else', () => {
+  const owner = ['au', 'ny', 'sillyme'].join('');
+  const url = ['https://github.com', 'sponsors', owner].join('/');
+  for (const tail of ['.', ',', ';', ':', ']', '>', '*', '.*', '**']) {
+    assert.deepEqual(privacyIssues('RELEASING.md', `Funding: ${url}${tail}`), [], `tail ${tail}`);
+  }
+  for (const bad of [`${url}-personal.`, `${url}/private.`, `${url}?private.`, `${url}#private.`, `${url}.private`, `${url}.`.replace(owner, 'someone' + 'else')]) {
+    assert.ok(privacyIssues('RELEASING.md', bad).length, bad);
+  }
+  assert.ok(privacyIssues('RELEASING.md', `${url}. ${owner}`).length, 'adjacent private text after punctuation must fail');
+});
+
 test('Sibling links allow exactly the two related repositories and preserve privacy boundaries', () => {
   const owner = ['au', 'ny', 'sillyme'].join('');
   for (const repo of ['agent-personalizer', 'model-orchestrator']) {

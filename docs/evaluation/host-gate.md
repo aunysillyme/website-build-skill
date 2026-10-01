@@ -37,7 +37,7 @@ records browser version and account controls available during that trial.
 | Claude Code | [Adapter](../../adapters/claude-code.md) | SOLO and separately TEAM |
 | Codex | [Adapter](../../adapters/codex.md) | SOLO and separately TEAM |
 | Hermes | [Adapter](../../adapters/hermes.md), including explicit alias and trust checks | SOLO and separately TEAM |
-| Antigravity | [Adapter](../../adapters/antigravity.md) | SOLO and separately TEAM |
+| Gemini (via Antigravity CLI) | [Adapter](../../adapters/antigravity.md) | SOLO and separately TEAM |
 | Grok Bot | [Adapter](../../adapters/grok.md), including attachment and manual relay controls | SOLO and separately TEAM |
 | Claude Desktop | [Adapter](../../adapters/claude-desktop.md), including skill ZIP upload where exposed | SOLO; record any separate-session TEAM trial separately |
 | ChatGPT Project | [Adapter](../../adapters/chatgpt-project.md) | SOLO; record any separate-session TEAM trial separately |

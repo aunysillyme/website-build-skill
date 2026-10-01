@@ -1,10 +1,35 @@
 # Changelog
 
 All notable changes will be documented here.
-Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.1.12] - 2026-10-01
+
+### Added
+
+- Package funding metadata links to GitHub Sponsors, with a privacy exception for the exact URL and rejection coverage for other handles and paths.
+- README Uninstall and Read next sections, plus sibling repository links and descriptions in the generated `llms.txt` index.
+- Release completion checks cover the registry README, description, provenance attestations and funding metadata.
+
+### Changed
+
+- Release operations name 57 installed files plus a receipt, the GitHub release creation command and registry lag handling.
+- Private vulnerability reporting text describes the enabled private advisory route.
+- Reader-facing host labels use Gemini (via Antigravity CLI), and the README places the related repository set after the skills overview.
+- The changelog format reference links to Keep a Changelog 2.0.0.
+- SECURITY.md describes the released installer, its guards and the supported version window.
+- REPO_SETTINGS.md records the default GitHub preview card as the decision.
+- Release operations create the GitHub release after the registry checks, compare the README to the tagged copy, and add funding, bin and demo image checks.
+- The README places Uninstall after Common questions, and the privacy gate documentation lists every public-identifier exemption.
+- The Sponsors URL exemption tolerates trailing sentence punctuation.
+
+### Removed
+
+- The committed custom social preview image.
+- Stale release wording and the duplicate installer write description.
 
 ## [0.1.11] - 2026-09-30
 
@@ -159,4 +184,6 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.12...HEAD
+[0.1.12]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.10...v0.1.11

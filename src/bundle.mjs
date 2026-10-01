@@ -144,6 +144,9 @@ export function generated(root) {
   index += '- [Compatibility](docs/COMPATIBILITY.md): host setup routes and the evidence for each\n';
   index += '- [Documentation](docs/README.md): method, tips, provenance and evaluation\n\n';
   index += "TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.\n\n";
+  index += '## Part of a set\n\n';
+  index += '- [agent-personalizer](https://github.com/aunysillyme/agent-personalizer): One interview writes the profile and rules every AI you use reads, kept in sync from one source.\n';
+  index += '- [model-orchestrator](https://github.com/aunysillyme/model-orchestrator): Model router for AI coding agents: installs routing rules, 8 subagents, hooks and a CLI runner so your AI picks model and effort per task and saves tokens.\n\n';
   index += '## Active sources\n\n';
   for (const asset of m.assets.filter(a => a.active)) index += `- [${asset.path}](${CORE}/${asset.path}): ${describe(root, asset)}\n`;
   index += '\n## Bundles\n\n';

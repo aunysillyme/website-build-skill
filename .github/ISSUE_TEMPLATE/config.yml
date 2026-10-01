@@ -5,7 +5,7 @@ contact_links:
     about: Read the method, adapters and tool limits first.
   - name: Private vulnerability report
     url: https://github.com/aunysillyme/website-build-skill/security/advisories/new
-    about: UNVERIFIED until repository creation and private reporting activation.
+    about: Opens a private advisory to the maintainers.
   - name: Private conduct report
     url: https://support.github.com/contact
     about: Use GitHub private reporting for abuse. Do not post private details publicly.

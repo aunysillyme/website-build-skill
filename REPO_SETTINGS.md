@@ -68,10 +68,7 @@ sole maintainer can still push directly while force pushes, deletions and a red 
 
 ## Social preview
 
-- [ ] Produce a social preview image: 1280 x 640 pixels, PNG or JPEG. Not produced; the repository serves the default generated image.
-- [ ] Show the project name, Research to Mock to Build to Prove, and a readable visual hierarchy.
-- [ ] Review crop, contrast, rights and private-data absence before upload.
-- [ ] Confirm current GitHub image constraints in the creation UI before applying them; account behavior is UNVERIFIED.
+- [x] The repository uses GitHub's default generated preview card by decision. No custom social image is produced or uploaded.
 
 ## Community profile
 

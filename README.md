@@ -19,13 +19,8 @@ npx website-build-skill
 
 It copies the skill pack into your host's folder, checks the saved files and writes a receipt.
 Open your AI and ask it to read the installed `SKILL.md`.
-Use `--dry-run` to preview paths. To remove files the installer wrote that still match its receipt:
-
-```bash
-npx website-build-skill --uninstall --target codex --dir . --yes
-```
-
-Use the target and directory from your install. The [installer guide](docs/INSTALLER.md) covers all flags, receipts and exit codes.
+Use `--dry-run` to preview paths. The [installer guide](docs/INSTALLER.md) covers all flags, receipts and exit codes.
+To remove it later, see [Uninstall](#uninstall).
 
 For a headless install with no prompts, name SOLO or TEAM and your host:
 
@@ -67,6 +62,16 @@ Ask your AI to name the files it read before starting.
 | Hosting and operations | It learns to promote an exact release artifact, verify live routes, plan rollback, and document monitoring, recovery and maintenance ownership. | [Deploy and operate](skills/website-build-skill/playbooks/deploy-and-operate.md), [ship and verify](skills/website-build-skill/prompts/11-ship-and-verify.md) |
 | Review and release | It learns to prepare a fixed candidate for review by a different model family, reproduce findings, verify fixes, and check release authority and evidence. | [Adversarial review](skills/website-build-skill/prompts/10-adversarial-pre-ship.md), [ship checklist](skills/website-build-skill/checklists/ship.md) |
 
+## Part of a set
+
+Three open-source tools that work on their own and fit together:
+
+| Repo | What it gives you |
+|---|---|
+| [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | One interview writes the profile and rules every AI you use reads, kept in sync from one source. |
+| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: installs routing rules, 8 subagents, hooks and a CLI runner so your AI picks model and effort per task and saves tokens. |
+| **website-build-skill** | A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security. |
+
 ## How your AI uses it on a site
 
 Every site follows the same twelve stages, so your AI researches before it designs and checks before it ships.
@@ -91,7 +96,7 @@ Every site follows the same twelve stages, so your AI researches before it desig
 | Choice | What happens | Works with |
 |---|---|---|
 | **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
-| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Antigravity, Grok Bot |
+| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
@@ -132,7 +137,7 @@ current status host by host.
 | [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust and loading steps | Shared method files; TEAM adds the full role bundles |
-| [Antigravity](adapters/antigravity.md) | Install with `--target antigravity`; read `.website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
+| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; read `.website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
 | [Grok Bot](adapters/grok.md) | Attach the five bundles and follow the manual team setup | Complete role instructions and addressed handoffs |
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instructions | The SOLO method in your chat |
 | [ChatGPT](adapters/chatgpt-project.md) | Add the instructions and five bundles to a Project or [custom GPT](adapters/custom-gpt.md) | The SOLO method and saved state packets |
@@ -147,16 +152,6 @@ That output root holds `site-work/`, including research, source dates, brand dec
 Notion is an export destination with an authoritative local working copy.
 For headless setup, `--output-dir` records the existing output root; otherwise Researcher asks before writing.
 Reopen that library for later pages and refresh claims against the date of the new request.
-
-## Part of a set
-
-Three open-source tools that work on their own and fit together:
-
-| Repo | What it gives you |
-|---|---|
-| [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | One interview writes the profile and rules every AI you use reads, kept in sync from one source. |
-| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: installs routing rules, 8 subagents, hooks and a CLI runner so your AI picks model and effort per task and saves tokens. |
-| **website-build-skill** | A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security. |
 
 ## Tips
 
@@ -185,13 +180,31 @@ The [installer contract](docs/INSTALLER.md) defines preflight checks, exit codes
 
 **How do I teach Claude Code or Codex to build better websites?** Run `npx website-build-skill`, pick your host and let it copy the skill pack into your host's folder, then ask your AI to read the installed `SKILL.md`. It learns current practice in research, design, code, accessibility, performance, search and security before it touches your site.
 
-**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Antigravity and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
+**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Gemini (via Antigravity CLI) and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
 
 **What does my AI research before it builds?** It researches fourteen domains current to the day of your request, from design and accessibility to performance, security, stack and search, and saves a library with source URLs and access dates so later pages can refresh stale claims. See [What your AI learns](#what-your-ai-learns) for the full list.
 
 **Can one AI run it, or does it need a team?** Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them. Researcher goes first. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
 
-**How do I remove it?** Run `npx website-build-skill --uninstall --target <your target> --dir . --yes`, using the target and directory from your install; it removes only the files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
+**How do I remove it?** Follow [Uninstall](#uninstall), using the target and directory from your install. It removes only files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
+
+## Uninstall
+
+```bash
+npx website-build-skill --uninstall --target codex --dir . --yes
+```
+
+Use the target and directory from your install; it removes only files the installer wrote that still match its receipt.
+
+## Read next
+
+- [Installer guide](docs/INSTALLER.md)
+- [Method](docs/METHOD.md)
+- [Compatibility](docs/COMPATIBILITY.md)
+- [Tips](docs/TIPS.md)
+- [Evaluation](docs/EVALUATION.md)
+- [Provenance](docs/PROVENANCE.md)
+- [Documentation index](docs/README.md)
 
 ## Contributing, credits and license
 
