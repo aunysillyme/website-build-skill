@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process';
 import { files, digest } from '../src/bundle.mjs';
 import { linkIssues } from '../src/validate.mjs';
 
-test('Actual npm tarball preserves documentation links and installs from its own bytes', () => {
+test('Actual npm tarball excludes GIFs served by raw URLs, preserves documentation links and installs from its own bytes', () => {
   const trial = realpathSync(mkdtempSync(resolve(tmpdir(), 'website-packed-')));
   const run = (command, args, cwd = process.cwd()) => {
     const result = spawnSync(command, args, { cwd, encoding: 'utf8', timeout: 60000,
@@ -27,6 +27,8 @@ test('Actual npm tarball preserves documentation links and installs from its own
     const npmRun = (args, cwd) => run(process.execPath, [realpathSync(npm), ...args], cwd);
     const report = JSON.parse(npmRun(['pack', '--json', '--ignore-scripts', '--pack-destination', trial]));
     const [packed] = Array.isArray(report) ? report : Object.values(report);
+    assert.deepEqual(packed.files.filter(file => /\.gif$/i.test(file.path)), [],
+      'README hero and installer demo are served by raw URLs, so GIFs must not ship');
     run('tar', ['-xzf', resolve(trial, packed.filename), '-C', trial]);
     const artifact = resolve(trial, 'package');
     const issues = files(artifact).filter(name => name.endsWith('.md') || name === 'llms.txt')

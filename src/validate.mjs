@@ -243,7 +243,9 @@ export function check(root, options = {}) {
   } catch { published = false; }
   const protect = (name, fn) => { try { fn(); } catch (e) { issues.push(`${name}:${e.message}`); } };
   for (const name of names) {
-    const text = read(root, name);
+    // A GIF is compressed bytes, not prose: a text scan matches random byte runs (an em dash
+    // sequence, an at-sign). Its path is still checked; only the content scan is skipped.
+    const text = /\.gif$/i.test(name) ? '' : read(root, name);
     issues.push(...privacyIssues(name, text, options));
     if (name.endsWith('.md') || name === 'llms.txt') issues.push(...linkIssues(root, name, text));
     if (name.endsWith('.md')) issues.push(...installClaimIssues(name, text, published));
@@ -333,12 +335,17 @@ export function check(root, options = {}) {
     if (binEntry !== 'bin/website-build-skill.mjs') issues.push('PACKAGE_HONESTY:bin must name the real entry point');
     else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
     // A published tarball that omits any of these installs nothing on a stranger's machine.
-    // A negation can empty one of them while the entry it negates is still listed, so the
-    // list is compared on its effective entries, and `src` and `src/` are the same entry.
+    // A negation can empty one of them while the entry it negates is still listed. Only
+    // the GIF exclusion is allowed: documentation serves those images by raw URL.
+    // `src` and `src/` are the same entry.
     const published = (p.files ?? []).map(entry => String(entry).replace(/\/+$/, ''));
-    if (published.some(entry => entry.startsWith('!'))) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
+    if (published.some(entry => entry.startsWith('!') && entry !== '!docs/*.gif')) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
     for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE'])
       if (!published.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
+    // npm applies the list in order, so an exclusion placed before the entry it trims
+    // removes nothing and both GIFs still ship.
+    if (published.includes('!docs/*.gif') && published.indexOf('!docs/*.gif') < published.indexOf('docs'))
+      issues.push('PACKAGE_FILES:!docs/*.gif must come after the docs entry or it excludes nothing');
     const floor = p.engines?.node?.match(/(\d+)/)?.[1];
     const checks = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks;
     const matrix = checks?.strategy?.matrix?.node;
