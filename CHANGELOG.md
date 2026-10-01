@@ -6,6 +6,14 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.11] - 2026-09-30
+
+### Changed
+
+- CLAUDE.md now imports AGENTS.md so Claude Code loads the same method and contributor rules as every other agent.
+- The accuracy notes moved into AGENTS.md so every agent reads them.
+- AGENTS.md names `node scripts/build.mjs --rehash` for canonical asset edits.
+
 ## [0.1.10] - 2026-09-26
 
 ### Added
@@ -150,3 +158,5 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
+
+[0.1.11]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.10...v0.1.11
