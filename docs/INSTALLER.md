@@ -32,6 +32,10 @@ npx website-build-skill --solo --target codex --dir . --scope project --yes
 npx website-build-skill --team --target antigravity --dir . --scope project --yes
 ```
 
+This recorded install is from version 0.1.1 and lists 55 files; current installs write 57 files.
+
+![Installer demo: preview the files, install the Codex skill and inspect the receipt](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif)
+
 For unreleased changes, use `npx github:aunysillyme/website-build-skill` with the same flags.
 Append `#<reviewed-commit-sha>` to the repository reference for a reproducible install.
 

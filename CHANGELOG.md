@@ -10,6 +10,19 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 - LICENSE names Auny LLC as copyright holder; outside contributions now require the CLA in CLA.md.
 
+## [0.1.13] - 2026-10-01
+
+### Added
+
+- README hero trailer: a short tour of what your AI learns, the 14 research domains and the 12 stages, ending on the install command.
+
+### Changed
+
+- Terminal demo moved to the installer guide and labeled as a recording from version 0.1.1.
+- GIFs excluded from the npm package; documentation uses absolute raw image URLs.
+- The package check requires the GIF exclusion after the docs entry.
+- The privacy and voice scan reads a GIF by path only, so compressed bytes cannot match as prose.
+
 ## [0.1.12] - 2026-10-01
 
 ### Added
@@ -188,6 +201,7 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.12...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.13...HEAD
+[0.1.13]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.11...v0.1.12
 [0.1.11]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.10...v0.1.11

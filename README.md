@@ -17,6 +17,8 @@ Run the npm installer in your project folder. It asks how you want to work, whic
 npx website-build-skill
 ```
 
+![A short tour of what your AI learns, the 14 research domains and the 12 stages, ending on the install command on the closing card](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/trailer.gif)
+
 It copies the skill pack into your host's folder, checks the saved files and writes a receipt.
 Open your AI and ask it to read the installed `SKILL.md`.
 Use `--dry-run` to preview paths. The [installer guide](docs/INSTALLER.md) covers all flags, receipts and exit codes.
@@ -43,8 +45,6 @@ For the complete method, paste or attach the five bundles from one revision:
 Get them from [the public bundle folder](https://github.com/aunysillyme/website-build-skill/tree/main/docs/bundles)
 or [the main archive](https://github.com/aunysillyme/website-build-skill/archive/refs/heads/main.zip).
 Ask your AI to name the files it read before starting.
-
-![Installer demo: preview the files, install the Codex skill and inspect the receipt](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif)
 
 ## What your AI learns
 

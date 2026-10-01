@@ -99,6 +99,7 @@ Release completion requires:
 
 - Bin: `npm view website-build-skill@<version> bin --json --prefer-online` equals `node -p "JSON.stringify(require('./package.json').bin)"`.
 - Demo image: `curl -sI -o /dev/null -w '%{http_code} %{content_type}\n' https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif` prints `200 image/gif`.
+- Hero trailer: `curl -sI -o /dev/null -w '%{http_code} %{content_type}\n' https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/trailer.gif` prints `200 image/gif`. The README hero resolves only once `docs/trailer.gif` is on main, so push main and wait for it to be green before tagging.
 
 Host discovery and activation are still not proven by any of that.
 Record downloaded bytes, commands, versions, date, actual results and any gaps as sanitized evidence.
