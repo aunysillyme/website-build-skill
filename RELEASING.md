@@ -12,7 +12,7 @@ through npm trusted publishing, which exchanges a short-lived OIDC token issued 
 ## Trigger
 
 Local: a maintainer changes canonical content or adapters and explicitly runs the commands below.
-Hosted checks: pull request, push to main or manual dispatch after repository creation.
+Hosted checks: pull request, push to main or manual dispatch.
 Release: pushing a `v*` tag runs the publish job, which republishes nothing and refuses a tag
 whose version disagrees with `package.json`. No scheduled publication exists, and no branch
 push publishes. Creating the GitHub release page stays manual.
@@ -29,7 +29,14 @@ When `package.json` description changes, update REPO_SETTINGS.md § Description 
 6. Update `CHANGELOG.md`, then set the same version in `package.json`, both version fields of `package-lock.json`, `.claude-plugin/plugin.json` and the manifest's `packageVersion`; the check compares `package.json` with the plugin manifest and `packageVersion`, so bump the lock by hand in the same edit (it sat at 0.1.6 through 0.1.8).
 7. Commit, then push an immutable `v<version>` tag on that commit. Leave the tag where it is: npm provenance names that exact commit, so a later history rewrite would point the provenance at a commit that no longer exists.
 8. The workflow re-runs the gates, packs the tarball, installs it in a scratch project, runs the installed entry point, and only then publishes with `--provenance`.
-9. Wait for the registry, which lagged by roughly a minute on the sibling repository, then complete the verification loop below before recording the release as complete.
+9. Allow 40 to 90 seconds of registry lag, use `--prefer-online` for registry reads, then complete the verification loop below.
+10. After every registry check passes, write the notes file from the CHANGELOG section and create the GitHub release page:
+
+```sh
+awk -v v="<version>" '$0 ~ "^## \\[" v "\\]" {f=1; next} f && /^## \[/ {exit} f' CHANGELOG.md > release-notes.md
+gh release create v<version> --title "<version>" --notes-file release-notes.md
+rm release-notes.md
+```
 
 ## Dependencies
 
@@ -66,19 +73,33 @@ The installer writes only its destination, the output root probe it removes, and
 The check workflow has only `contents: read`. The release workflow's publish job adds exactly
 one permission, `id-token: write`, for the OIDC exchange, and the workflow validator refuses
 that permission at the top level, in any other job, and in any other workflow.
-The installer writes only inside the destination it was given, the output root probe it removes,
-and its receipt.
 
 ## The closed loop
 
 Local success requires exit 0 from both the read-only check and the test runner, with no unexpected skips.
-The privacy gate passes on the published tree. Its two public-identifier exemptions are narrow and
+The privacy gate passes on the published tree. Its public-identifier exemptions are narrow and
 documented in `docs/EVALUATION.md`; the tests run against the same policy, not a separate one.
 Inspect the full output and changed file list. A generated file existing is not enough; its bytes must match regeneration.
 Hosted success requires the exact source revision's run to pass on every runtime in the matrix.
-Release completion requires `npm view website-build-skill version` to name the tag, a fresh
-`npx website-build-skill@<version> --version` from a machine that has never held the package,
-and one real install into a scratch directory whose receipt digests match the bytes on disk.
+Release completion requires:
+
+- Version: `npm view website-build-skill version --prefer-online` names the tag.
+- Fresh entry point: `npx website-build-skill@<version> --version` runs from a machine that has never held the package.
+- Install: one real install into a scratch directory has receipt digests that match the bytes on disk.
+- README: `git fetch --tags && npm view website-build-skill readme --prefer-online | diff -q - <(git show v<version>:README.md)` exits 0, proving the registry README equals `README.md` at the release tag. The `<( )` form needs bash or zsh.
+- Description: `npm view website-build-skill description --prefer-online` equals the `description` field in `package.json`.
+- Provenance: `npm view website-build-skill@<version> dist.attestations --prefer-online` names `https://slsa.dev/provenance/v1`.
+- Funding: `npm view website-build-skill funding --prefer-online` prints `https://github.com/sponsors/aunysillyme`.
+- GitHub funding: this prints `true` and both funding links (the owner is read from the repository URL):
+
+  ```sh
+  owner="$(gh repo view https://github.com/aunysillyme/website-build-skill --json owner --jq .owner.login)"
+  gh api graphql -f owner="$owner" -f query='query($owner:String!){repository(owner:$owner,name:"website-build-skill"){hasSponsorshipsEnabled fundingLinks{platform url}}}'
+  ```
+
+- Bin: `npm view website-build-skill@<version> bin --json --prefer-online` equals `node -p "JSON.stringify(require('./package.json').bin)"`.
+- Demo image: `curl -sI -o /dev/null -w '%{http_code} %{content_type}\n' https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif` prints `200 image/gif`.
+
 Host discovery and activation are still not proven by any of that.
 Record downloaded bytes, commands, versions, date, actual results and any gaps as sanitized evidence.
 Update the changelog only for a real release.
@@ -94,8 +115,8 @@ No separate watchdog is configured. The public repository owner is the failure r
 - Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving only the reviewed publish-job OIDC exception.
 - Local tests fail: stop publication, reproduce, fix confirmed defects and rerun the affected harness.
 - Runtime or network unavailable: report BLOCKED with the failing command; do not substitute a pass.
-- Future publication partly succeeds: inspect registry and release state before any retry. Never assume an npm version can be overwritten or routinely deleted.
-- Future bad release: halt promotion, publish a corrected version after review, and use the registry's then-current deprecation mechanism. Preserve hashes and disclose affected versions. Do not silently replace bytes under a release claim.
+- Publication partly succeeds: inspect registry and release state before any retry. Never assume an npm version can be overwritten or routinely deleted.
+- A bad release ships: halt promotion, publish a corrected version after review, and use the registry's then-current deprecation mechanism. Preserve hashes and disclose affected versions. Do not silently replace bytes under a release claim.
 - Missing maintainer response: preserve the candidate and evidence, keep publication blocked and use the repository's documented escalation route.
 
 ## Run and verify by hand
@@ -121,7 +142,7 @@ cd "$trial" && npm init -y > /dev/null && npm install "$OLDPWD/$tarball"
 ./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes
 ```
 
-Expected: exit 0, 55 files plus a receipt under `.agents/skills/website-build-skill/`, and
+Expected: exit 0, 57 files plus a receipt under `.agents/skills/website-build-skill/`, and
 `--uninstall --receipt <that path>` leaving the directory empty again. Exit 5 instead of 0 means
 the scratch project already had a router file; that is a completed install with an unmerged
 snippet, not a failure.
