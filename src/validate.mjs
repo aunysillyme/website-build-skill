@@ -5,6 +5,7 @@ import { CORE, ARCHIVE, ARCHIVE_SHA, digest, files, read, manifest, generated, o
 const roles = ['researcher', 'coordinator', 'designer', 'graphics', 'builder', 'optimizer', 'reviewer'];
 const headings = ['IDENTITY', 'WHAT YOU OWN', 'BOUNDARIES', 'WHAT YOU NEED TO KNOW BEFORE YOU START', 'WHAT YOU MUST LEARN', 'WHAT YOU MUST RESEARCH', 'YOUR TOOLS', 'YOUR INPUTS', 'YOUR OUTPUTS', 'YOUR GATE', 'YOUR HANDOFF', 'HOW YOU FAIL'];
 const owner = ['au', 'ny', 'sillyme'].join('');
+const funding = ['https://github.com', 'sponsors', owner].join('/');
 const personal = ['au', 'ny'].join('');
 const publicName = personal[0].toUpperCase() + personal.slice(1);
 const company = `${publicName} LLC`;
@@ -42,6 +43,13 @@ export function privacyIssues(name, text, options = {}) {
     const productPath = new RegExp(`(?:~|\\$HOME|%USERPROFILE%|[A-Za-z]:)?[\\\\/]${product}(?=[\\\\/ ]|$)`, 'i');
     if (productPath.test(normalised)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
     line = line.replaceAll(product, 'PUBLIC_PRODUCT');
+    // Only the exact public funding URL is exempt; other Sponsors URLs fail closed.
+    // Sentence punctuation after the exact URL (. , ; : ] > *) is trimmed before the compare.
+    line = line.replace(/https:\/\/github\.com\/sponsors\/[^\s)"'`]+/g, url => {
+      if (url.replace(/[.,;:\]>*]+$/, '') === funding) return 'PUBLIC_FUNDING';
+      issues.push(`PRIVACY:${name}:${i + 1}`);
+      return url;
+    });
     // Only exact repository URL namespaces, never the whole line around a URL. npm's
     // `github:owner/repo` shorthand is the same repository reference in the form a package
     // manager takes, so it is exempt in exactly that spelling and no other.

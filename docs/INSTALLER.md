@@ -14,7 +14,7 @@ Copy the complete `skills/website-build-skill/` directory into a new, empty dest
 | Claude Code | `.claude/skills/website-build-skill/` | Read back the entrypoint and assets |
 | Codex | `.agents/skills/website-build-skill/` | Inspect discovery and invocation |
 | Hermes | `.agents/skills/website-build-skill/` | Check trust and shared discovery |
-| Antigravity | `.website-build-skill/` | Ask the session to read the entrypoint |
+| Gemini (via Antigravity CLI) | `.website-build-skill/` | Ask the session to read the entrypoint |
 | Generic agent | `.website-build-skill/` | Read the entrypoint and preserve existing routers |
 | Grok file-capable host | `.grok/skills/website-build-skill/` | Read back the entrypoint, or paste the bundles |
 
@@ -66,7 +66,7 @@ passing assignments to later workers. Record seven setup acknowledgements and us
 different-family Reviewer. Enforce read-only review through host controls or a read-only packet.
 The Hermes alias copies bundles into the explicitly selected directory inside the skill folder.
 Session references and permissions require your own checks in the chosen host.
-See [Antigravity](../adapters/antigravity.md), [Hermes](../adapters/hermes.md) and [team ownership](../adapters/team.yaml).
+See [Gemini (via Antigravity CLI)](../adapters/antigravity.md), [Hermes](../adapters/hermes.md) and [team ownership](../adapters/team.yaml).
 
 ## Verify the installation
 
