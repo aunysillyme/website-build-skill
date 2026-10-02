@@ -6,6 +6,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.15] - 2026-10-02
+
 ### Changed
 
 - LICENSE names Auny LLC as copyright holder; outside contributions now require the CLA in CLA.md.
@@ -207,7 +209,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.14...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...HEAD
+[0.1.15]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.12...v0.1.13
 [0.1.12]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.11...v0.1.12
