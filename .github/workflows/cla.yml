@@ -1,0 +1,35 @@
+{
+  "name": "cla",
+  "on": {
+    "pull_request": {
+      "types": [
+        "opened",
+        "edited",
+        "reopened",
+        "synchronize"
+      ]
+    }
+  },
+  "permissions": {},
+  "concurrency": {
+    "group": "cla-${{ github.event.pull_request.number }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "cla": {
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 2,
+      "steps": [
+        {
+          "name": "Check Contributor License Agreement",
+          "env": {
+            "PR_BODY": "${{ github.event.pull_request.body }}",
+            "AUTHOR_ASSOCIATION": "${{ github.event.pull_request.author_association }}",
+            "AUTHOR_TYPE": "${{ github.event.pull_request.user.type }}"
+          },
+          "run": "# Proves outside contributors ticked the CLA box using only event data.\nnode <<'NODE'\nconst exempt = ['OWNER', 'MEMBER', 'COLLABORATOR'].includes(process.env.AUTHOR_ASSOCIATION)\n  || process.env.AUTHOR_TYPE === 'Bot';\nif (exempt) process.exit(0);\n// Hidden HTML comments (closed or left open) never count as agreement.\nconst visible = (process.env.PR_BODY || '').replace(/<!--[\\s\\S]*?(?:-->|$)/g, '');\nconst checked = /^[-*] \\[[xX]\\] I agree to the Contributor License Agreement in CLA\\.md$/;\nif (!visible.split(/\\r?\\n/).some(line => checked.test(line.trim()))) {\n  console.error('::error::Tick the Contributor License Agreement box in the PR description. Read [CLA.md](CLA.md).');\n  process.exit(1);\n}\nNODE"
+        }
+      ]
+    }
+  }
+}

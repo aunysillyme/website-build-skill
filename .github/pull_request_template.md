@@ -17,3 +17,7 @@ Describe a concrete trigger and what changes for the user.
 - [ ] New public claims have repository evidence and editorial review.
 - [ ] No private inputs, unlicensed assets or em dashes.
 - [ ] Archive bytes and inactive membership are unchanged.
+
+## Contributor License Agreement
+
+- [ ] I agree to the Contributor License Agreement in CLA.md

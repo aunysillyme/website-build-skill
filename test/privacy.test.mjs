@@ -79,7 +79,40 @@ test('Sibling exemption lookahead matches the self-repo one: a sentence-ending p
 });
 
 test('License exception is exact; arbitrary authorship elsewhere fails', () => {
-  const line = 'Copyright (c) 2026 ' + ['Au', 'ny'].join('');
+  const name = ['Au', 'ny'].join('');
+  const line = `Copyright (c) 2026 ${name} LLC and contributors`;
   assert.deepEqual(privacyIssues('LICENSE', line), []);
   assert.ok(privacyIssues('README.md', line).length);
+  assert.ok(privacyIssues('LICENSE', line.replace(`${name} LLC`, `${name} Other LLC`)).length);
+  assert.ok(privacyIssues('LICENSE', `Copyright (c) 2026 ${name}`).length, 'old notice fails');
+  assert.ok(privacyIssues('LICENSE', line + ' extra').length, 'extra text fails');
+});
+
+test('CLA legal names are exact and scoped to the agreement', () => {
+  const name = ['Au', 'ny'].join('');
+  for (const value of [name, `${name} LLC`, `${name}SillyMe`]) {
+    assert.deepEqual(privacyIssues('CLA.md', `Names: "${value}".`), []);
+    for (const file of ['README.md', 'docs/CLA.md', 'CONTRIBUTING.md', 'CHANGELOG.md']) {
+      assert.ok(privacyIssues(file, value).length, `${file}: bare legal name fails`);
+    }
+    for (const suffix of ['Other', '-private', '_private']) {
+      assert.ok(privacyIssues('CLA.md', value + suffix).length, 'longer name fails');
+    }
+  }
+  assert.ok(privacyIssues('CLA.md', name.toLowerCase()).length, 'different case fails');
+  assert.ok(privacyIssues('CLA.md', `${name} LLC ${['/', 'Users', '/private'].join('')}`).length, 'adjacent private data fails');
+});
+
+test('Contributor and changelog legal notices allow only the approved full line', () => {
+  const company = ['Au', 'ny LLC'].join('');
+  const notices = {
+    'CONTRIBUTING.md': `You keep the copyright in what you wrote and grant ${company} the licenses in [CLA.md](CLA.md).`,
+    'CHANGELOG.md': `- LICENSE names ${company} as copyright holder; outside contributions now require the CLA in CLA.md.`,
+  };
+  for (const [file, line] of Object.entries(notices)) {
+    assert.deepEqual(privacyIssues(file, line), []);
+    assert.ok(privacyIssues('README.md', line).length, 'different file fails');
+    assert.ok(privacyIssues(file, line + ' extra').length, 'extra text fails');
+    assert.ok(privacyIssues(file, line.replace(company, company + ' Other')).length, 'different name fails');
+  }
 });
