@@ -7,6 +7,13 @@ const headings = ['IDENTITY', 'WHAT YOU OWN', 'BOUNDARIES', 'WHAT YOU NEED TO KN
 const owner = ['au', 'ny', 'sillyme'].join('');
 const funding = ['https://github.com', 'sponsors', owner].join('/');
 const personal = ['au', 'ny'].join('');
+const publicName = personal[0].toUpperCase() + personal.slice(1);
+const company = `${publicName} LLC`;
+const legalLines = {
+  LICENSE: `Copyright (c) 2026 ${company} and contributors`,
+  'CONTRIBUTING.md': `You keep the copyright in what you wrote and grant ${company} the licenses in [CLA.md](CLA.md).`,
+  'CHANGELOG.md': `- LICENSE names ${company} as copyright holder; outside contributions now require the CLA in CLA.md.`,
+};
 const product = ['Claude', 'Code'].join(' ');
 const forbidden = [personal, product, ['Vau','lts'].join(''), ['A','UN-'].join(''), ['linear','.app'].join(''), ['/','Users','/'].join(''), ['@','gmail'].join(''), ['site','builder','skill'].join('-')];
 export const privacyPattern = new RegExp(forbidden.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
@@ -18,7 +25,11 @@ export function privacyIssues(name, text, options = {}) {
   if (privacyPattern.test(name)) issues.push(`PRIVACY_NAME:${name}`);
   for (const [i, original] of text.split('\n').entries()) {
     let line = original;
-    if (name === 'LICENSE' && line === `Copyright (c) 2026 ${personal[0].toUpperCase()}${personal.slice(1)}`) continue;
+    // Legal notices allow only the approved full line in its named file.
+    if (line === legalLines[name]) continue;
+    // The agreement alone may name the company and its two exact trademarks.
+    // Boundaries keep longer names and private suffixes subject to the privacy gate.
+    if (name === 'CLA.md') line = line.replace(new RegExp(`(?<![\\w-])(?:${company}|${publicName}SillyMe|${publicName}(?! LLC|SillyMe))(?![\\w-])`, 'g'), 'LEGAL_NAME');
     // Resolved policy. Two public identifiers are required by the repository and are exempt:
     // the owning account on the exact CODEOWNERS line, and the supported host's product name.
     // Everything else the pattern names stays forbidden, including the same account string

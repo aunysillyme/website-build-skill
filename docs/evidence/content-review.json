@@ -2,8 +2,9 @@
   "policy": "Editorial review scope, not test evidence. New or changed prose requires renewed human/code-owner review; generator must not update this ledger.",
   "files": {
     ".github/pull_request_template.md": {
-      "sha256": "debf5cbb40e292fb82280abf6f61809813cdc1df3bbfd9d9bd275bbec8c5ed34",
-      "disposition": "instructions-and-qualified-status-only"
+      "sha256": "8f05835d1701f3b3086fc094a40c80498aab9971862563c3f3b95ed36c510a02",
+      "disposition": "instructions-and-qualified-status-only",
+      "review": "CLA change: reviewed the exact agreement box against the authorized task bundle and workflow matcher. Implementation-agent editorial review; independent review remains pending."
     },
     "AGENTS.md": {
       "sha256": "0a73523dc04b2fac0fb8a4cedc00bc3e903885054b02519c46e4369e9db47be5",
@@ -25,7 +26,7 @@
       "review": "0.1.5 (#15): status line narrowed to the two SOLO loading receipts; other hosts, TEAM, account tools and independent review stay UNVERIFIED. Claude editorial review. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending. 0.1.11: the three accuracy lines moved unchanged from CLAUDE.md; the method and contributor instructions stay in one source. Implementation-agent editorial review; independent review remains pending."
     },
     "CHANGELOG.md": {
-      "sha256": "effb91c28ac5865778c2ed95f425c0eb2f4a823b7117591fed3eb77fd4510054",
+      "sha256": "3bbf04b370b5b6c822e2585ec17712b6158a96fa7f081d1ab20041a43316a2ff",
       "disposition": "instructions-and-qualified-status-only",
       "review": "0.1.2: the installer prompt block became a two-row choice table and one save-location sentence; reviewed by Claude against install-choice.txt and SKILL.md, same facts. Reviewed the added 0.1.1 framing note against the presentation copy changes; publication is a separate release action. Implementation-agent editorial review; independent review remains pending. Reviewed the copied-install checker ladder fix against the canonical instructions and regression test. Live host retrial remains pending release. Reviewed for the ROUND 1 audit: added Fixed/Added/Changed lines for the restored positive-and-accurate adapter, SKILL.md, designer.md, grok.md and validate.mjs fixes. Claude (builder, non-author fixer) editorial review; independent review remains pending. 0.1.3: reviewed the #13 description check and #14 Hermes path documentation entries against the implementation and regression tests; publication remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. 0.1.4: reviewed the added coding-research description and fourteen-domain wording against the canonical prompts and checklists; package release remains a separate maintainer action. Implementation-agent editorial review; independent review remains pending. Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the #15 Fixed line for the symlinked-parent receipt path against src/install.mjs and installer tests 7e-7g, and the #15 Added line against the two receipts. 0.1.5 (#15): host-status wording promoted only for SOLO native loading on the exact client versions in the 2026-09-24 receipts; Claude (orchestrator, ran both trials) editorial review, independent review remains pending. 0.1.5 release heading moved the Unreleased lines under [0.1.5] - 2026-09-24 unchanged. 0.1.6 (#15): Grok Build CLI 1.0.40 SOLO native-loading receipt added; wording promoted only for that client, in a trusted folder, one run; Grok Bot (Bots app) stays awaiting its trial. Claude (orchestrator, ran the trial) editorial review, independent review remains pending. 0.1.7: Grok Bot setup and one-description entries reviewed against the diff. Claude editorial review. 0.1.8: reviewed the Added lines against the committed BM05, CQ06, B08, prompt 04 and PROVENANCE.md diff; every named tell, default and credit matches the checklist text. Claude editorial review; the change itself had an independent codex audit (CLEAN). 0.1.9: reviewed the Fixed line against the src/bundle.mjs describe() diff, the regenerated llms.txt lines 19 and 21 and test/llms-labels.test.mjs. Claude editorial review; the change had an independent codex audit (CLEAN). 0.1.10: reviewed the Added and Changed lines against scripts/build.mjs --rehash, its tests and the CONTRIBUTING/RELEASING diff; the claims match (code-reviewer audit CLEAN). 0.1.11: reviewed the entry against the instruction import and accuracy-note move; the compare link joins v0.1.10 and v0.1.11. Implementation-agent editorial review; publication remains a separate maintainer action. 0.1.12: reviewed Keep a Changelog 2.0.0 reference, empty Unreleased section, 0.1.12 Added/Changed/Removed entries and compare link against the supplied repository canon audit. Implementation-agent editorial review; independent review remains pending. 0.1.12 canon audit round 1: reviewed against canon audit round 1. Claude (non-author fixer) editorial review; independent review remains pending. 0.1.13 hero trailer: reviewed against the approved v2a render. 0.1.13 audit round 1 fixes, non-author: alt text, trailer check and tag-order note, and the package-check and GIF-scan gate lines reviewed against src/validate.mjs and test/content.test.mjs. Claude editorial review.. 0.1.14 demo re-record: reviewed against the new recording's final frame"
     },
@@ -39,9 +40,9 @@
       "disposition": "instructions-and-qualified-status-only"
     },
     "CONTRIBUTING.md": {
-      "sha256": "ff672ae1445219685445fa0a8438325c4047418f9d0ae0a17b08ee3e54988b49",
+      "sha256": "8b8e10fe19934c760c044f13fe9e04af815cb6c65612d23033fca23ce9f2b261",
       "disposition": "instructions-and-qualified-status-only",
-      "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the Digests line and the build note against scripts/build.mjs --rehash: named assets only, manifest and archive refused, write only on change; the review-the-diff step is kept. Claude editorial review; code audited separately by another model family."
+      "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. Reviewed the Digests line and the build note against scripts/build.mjs --rehash: named assets only, manifest and archive refused, write only on change; the review-the-diff step is kept. Claude editorial review; code audited separately by another model family. CLA change: reviewed the three sentences against the approved agreement and event-only workflow: contributors retain copyright, grant the agreement licenses and tick the PR box. Implementation-agent editorial review; independent review remains pending."
     },
     "MAINTAINERS.md": {
       "sha256": "8632008661d5ad3d60300ea2028715217c298d24d3d66af7224c52b6e0e24552",
@@ -332,6 +333,11 @@
       "disposition": "instructions-and-qualified-status-only",
       "sha256": "71e20110a1b1cb0e50a0797d0940ec9e4bf3232022d7fe3769a43ec011b5f39f",
       "review": "Reviewed #16 manual-gate instructions against the explicit skips, packed consumer test and configured OS matrix; reviewed #17 TEAM wording against file-only installation and human session/handoff responsibilities. Implementation-agent editorial review only; host trials and independent review remain pending. 0.1.12 canon audit round 1: reviewed against canon audit round 1. Claude (non-author fixer) editorial review; independent review remains pending."
+    },
+    "CLA.md": {
+      "disposition": "instructions-and-qualified-status-only",
+      "sha256": "4f2d353a83c183797c26d3531c52ead6888916d879fdffbc23e94d18fab68006",
+      "review": "Approved legal text supplied by the orchestrator, kept byte-identical. Reviewed its package inclusion and privacy allowances against the authorized task bundle; no legal wording edited. Implementation-agent integration review; independent review remains pending."
     }
   }
 }

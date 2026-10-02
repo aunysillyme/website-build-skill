@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+
+- LICENSE names Auny LLC as copyright holder; outside contributions now require the CLA in CLA.md.
+
 ## [0.1.14] - 2026-10-01
 
 ### Changed
