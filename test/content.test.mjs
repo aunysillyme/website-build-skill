@@ -8,6 +8,28 @@ import { fixture, change, root, candidateCheck as check } from './helpers.mjs';
 
 test('GREEN: candidate public-identifier policy passes without edits', () => assert.deepEqual(check(root), []));
 
+test('Agent handshake documents both files and the tighten-only rule', () => {
+  const playbook = read(root, `${CORE}/playbooks/structured-data-and-llms.md`);
+  for (const term of ['/.well-known/agents.json', '/.well-known/ai-instructions.json', 'human-confirmation', 'TIGHTEN-ONLY']) {
+    assert.ok(playbook.includes(term), `expected ${term}`);
+  }
+  assert.match(playbook, /They grant nothing/);
+  assert.match(playbook, /No scraped authority/);
+});
+
+test('Agent handshake marks fixture and example files as non-live', () => {
+  const playbook = read(root, `${CORE}/playbooks/structured-data-and-llms.md`);
+  assert.match(playbook, /fixture or example files `"live": false`/);
+});
+
+test('Agent handshake PS11 is included in the checklist and discovery route', () => {
+  const checklist = read(root, `${CORE}/checklists/performance-seo.md`);
+  assert.match(checklist, /^\| PS11: agent handshake \| .+ \| .+ \|$/m);
+  const manifest = JSON.parse(read(root, `${CORE}/manifest.json`));
+  assert.ok(manifest.stageRoutes.find(route => route.id === 'discovery').checks.includes('PS11'));
+  assert.match(read(root, `${CORE}/playbooks/structured-data-and-llms.md`), /PS05 through PS11/);
+});
+
 test('Resolved policy: the two required public identifiers are exempt, nothing else is', () => {
   assert.deepEqual(strictCheck(root), []);
   // The exemptions are narrow. The owning account is clean only on the exact CODEOWNERS

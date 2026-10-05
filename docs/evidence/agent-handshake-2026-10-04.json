@@ -1,0 +1,90 @@
+{
+  "command": "npm run check; npm test",
+  "environment": {
+    "node": "v22.22.3",
+    "npm": "12.1.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "date": "2026-10-04",
+  "exitCode": 0,
+  "artifactSha256": "d6dc53bd67a92f4403287638616c4c32e0f3632057643417d1d3f2b75409954d",
+  "artifacts": {
+    "skills/website-build-skill/playbooks/structured-data-and-llms.md": "d6dc53bd67a92f4403287638616c4c32e0f3632057643417d1d3f2b75409954d",
+    "skills/website-build-skill/checklists/performance-seo.md": "d9e30af6eba3e644ca2c056431b375f7c1d7965e55b872ac794cbb30d3d00fc5",
+    "skills/website-build-skill/manifest.json": "b3ce96f66a4e149a74441b7083aa41dfb209c787eef7a9483e58e2ee7635e822",
+    "test/content.test.mjs": "aebec123f8ac411bad097bcc9deb06f96ba8fbef7a196e4529245f17fe46a6f4",
+    "package.json": "a0ea338789fe965fe44329d2747c817725fd4f361211d10b9e70f91605c2d0b1",
+    "docs/bundles/playbooks.md": "aade4f7d6731480f06e76c99ccf9160995acabf0c397f8fd23ddde99df1c6317",
+    "docs/bundles/checklists.md": "15e792b144ffa556e367c967917dd2c59bbeabb51677478fa18f5bcb9902a43b"
+  },
+  "observed": "Repository check PASS. Full test suite passed with two declared live-host skips. Handshake content tests failed before the documentation edit and passed afterward.",
+  "runs": [
+    {
+      "command": "node --test --test-name-pattern='Agent handshake' test/content.test.mjs",
+      "phase": "before documentation edit",
+      "exitCode": 1,
+      "tests": 3,
+      "pass": 0,
+      "fail": 3,
+      "skipped": 0,
+      "observed": [
+        "Missing agents.json path",
+        "Missing non-live fixture instruction",
+        "Missing PS11 checklist row"
+      ]
+    },
+    {
+      "command": "node --test --test-name-pattern='Agent handshake' test/content.test.mjs",
+      "phase": "after documentation edit, before correcting test manifest lookup",
+      "exitCode": 1,
+      "tests": 3,
+      "pass": 2,
+      "fail": 1,
+      "skipped": 0,
+      "observed": "Test used routes instead of the manifest stageRoutes field; corrected the lookup."
+    },
+    {
+      "command": "npm run build -- --rehash playbooks/structured-data-and-llms.md checklists/performance-seo.md",
+      "exitCode": 0,
+      "observed": "Only the two edited asset digests refreshed; five bundles and llms.txt regenerated."
+    },
+    {
+      "command": "node --test --test-name-pattern='Agent handshake' test/content.test.mjs",
+      "phase": "final content",
+      "exitCode": 0,
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 0,
+      "observed": "PASS repository floor, manifest, links, source hashes, bundle drift, archive, privacy, install labels, workflow security and claim review"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "tests": 189,
+      "pass": 187,
+      "fail": 0,
+      "skipped": 2
+    },
+    {
+      "command": "grep -q 'agents.json' skills/website-build-skill/playbooks/structured-data-and-llms.md && grep -qi 'tighten' skills/website-build-skill/playbooks/structured-data-and-llms.md",
+      "exitCode": 0,
+      "observed": "Supplied invariant verifier passed with paths relative to the repository root."
+    }
+  ],
+  "skipped": [
+    "Planned distribution: fresh npm tarball and ZIP installation on each claimed operating system and host",
+    "Live AD01-AD09 behavior: ladder evidence, clock override, no-search blockage, stale claims, derived floors and multi-day expiry"
+  ],
+  "limitations": [
+    "No live website build or host trial",
+    "No upstream compatibility verification",
+    "Independent review pending",
+    "No push, tag or publication"
+  ]
+}

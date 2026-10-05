@@ -30,6 +30,7 @@ Date rule: [ASK DATE, source evidence, and revalidation](../playbooks/research-a
 | PS08: discovery and crawler policy | Private/draft/redirect routes leak into discovery, policy changes lack authority, or llms.txt is marketed as a ranking requirement. | Inspect robots, route inclusion rules, sitemap, llms.txt, canonical map and explicit owner policy; verify supported submission actions before any authorized request. |
 | PS09: social-response limits | A correct origin response is called proof that an external cached card refreshed. | Save direct bot-agent HTML response and image-fetch evidence separately from any actual third-party preview result. Label missing cache evidence UNVERIFIED. |
 | PS10: receiving-property proof | A loaded analytics script is called a delivered event or indexing/citation is claimed without observation. | Inspect the intended property's event receipt or indexing evidence with authorized access; record event, property identity, time and limitations. Missing access leaves the claim UNVERIFIED. |
+| PS11: agent handshake | Handshake files grant permissions, advertise payment/email endpoints, drift from the route registry, or are the only home of safety rules. | Fetch /.well-known/agents.json and /.well-known/ai-instructions.json on the candidate, compare action entries to the validated route/offer registry, and confirm human-confirmation markup on payment/signup controls. Verify endpoint and safety definitions also live outside the handshake. |
 
 ## Gate receipt
 
@@ -37,4 +38,3 @@ Link route budgets and raw lab reports, current metric source records, content/d
 revision, validators, receiving-property evidence, and explicit field-data follow-ups.
 Missing post-launch field data does not falsely fail a launch, but cannot earn a field PASS.
 All required functional, lab-budget, metadata, and truthful-discovery checks still apply.
-
