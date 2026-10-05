@@ -6,6 +6,13 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.16] - 2026-10-04
+
+### Added
+
+- Agent handshake guidance for agents.json and ai-instructions.json, generated from the shared route/offer registry with human-confirmation markup and a tighten-only permission rule.
+- PS11 checks handshake safety and registry parity; content tests cover the files, tighten-only rule, fixture status and discovery-route coverage.
+
 ## [0.1.15] - 2026-10-02
 
 ### Changed
@@ -209,7 +216,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...HEAD
+[0.1.16]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.13...v0.1.14
 [0.1.13]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.12...v0.1.13

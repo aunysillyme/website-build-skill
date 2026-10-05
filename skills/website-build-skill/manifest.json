@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.15",
+  "packageVersion": "0.1.16",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -450,7 +450,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "b12d22471fd4b07497d3df03c40ce01097896db2c5785c6fa40f99edc203a431"
+      "sha256": "d6dc53bd67a92f4403287638616c4c32e0f3632057643417d1d3f2b75409954d"
     },
     {
       "path": "playbooks/performance-budgets.md",
@@ -602,7 +602,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "2ca383928c74e3f8dd6d8404ed3bc1e2bc1633707b06816c9620be1b2f97e0f7"
+      "sha256": "d9e30af6eba3e644ca2c056431b375f7c1d7965e55b872ac794cbb30d3d00fc5"
     },
     {
       "path": "checklists/security.md",
@@ -1133,7 +1133,8 @@
         "PS07",
         "PS08",
         "PS09",
-        "PS10"
+        "PS10",
+        "PS11"
       ],
       "runtimeOutputs": [
         "site-work/optimization/",
