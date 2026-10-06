@@ -209,6 +209,7 @@ Use the target and directory from your install; it removes only files the instal
 ## Contributing, credits and license
 
 Contributions welcome: reproducible defects, clearer instructions, accessible examples and host evidence.
+Pull requests are accepted under the [contributor license agreement](CLA.md); the checkbox in the pull request template records your agreement.
 Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
 [SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
 [Provenance](docs/PROVENANCE.md) records the method's sources and attribution.
