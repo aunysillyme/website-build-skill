@@ -6,6 +6,16 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.17] - 2026-10-06
+
+### Fixed
+
+- Narrowed the CLA's Contribution definition to pull requests, matching the agreement checkbox in the pull request template.
+
+### Added
+
+- README Contributing section links to the contributor license agreement and explains the agreement checkbox.
+
 ## [0.1.16] - 2026-10-04
 
 ### Added
@@ -216,7 +226,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...HEAD
+[0.1.17]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.14...v0.1.15
 [0.1.14]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.13...v0.1.14
