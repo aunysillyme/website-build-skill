@@ -6,6 +6,12 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.18] - 2026-10-07
+
+### Fixed
+
+- Installed SKILL.md links to this release's compatibility evidence and explains network retrieval, the offline copy fallback and the recorded trial required to verify host activation (#20).
+
 ## [0.1.17] - 2026-10-06
 
 ### Fixed
@@ -226,7 +232,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...HEAD
+[0.1.18]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...v0.1.16
 [0.1.15]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.14...v0.1.15

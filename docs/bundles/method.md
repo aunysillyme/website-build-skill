@@ -148,7 +148,10 @@ Complete the mockup gate with inspected images and mark code tested after execut
 A saved-file claim requires a successful write and read-back; memory needs its own receipt.
 Hand deployment to an authorized operator when deploy access is unavailable.
 Check the chosen host's loading, installation, team creation, permissions and integrations
-with a recorded trial. See the repository's docs/COMPATIBILITY.md for host evidence.
+with a recorded trial. Read [host evidence](https://github.com/aunysillyme/website-build-skill/blob/v0.1.18/docs/COMPATIBILITY.md)
+for this release. Network access is required to retrieve this document, which is not
+copied into the installed skill. If offline, ask for a copy of that release's document and linked receipts.
+Keep host activation, TEAM and integrations UNVERIFIED until checked in a recorded trial.
 After installation, open the role sessions and provide a different model family for
 independent review. Enforce permissions through the host's own controls.
 Role text guides behaviour; real permissions come from the host's own settings and

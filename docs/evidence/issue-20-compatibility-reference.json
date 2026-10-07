@@ -1,0 +1,32 @@
+{
+  "issue": "https://github.com/aunysillyme/website-build-skill/issues/20",
+  "date": "2026-10-07",
+  "environment": {
+    "platform": "macOS arm64",
+    "node": "v22.22.3"
+  },
+  "artifact": {
+    "packageVersion": "0.1.18",
+    "source": "skills/website-build-skill/SKILL.md",
+    "sha256": "470457589c6422b34b92ece395b0853ea5b3c8d2bdf169cd705ca0c7f5faf7b6"
+  },
+  "checks": [
+    {
+      "command": "node --test test/packed-artifact.test.mjs",
+      "phase": "before the source fix",
+      "result": "FAIL: solo: compatibility evidence must be linked to the installed release"
+    },
+    {
+      "command": "node scripts/build.mjs --rehash SKILL.md && node scripts/check.mjs",
+      "phase": "after the source fix and release metadata update",
+      "result": "PASS"
+    },
+    {
+      "command": "node --test test/*.test.mjs",
+      "phase": "after the source fix and release metadata update",
+      "result": "187 passed, 0 failed, 2 existing live-host checks skipped",
+      "coverage": "Actual npm tarball installed offline as a consumer; fresh SOLO and TEAM entrypoints carry the release-bound compatibility URL, network requirement, offline document/receipt fallback and recorded-trial UNVERIFIED instruction. Receipt digests and uninstall checks pass."
+    }
+  ],
+  "limits": "No live host activation, TEAM session operation or integration trial was performed. Public availability of the v0.1.18 evidence URL is checked after tag publication."
+}
