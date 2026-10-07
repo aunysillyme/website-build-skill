@@ -72,6 +72,13 @@ test('Actual npm tarball excludes GIFs served by raw URLs, preserves documentati
       assert.deepEqual(files(destination).sort(), expected.sort(), `${mode} installed file tree`);
       const receipt = JSON.parse(readFileSync(resolve(destination, '.website-build-skill-receipt.json')));
       assert.equal(receipt.mode, mode);
+      const entrypoint = readFileSync(resolve(destination, 'SKILL.md'), 'utf8');
+      const compatibility = `https://github.com/aunysillyme/website-build-skill/blob/v${metadata.version}/docs/COMPATIBILITY.md`;
+      assert.ok(entrypoint.includes(`[host evidence](${compatibility})`),
+        `${mode}: compatibility evidence must be linked to the installed release`);
+      assert.match(entrypoint, /Network access is required to retrieve this document/);
+      assert.match(entrypoint, /If offline, ask for a copy of that release's document and linked receipts/);
+      assert.match(entrypoint, /Keep host activation, TEAM and integrations UNVERIFIED until checked in a recorded trial/);
       for (const entry of receipt.files) assert.equal(digest(readFileSync(entry.path)), entry.sha256);
       for (const name of expected.filter(name => name !== '.website-build-skill-receipt.json')) {
         const source = name.startsWith('bundles/') ? resolve(installed, 'docs', name)
