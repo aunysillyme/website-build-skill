@@ -11,8 +11,8 @@ function manualSessions(description) {
 
 const descriptions = [
   ['README.md', /\| \*\*2 · Give me the team[^\n]+/],
-  ['README.md', /\*\*Which AI tools[^\n]+/],
-  ['README.md', /\*\*Can one AI[^\n]+/],
+  ['README.md', /### Which AI tools[^\n]*\n\n[^\n]+/],
+  ['README.md', /### Can one AI[^\n]*\n\n[^\n]+/],
   ['llms.txt', /^TEAM:[^\n]+/m],
   ['docs/bundles/method.md', /^TEAM:[^\n]+/m],
   ['docs/bundles/prompts.md', /^TEAM:[^\n]+/gm],

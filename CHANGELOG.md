@@ -6,6 +6,14 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.19] - 2026-10-10
+
+### Fixed
+
+- README common questions are now headings, so each question has its own anchor.
+- npm homepage now points at the product site.
+- The privacy check now allows the owner's public name and domains; vault paths, ticket ids, local paths and email addresses stay blocked.
+
 ## [0.1.18] - 2026-10-07
 
 ### Fixed
@@ -232,7 +240,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...HEAD
+[0.1.19]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...v0.1.17
 [0.1.16]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.15...v0.1.16

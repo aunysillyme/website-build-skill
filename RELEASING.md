@@ -77,8 +77,10 @@ that permission at the top level, in any other job, and in any other workflow.
 ## The closed loop
 
 Local success requires exit 0 from both the read-only check and the test runner, with no unexpected skips.
-The privacy gate passes on the published tree. Its public-identifier exemptions are narrow and
-documented in `docs/EVALUATION.md`; the tests run against the same policy, not a separate one.
+The privacy gate allows the owner's public name, handles, domains, repository links and profile URLs.
+Private storage paths, ticket identifiers, internal issue links, local machine paths, email addresses
+and the retired package name stay blocked. Product names pass as prose; local product paths fail.
+The tests run against the same policy in `src/validate.mjs`.
 Inspect the full output and changed file list. A generated file existing is not enough; its bytes must match regeneration.
 Hosted success requires the exact source revision's run to pass on every runtime in the matrix.
 Release completion requires:

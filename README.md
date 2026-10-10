@@ -178,15 +178,25 @@ The [installer contract](docs/INSTALLER.md) defines preflight checks, exit codes
 
 ## Common questions
 
-**How do I teach Claude Code or Codex to build better websites?** Run `npx website-build-skill`, pick your host and let it copy the skill pack into your host's folder, then ask your AI to read the installed `SKILL.md`. It learns current practice in research, design, code, accessibility, performance, search and security before it touches your site.
+### How do I teach Claude Code or Codex to build better websites?
 
-**Which AI tools does it work with?** Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Gemini (via Antigravity CLI) and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
+Run `npx website-build-skill`, pick your host and let it copy the skill pack into your host's folder, then ask your AI to read the installed `SKILL.md`. It learns current practice in research, design, code, accessibility, performance, search and security before it touches your site.
 
-**What does my AI research before it builds?** It researches fourteen domains current to the day of your request, from design and accessibility to performance, security, stack and search, and saves a library with source URLs and access dates so later pages can refresh stale claims. See [What your AI learns](#what-your-ai-learns) for the full list.
+### Which AI tools does it work with?
 
-**Can one AI run it, or does it need a team?** Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them. Researcher goes first. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
+Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Gemini (via Antigravity CLI) and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
 
-**How do I remove it?** Follow [Uninstall](#uninstall), using the target and directory from your install. It removes only files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
+### What does my AI research before it builds?
+
+It researches fourteen domains current to the day of your request, from design and accessibility to performance, security, stack and search, and saves a library with source URLs and access dates so later pages can refresh stale claims. See [What your AI learns](#what-your-ai-learns) for the full list.
+
+### Can one AI run it, or does it need a team?
+
+Either. SOLO has one AI learn the whole method and do every job itself with nothing else to install; TEAM installs the seven workers' files in one command; you open each session yourself and carry the handoffs between them. Researcher goes first. Pick SOLO if you are not sure; moving to TEAM later keeps everything you have already done.
+
+### How do I remove it?
+
+Follow [Uninstall](#uninstall), using the target and directory from your install. It removes only files the installer wrote that still match its receipt. See the [installer guide](docs/INSTALLER.md) for flags and exit codes.
 
 ## Uninstall
 
