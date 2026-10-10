@@ -50,7 +50,7 @@ A change to the ledger itself requires code-owner review. No content checker can
 ## Privacy scope
 
 The gate scans every public file, including hidden community metadata, fixtures and generated bundles.
-It rejects personal paths, private identifiers, personal names and email addresses without echoing their values.
+It rejects personal paths, private identifiers, private names and email addresses without echoing their values. The owner's public name, domains and profile handles are brand, not private data, and pass.
 Every exemption is narrow, exact and implemented once in `privacyIssues` (`src/validate.mjs`).
 The privacy tests run against that same function.
 

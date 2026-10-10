@@ -30,14 +30,12 @@ test('Agent handshake PS11 is included in the checklist and discovery route', ()
   assert.match(read(root, `${CORE}/playbooks/structured-data-and-llms.md`), /PS05 through PS11/);
 });
 
-test('Resolved policy: the two required public identifiers are exempt, nothing else is', () => {
+test('Resolved policy: public brand and product names pass while local product paths fail', () => {
   assert.deepEqual(strictCheck(root), []);
-  // The exemptions are narrow. The owning account is clean only on the exact CODEOWNERS
-  // line or inside a repository URL, and the product name is clean only as a product name.
   const owner = ['au', 'ny', 'sillyme'].join('');
   assert.deepEqual(privacyIssues('.github/CODEOWNERS', `* @${owner}`), []);
-  assert.ok(privacyIssues('README.md', `* @${owner}`).length, 'owner handle outside its two homes must fail');
-  assert.ok(privacyIssues('.github/CODEOWNERS', `* @${owner}-personal`).length, 'a different handle must fail');
+  assert.deepEqual(privacyIssues('README.md', `* @${owner}`), []);
+  assert.deepEqual(privacyIssues('.github/CODEOWNERS', `* @${owner}-personal`), []);
   assert.deepEqual(privacyIssues('README.md', 'Works with ' + ['Claude', 'Code'].join(' ') + '.'), []);
   assert.ok(privacyIssues('README.md', ['~/', 'Claude', ' Code', '/repo'].join('')).length, 'the local path form must still fail');
 });

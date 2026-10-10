@@ -4,10 +4,7 @@ import { CORE, ARCHIVE, ARCHIVE_SHA, digest, files, read, manifest, generated, o
 
 const roles = ['researcher', 'coordinator', 'designer', 'graphics', 'builder', 'optimizer', 'reviewer'];
 const headings = ['IDENTITY', 'WHAT YOU OWN', 'BOUNDARIES', 'WHAT YOU NEED TO KNOW BEFORE YOU START', 'WHAT YOU MUST LEARN', 'WHAT YOU MUST RESEARCH', 'YOUR TOOLS', 'YOUR INPUTS', 'YOUR OUTPUTS', 'YOUR GATE', 'YOUR HANDOFF', 'HOW YOU FAIL'];
-const owner = ['au', 'ny', 'sillyme'].join('');
-const funding = ['https://github.com', 'sponsors', owner].join('/');
-const personal = ['au', 'ny'].join('');
-const publicName = personal[0].toUpperCase() + personal.slice(1);
+const publicName = ['Au', 'ny'].join('');
 const company = `${publicName} LLC`;
 const legalLines = {
   LICENSE: `Copyright (c) 2026 ${company} and contributors`,
@@ -15,7 +12,8 @@ const legalLines = {
   'CHANGELOG.md': `- LICENSE names ${company} as copyright holder; outside contributions now require the CLA in CLA.md.`,
 };
 const product = ['Claude', 'Code'].join(' ');
-const forbidden = [personal, product, ['Vau','lts'].join(''), ['A','UN-'].join(''), ['linear','.app'].join(''), ['/','Users','/'].join(''), ['@','gmail'].join(''), ['site','builder','skill'].join('-')];
+// Public brand is allowed; private-stack traces stay blocked.
+const forbidden = [product, ['Vau','lts'].join(''), ['A','UN-'].join(''), ['linear','.app'].join(''), ['/','Users','/'].join(''), ['@','gmail'].join(''), ['site','builder','skill'].join('-')];
 export const privacyPattern = new RegExp(forbidden.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
 
 export function privacyIssues(name, text, options = {}) {
@@ -27,14 +25,6 @@ export function privacyIssues(name, text, options = {}) {
     let line = original;
     // Legal notices allow only the approved full line in its named file.
     if (line === legalLines[name]) continue;
-    // The agreement alone may name the company and its two exact trademarks.
-    // Boundaries keep longer names and private suffixes subject to the privacy gate.
-    if (name === 'CLA.md') line = line.replace(new RegExp(`(?<![\\w-])(?:${company}|${publicName}SillyMe|${publicName}(?! LLC|SillyMe))(?![\\w-])`, 'g'), 'LEGAL_NAME');
-    // Resolved policy. Two public identifiers are required by the repository and are exempt:
-    // the owning account on the exact CODEOWNERS line, and the supported host's product name.
-    // Everything else the pattern names stays forbidden, including the same account string
-    // anywhere other than that line or a repository URL.
-    if (name === '.github/CODEOWNERS' && line === `* @${owner}`) continue;
     // The product name is exempt as a name, never as a path segment. Exempting it outright
     // would let a local working directory through, so path-shaped uses are caught first.
     // Normalise the spellings a path can take before testing: an escaped space, surrounding
@@ -43,26 +33,6 @@ export function privacyIssues(name, text, options = {}) {
     const productPath = new RegExp(`(?:~|\\$HOME|%USERPROFILE%|[A-Za-z]:)?[\\\\/]${product}(?=[\\\\/ ]|$)`, 'i');
     if (productPath.test(normalised)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
     line = line.replaceAll(product, 'PUBLIC_PRODUCT');
-    // Only the exact public funding URL is exempt; other Sponsors URLs fail closed.
-    // Sentence punctuation after the exact URL (. , ; : ] > *) is trimmed before the compare.
-    line = line.replace(/https:\/\/github\.com\/sponsors\/[^\s)"'`]+/g, url => {
-      if (url.replace(/[.,;:\]>*]+$/, '') === funding) return 'PUBLIC_FUNDING';
-      issues.push(`PRIVACY:${name}:${i + 1}`);
-      return url;
-    });
-    // Only exact repository URL namespaces, never the whole line around a URL. npm's
-    // `github:owner/repo` shorthand is the same repository reference in the form a package
-    // manager takes, so it is exempt in exactly that spelling and no other.
-    line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/website-build-skill(?=[/\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
-    line = line.replace(new RegExp(`github:${owner}/website-build-skill(?=[\\s)"'.\\x60]|$)`, 'g'), 'REPOSITORY');
-    // Related public tools share this owner, but the allowance ends at each exact
-    // repository name. A third repository or a longer name still fails closed.
-    const siblings = '(?:agent-personalizer|model-orchestrator)';
-    // Aligned with the self-repo lookahead above by adding the same sentence-ending period,
-    // but only when nothing word-shaped follows it: a bare trailing "." closes a sentence,
-    // while ".private" is a different, unexempted name and must still fail closed.
-    line = line.replace(new RegExp(`https://(?:github\\.com|raw\\.githubusercontent\\.com)/${owner}/${siblings}(?=[/#?\\s)"'\\x60]|\\.(?!\\w)|$)`, 'g'), 'REPOSITORY');
-    line = line.replace(new RegExp(`github:${owner}/${siblings}(?=[\\s)"'\\x60]|\\.(?!\\w)|$)`, 'g'), 'REPOSITORY');
     if (privacyPattern.test(line) || /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(line)) issues.push(`PRIVACY:${name}:${i + 1}`);
     if (line.includes(String.fromCharCode(0x2014))) issues.push(`VOICE:${name}:${i + 1}`);
   }
