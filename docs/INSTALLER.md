@@ -14,7 +14,7 @@ Copy the complete `skills/website-build-skill/` directory into a new, empty dest
 | Claude Code | `.claude/skills/website-build-skill/` | Read back the entrypoint and assets |
 | Codex | `.agents/skills/website-build-skill/` | Inspect discovery and invocation |
 | Hermes | `.agents/skills/website-build-skill/` | Check trust and shared discovery |
-| Gemini (via Antigravity CLI) | `.website-build-skill/` | Ask the session to read the entrypoint |
+| Gemini (via Antigravity CLI) | `.agents/skills/website-build-skill/` | Inspect discovery, or ask the session to read the entrypoint |
 | Generic agent | `.website-build-skill/` | Read the entrypoint and preserve existing routers |
 | Grok file-capable host | `.grok/skills/website-build-skill/` | Read back the entrypoint, or paste the bundles |
 
@@ -57,6 +57,7 @@ Append `#<reviewed-commit-sha>` to the repository reference for a reproducible i
 - Interruption: record truthful partial results; never advertise an all-or-nothing transaction without evidence.
 - Exit policy: 0 complete, 2 invalid input, 3 preflight conflict, 4 interrupted write, 5 activation pending. 5 is a completed install whose integration snippet is unmerged, not a failure.
 - Uninstall: receipt-based, removing only files this package actually wrote and whose bytes still match the receipt. A file that was already on disk before the install, and therefore recorded as identical, is kept: installing it was a no-op and removing it would be taking something that is not ours. A changed file is kept and named, and so is a file the receipt does not list. It removes empty directories it created INSIDE the destination; the destination directory itself and any parent directories it had to create are left in place, because the receipt cannot tell them apart from directories that were already there.
+- Earlier Antigravity installs: releases up to 0.1.19 wrote `--target antigravity` to `.website-build-skill/`. Remove such an install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`, because `--target antigravity --dir` now points at `.agents/skills/website-build-skill/`.
 - Destination: decided by `--target` and `--dir`, or by where the receipt sits when only `--receipt` is given. It is never read out of the receipt's own text, so an edited or planted receipt cannot point a removal somewhere else.
 - Read-back: every file is re-read from disk and digested after the write pass. A digest taken from the bytes the installer meant to write is a record of the intention, not of what is on disk, and the receipt only ever carries the second one.
 - Ownership across runs: a reinstall that writes fewer files keeps owning what an earlier run wrote, so a SOLO install over a TEAM install does not orphan the bundles.
