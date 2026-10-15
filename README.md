@@ -96,7 +96,7 @@ Every site follows the same twelve stages, so your AI researches before it desig
 | Choice | What happens | Works with |
 |---|---|---|
 | **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
-| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
+| **2 · Give me the team** (TEAM) | Seven role prompts (you run each session), one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
