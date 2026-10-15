@@ -261,9 +261,11 @@ export function check(root, options = {}) {
       }
     }
     const question = read(root, `${CORE}/templates/install-choice.txt`).trimEnd();
-    // The agent shows this card to the user, so SKILL.md carries it verbatim. The README
-    // summarizes the same two choices as a table for human readers.
-    if (!read(root, `${CORE}/SKILL.md`).includes(question)) issues.push('CHOICE_DRIFT:verbatim question');
+    // The card is for the human at install: the installer prints it and the installer docs
+    // carry it verbatim. SKILL.md is read on every invocation, so it starts with what the agent
+    // does and never carries the menu (#23). The README summarizes the choices as a table.
+    if (!read(root, 'docs/INSTALLER.md').includes(question)) issues.push('CHOICE_DRIFT:verbatim question missing from docs/INSTALLER.md');
+    if (read(root, `${CORE}/SKILL.md`).includes(question.split('\n')[0])) issues.push('CHOICE_DRIFT:install menu in SKILL.md');
     const prompts = read(root, 'docs/bundles/prompts.md');
     if (prompts.includes(`BEGIN SOURCE: ${ARCHIVE}`) || prompts.includes(read(root, `${CORE}/${ARCHIVE}`).split('\n').slice(8).join('\n').trim())) issues.push('ARCHIVE_EXCLUSION:active prompt bundle');
   });
