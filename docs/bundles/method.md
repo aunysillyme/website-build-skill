@@ -29,51 +29,20 @@ Project paths resolve only in the authorized website workspace. See [host setup 
 
 ---
 name: website-build-skill
-description: "Current website-building expertise for an AI: research, design, code, accessibility, performance, search and security. Research, design, build, audit, and prepare websites for release. Use for a new website, redesign, or whole-site review, including brand extraction and three visual mockups before site code. For a small isolated fix, load only the relevant audit or playbook."
+description: "Current website-building expertise for an AI: research, design, code, accessibility, performance, search and security. Research, design, build, audit, and prepare websites for release. Use for a new website, landing page, portfolio, homepage, redesign, or whole-site review, including Astro or Next.js sites, brand extraction and three visual mockups before site code, and Lighthouse or accessibility audits. For a small isolated fix, load only the relevant audit or playbook."
 ---
 
 # Website Build Skill
 
-How do you want to work?
-
-  1  Teach my AI          One AI learns the whole thing and does every job itself.
-                          Works with any AI: Claude, ChatGPT, Grok, Cursor, Copilot.
-                          Nothing else to install.
-
-  2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
-                          Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
-                          One command installs their files; you open each session yourself.
-
-Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
-
-Where should the work be saved?
-
-  1  Obsidian vault       Give an existing folder inside your vault. The library is
-                          plain Markdown, so it opens and links natively.
-
-  2  A folder on this computer
-                          Give an existing directory. The default is the
-                          website project folder.
-
-  3  Notion               Working copy still lives in a folder on this computer,
-                          because every gate reads its own files back by path.
-                          Notion receives an export of the finished library.
-
-  4  Somewhere else       Type an existing local destination yourself.
-
-Whatever you pick becomes the workspace root. Everything below is written inside it.
-
-Every agent runs its own research pass before it touches your site, so it works from what is
-true as of the date of your ask, not from what its model happens to remember.
-
-This question is for the human at install, displayed by the README or installer.
-Follow the recorded --solo / --team choice or the option named in the user's setup prompt.
-Do not repeat it during the method. If no choice exists, return to the install entrypoint.
+When invoked, read prompts/00-start.md to give Researcher the request and available tools.
+Work in the mode chosen at install: the recorded --solo / --team choice or the option named
+in the user's setup prompt. The README and installer show the human the install menu
+(templates/install-choice.txt); do not show or repeat it during the method.
+If no choice exists, return to the install entrypoint.
+Write inside the workspace root chosen at install. If none is recorded, ask before writing.
 TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 Option 2 uses Claude Code, Codex, Hermes, Antigravity, or Grok Bot; the human checks each session.
 Both options use the same gates. Solo review is INTERNAL until a different family reviews.
-
-Read prompts/00-start.md to give Researcher the request and available tools.
 Before intake or research, establish ASK DATE without asking the user or using model
 knowledge. Follow playbooks/research-and-memory.md#ask-date-rule, the canonical full
 rule: record its ladder rung and raw evidence in site-work/research/library/scope.md.
