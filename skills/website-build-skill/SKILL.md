@@ -11,7 +11,7 @@ How do you want to work?
                           Works with any AI: Claude, ChatGPT, Grok, Cursor, Copilot.
                           Nothing else to install.
 
-  2  Give me the team     Seven specialist agents, one per job, starting with a researcher that gets them all current.
+  2  Give me the team     Seven role prompts (you run each session), one per job, starting with a researcher that gets them all current.
                           Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
                           One command installs their files; you open each session yourself.
 
