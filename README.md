@@ -100,7 +100,7 @@ Every site follows the same twelve stages, so your AI researches before it desig
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
-The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root.
+The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root. See [what the installer asks](docs/INSTALLER.md#what-the-installer-asks) for the full menu.
 
 SOLO follows the same jobs with saved self-handoffs. TEAM uses seven sessions you open yourself, with handoffs you carry between them and Researcher first:
 
