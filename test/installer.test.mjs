@@ -542,3 +542,15 @@ test('Local bundle path resolver rejects traversal', () => {
   assert.throws(() => owned(root, '/escape'));
   assert.throws(() => owned(root, 'C:\\escape'));
 });
+
+test('25 Antigravity installs into its documented workspace skill folder and old installs uninstall by receipt', () => workspace(dir => {
+  assert.equal(targets.antigravity, '.agents/skills/website-build-skill');
+  const project = resolve(dir, 'antigravity');
+  const result = install({ ...request(project), target: 'antigravity' });
+  assert.equal(result.code, 0, result.message);
+  assert.ok(fs.lstatSync(resolve(project, '.agents/skills/website-build-skill/SKILL.md')).isFile());
+  assert.throws(() => fs.lstatSync(resolve(project, '.website-build-skill')), { code: 'ENOENT' });
+  const removal = install({ uninstall: true, target: 'antigravity', dir: project });
+  assert.equal(removal.code, 0, removal.message);
+  assert.throws(() => fs.lstatSync(resolve(project, '.agents/skills/website-build-skill/SKILL.md')), { code: 'ENOENT' });
+}));
