@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+
+- `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+
 ## [0.1.19] - 2026-10-10
 
 ### Fixed
