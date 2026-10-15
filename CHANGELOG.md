@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Changed
+
+- The README and the install menu now call TEAM "seven role prompts (you run each session)" instead of "seven specialist agents", because nothing starts a subagent yet (part of #24).
+
 ## [0.1.19] - 2026-10-10
 
 ### Fixed
