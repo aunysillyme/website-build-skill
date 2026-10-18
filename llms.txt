@@ -21,7 +21,7 @@ TEAM: one command installs the seven workers' files; you open each session yours
 ## Active sources
 
 - [SKILL.md](skills/website-build-skill/SKILL.md): Website Build Skill
-- [manifest.json](skills/website-build-skill/manifest.json): Index of all 57 skill assets with kind, version and bundles, plus the stage gates
+- [manifest.json](skills/website-build-skill/manifest.json): Index of all 58 skill assets with kind, version and bundles, plus the stage gates
 - [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): Help me build a website using Research. Learn. Ingest. Execute: Match. Mock. Build. Pro...
 - [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): Deep Research prompt to make your agent good at building websites
 - [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): Turn my approved materials into a brand kit that a website builder can use and test.
@@ -73,9 +73,10 @@ TEAM: one command installs the seven workers' files; you open each session yours
 - [templates/audit-brief.md](skills/website-build-skill/templates/audit-brief.md): Independent audit brief
 - [templates/site-operations.md](skills/website-build-skill/templates/site-operations.md): Site operations
 - [templates/status.md](skills/website-build-skill/templates/status.md): Website stage status
-- [examples/fictional-studio-brief.md](skills/website-build-skill/examples/fictional-studio-brief.md): Fictional Studio: paper workshop website
-- [examples/fictional-studio-handoff.md](skills/website-build-skill/examples/fictional-studio-handoff.md): Fictional Studio: research-to-design handoff walkthrough
-- [examples/audit-cases.md](skills/website-build-skill/examples/audit-cases.md): Synthetic audit cases
+- [examples/crumb-and-co-real-run.md](skills/website-build-skill/examples/crumb-and-co-real-run.md): Crumb & Co: real demo run, 2026-10-18
+- [examples/fictional-studio-brief.md](skills/website-build-skill/examples/fictional-studio-brief.md): Invented example: Fictional Studio paper workshop website
+- [examples/fictional-studio-handoff.md](skills/website-build-skill/examples/fictional-studio-handoff.md): Invented example: Fictional Studio research-to-design handoff walkthrough
+- [examples/audit-cases.md](skills/website-build-skill/examples/audit-cases.md): Invented examples: synthetic audit cases
 
 ## Bundles
 

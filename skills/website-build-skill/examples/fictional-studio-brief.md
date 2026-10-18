@@ -1,4 +1,4 @@
-# Fictional Studio: paper workshop website
+# Invented example: Fictional Studio paper workshop website
 
 Date rule: [ASK DATE and evidence discipline](../playbooks/research-and-memory.md#ask-date-rule).
 Everything in this example is invented. It is not a real organization, person, project,

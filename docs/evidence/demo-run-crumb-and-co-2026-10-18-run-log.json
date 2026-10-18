@@ -1,0 +1,102 @@
+{
+  "skill": "website-build-skill",
+  "packageVersion": "0.1.19",
+  "installCommand": "npx -y website-build-skill@0.1.19 --solo --target claude-code --dir \"<repo>\" --yes (target name accepted as given)",
+  "mode": "SOLO (Option 1, Teach my AI)",
+  "modelFamily": "Claude (Sonnet 5.5)",
+  "request": "Build a one-page website for Crumb & Co, a neighbourhood bakery. White background, warm and simple. It needs the menu with prices, opening hours, the address with a map link, and a button to order ahead. Static site, no framework.",
+  "askDate": "2026-10-18",
+  "askDateRung": "host-environment",
+  "askDateEvidence": "Host environment block of the session system context: \"Today's date is 2026-10-18.\" Cross-check: date -u 2026-10-18T16:58:54Z and first HTTP Date header \"Sun, 18 Oct 2026 16:59:21 GMT\"; all agree.",
+  "clock": "UTC from `date -u +%Y-%m-%dT%H:%M:%SZ` run at each stage boundary",
+  "stages": [
+    {
+      "stage": "Install",
+      "startedAt": "2026-10-18T16:57:40Z",
+      "finishedAt": "2026-10-18T16:58:23Z",
+      "durationSeconds": 43,
+      "gate": "n/a (not one of the nine requested stages); npx install exit 0, 57 files written plus a receipt (58 on disk), Activation UNVERIFIED",
+      "inRequestedStageSum": false
+    },
+    {
+      "stage": "Research",
+      "startedAt": "2026-10-18T16:58:23Z",
+      "finishedAt": "2026-10-18T17:05:58Z",
+      "durationSeconds": 455,
+      "gate": "PASS (AD01 to AD08, check-library exit 0, 23 OPENED, 0 UNVERIFIED); AD09 BLOCKED (no different-family reviewer)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Learn",
+      "startedAt": "2026-10-18T17:05:58Z",
+      "finishedAt": "2026-10-18T17:06:30Z",
+      "durationSeconds": 32,
+      "gate": "PASS (library read back, coordinator learning receipt)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Ingest",
+      "startedAt": "2026-10-18T17:06:30Z",
+      "finishedAt": "2026-10-18T17:07:14Z",
+      "durationSeconds": 44,
+      "gate": "PASS (designer, graphics, builder, optimizer learning receipts)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Scope",
+      "startedAt": "2026-10-18T17:07:14Z",
+      "finishedAt": "2026-10-18T17:07:59Z",
+      "durationSeconds": 45,
+      "gate": "PASS (Coordinator acceptance, SOLO)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Match",
+      "startedAt": "2026-10-18T17:07:59Z",
+      "finishedAt": "2026-10-18T17:09:06Z",
+      "durationSeconds": 67,
+      "gate": "PASS (BM01 to BM03; brand INFERRED, no kit)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Mock",
+      "startedAt": "2026-10-18T17:09:06Z",
+      "finishedAt": "2026-10-18T17:11:53Z",
+      "durationSeconds": 167,
+      "gate": "PASS (BM04, BM05 with limits)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Choose",
+      "startedAt": "2026-10-18T17:11:53Z",
+      "finishedAt": "2026-10-18T17:12:18Z",
+      "durationSeconds": 25,
+      "gate": "PASS with exception (BM06: operator selection, not a user)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Build",
+      "startedAt": "2026-10-18T17:12:18Z",
+      "finishedAt": "2026-10-18T17:16:04Z",
+      "durationSeconds": 226,
+      "gate": "PASS with limits (B09 PARTIAL; CQ01 to CQ06 PASS where applicable)",
+      "inRequestedStageSum": true
+    },
+    {
+      "stage": "Prove",
+      "startedAt": "2026-10-18T17:16:04Z",
+      "finishedAt": "2026-10-18T17:23:11Z",
+      "durationSeconds": 427,
+      "gate": "PASS with limits (AX07 BLOCKED, PS01 BLOCKED, PS02 UNVERIFIED, S04 BLOCKED)",
+      "inRequestedStageSum": true
+    }
+  ],
+  "activeSecondsNineRequestedStages": 1488,
+  "activeSecondsIncludingInstall": 1531,
+  "activeTimeNote": "Active time is the sum of stage durations (the nine requested stages: Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove). Install is logged separately. Each interval is wall time between two boundary marks, so it includes model thinking time and tool waits; the 2-minute hang of a first CSP script (a deadlock of my own making) sits inside Prove. Time after the Prove mark (writing run-log.json, RESULT.md, scrubbing, committing) is not in any stage.",
+  "notRun": [
+    "Protect (only local CSP evidence)",
+    "Challenge (no different-family reviewer)",
+    "Ship (stopped by instruction)"
+  ]
+}

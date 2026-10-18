@@ -1,10 +1,30 @@
 # website-build-skill
 
+**A skill pack that turns your AI into an expert website builder.** It teaches your LLM or agent current, researched practice in design, brand, accessibility, performance, search, security, stacks and code, so the sites it builds look and work like a professional made them.
+
 Your AI builds from what is true on the day you ask, not from what it remembers.
 
 [![npm version](https://img.shields.io/npm/v/website-build-skill)](https://www.npmjs.com/package/website-build-skill)
 [![Repository checks](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml/badge.svg)](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+## See it
+
+Request: "Build a one-page website for Crumb & Co, a neighbourhood bakery. White background, warm and simple. It needs the menu with prices, opening hours, the address with a map link, and a button to order ahead. Static site, no framework."
+
+**24 min 48 s of active time, research to proof, one run.** One host (Claude Code), one model (Claude Sonnet 5.5), SOLO. Demo business with placeholder content, not deployed. Install and report writing are outside that time; stage intervals include thinking and tool waits. Independent review, screen-reader and Lighthouse checks stayed blocked.
+
+Chosen mockup: B, Info Strip (operator selection).
+
+![Crumb & Co chosen Info Strip mockup at 1440 px, with a long test headline, hours, address and menu](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/mockups/b-info-strip-1440.png)
+
+Built page:
+
+![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
+
+See [all three directions, mobile views, stage times and limits](docs/showcase/README.md).
+
+Treat the first mockup as a draft: say what feels off and ask again.
 
 Use the method to produce a saved research library, brand rules, three visual directions
 with screenshot sheets, the selected website and evidence for its release checks.
@@ -12,18 +32,18 @@ Start with the size you need, then install and follow the route below.
 
 ## Pick the size
 
-These time ranges are ESTIMATES for planning, not measured full-build results.
+The one-page entry is one measured demo run through Prove, with limits. Other tiers are ESTIMATES for planning.
 
-| Size | What it holds | Estimated time |
+| Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | 2-4 hours |
-| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | 1-2 working days |
-| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | 1-2 weeks |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](docs/showcase/README.md). |
+| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
+| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
 Produce a viewable mockup within the first hour, whatever the size. Record any
 blocked prerequisite and missed target; keep research and visual proof gates in force.
 Propose a full rebuild with a smaller first version and wait for the user's yes
-before starting the full rebuild. Full-build measurements arrive with the demo run.
+before starting the full rebuild. Use the recorded demo as a reference with its stated limits.
 
 ## How long it takes
 
@@ -31,12 +51,15 @@ The recorded host trials cover loading the skill, about 1-3 minutes, with one ru
 each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
 [Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
 [Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks, not full builds. Full-build times arrive with the demo run;
-use the estimates above for planning until measured results are available.
+These are loading checks. The [Crumb & Co run](docs/showcase/README.md) separately records
+24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
+Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
+writing the report afterward is excluded. One host, one model and placeholder content
+make this a reference point, with Protect, Challenge and Ship still not run.
 
 ## Limits
 
-- **Evidence:** native SOLO loading has one recorded run per host above, under the operator's existing configuration. The full build route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials. See [compatibility](docs/COMPATIBILITY.md).
+- **Evidence:** native SOLO loading has one recorded run per host above, under the operator's existing configuration. Crumb & Co adds one SOLO demo through Prove on Claude Code, with partial and blocked gates. The complete twelve-stage route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials. See [compatibility](docs/COMPATIBILITY.md).
 - **Codex sandbox:** its receipt used a read-only sandbox and exercised loading only. Check the current session's file, shell, network and browser permissions before building; the skill grants no permissions.
 - **Tools:** current research needs web access to opened sources. No web access keeps research BLOCKED, including with an older saved library. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
 - **Proof:** local repository tests check files and rules. They do not prove an AI follows the full method or produces a finished site. The five [eval prompts](https://github.com/aunysillyme/website-build-skill/blob/main/evals/evals.json) are repo-only evaluation specifications, not completed runs or packaged installer inputs. See [evaluation](docs/EVALUATION.md).
@@ -121,7 +144,7 @@ Every site follows the same twelve stages, so your AI researches before it desig
 11. **Challenge:** have a different model family review the fixed candidate read-only.
 12. **Ship:** authorize release, check the live site and save its operations document.
 
-[Method details](docs/METHOD.md) · [fictional brief](skills/website-build-skill/examples/fictional-studio-brief.md).
+[Method details](docs/METHOD.md) · [real Crumb & Co run](skills/website-build-skill/examples/crumb-and-co-real-run.md) · [invented brief](skills/website-build-skill/examples/fictional-studio-brief.md).
 
 ## Two ways to work
 
@@ -255,5 +278,6 @@ Pull requests are accepted under the [contributor license agreement](CLA.md); th
 Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
 [SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
 [Provenance](docs/PROVENANCE.md) records the method's sources and attribution.
+Credits: inspired by [Anatomy by Ryan](https://github.com/wheresryan22/anatomy) (MIT), which leads with results, real times and limits.
 [Evaluation](docs/EVALUATION.md) describes the checks; run `npm run build`, `npm run check` and `npm test` locally.
 Original package work is licensed under [MIT](LICENSE); the covenant retains its attribution.
