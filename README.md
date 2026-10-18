@@ -24,7 +24,7 @@ Built page:
 
 ![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
 
-See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md).
+See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md).
 
 Treat the first mockup as a draft: say what feels off and ask again.
 
@@ -39,7 +39,7 @@ The one-page entry is one measured demo run through Prove, with limits. Other ti
 
 | Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md). |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md). |
 | Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
 | Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
@@ -54,7 +54,7 @@ The recorded host trials cover loading the skill, about 1-3 minutes, with one ru
 each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
 [Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
 [Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md) separately records
+These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md) separately records
 24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
 Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
 writing the report afterward is excluded. One host, one model and placeholder content

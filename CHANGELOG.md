@@ -4,7 +4,7 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.20] - 2026-10-18
 
 ### Fixed
 
