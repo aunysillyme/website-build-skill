@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "dc34d8b3344678c3ca86c3ad45212bafb8296b2c1537ef6e5da9f0cb37959860"
+      "sha256": "c415826478b9f998a6e0872c88c71f02b464937040620e24ce6379a08a7cbc51"
     },
     {
       "path": "manifest.json",
@@ -104,7 +104,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9881d8c5ae027d57288f40b50621142b5dc66efd989796ee2b12a420d6dba953"
+      "sha256": "216f687347a9705a421969ad4500ccf497d2a12f6a017acfedee8cdfab2281c1"
     },
     {
       "path": "prompts/05-stack-and-build.md",
@@ -527,7 +527,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "ce3ea09b3aea6c1e1ad046bfc32c11c5502f3a206349f149b51925ae7ff4bde1"
+      "sha256": "658900aceac1ddb254559b346431fa449f30308ca606d0a49c3dbb6ffad1131c"
     },
     {
       "path": "checklists/brand-and-mockups.md",
@@ -542,7 +542,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "774d08f3093a3668d874074f9c5cc7435d089997a3c850afb6ae0553287bcc46"
+      "sha256": "40da57f19ec61a57f468e81ff2a8e68468d0f8b99d66be160f35f879ca50d2c7"
     },
     {
       "path": "checklists/build.md",
@@ -557,7 +557,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "ccc6b3de61ae7ab4b2d052b970b956695a52fba4c3fd24750439da3a8df2b69f"
+      "sha256": "bfe0975267a4340a7434fc437c68067b3104c6db4be7a90823da4cdd4c83b693"
     },
     {
       "path": "checklists/code-quality.md",
@@ -572,7 +572,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c2d1aa467a5ab9d4b8846c4fdefbd3c8efbb2f342e05d5526e2059a4ddb4d926"
+      "sha256": "2779b6c6d09bd433b874805e1a60d6b145dff17cb1597d35cc3a19ccd633d5b2"
     },
     {
       "path": "checklists/accessibility.md",
@@ -587,7 +587,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "5833f446b6a4b5b039bb24dc5a6df98bf73275f5acb1b2557fb7d4eb37acfba2"
+      "sha256": "52e980fc853f1f29b1b7f03534654063050bf3a5adf85a00e989f0fa97b4188f"
     },
     {
       "path": "checklists/performance-seo.md",
@@ -602,7 +602,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d9e30af6eba3e644ca2c056431b375f7c1d7965e55b872ac794cbb30d3d00fc5"
+      "sha256": "a66621ba98162f0a2d5148109e5fe5714687d88c2ceacfc8216ce732b430c0fe"
     },
     {
       "path": "checklists/security.md",
@@ -617,7 +617,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a9d92b9a647744d4217354a804d333fb3cb5d1e736df78f08d9dfe7fc91b4623"
+      "sha256": "c6c3f386a93e0a15018ae2669cb774319f7f86bf2b225cd036311e52c2360485"
     },
     {
       "path": "checklists/ship.md",
@@ -632,7 +632,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "24e633228248eccb69fb4aa5c6a4afd6481ddcbe72f3ac095cc10d53e4367dba"
+      "sha256": "dbf53ff1c796449cf74e0c685d8c753e66767bb9151cfd1b3eecb52b3d5bbc45"
     },
     {
       "path": "references/stacks/static-html.md",

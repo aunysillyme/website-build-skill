@@ -34,6 +34,25 @@ description: "Current website-building expertise for an AI: research, design, co
 
 # Website Build Skill
 
+Your AI builds from what is true on the day you ask, not from what it remembers.
+
+## Pick the size
+
+These time ranges are ESTIMATES for planning, not measured full-build results.
+
+| Size | What it holds | Estimated time |
+| --- | --- | --- |
+| One page | One primary action, essential sections, contact details and a responsive layout. | 2-4 hours |
+| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | 1-2 working days |
+| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | 1-2 weeks |
+
+Produce a viewable mockup within the first hour, whatever the size. Record any
+blocked prerequisite and missed target; keep research and visual proof gates in force.
+Propose a full rebuild with a smaller first version and wait for the user's yes
+before starting the full rebuild. Full-build measurements arrive with the demo run.
+
+## Choose how to work
+
 How do you want to work?
 
   1  Teach my AI          One AI learns the whole thing and does every job itself.

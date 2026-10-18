@@ -1,13 +1,45 @@
 # website-build-skill
 
+Your AI builds from what is true on the day you ask, not from what it remembers.
+
 [![npm version](https://img.shields.io/npm/v/website-build-skill)](https://www.npmjs.com/package/website-build-skill)
 [![Repository checks](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml/badge.svg)](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**A skill pack that turns your AI into an expert website builder.** It teaches your LLM or agent current, researched practice in design, brand, accessibility, performance, search, security, stacks and code, so the sites it builds look and work like a professional made them.
+Use the method to produce a saved research library, brand rules, three visual directions
+with screenshot sheets, the selected website and evidence for its release checks.
+Start with the size you need, then install and follow the route below.
 
-- **The problem:** an AI builds websites from what it remembered at training time: dated frameworks, generic layouts, and missed accessibility, speed and security basics.
-- **What you get:** research instructions that make your AI look up what is current on the day you ask, plus design, coding, accessibility, performance, search and security playbooks and checklists it follows on every site.
+## Pick the size
+
+These time ranges are ESTIMATES for planning, not measured full-build results.
+
+| Size | What it holds | Estimated time |
+| --- | --- | --- |
+| One page | One primary action, essential sections, contact details and a responsive layout. | 2-4 hours |
+| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | 1-2 working days |
+| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | 1-2 weeks |
+
+Produce a viewable mockup within the first hour, whatever the size. Record any
+blocked prerequisite and missed target; keep research and visual proof gates in force.
+Propose a full rebuild with a smaller first version and wait for the user's yes
+before starting the full rebuild. Full-build measurements arrive with the demo run.
+
+## How long it takes
+
+The recorded host trials cover loading the skill, about 1-3 minutes, with one run
+each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
+[Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
+[Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
+These are loading checks, not full builds. Full-build times arrive with the demo run;
+use the estimates above for planning until measured results are available.
+
+## Limits
+
+- **Evidence:** native SOLO loading has one recorded run per host above, under the operator's existing configuration. The full build route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials. See [compatibility](docs/COMPATIBILITY.md).
+- **Codex sandbox:** its receipt used a read-only sandbox and exercised loading only. Check the current session's file, shell, network and browser permissions before building; the skill grants no permissions.
+- **Tools:** current research needs web access to opened sources. No web access keeps research BLOCKED, including with an older saved library. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
+- **Proof:** local repository tests check files and rules. They do not prove an AI follows the full method or produces a finished site. The five [eval prompts](https://github.com/aunysillyme/website-build-skill/blob/main/evals/evals.json) are repo-only evaluation specifications, not completed runs or packaged installer inputs. See [evaluation](docs/EVALUATION.md).
 
 ## Quick start
 
