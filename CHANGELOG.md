@@ -8,6 +8,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ### Added
 
+- Phase 2 results-first showcase: the real Crumb & Co demo's three mockups, built page, screenshots, research sources, stage timing and gate limits, plus a packaged text example and copied run-log evidence.
+- Anatomy by Ryan (MIT) credit for leading with results, real times and limits.
 - Size tiers with planning estimates, a first-hour viewable mockup requirement and user approval before a full rebuild.
 - Five repo-only evaluation specifications covering a small business page, portfolio, redesign, accessibility audit and blocked research without web access.
 - Per-direction screenshot sheets at 390 px and 1440 px, 4x header and content-junction crops, and image inspection before choosing a mockup.
@@ -16,6 +18,7 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 ### Changed
 
 - README and skill entrypoint lead with current-day research and the results to expect.
+- Phase 2 restores the README skill-pack lead, puts the real demo before the method, replaces the one-page planning estimate with its measured run, and adds a second look at Mock while labelling invented examples on their first line.
 
 ## [0.1.19] - 2026-10-10
 

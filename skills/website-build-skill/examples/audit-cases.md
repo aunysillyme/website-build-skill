@@ -1,4 +1,4 @@
-# Synthetic audit cases
+# Invented examples: synthetic audit cases
 
 Date rule: [ASK DATE and evidence discipline](../playbooks/research-and-memory.md#ask-date-rule).
 Everything in this example is invented. It is not a real organization, person, project,

@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c415826478b9f998a6e0872c88c71f02b464937040620e24ce6379a08a7cbc51"
+      "sha256": "7138c02d17d919915edeb246f59a8219ebcd900a97ba1714f1bbfe95ee69b41d"
     },
     {
       "path": "manifest.json",
@@ -104,7 +104,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "216f687347a9705a421969ad4500ccf497d2a12f6a017acfedee8cdfab2281c1"
+      "sha256": "8516e975a0c2ab8ddcfeadeed1db5a4754ab42113fc16bfdfc0c636d3721363e"
     },
     {
       "path": "prompts/05-stack-and-build.md",
@@ -816,6 +816,21 @@
       "sha256": "ba8fd139f7a7c28433cd27fad9fb5adabe49c79789cc1c8abe78cb1258e8d2af"
     },
     {
+      "path": "examples/crumb-and-co-real-run.md",
+      "version": "0.1.0",
+      "kind": "example",
+      "active": true,
+      "bundles": [
+        "method"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "f36522883d423283c1af682d915cf719ae7ab2b82a1a21b5001b69ee349df2d0"
+    },
+    {
       "path": "examples/fictional-studio-brief.md",
       "version": "0.1.0",
       "kind": "example",
@@ -828,7 +843,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "1b5375d4624823c426cce086fc2247c6645f5049d18a1890e42e967f3ab1ce94"
+      "sha256": "258d97cd799446e932a249924c7ce682831727dd348b4db0427eab74308c4707"
     },
     {
       "path": "examples/fictional-studio-handoff.md",
@@ -843,7 +858,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "190e80ee0e8447923e71120ebb24e656168db1311f72da5049a27ac7a4229963"
+      "sha256": "b7ec17f13b0d5e68ca722d4b84fe99f68d1fc7a7bd31479587470c172b52a0d9"
     },
     {
       "path": "examples/audit-cases.md",
@@ -858,7 +873,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "02eb34cf2ce394533d4627677541a4ae4093157673b2ce628a1fb1a8163c9016"
+      "sha256": "3cbb5f4de23c4b9e16c9bb0ee39e8202807e3a51d9a3b67e661aa11ecd84a71d"
     }
   ],
   "entryRole": "researcher",
@@ -1247,6 +1262,7 @@
       "templates/audit-brief.md",
       "templates/site-operations.md",
       "templates/status.md",
+      "examples/crumb-and-co-real-run.md",
       "examples/fictional-studio-brief.md",
       "examples/fictional-studio-handoff.md",
       "examples/audit-cases.md"
@@ -1363,6 +1379,7 @@
         "templates/audit-brief.md",
         "templates/site-operations.md",
         "templates/status.md",
+        "examples/crumb-and-co-real-run.md",
         "examples/fictional-studio-brief.md",
         "examples/fictional-studio-handoff.md",
         "examples/audit-cases.md"
@@ -1426,6 +1443,7 @@
         "templates/audit-brief.md",
         "templates/site-operations.md",
         "templates/status.md",
+        "examples/crumb-and-co-real-run.md",
         "examples/fictional-studio-brief.md",
         "examples/fictional-studio-handoff.md",
         "examples/audit-cases.md"
@@ -1489,6 +1507,7 @@
         "templates/audit-brief.md",
         "templates/site-operations.md",
         "templates/status.md",
+        "examples/crumb-and-co-real-run.md",
         "examples/fictional-studio-brief.md",
         "examples/fictional-studio-handoff.md",
         "examples/audit-cases.md"

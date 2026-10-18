@@ -460,6 +460,7 @@ Never ask the user for the date or infer it from model knowledge. Apply the
 same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
 
 Show me three visual mockups for this website before writing any website code.
+Treat the first mockup as a draft: say what feels off and ask again.
 Use the approved brief, research, brand kit, and representative real content.
 If the brand kit is missing, first ask for my profile-picture and banner screenshots.
 

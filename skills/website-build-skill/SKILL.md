@@ -9,18 +9,18 @@ Your AI builds from what is true on the day you ask, not from what it remembers.
 
 ## Pick the size
 
-These time ranges are ESTIMATES for planning, not measured full-build results.
+The one-page entry is one measured demo run through Prove, with limits. Other tiers are ESTIMATES for planning.
 
-| Size | What it holds | Estimated time |
+| Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | 2-4 hours |
-| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | 1-2 working days |
-| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | 1-2 weeks |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](examples/crumb-and-co-real-run.md). |
+| Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
+| Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
 Produce a viewable mockup within the first hour, whatever the size. Record any
 blocked prerequisite and missed target; keep research and visual proof gates in force.
 Propose a full rebuild with a smaller first version and wait for the user's yes
-before starting the full rebuild. Full-build measurements arrive with the demo run.
+before starting the full rebuild. Use the recorded demo as a reference with its stated limits.
 
 ## Choose how to work
 
@@ -118,12 +118,15 @@ Use full filenames and asset order from manifest.json; the table abbreviates pro
 For limited audits, load the relevant current research and checks without inventing redesign work.
 Do not lower gates or claim a skipped stage passed; record explicit user scope changes.
 
+Before Mock, open the closest real example: [Crumb & Co](https://github.com/aunysillyme/website-build-skill/tree/main/docs/showcase/crumb-and-co), via the repository because docs/ is not installed with the skill; if offline, request a copy and record it unavailable until supplied.
+At Mock: Treat the first mockup as a draft: say what feels off and ask again.
+
 ## Preserve work and authority
 
 Use templates/brief.md, brand.md, tokens.json, evidence.md, handoff.yaml,
 audit-brief.md, site-operations.md, and status.md for the corresponding artifacts.
 Read references/stacks/ only when the approved requirements reach stack selection.
-Use examples/ for invented walkthroughs, never as live evidence or user decisions.
+Use examples/crumb-and-co-real-run.md for a recorded demo with limits; the other examples are invented walkthroughs. Neither supplies evidence or user decisions for a new engagement.
 Keep one writer per artifact and actual model-family evidence in the receipts.
 Reviewer returns findings read-only; Coordinator captures them unchanged.
 An INTERNAL critique cannot pass independence or a completed ship checklist.

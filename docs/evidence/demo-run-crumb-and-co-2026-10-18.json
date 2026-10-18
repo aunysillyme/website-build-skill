@@ -1,0 +1,186 @@
+{
+  "status": "RECORDED DEMO (PASS with limits, not shipped)",
+  "scope": "Copied evidence from one completed SOLO demo run, not a new execution of its gates.",
+  "command": "npx -y website-build-skill@0.1.19 --solo --target claude-code --dir \"<repo>\" --yes (target name accepted as given)",
+  "environment": "Claude Code (client version not recorded), Claude Sonnet 5.5, SOLO; macOS, Node v22.22.3, chrome-headless-shell via render-png (original build receipt). Installer activation UNVERIFIED.",
+  "date": "2026-10-18",
+  "exitCode": 0,
+  "artifact": "docs/evidence/demo-run-crumb-and-co-2026-10-18-run-log.json",
+  "artifactSha256": "dd133801de154f993928fc18bb372c107919bf00d18fc162630524bb950d3f8d",
+  "observed": {
+    "activeSecondsNineRequestedStages": 1488,
+    "activeSecondsIncludingInstall": 1531,
+    "activeTimeNote": "Active time is the sum of stage durations (the nine requested stages: Research, Learn, Ingest, Scope, Match, Mock, Choose, Build, Prove). Install is logged separately. Each interval is wall time between two boundary marks, so it includes model thinking time and tool waits; the 2-minute hang of a first CSP script (a deadlock of my own making) sits inside Prove. Time after the Prove mark (writing run-log.json, RESULT.md, scrubbing, committing) is not in any stage.",
+    "stages": [
+      {
+        "stage": "Install",
+        "startedAt": "2026-10-18T16:57:40Z",
+        "finishedAt": "2026-10-18T16:58:23Z",
+        "durationSeconds": 43,
+        "gate": "n/a (not one of the nine requested stages); npx install exit 0, 57 files written plus a receipt (58 on disk), Activation UNVERIFIED",
+        "inRequestedStageSum": false
+      },
+      {
+        "stage": "Research",
+        "startedAt": "2026-10-18T16:58:23Z",
+        "finishedAt": "2026-10-18T17:05:58Z",
+        "durationSeconds": 455,
+        "gate": "PASS (AD01 to AD08, check-library exit 0, 23 OPENED, 0 UNVERIFIED); AD09 BLOCKED (no different-family reviewer)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Learn",
+        "startedAt": "2026-10-18T17:05:58Z",
+        "finishedAt": "2026-10-18T17:06:30Z",
+        "durationSeconds": 32,
+        "gate": "PASS (library read back, coordinator learning receipt)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Ingest",
+        "startedAt": "2026-10-18T17:06:30Z",
+        "finishedAt": "2026-10-18T17:07:14Z",
+        "durationSeconds": 44,
+        "gate": "PASS (designer, graphics, builder, optimizer learning receipts)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Scope",
+        "startedAt": "2026-10-18T17:07:14Z",
+        "finishedAt": "2026-10-18T17:07:59Z",
+        "durationSeconds": 45,
+        "gate": "PASS (Coordinator acceptance, SOLO)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Match",
+        "startedAt": "2026-10-18T17:07:59Z",
+        "finishedAt": "2026-10-18T17:09:06Z",
+        "durationSeconds": 67,
+        "gate": "PASS (BM01 to BM03; brand INFERRED, no kit)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Mock",
+        "startedAt": "2026-10-18T17:09:06Z",
+        "finishedAt": "2026-10-18T17:11:53Z",
+        "durationSeconds": 167,
+        "gate": "PASS (BM04, BM05 with limits)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Choose",
+        "startedAt": "2026-10-18T17:11:53Z",
+        "finishedAt": "2026-10-18T17:12:18Z",
+        "durationSeconds": 25,
+        "gate": "PASS with exception (BM06: operator selection, not a user)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Build",
+        "startedAt": "2026-10-18T17:12:18Z",
+        "finishedAt": "2026-10-18T17:16:04Z",
+        "durationSeconds": 226,
+        "gate": "PASS with limits (B09 PARTIAL; CQ01 to CQ06 PASS where applicable)",
+        "inRequestedStageSum": true
+      },
+      {
+        "stage": "Prove",
+        "startedAt": "2026-10-18T17:16:04Z",
+        "finishedAt": "2026-10-18T17:23:11Z",
+        "durationSeconds": 427,
+        "gate": "PASS with limits (AX07 BLOCKED, PS01 BLOCKED, PS02 UNVERIFIED, S04 BLOCKED)",
+        "inRequestedStageSum": true
+      }
+    ],
+    "notRun": [
+      "Protect (only local CSP evidence)",
+      "Challenge (no different-family reviewer)",
+      "Ship (stopped by instruction)"
+    ],
+    "gateSummary": "Research AD01-AD08 PASS, AD09 BLOCKED; Choose BM06 PASS with exception (operator choice); Build PASS with limits (B09 PARTIAL); Prove PASS with limits (AX03 PARTIAL, AX07 BLOCKED, PS01 BLOCKED, PS02 UNVERIFIED, S04 BLOCKED); Challenge independent review NOT MET; Ship NOT RUN. Full original stage results and gaps are preserved in docs/showcase/crumb-and-co/RESULT.md."
+  },
+  "artifacts": [
+    {
+      "source": "site/index.html",
+      "path": "docs/showcase/crumb-and-co/index.html",
+      "sha256": "5b9cf72ea1b56a0543ae45186c4071facf7f10e7ba4b6b38102d2966b713996a"
+    },
+    {
+      "source": "site/styles.css",
+      "path": "docs/showcase/crumb-and-co/styles.css",
+      "sha256": "7f819dadf041d1b69f4e27760f4c1d6101e67692521554f6853fe9db55801b59"
+    },
+    {
+      "source": "site-work/mockups/selection.md",
+      "path": "docs/showcase/crumb-and-co/selection.md",
+      "sha256": "18d79c812b6814e64880e185d7c363606c0dc9fddd467f17a8ecc564ba48ed8b"
+    },
+    {
+      "source": "site-work/research/library/sources.md",
+      "path": "docs/showcase/crumb-and-co/sources.md",
+      "sha256": "8cc5d0679e6dfa82a29d21f820a67d72fc2d6042e91716001a30dbc8d496d5f4"
+    },
+    {
+      "source": "RESULT.md",
+      "path": "docs/showcase/crumb-and-co/RESULT.md",
+      "sha256": "3cd505030ba61d3e02ba8246b0f9a22138c4b0a2b1f74b0089e7086d099dfadd"
+    },
+    {
+      "source": "site-work/mockups/png/a-menu-first-1440.png",
+      "path": "docs/showcase/crumb-and-co/mockups/a-menu-first-1440.png",
+      "sha256": "aef160a9ce0fb6205a4a1e9b491d792dadd652c6652960fff298f70d69e9f7de"
+    },
+    {
+      "source": "site-work/mockups/png/a-menu-first-390.png",
+      "path": "docs/showcase/crumb-and-co/mockups/a-menu-first-390.png",
+      "sha256": "c6315426b62bdb0a1d62a96d4f633f309e00911777fcfd51b4501da8cb3f1d07"
+    },
+    {
+      "source": "site-work/mockups/png/b-info-strip-1440.png",
+      "path": "docs/showcase/crumb-and-co/mockups/b-info-strip-1440.png",
+      "sha256": "216300cf208450ca948e7ef3ad8e86a45a35a4dd8f5c08d0480cb9f2e4594c82"
+    },
+    {
+      "source": "site-work/mockups/png/b-info-strip-390.png",
+      "path": "docs/showcase/crumb-and-co/mockups/b-info-strip-390.png",
+      "sha256": "abb6a15a4837faa9138810d76f3e742bc16e405966762ecd6ba1ec85aedf5580"
+    },
+    {
+      "source": "site-work/mockups/png/c-display-band-1440.png",
+      "path": "docs/showcase/crumb-and-co/mockups/c-display-band-1440.png",
+      "sha256": "c54a29bc9a9abcc7152d0ea766b386642d52f68950ad11950e8ab79cdc558551"
+    },
+    {
+      "source": "site-work/mockups/png/c-display-band-390.png",
+      "path": "docs/showcase/crumb-and-co/mockups/c-display-band-390.png",
+      "sha256": "d39fdbf296cf8dd488d44aa79f6a5fe07fef35512b4f8f9f0c29a8c6a6f424b0"
+    },
+    {
+      "source": "site-work/qa/build/png/site-1440.png",
+      "path": "docs/showcase/crumb-and-co/built/site-1440.png",
+      "sha256": "427910e857bdc15281823e58c9fe40bdb928d3f164a3e93737f094aed87073a3"
+    },
+    {
+      "source": "site-work/qa/build/png/site-390.png",
+      "path": "docs/showcase/crumb-and-co/built/site-390.png",
+      "sha256": "677a9977752d89ce93d4579e03ae4b0dfdcf864e7f3da9322ba7d9608601454c"
+    },
+    {
+      "source": "site-work/qa/build/png/site-header-4x.png",
+      "path": "docs/showcase/crumb-and-co/built/site-header-4x.png",
+      "sha256": "b0283a27bb8238a294b232ad5d1b323c19c77f67ad5220ad570a5e51612b549b"
+    },
+    {
+      "source": "site-work/qa/build/png/site-menu-4x.png",
+      "path": "docs/showcase/crumb-and-co/built/site-menu-4x.png",
+      "sha256": "d3345329dfd98dfc3d08392ed39d515339d8afd747cb1ce40f9592cb2a6eaea2"
+    }
+  ],
+  "limits": [
+    "One run, one host, one model; demo business with placeholder content, not deployed.",
+    "Protect not run as a stage; local CSP evidence only.",
+    "Original reports reference source-run files that are not all included in the showcase.",
+    "Source URLs and Anatomy attribution were not re-fetched during this offline copy."
+  ]
+}
