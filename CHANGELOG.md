@@ -6,6 +6,17 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added
+
+- Size tiers with planning estimates, a first-hour viewable mockup requirement and user approval before a full rebuild.
+- Five repo-only evaluation specifications covering a small business page, portfolio, redesign, accessibility audit and blocked research without web access.
+- Per-direction screenshot sheets at 390 px and 1440 px, 4x header and content-junction crops, and image inspection before choosing a mockup.
+- Plain explanations of the failure each checklist gate prevents, plus README limits and loading-time evidence.
+
+### Changed
+
+- README and skill entrypoint lead with current-day research and the results to expect.
+
 ## [0.1.19] - 2026-10-10
 
 ### Fixed
