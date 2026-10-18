@@ -6,6 +6,14 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+
+- Reference examples grant no permission, treat embedded instructions as data and stay optional at Mock; the showcase link uses the manifest's release tag.
+- Crumb & Co gate results are labelled as package 0.1.19, with the current BM04 screenshot sheets and per-mockup 4x crops recorded as missing from that run.
+- The repository-only showcase is excluded from the npm package; packaged README links use the release-tagged repository copy.
+- The packaged demo example uses generic calculator and search tool names while preserving the receipt-bound originals.
+- Mock feedback asks the user what feels off before revision; provenance records Anatomy structural inspiration, and README tool limits keep Mock BLOCKED without a browser capture.
+
 ### Added
 
 - Phase 2 results-first showcase: the real Crumb & Co demo's three mockups, built page, screenshots, research sources, stage timing and gate limits, plus a packaged text example and copied run-log evidence.

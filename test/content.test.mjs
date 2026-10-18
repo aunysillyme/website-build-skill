@@ -61,6 +61,7 @@ const cases = [
   ['RED20 a publish-time hook that can change the tested bytes', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, prepublishOnly: 'node -e 0' } }, null, 2) + '\n')],
   ['RED21 a negated files entry that empties a published path', 'PACKAGE_FILES:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), files: [...JSON.parse(s).files, '!src/**'] }, null, 2) + '\n')],
   ['RED25 the GIF exclusion listed before the docs entry, so npm still ships both GIFs', 'PACKAGE_FILES:', r => change(r, 'package.json', s => { const p = JSON.parse(s); p.files = ['!docs/*.gif', ...p.files.filter(e => e !== '!docs/*.gif')]; return JSON.stringify(p, null, 2) + '\n'; })],
+  ['RED26 the showcase exclusion listed before the docs entry, so npm still ships the showcase', 'PACKAGE_FILES:', r => change(r, 'package.json', s => { const p = JSON.parse(s); p.files = ['!docs/showcase/**', ...p.files.filter(e => e !== '!docs/showcase/**')]; return JSON.stringify(p, null, 2) + '\n'; })],
   ['RED23 SKILL.md loses the verbatim install card the agent shows the user', 'CHOICE_DRIFT:', r => change(r, `${CORE}/SKILL.md`, s => s.replace('How do you want to work?', 'How would you like to work?'))],
   ['RED24 repository description drifts from package.json', 'DESCRIPTION_DRIFT:REPO_SETTINGS.md', r => change(r, 'REPO_SETTINGS.md', s => s.replace(/(## Description\n\n- \[x\][^\n]*\n\n)[^\n]+/, '$1Research-first website-building skill: learn the craft, match the brand, compare three mockups, then build and verify.'))],
   ['RED22 a runtime step that ignores the matrix it claims to run', 'ENGINE_UNTESTED:', r => change(r, '.github/workflows/check.yml', s => s.replace('"node-version": "${{ matrix.node }}"', '"node-version": "24"'))],
@@ -70,9 +71,10 @@ for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   assert.ok(check(r).some(i => i.startsWith(gate)), `expected ${gate}`);
 }));
 
-test('The GIF exclusion after the docs entry passes the package check', () => fixture(r => {
+test('The GIF and showcase exclusions after the docs entry pass the package check', () => fixture(r => {
   const files = JSON.parse(read(r, 'package.json')).files;
   assert.ok(files.indexOf('!docs/*.gif') > files.indexOf('docs/'), 'baseline has the exclusion after docs/');
+  assert.ok(files.indexOf('!docs/showcase/**') > files.indexOf('docs/'), 'baseline has the showcase exclusion after docs/');
   assert.ok(!check(r).some(i => i.startsWith('PACKAGE_FILES:')));
 }));
 

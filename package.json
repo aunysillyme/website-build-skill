@@ -48,6 +48,7 @@
     "adapters/",
     "docs/",
     "!docs/*.gif",
+    "!docs/showcase/**",
     "README.md",
     "LICENSE",
     "CLA.md",
