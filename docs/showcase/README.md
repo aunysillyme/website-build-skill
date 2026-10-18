@@ -10,6 +10,8 @@ Request: "Build a one-page website for Crumb & Co, a neighbourhood bakery. White
 
 **24 min 48 s of active time, research to proof, one run.** Install took 43 s separately. Time is the sum of stage-boundary wall-clock intervals, including thinking and tool waits. Writing the run log and report afterward is excluded. This is a recorded result with incomplete gates, rather than a forecast for another site.
 
+Gate results are those of package 0.1.19. The current BM04 also requires screenshot sheets and 4x crops of each mockup, which this run did not produce.
+
 ### Three mockups
 
 Each pair uses the same demo content, including a long headline and dense menu item to test wrapping. These PNGs are copied from the run's actual browser renders.

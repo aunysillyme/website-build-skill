@@ -14,6 +14,8 @@ Request: "Build a one-page website for Crumb & Co, a neighbourhood bakery. White
 
 **24 min 48 s of active time, research to proof, one run.** One host (Claude Code), one model (Claude Sonnet 5.5), SOLO. Demo business with placeholder content, not deployed. Install and report writing are outside that time; stage intervals include thinking and tool waits. Independent review, screen-reader and Lighthouse checks stayed blocked.
 
+Gate results are those of package 0.1.19. The current BM04 also requires screenshot sheets and 4x crops of each mockup, which this run did not produce.
+
 Chosen mockup: B, Info Strip (operator selection).
 
 ![Crumb & Co chosen Info Strip mockup at 1440 px, with a long test headline, hours, address and menu](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/mockups/b-info-strip-1440.png)
@@ -22,12 +24,13 @@ Built page:
 
 ![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
 
-See [all three directions, mobile views, stage times and limits](docs/showcase/README.md).
+See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md).
 
 Treat the first mockup as a draft: say what feels off and ask again.
 
-Use the method to produce a saved research library, brand rules, three visual directions
-with screenshot sheets, the selected website and evidence for its release checks.
+For a new engagement, the current method requires a saved research library, brand rules,
+three visual directions with screenshot sheets and 4x crops of each mockup,
+the selected website and evidence for its release checks.
 Start with the size you need, then install and follow the route below.
 
 ## Pick the size
@@ -36,7 +39,7 @@ The one-page entry is one measured demo run through Prove, with limits. Other ti
 
 | Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](docs/showcase/README.md). |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md). |
 | Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
 | Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
@@ -51,7 +54,7 @@ The recorded host trials cover loading the skill, about 1-3 minutes, with one ru
 each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
 [Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
 [Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks. The [Crumb & Co run](docs/showcase/README.md) separately records
+These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.19/docs/showcase/README.md) separately records
 24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
 Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
 writing the report afterward is excluded. One host, one model and placeholder content
@@ -61,7 +64,7 @@ make this a reference point, with Protect, Challenge and Ship still not run.
 
 - **Evidence:** native SOLO loading has one recorded run per host above, under the operator's existing configuration. Crumb & Co adds one SOLO demo through Prove on Claude Code, with partial and blocked gates. The complete twelve-stage route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials. See [compatibility](docs/COMPATIBILITY.md).
 - **Codex sandbox:** its receipt used a read-only sandbox and exercised loading only. Check the current session's file, shell, network and browser permissions before building; the skill grants no permissions.
-- **Tools:** current research needs web access to opened sources. No web access keeps research BLOCKED, including with an older saved library. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
+- **Tools:** current research needs web access to opened sources. No web access keeps research BLOCKED, including with an older saved library. BM04 needs a browser capture, so a host with no browser stays BLOCKED at Mock. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
 - **Proof:** local repository tests check files and rules. They do not prove an AI follows the full method or produces a finished site. The five [eval prompts](https://github.com/aunysillyme/website-build-skill/blob/main/evals/evals.json) are repo-only evaluation specifications, not completed runs or packaged installer inputs. See [evaluation](docs/EVALUATION.md).
 
 ## Quick start

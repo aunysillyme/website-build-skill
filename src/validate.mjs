@@ -317,16 +317,18 @@ export function check(root, options = {}) {
     else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
     // A published tarball that omits any of these installs nothing on a stranger's machine.
     // A negation can empty one of them while the entry it negates is still listed. Only
-    // the GIF exclusion is allowed: documentation serves those images by raw URL.
+    // GIFs and the repository-only showcase may be excluded; docs link to their public URLs.
     // `src` and `src/` are the same entry.
     const published = (p.files ?? []).map(entry => String(entry).replace(/\/+$/, ''));
-    if (published.some(entry => entry.startsWith('!') && entry !== '!docs/*.gif')) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
+    const exclusions = ['!docs/*.gif', '!docs/showcase/**'];
+    if (published.some(entry => entry.startsWith('!') && !exclusions.includes(entry))) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
     for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE'])
       if (!published.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
     // npm applies the list in order, so an exclusion placed before the entry it trims
-    // removes nothing and both GIFs still ship.
-    if (published.includes('!docs/*.gif') && published.indexOf('!docs/*.gif') < published.indexOf('docs'))
-      issues.push('PACKAGE_FILES:!docs/*.gif must come after the docs entry or it excludes nothing');
+    // removes nothing and the excluded files still ship.
+    for (const exclusion of exclusions)
+      if (published.includes(exclusion) && published.indexOf(exclusion) < published.indexOf('docs'))
+        issues.push(`PACKAGE_FILES:${exclusion} must come after the docs entry or it excludes nothing`);
     const floor = p.engines?.node?.match(/(\d+)/)?.[1];
     const checks = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks;
     const matrix = checks?.strategy?.matrix?.node;

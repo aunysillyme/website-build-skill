@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "7138c02d17d919915edeb246f59a8219ebcd900a97ba1714f1bbfe95ee69b41d"
+      "sha256": "00f13d125b6a2f34a8d95cdaeef63227600790dc2b72f1d4fbe42960cb8e41c4"
     },
     {
       "path": "manifest.json",
@@ -828,7 +828,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f36522883d423283c1af682d915cf719ae7ab2b82a1a21b5001b69ee349df2d0"
+      "sha256": "1f365ba5748f64e53ded76db4e36f2de1d869d3551190e9b3186cf533a228c78"
     },
     {
       "path": "examples/fictional-studio-brief.md",
