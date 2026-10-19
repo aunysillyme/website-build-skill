@@ -33,6 +33,8 @@ test('Generated sibling links keep the README descriptions and absolute URLs', (
   const block = text => text.slice(text.indexOf(START), text.indexOf(END) + END.length);
   const index = generated(root)['llms.txt'];
   assert.equal(set.rows.length, 4, 'the shared set has four rows');
+  const committed = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8');
+  assert.equal(block(committed), blocks.llms, 'the set block in the committed llms.txt matches the shared set');
   assert.equal(block(index), blocks.llms);
   assert.equal(block(readme), blocks.readme);
   assert.ok(index.includes(blocks.llms + '\n\n## Active sources\n'));
