@@ -24,7 +24,7 @@ Built page:
 
 ![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
 
-See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md).
+See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md).
 
 Treat the first mockup as a draft: say what feels off and ask again.
 
@@ -39,7 +39,7 @@ The one-page entry is one measured demo run through Prove, with limits. Other ti
 
 | Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md). |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md). |
 | Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
 | Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
@@ -54,18 +54,11 @@ The recorded host trials cover loading the skill, about 1-3 minutes, with one ru
 each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
 [Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
 [Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.20/docs/showcase/README.md) separately records
+These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md) separately records
 24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
 Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
 writing the report afterward is excluded. One host, one model and placeholder content
 make this a reference point, with Protect, Challenge and Ship still not run.
-
-## Limits
-
-- **Evidence:** native SOLO loading has one recorded run per host above, under the operator's existing configuration. Crumb & Co adds one SOLO demo through Prove on Claude Code, with partial and blocked gates. The complete twelve-stage route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials. See [compatibility](docs/COMPATIBILITY.md).
-- **Codex sandbox:** its receipt used a read-only sandbox and exercised loading only. Check the current session's file, shell, network and browser permissions before building; the skill grants no permissions.
-- **Tools:** current research needs web access to opened sources. No web access keeps research BLOCKED, including with an older saved library. BM04 needs a browser capture, so a host with no browser stays BLOCKED at Mock. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
-- **Proof:** local repository tests check files and rules. They do not prove an AI follows the full method or produces a finished site. The five [eval prompts](https://github.com/aunysillyme/website-build-skill/blob/main/evals/evals.json) are repo-only evaluation specifications, not completed runs or packaged installer inputs. See [evaluation](docs/EVALUATION.md).
 
 ## Quick start
 
@@ -127,7 +120,7 @@ Three open-source tools that work on their own and fit together:
 | Repo | What it gives you |
 |---|---|
 | [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | One interview writes the profile and rules every AI you use reads, kept in sync from one source. |
-| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: installs routing rules, 8 subagents, hooks and a CLI runner so your AI picks model and effort per task and saves tokens. |
+| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: routes routine work to cheaper models with routing rules, 8 subagents, hooks and a CLI runner. |
 | **website-build-skill** | A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security. |
 
 ## How your AI uses it on a site
@@ -183,6 +176,8 @@ SOLO follows the same jobs with saved self-handoffs. TEAM uses seven sessions yo
 | Deploy access | Your AI ships the authorized site and checks it live |
 
 With any of these missing, the AI hands you the exact next step (a query plan, file contents to save, a review packet, commands to run) and the stage continues when you bring the result back.
+
+See [evidence status, permissions and tools](docs/COMPATIBILITY.md#evidence-status-permissions-and-tools) for recorded proof and host requirements.
 
 ## Choose your host
 

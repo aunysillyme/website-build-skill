@@ -1,5 +1,12 @@
 # Compatibility
 
+## Evidence status, permissions and tools
+
+- **Evidence:** native SOLO loading has one recorded run per host in [tested-host compatibility](#tested-hosts), under the operator's existing configuration. Crumb & Co adds one SOLO demo through Prove on Claude Code, with partial and blocked gates. The complete twelve-stage route, TEAM, account tools, independent-review access and deployment remain UNVERIFIED until real trials cover them. Other hosts have documented setups awaiting trials.
+- **Codex sandbox:** its receipt used a read-only sandbox and exercised loading only. Check the current session's file, shell, network and browser permissions before building; the skill grants no permissions.
+- **Tools:** current research needs web access to opened sources. Research stays BLOCKED without web access, including with an older saved library. BM04 needs a browser capture, so a host without a browser stays BLOCKED at Mock. Executing builds and automated checks needs a shell; missing tools require named handoffs and returned evidence before the relevant gate can pass.
+- **Proof:** local repository tests check files and rules. They do not prove an AI follows the full method or produces a finished site. The five [eval prompts](https://github.com/aunysillyme/website-build-skill/blob/main/evals/evals.json) are repo-only evaluation specifications, not completed runs or packaged installer inputs. See [evaluation](EVALUATION.md).
+
 ## Tested hosts
 
 Three hosts have a dated native-loading receipt. Each covers SOLO skill discovery and loading
