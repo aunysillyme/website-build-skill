@@ -12,6 +12,8 @@ through npm trusted publishing, which exchanges a short-lived OIDC token issued 
 ## Trigger
 
 Local: a maintainer changes canonical content or adapters and explicitly runs the commands below.
+The "Part of a set" rows come from https://raw.githubusercontent.com/aunysillyme/.github/HEAD/set.json; each row's line is that package's npm description. A maintainer refreshes them with `npx repo-build-skill@0.1.1 set sync` outside CI and commits the result. Never hand-edit `.repo-build/*` or text between the set markers. CI only checks drift offline with `node scripts/check-set.mjs`; the lock pins the renderer and vendored set hashes. Nothing watches this check outside the existing push and pull request workflow. On drift, review and refresh the shared inputs before retrying.
+
 Hosted checks: pull request, push to main or manual dispatch.
 Release: pushing a `v*` tag runs the publish job, which republishes nothing and refuses a tag
 whose version disagrees with `package.json`. No scheduled publication exists, and no branch

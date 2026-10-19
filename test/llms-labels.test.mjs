@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, generated } from '../src/bundle.mjs';
+import { renderBlocks, START, END } from '../.repo-build/render-set.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const entries = readFileSync(new URL('../llms.txt', import.meta.url), 'utf8')
@@ -27,11 +28,12 @@ test('describe() gives the manifest a real label and drops a trailing colon', ()
 
 test('Generated sibling links keep the README descriptions and absolute URLs', () => {
   const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
-  const rows = [...readme.matchAll(/^\| \[(agent-personalizer|model-orchestrator)\]\((https:\/\/github\.com\/[^)]+)\) \| (.+) \|$/gm)];
-  assert.equal(rows.length, 2, 'both sibling rows exist');
+  const set = JSON.parse(readFileSync(new URL('../.repo-build/set.json', import.meta.url), 'utf8'));
+  const blocks = renderBlocks(set, 'website-build-skill');
+  const block = text => text.slice(text.indexOf(START), text.indexOf(END) + END.length);
   const index = generated(root)['llms.txt'];
-  assert.ok(index.includes('## Part of a set\n'));
-  for (const [, name, url, description] of rows) {
-    assert.ok(index.includes(`- [${name}](${url}): ${description}`), name);
-  }
+  assert.equal(set.rows.length, 4, 'the shared set has four rows');
+  assert.equal(block(index), blocks.llms);
+  assert.equal(block(readme), blocks.readme);
+  assert.ok(index.includes(blocks.llms + '\n\n## Active sources\n'));
 });
