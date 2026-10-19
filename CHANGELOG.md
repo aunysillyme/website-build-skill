@@ -4,6 +4,13 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.21] - 2026-10-18
+
+### Changed
+
+- The model-orchestrator row in "Part of a set" and llms.txt matches its current npm description.
+- The evidence, sandbox, tools and proof notes moved from the README front page to docs/COMPATIBILITY.md.
+
 ## [0.1.20] - 2026-10-18
 
 ### Fixed
@@ -262,7 +269,9 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...HEAD
+[0.1.21]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.20...v0.1.21
+[0.1.20]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...v0.1.17
