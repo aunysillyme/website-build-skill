@@ -4,6 +4,13 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.22] - 2026-10-19
+
+### Changed
+
+- The README and llms.txt "Part of a set" sections now render from the shared four-row set file, adding repo-build-skill and using each package's npm description for its line.
+- CI checks the set blocks and pinned renderer and set file hashes offline.
+
 ## [0.1.21] - 2026-10-18
 
 ### Changed
@@ -269,7 +276,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...HEAD
+[0.1.22]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...v0.1.19

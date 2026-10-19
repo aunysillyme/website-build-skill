@@ -24,7 +24,7 @@ Built page:
 
 ![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
 
-See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md).
+See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md).
 
 Treat the first mockup as a draft: say what feels off and ask again.
 
@@ -39,7 +39,7 @@ The one-page entry is one measured demo run through Prove, with limits. Other ti
 
 | Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md). |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md). |
 | Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
 | Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
@@ -54,7 +54,7 @@ The recorded host trials cover loading the skill, about 1-3 minutes, with one ru
 each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
 [Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
 [Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.21/docs/showcase/README.md) separately records
+These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md) separately records
 24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
 Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
 writing the report afterward is excluded. One host, one model and placeholder content
@@ -113,15 +113,16 @@ Ask your AI to name the files it read before starting.
 | Hosting and operations | It learns to promote an exact release artifact, verify live routes, plan rollback, and document monitoring, recovery and maintenance ownership. | [Deploy and operate](skills/website-build-skill/playbooks/deploy-and-operate.md), [ship and verify](skills/website-build-skill/prompts/11-ship-and-verify.md) |
 | Review and release | It learns to prepare a fixed candidate for review by a different model family, reproduce findings, verify fixes, and check release authority and evidence. | [Adversarial review](skills/website-build-skill/prompts/10-adversarial-pre-ship.md), [ship checklist](skills/website-build-skill/checklists/ship.md) |
 
+<!-- set:start -->
 ## Part of a set
-
-Three open-source tools that work on their own and fit together:
 
 | Repo | What it gives you |
 |---|---|
-| [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | One interview writes the profile and rules every AI you use reads, kept in sync from one source. |
-| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: routes routine work to cheaper models with routing rules, 8 subagents, hooks and a CLI runner. |
-| **website-build-skill** | A skill pack that teaches your AI current website-building expertise: research, design, code, accessibility, performance, search and security. |
+| [agent-personalizer](https://github.com/aunysillyme/agent-personalizer) | AI custom instructions from approved entries: a profile and rules for Claude Code, Codex, Cursor, Gemini CLI and ChatGPT, kept in sync from one source. |
+| [model-orchestrator](https://github.com/aunysillyme/model-orchestrator) | Model router for AI coding agents: routes routine work to cheaper models with routing rules, 8 subagents, hooks and a CLI runner |
+| [repo-build-skill](https://github.com/aunysillyme/repo-build-skill) | Skill pack that teaches your AI to build, release and launch a GitHub repo: stack pick, README, AGENTS.md, llms.txt, repo SEO and AEO, trusted publishing. |
+| **website-build-skill** | A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team. |
+<!-- set:end -->
 
 ## How your AI uses it on a site
 

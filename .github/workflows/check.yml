@@ -37,6 +37,10 @@
           }
         },
         {
+          "name": "Check the Part of a set block (offline)",
+          "run": "node scripts/check-set.mjs"
+        },
+        {
           "name": "Content, links, privacy, bundle drift and evidence gates",
           "run": "node scripts/check.mjs"
         },
