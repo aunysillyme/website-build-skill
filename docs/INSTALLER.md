@@ -14,7 +14,7 @@ Copy the complete `skills/website-build-skill/` directory into a new, empty dest
 | Claude Code | `.claude/skills/website-build-skill/` | Read back the entrypoint and assets |
 | Codex | `.agents/skills/website-build-skill/` | Inspect discovery and invocation |
 | Hermes | `.agents/skills/website-build-skill/` | Check trust and shared discovery |
-| Gemini (via Antigravity CLI) | `.website-build-skill/` | Ask the session to read the entrypoint |
+| Gemini (via Antigravity CLI) | `.agents/skills/website-build-skill/` | Ask the session to read the entrypoint |
 | Generic agent | `.website-build-skill/` | Read the entrypoint and preserve existing routers |
 | Grok file-capable host | `.grok/skills/website-build-skill/` | Read back the entrypoint, or paste the bundles |
 
