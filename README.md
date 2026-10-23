@@ -191,7 +191,7 @@ current status host by host.
 | [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust and loading steps | Shared method files; TEAM adds the full role bundles |
-| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; read `.website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
+| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; read `.agents/skills/website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
 | [Grok Bot](adapters/grok.md) | Attach the five bundles and follow the manual team setup | Complete role instructions and addressed handoffs |
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instructions | The SOLO method in your chat |
 | [ChatGPT](adapters/chatgpt-project.md) | Add the instructions and five bundles to a Project or [custom GPT](adapters/custom-gpt.md) | The SOLO method and saved state packets |
