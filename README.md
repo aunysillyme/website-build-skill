@@ -4,7 +4,7 @@
 
 Your AI builds from what is true on the day you ask, not from what it remembers.
 
-[![npm version](https://img.shields.io/npm/v/website-build-skill)](https://www.npmjs.com/package/website-build-skill)
+[![npm version](https://img.shields.io/npm/v/website-build-skill)](https://www.npmjs.com/package/website-build-skill) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/aunysillyme/website-build-skill/badge)](https://scorecard.dev/viewer/?uri=github.com/aunysillyme/website-build-skill)
 [![Repository checks](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml/badge.svg)](https://github.com/aunysillyme/website-build-skill/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
