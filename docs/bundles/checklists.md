@@ -116,6 +116,17 @@ may carry historical years. An archive copied into an active route fails.
 Do not exempt adjacent wrapper instructions, entire cited files, or generic code fences.
 The manifest marks the graphics archive inactive and excludes it from active bundles.
 
+## UI component libraries (before a component enters a site)
+
+Research a third-party component library with the same receipts as any claim: read its licence from the file that governs the code you copy (its LICENSE file or licence page), quote the sentence that decides each point, and record the URL and the date read. Free and paid tiers often carry different licences, so the paid tier's licence decides a paid kit.
+
+- **Ship-safe test:** the component may appear inside a client or own website. The component source may not be sold, sublicensed or redistributed alone, in a bundle or as a ported copy. The copyright and permission notice stays in every copied file.
+- **Media is not code:** marketplace demo pages, screenshots, GIFs and video previews are often owned by the platform. Copy code under its own licence, never the previews.
+- **Credit the author** on the page or in a credits file, with a link to the source component, whenever the licence asks for it or the source is one person's work.
+- **Stack check:** name the runtime a component needs (React, Tailwind, a motion library). A plain HTML/CSS site takes only components that port without it.
+- **Motion:** note each transition or animation and whether it honours `prefers-reduced-motion`. Add the media query when the source does not.
+- **Agent installs:** a CLI or MCP install writes files into the project. List which files it writes and which credentials it needs (by name, never by value) before running it.
+
 ## Gate receipt
 
 Require scope.md, the exact library revision, sources.md, all domain dispositions,
