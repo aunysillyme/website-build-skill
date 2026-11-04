@@ -3,13 +3,13 @@
 TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 
 Check the installed client's file access and session permissions before starting.
-Manual SOLO: copy the canonical folder into `.website-build-skill/` and explicitly ask the session to read its SKILL.md.
+Manual SOLO: copy the canonical folder into `.agents/skills/website-build-skill/` and explicitly ask the session to read its SKILL.md.
 Install the files: `npx website-build-skill --team --target antigravity --dir . --scope project --yes`.
 
 ## Open the workers
 
 Open seven sessions yourself, Researcher first. In each session, load the complete
-`roles/<role>.md` from `.website-build-skill/`, plus the linked resources and current handoff.
+`roles/<role>.md` from `.agents/skills/website-build-skill/`, plus the linked resources and current handoff.
 Use the [manual relay](grok.md#manual-fallback) to carry packets and attachments.
 Record each session reference, actual model family and available tools.
 Keep command execution off by default; verify the host setting with a permission probe.
