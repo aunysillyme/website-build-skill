@@ -116,3 +116,41 @@ test('WORKFLOW rejects top-level writes, all-write and reusable floating actions
   baseline.jobs.external = { uses: 'example/workflow/.github/workflows/run.yml@main', 'timeout-minutes': 5 };
   assert.ok(workflowIssues('check.yml', JSON.stringify(baseline)).some(s => s.startsWith('ACTION_PIN:')));
 });
+
+test('WORKFLOW permits OIDC only in the release publish and Scorecard analysis jobs', () => {
+  const workflow = JSON.parse(read(root, '.github/workflows/check.yml'));
+  workflow.jobs = { analysis: { permissions: { 'id-token': 'write' }, 'timeout-minutes': 5 } };
+  const checkOidc = (name, job) => {
+    workflow.jobs = { [job]: { permissions: { 'id-token': 'write' }, 'timeout-minutes': 5 } };
+    return workflowIssues(name, JSON.stringify(workflow)).filter(issue => issue.startsWith('WORKFLOW_PERMISSIONS:'));
+  };
+  assert.deepEqual(checkOidc('.github/workflows/scorecard.yml', 'analysis'), []);
+  assert.deepEqual(checkOidc('.github/workflows/release.yml', 'publish'), []);
+  for (const [name, job] of [
+    ['.github/workflows/scorecard.yml', 'publish'],
+    ['.github/workflows/release.yml', 'analysis'],
+    ['.github/workflows/other.yml', 'analysis'],
+    ['.github/workflows/other.yml', 'publish'],
+  ]) assert.ok(checkOidc(name, job).length, `${name}:${job}`);
+  workflow.permissions = { 'id-token': 'write' };
+  assert.ok(workflowIssues('.github/workflows/scorecard.yml', JSON.stringify(workflow)).includes('WORKFLOW_PERMISSIONS:.github/workflows/scorecard.yml:id-token'));
+});
+
+test('WORKFLOW permits Scorecard analysis permissions only in that job', () => {
+  const workflow = JSON.parse(read(root, '.github/workflows/check.yml'));
+  for (const [key, value] of [['actions', 'read'], ['security-events', 'write']]) {
+    for (const [name, job, allowed] of [
+      ['.github/workflows/scorecard.yml', 'analysis', true],
+      ['.github/workflows/scorecard.yml', 'other', false],
+      ['.github/workflows/other.yml', 'analysis', false],
+      ['.github/workflows/release.yml', 'publish', false],
+    ]) {
+      workflow.jobs = { [job]: { permissions: { [key]: value }, 'timeout-minutes': 5 } };
+      const issues = workflowIssues(name, JSON.stringify(workflow));
+      assert.equal(issues.includes(`WORKFLOW_PERMISSIONS:${name}:${job}:${key}`), !allowed, `${name}:${job}:${key}`);
+    }
+    workflow.permissions = { [key]: value };
+    assert.ok(workflowIssues('.github/workflows/scorecard.yml', JSON.stringify(workflow)).includes(`WORKFLOW_PERMISSIONS:.github/workflows/scorecard.yml:${key}`));
+    workflow.permissions = { contents: 'read' };
+  }
+});

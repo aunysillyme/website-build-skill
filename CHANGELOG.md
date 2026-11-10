@@ -4,6 +4,13 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.23] - 2026-11-10
+
+### Changed
+
+- Pin the publishing npm version and monitor action updates.
+- Update the recorded repository security settings.
+
 ## [0.1.22] - 2026-10-19
 
 ### Changed

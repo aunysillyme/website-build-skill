@@ -41,7 +41,7 @@
         },
         {
           "name": "Trusted publishing needs npm 11.5.1 or newer",
-          "run": "npm install -g npm@latest\nnpm --version"
+          "run": "npm install -g npm@12.2.0\nnode -e \"const v = require('child_process').execFileSync('npm', ['--version'], { encoding: 'utf8' }).trim(); if (!/^\\d+\\.\\d+\\.\\d+$/.test(v)) process.exit(1); const [major, minor, patch] = v.split('.').map(Number); if (major < 11 || (major === 11 && (minor < 5 || (minor === 5 && patch < 1)))) process.exit(1); console.log(v);\""
         },
         {
           "name": "The tag and package.json must name the same version",
