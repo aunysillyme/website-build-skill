@@ -125,6 +125,9 @@ export function installClaimIssues(name, text, published = false) {
 const PINNED_VERSIONS = {
   'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1': 'v7.0.1',
   'actions/setup-node@820762786026740c76f36085b0efc47a31fe5020': 'v7.0.0',
+  'ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e': 'v2.5.0',
+  'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9': 'v7.0.2',
+  'github/codeql-action/upload-sarif@24c54180a607b1449ed407dd24f251e4e9147c8d': 'v4.38.3',
 };
 
 export function workflowIssues(name, text) {
@@ -132,16 +135,18 @@ export function workflowIssues(name, text) {
   let workflow;
   try { workflow = JSON.parse(text); }
   catch { return [`WORKFLOW_FORMAT:${name}:use the JSON subset of YAML for structural validation`]; }
-  // One exception, as narrow as it can be written: npm trusted publishing exchanges an OIDC
-  // token for a short-lived credential, so the publish job of the release workflow needs
-  // id-token: write. No other workflow, no other job, and no other permission value.
+  // OIDC is limited to the release publisher and the Scorecard analysis job.
   const publisher = name === '.github/workflows/release.yml';
+  const scorecard = name === '.github/workflows/scorecard.yml';
   const checkPermissions = (permissions, location, job) => {
     if (!permissions || typeof permissions !== 'object' || Array.isArray(permissions)) issues.push(`WORKFLOW_PERMISSIONS:${location}`);
     else for (const [key, value] of Object.entries(permissions)) {
       if (key === 'contents' && value === 'read') continue;
       if (value === 'none') continue;
-      if (publisher && job === 'publish' && key === 'id-token' && value === 'write') continue;
+      if (key === 'id-token' && value === 'write' &&
+          ((publisher && job === 'publish') || (scorecard && job === 'analysis'))) continue;
+      if (scorecard && job === 'analysis' &&
+          ((key === 'actions' && value === 'read') || (key === 'security-events' && value === 'write'))) continue;
       issues.push(`WORKFLOW_PERMISSIONS:${location}:${key}`);
     }
   };
