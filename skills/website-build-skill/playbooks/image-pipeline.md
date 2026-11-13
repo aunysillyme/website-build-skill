@@ -52,6 +52,12 @@ Identify the likely LCP image from the real route and a measurement trace.
 Make the important image discoverable in initial HTML and avoid lazy loading it.
 Lazy load appropriate below-fold images and test behavior with JavaScript unavailable.
 Avoid preloading every image; verify that a critical preload matches the selected resource.
+For an LCP image, inspect request discovery and priority in the route trace. Where
+contention warrants it, evaluate `fetchpriority="high"` for the critical image;
+do not assign high priority to every image. Inspect requests for initially hidden
+images and media posters, and defer or lower priority only when it helps without
+delaying the user's interaction. Compare traces before and after priority changes,
+including the responsive candidate and the fallback for the project's browser targets.
 
 ## Verify and hand off
 
@@ -69,5 +75,6 @@ Apply checklists/brand-and-mockups.md BM07 and checklists/performance-seo.md PS0
 - False dimensions: one social-card size is copied across unequal files.
 - Nondeterminism: unchanged originals churn names and invalidate caches.
 
-Open https://sharp.pixelplumbing.com/ and the selected browser image guidance.
+Open https://sharp.pixelplumbing.com/, https://web.dev/articles/optimize-lcp,
+and the selected browser image guidance.
 Record the exact API version, actual source access, and inspected export results.

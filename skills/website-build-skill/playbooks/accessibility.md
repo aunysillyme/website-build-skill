@@ -29,6 +29,11 @@ Test menus, dialogs, validation errors, dismissal, retry, and success.
 Record visible focus, logical order, no trap, and restoration after closing overlays.
 Confirm focused content is visible and not hidden behind sticky UI.
 Test the escape path and focus destination when asynchronous content replaces a control.
+Where responsive layout changes visual order, compare it with reading and Tab order
+at the tested widths; investigate any confusing sequence.
+If custom Enter submission exists, verify a user can confirm IME composition without
+sending or cancelling the input, then submit normally. Test the supported browser and
+IME combination and keep an accessible submit action.
 
 ## Compute contrast
 
@@ -47,6 +52,9 @@ Never round a failure upward or silently change an approved brand role to claim 
 Associate labels and descriptions with inputs; preserve useful entered data on errors.
 Explain each error, its location, and a practical way to recover.
 Test status announcements with a named screen reader/browser combination.
+For validation, compare when visible errors appear with the programmatic invalid state
+and associated descriptions. Check correction, reset, autofill, and server-returned
+errors where present; do not leave stale or repeated announcements.
 Inspect image alternatives for their actual purpose, with empty alternatives for decoration.
 Provide required media alternatives and usable controls.
 Automated semantics checks supplement actual assistive-technology journeys.
