@@ -4,6 +4,13 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.24] - 2026-11-13
+
+### Changed
+
+- Add optional task-focused web guidance discovery with source revision, primary-source verification, and untrusted-content safeguards.
+- Strengthen form, navigation, responsive-order and image-priority checks while preserving project browser targets and existing evidence gates.
+
 ## [0.1.23] - 2026-11-10
 
 ### Changed
@@ -283,7 +290,9 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.24...HEAD
+[0.1.24]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.23...v0.1.24
+[0.1.23]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...v0.1.22
 [0.1.21]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.20...v0.1.21
 [0.1.20]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...v0.1.20

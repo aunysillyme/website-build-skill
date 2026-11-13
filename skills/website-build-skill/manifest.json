@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.23",
+  "packageVersion": "0.1.24",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "1f3e0f957bb0334355653abb3e6054c706b7d8d95e7d9f9ddc95ec014e19493d"
+      "sha256": "0e35fb39a5e6734c1b71a30b0adabf930fbf0c2630a8163f613b7ce27d28c5e8"
     },
     {
       "path": "manifest.json",
