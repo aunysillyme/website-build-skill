@@ -30,7 +30,7 @@ Record visible focus, logical order, no trap, and restoration after closing over
 Confirm focused content is visible and not hidden behind sticky UI.
 Test the escape path and focus destination when asynchronous content replaces a control.
 Where responsive layout changes visual order, compare it with reading and Tab order
-at the tested widths; investigate any confusing sequence.
+at the tested widths; record any confusing sequence and its outcome.
 If custom Enter submission exists, verify a user can confirm IME composition without
 sending or cancelling the input, then submit normally. Test the supported browser and
 IME combination and keep an accessible submit action.

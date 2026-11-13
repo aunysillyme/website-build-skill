@@ -240,7 +240,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f89b70c8a816bf6e6b8780811e11a7219fde9a8f736a8bcf5b239df24733d0bb"
+      "sha256": "b0e74859718b846b0e05377d17559d93e2a5be675a28783e3c7c6a003cdce8c5"
     },
     {
       "path": "roles/researcher.md",
@@ -390,7 +390,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9b97d1b9442a8b6c202f9a6de30f726884feeebbd26e6d88fb9727a028540745"
+      "sha256": "8ebcfd074482b02154947c22a087b93575e94f927eab543c080e4afa73266424"
     },
     {
       "path": "playbooks/self-hosted-fonts.md",
@@ -480,7 +480,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0bcab1984973aa85ff93e4f1afc5130add725e85766121c207f675999e2bc503"
+      "sha256": "0707c58448f74b262b0cfaad9db7f712aef4bcafec1aec0638e02a7ae9a3e745"
     },
     {
       "path": "playbooks/research-and-memory.md",
@@ -557,7 +557,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "9463c85d1290e2a025ec866131f84848d6bf6fd84c5b06a44440fd6bd6542091"
+      "sha256": "9ca761ad7f7eb4a17ce2358513688b1e99e33acc1264e6b6ecf791fa6a7a83be"
     },
     {
       "path": "checklists/code-quality.md",
@@ -587,7 +587,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a17c18c77a7698a6b1f888b5e85cd9542258d01c5576f72071f8855ed846bdd7"
+      "sha256": "60c1c326aa473f48184f87e39c7aeea93ecf254aaa09ec009c823c0dd555878f"
     },
     {
       "path": "checklists/performance-seo.md",
@@ -602,7 +602,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "6bcf30483e02953790a4c2e18f0e0b575bab14625a29f8187d51bc1132ccf380"
+      "sha256": "779e35a60e52d1c61494b78e9fb97e3b78bcd596cf7692b843dc95991502f5e2"
     },
     {
       "path": "checklists/security.md",

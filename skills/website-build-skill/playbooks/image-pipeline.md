@@ -52,12 +52,14 @@ Identify the likely LCP image from the real route and a measurement trace.
 Make the important image discoverable in initial HTML and avoid lazy loading it.
 Lazy load appropriate below-fold images and test behavior with JavaScript unavailable.
 Avoid preloading every image; verify that a critical preload matches the selected resource.
-For an LCP image, inspect request discovery and priority in the route trace. Where
-contention warrants it, evaluate `fetchpriority="high"` for the critical image;
-do not assign high priority to every image. Inspect requests for initially hidden
-images and media posters, and defer or lower priority only when it helps without
-delaying the user's interaction. Compare traces before and after priority changes,
-including the responsive candidate and the fallback for the project's browser targets.
+For an LCP image, inspect request discovery and priority in the route trace. When
+an `<img>` is the LCP candidate and contention warrants it, evaluate
+`fetchpriority="high"`; do not assign high priority to every image. Inspect requests
+for initially hidden images and media posters, and defer or lower priority only when
+it helps without delaying the user's interaction. A video poster needs its own loading
+strategy; do not assume an image attribute applies to the `<video>` element. Compare
+traces before and after priority changes, including the responsive candidate and the
+fallback for the project's browser targets, and apply the PS01 measurement series.
 
 ## Verify and hand off
 
