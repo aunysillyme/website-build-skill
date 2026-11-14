@@ -125,9 +125,11 @@ export function installClaimIssues(name, text, published = false) {
 const PINNED_VERSIONS = {
   'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1': 'v7.0.1',
   'actions/setup-node@820762786026740c76f36085b0efc47a31fe5020': 'v7.0.0',
+  'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1': 'v7.1.0',
   'ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e': 'v2.5.0',
   'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9': 'v7.0.2',
   'github/codeql-action/upload-sarif@24c54180a607b1449ed407dd24f251e4e9147c8d': 'v4.38.3',
+  'github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066': 'v4.39.3',
 };
 
 export function workflowIssues(name, text) {

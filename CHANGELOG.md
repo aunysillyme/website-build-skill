@@ -4,6 +4,12 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Update setup-node to v7.1.0 and upload-sarif to v4.39.3, with matching workflow labels and upstream-tag-verified pins in the validator.
+
 ## [0.1.24] - 2026-11-13
 
 ### Changed
