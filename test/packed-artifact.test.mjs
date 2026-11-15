@@ -8,7 +8,7 @@ import { spawnSync } from 'node:child_process';
 import { files, digest } from '../src/bundle.mjs';
 import { linkIssues } from '../src/validate.mjs';
 
-test('Actual npm tarball excludes GIFs served by raw URLs, preserves documentation links and installs from its own bytes', () => {
+test('Actual npm tarball excludes GIFs and the showcase, preserves documentation links and installs from its own bytes', () => {
   const trial = realpathSync(mkdtempSync(resolve(tmpdir(), 'website-packed-')));
   const run = (command, args, cwd = process.cwd()) => {
     const result = spawnSync(command, args, { cwd, encoding: 'utf8', timeout: 60000,
@@ -29,6 +29,12 @@ test('Actual npm tarball excludes GIFs served by raw URLs, preserves documentati
     const [packed] = Array.isArray(report) ? report : Object.values(report);
     assert.deepEqual(packed.files.filter(file => /\.gif$/i.test(file.path)), [],
       'README hero and installer demo are served by raw URLs, so GIFs must not ship');
+    assert.deepEqual(packed.files.filter(file => file.path.startsWith('docs/showcase/')), [],
+      'the repository-only showcase must not ship');
+    assert.deepEqual(packed.files.filter(file => file.path.startsWith('evals/')), [],
+      'evaluation specifications must stay repository-only');
+    assert.deepEqual(packed.files.filter(file => file.path.startsWith('.repo-build/') || file.path === 'scripts/check-set.mjs'), [],
+      'the offline set checker and vendored inputs must stay repository-only');
     run('tar', ['-xzf', resolve(trial, packed.filename), '-C', trial]);
     const artifact = resolve(trial, 'package');
     const issues = files(artifact).filter(name => name.endsWith('.md') || name === 'llms.txt')
@@ -47,6 +53,14 @@ test('Actual npm tarball excludes GIFs served by raw URLs, preserves documentati
       '--package-lock=false', resolve(trial, packed.filename)], consumer);
     const require = createRequire(resolve(consumer, 'package.json'));
     const installed = dirname(require.resolve('website-build-skill/package.json'));
+    assert.equal(run(process.execPath, ['--input-type=module', '-e', `
+      import { resolve } from 'node:path';
+      import { pathToFileURL } from 'node:url';
+      const root = process.argv[1];
+      const { generated } = await import(pathToFileURL(resolve(root, 'src/bundle.mjs')));
+      process.stdout.write(generated(root)['llms.txt']);
+    `, installed]), readFileSync(resolve(installed, 'llms.txt'), 'utf8'),
+    'the installed generator preserves the prebuilt set block without .repo-build');
     const metadata = JSON.parse(readFileSync(resolve(installed, 'package.json'), 'utf8'));
     const bin = realpathSync(resolve(installed, metadata.bin['website-build-skill']));
     const assertConsumerBin = candidate => {
