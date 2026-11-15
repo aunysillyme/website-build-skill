@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
 const agreement = 'I agree to the Contributor License Agreement in CLA.md';
 const cla = () => JSON.parse(readFileSync('.github/workflows/cla.yml', 'utf8'));
@@ -100,4 +100,15 @@ test('Stable required check rejects failed, cancelled and skipped matrix runs', 
 
 test('CLA passes for an indented checked line with trailing spaces after a closed comment', () => {
   assert.equal(runCla(`<!-- note -->\n  - [x] ${agreement}  `).status, 0);
+});
+
+test('Release pins npm and rejects versions below the trusted publishing minimum', () => {
+  const workflow = JSON.parse(readFileSync('.github/workflows/release.yml', 'utf8'));
+  const step = workflow.jobs.publish.steps.find(item => item.name.includes('npm 11.5.1'));
+  assert.match(step.run, /^npm install -g npm@12\.2\.0\n/);
+  const versionCheck = step.run.split('\n').slice(1).join('\n');
+  for (const [version, expected] of [['11.5.0', 1], ['11.4.99', 1], ['10.99.99', 1], ['11.5.1', 0], ['12.2.0', 0], ['invalid', 1]]) {
+    const result = spawnSync('sh', ['-c', versionCheck], { encoding: 'utf8', env: { ...process.env, TEST_NPM_VERSION: version, NODE_OPTIONS: `--require "${resolve('test/npm-version-stub.cjs')}"` } });
+    assert.equal(result.status, expected, version);
+  }
 });

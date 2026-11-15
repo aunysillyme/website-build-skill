@@ -1,8 +1,7 @@
 # Repository settings
 
-Live read-back, not a plan. Every row below was read from the GitHub API on 2026-09-21
-(America/New_York) with `gh api`, and the settings applied that day were applied deliberately
-by the maintainer. Rerun the commands in [Read it back yourself](#read-it-back-yourself) before
+Live read-back, not a plan. Security and automation settings were read on 2026-11-10;
+other dated rows retain their original read-back dates. Rerun the commands in [Read it back yourself](#read-it-back-yourself) before
 trusting any row; a checklist is only as current as its last read.
 
 ## Description
@@ -50,7 +49,7 @@ A skill pack that turns your AI into an expert website builder: current research
 ## Review and automation
 
 Branch protection on `main` was applied 2026-09-21 in its administrator-bypassable form, so a
-sole maintainer can still push directly while force pushes, deletions and a red check cannot land.
+sole maintainer can still push directly. Force pushes and deletions are blocked for non-administrators; administrators are exempt.
 
 - [x] Require the `Repository checks` status, strict, on `main`. The context was established by real runs before the rule.
 - [x] Block force pushes and branch deletion.
@@ -58,11 +57,14 @@ sole maintainer can still push directly while force pushes, deletions and a red 
 - [x] Read-only default workflow token permissions; workflows cannot create or approve pull requests.
 - [x] Dependency alerts and automated security updates: ON, applied 2026-09-21. Action update proposals arrive as Dependabot pull requests.
 - [x] Secret scanning and push protection: ON.
+- [x] CodeQL default setup: configured.
+- [x] Repository Actions settings require full commit SHA pinning.
+- [x] The active `Protect release tags` ruleset applies to `refs/tags/v*` and blocks tag updates and deletion.
 - [x] Every action in this tree is pinned to a full commit SHA, and `ACTION_PIN` fails the check when one floats.
 - [ ] Administrator enforcement stays OFF by decision, because requiring review with one maintainer would block that maintainer's own work. Revisit when a second reviewer exists.
 - [ ] Require pull requests and an approving review for `main`: not applied, same reason.
 - [ ] Require code-owner review for source, workflow and publication changes: not applied.
-- [ ] Restrict the repository to selected actions, or require SHA pinning at the repository level: not applied. `allowed_actions` is `all`; the pinning that exists is in the workflow files.
+- [ ] Restrict the repository to selected actions: not applied; `allowed_actions` is `all`.
 - [ ] Publication setup: release.yml implements publishing on a matching version tag; only its publish job receives id-token: write. Registry bootstrap and trusted-publisher configuration require maintainer completion. No publication is established by the baseline receipt.
 - [ ] Maintainer notifications for failed Actions runs: delivery UNVERIFIED, no intentional safe failure has been sent.
 

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crumb &amp; Co, neighbourhood bakery (demo)</title>
+<meta name="description" content="Demo page for Crumb &amp; Co, a neighbourhood bakery: menu with prices, opening hours, address and an order-ahead button. All details are placeholders.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Crumb &amp; Co, neighbourhood bakery (demo)">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Menu, opening hours, address and order ahead. Demo content.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Crumb & Co",
+  "description": "DEMO placeholder listing for a neighbourhood bakery. Only the name is a given fact; the address and hours are invented for a demonstration page.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 Example Street",
+    "addressLocality": "Sampletown"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "07:00",
+      "closes": "15:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "07:00",
+      "closes": "16:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<p class="demo">Demo site: the business name is the only given fact. Menu, prices, hours, address and the order link are placeholders.</p>
+<header class="wrap">
+  <div class="bar">
+    <div class="name">Crumb &amp; Co</div>
+    <a class="btn" href="https://example.com/crumb-and-co/order" rel="noopener noreferrer">Order ahead</a>
+  </div>
+</header>
+<main>
+  <div class="wrap"><h1>Fresh bread, baked every morning.</h1></div>
+  <div class="wrap">
+    <div class="strip">
+      <section aria-labelledby="hours-h">
+        <h2 id="hours-h">Opening hours</h2>
+        <table class="hours">
+          <tbody>
+            <tr><th scope="row">Monday</th><td>Closed</td></tr>
+            <tr><th scope="row">Tuesday to Friday</th><td>7:00 am to 3:00 pm</td></tr>
+            <tr><th scope="row">Saturday</th><td>7:00 am to 4:00 pm</td></tr>
+            <tr><th scope="row">Sunday</th><td>8:00 am to 2:00 pm</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section aria-labelledby="find-h">
+        <h2 id="find-h">Find us</h2>
+        <address>
+          <p>Crumb &amp; Co<br>12 Example Street, Sampletown</p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=12%20Example%20Street%2C%20Sampletown" rel="noopener noreferrer">Open in Maps</a>
+        </address>
+      </section>
+      <section aria-labelledby="order-h">
+        <h2 id="order-h">Order ahead</h2>
+        <p>Pick up warm, skip the queue.</p>
+        <a class="btn" href="https://example.com/crumb-and-co/order" rel="noopener noreferrer">Order ahead</a>
+      </section>
+    </div>
+  </div>
+  <section class="wrap menu" aria-labelledby="menu-h">
+    <h2 id="menu-h">Menu</h2>
+    <div class="cols">
+    <ul>
+      <li><span>Country sourdough loaf</span><span class="price">$7.50</span></li>
+      <li><span>Seeded rye loaf</span><span class="price">$8.00</span></li>
+      <li><span>Butter croissant</span><span class="price">$3.75</span></li>
+      <li><span>Cardamom and brown butter morning bun with orange glaze<span class="note">Baked in small batches, gone by noon most days</span></span><span class="price">$4.75</span></li>
+      <li><span>Cinnamon roll</span><span class="price">$4.25</span></li>
+    </ul>
+    <ul>
+      <li><span>Blueberry scone</span><span class="price">$3.50</span></li>
+      <li><span>Almond tart</span><span class="price">$4.50</span></li>
+      <li><span>Drip coffee</span><span class="price">$3.00</span></li>
+      <li><span>Hot chocolate</span><span class="price">$3.75</span></li>
+    </ul>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap"><p>Demo site made with website-build-skill</p></div>
+</footer>
+</body>
+</html>

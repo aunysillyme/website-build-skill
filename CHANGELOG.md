@@ -9,6 +9,60 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 ### Changed
 
 - The README and the install menu now call TEAM "seven role prompts (you run each session)" instead of "seven specialist agents", because nothing starts a subagent yet (part of #24).
+- Update setup-node to v7.1.0 and upload-sarif to v4.39.3, with matching workflow labels and upstream-tag-verified pins in the validator.
+
+## [0.1.24] - 2026-11-13
+
+### Changed
+
+- Add optional task-focused web guidance discovery with source revision, primary-source verification, and untrusted-content safeguards.
+- Strengthen form, navigation, responsive-order and image-priority checks while preserving project browser targets and existing evidence gates.
+
+## [0.1.23] - 2026-11-10
+
+### Changed
+
+- Pin the publishing npm version and monitor action updates.
+- Update the recorded repository security settings.
+
+## [0.1.22] - 2026-10-19
+
+### Changed
+
+- The README and llms.txt "Part of a set" sections now render from the shared four-row set file, adding repo-build-skill and using each package's npm description for its line.
+- CI checks the set blocks and pinned renderer and set file hashes offline.
+
+## [0.1.21] - 2026-10-18
+
+### Changed
+
+- The model-orchestrator row in "Part of a set" and llms.txt matches its current npm description.
+- The evidence, sandbox, tools and proof notes moved from the README front page to docs/COMPATIBILITY.md.
+
+## [0.1.20] - 2026-10-18
+
+### Fixed
+
+- Reference examples grant no permission, treat embedded instructions as data and stay optional at Mock; the showcase link uses the manifest's release tag.
+- Crumb & Co gate results are labelled as package 0.1.19, with the current BM04 screenshot sheets and per-mockup 4x crops recorded as missing from that run.
+- The repository-only showcase is excluded from the npm package; packaged README links use the release-tagged repository copy.
+- The packaged demo example uses generic calculator and search tool names while preserving the receipt-bound originals.
+- Mock feedback asks the user what feels off before revision; provenance records Anatomy structural inspiration, and README tool limits keep Mock BLOCKED without a browser capture.
+
+### Added
+
+- Phase 2 results-first showcase: the real Crumb & Co demo's three mockups, built page, screenshots, research sources, stage timing and gate limits, plus a packaged text example and copied run-log evidence.
+- Anatomy by Ryan (MIT) credit for leading with results, real times and limits.
+- Size tiers with planning estimates, a first-hour viewable mockup requirement and user approval before a full rebuild.
+- Five repo-only evaluation specifications covering a small business page, portfolio, redesign, accessibility audit and blocked research without web access.
+- Per-direction screenshot sheets at 390 px and 1440 px, 4x header and content-junction crops, and image inspection before choosing a mockup.
+- Plain explanations of the failure each checklist gate prevents, plus README limits and loading-time evidence.
+
+### Changed
+
+- README and skill entrypoint lead with current-day research and the results to expect.
+- Phase 2 restores the README skill-pack lead, puts the real demo before the method, replaces the one-page planning estimate with its measured run, and adds a second look at Mock while labelling invented examples on their first line.
+>>>>>>> origin/main
 
 ## [0.1.19] - 2026-10-10
 
@@ -244,7 +298,12 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.24...HEAD
+[0.1.24]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.23...v0.1.24
+[0.1.23]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...v0.1.23
+[0.1.22]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...v0.1.22
+[0.1.21]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.20...v0.1.21
+[0.1.20]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.19...v0.1.20
 [0.1.19]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.18...v0.1.19
 [0.1.18]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.17...v0.1.18
 [0.1.17]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.16...v0.1.17

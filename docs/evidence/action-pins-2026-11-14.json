@@ -1,0 +1,31 @@
+{
+  "command": "gh api repos/actions/setup-node/git/ref/tags/v7.1.0; gh pr diff 34 -R aunysillyme/website-build-skill; gh api repos/github/codeql-action/git/ref/tags/v4.39.3; gh api repos/github/codeql-action/git/tags/f3bbb05694c2f74569081c28664c0866d64dec21",
+  "environment": {
+    "os": "darwin",
+    "architecture": "arm64",
+    "node": "v22.23.4"
+  },
+  "date": "2026-11-14T22:38:35.020Z",
+  "exitCode": 0,
+  "artifact": "src/validate.mjs",
+  "artifactSha256": "f7e75137f170f885901e531abdb2f3092aa8e652bbc3ab51bd53bd4f47813e49",
+  "digestMethod": "SHA-256 of src/validate.mjs after adding the two verified pins.",
+  "observed": {
+    "setupNode": {
+      "tag": "v7.1.0",
+      "refObjectType": "commit",
+      "commit": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+    },
+    "uploadSarif": {
+      "tag": "v4.39.3",
+      "refObjectType": "tag",
+      "tagObject": "f3bbb05694c2f74569081c28664c0866d64dec21",
+      "targetObjectType": "commit",
+      "commit": "33d7b85da1a04171e211befe2c739303b9a4c066",
+      "matchesPullRequest": 34
+    }
+  },
+  "limitations": [
+    "Tag-to-commit verification only. Hosted workflow execution and cryptographic signature verification are not established."
+  ]
+}
