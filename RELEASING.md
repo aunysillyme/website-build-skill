@@ -74,7 +74,7 @@ Check writes nothing. Tests create synthetic scratch directories only under `.te
 The installer writes only its destination, the output root probe it removes, and its receipt.
 The check workflow has only `contents: read`. The release workflow's publish job adds exactly
 one permission, `id-token: write`, for the OIDC exchange, and the workflow validator refuses
-that permission at the top level, in any other job, and in any other workflow.
+that permission at the top level and in every job except the release publish job and the Scorecard analysis job. The Scorecard analysis job also permits `actions: read` and `security-events: write` for analysis and SARIF upload.
 
 ## The closed loop
 
@@ -117,7 +117,7 @@ No separate watchdog is configured. The public repository owner is the failure r
 - Bundle drift: review the source change and regenerate, then rerun check. Never have CI silently repair the candidate.
 - Private data: remove it from all public artifacts; if already exposed, use private incident handling and rotate affected credentials through the owner's authorized process.
 - Claim review pending: review the prose and actual evidence before updating its checksum entry; the generator must not approve claims.
-- Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving only the reviewed publish-job OIDC exception.
+- Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving the reviewed release publish and Scorecard analysis permission exceptions.
 - Local tests fail: stop publication, reproduce, fix confirmed defects and rerun the affected harness.
 - Runtime or network unavailable: report BLOCKED with the failing command; do not substitute a pass.
 - Publication partly succeeds: inspect registry and release state before any retry. Never assume an npm version can be overwritten or routinely deleted.
