@@ -148,11 +148,11 @@ Every site follows the same twelve stages, so your AI researches before it desig
 | Choice | What happens | Works with |
 |---|---|---|
 | **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
-| **2 · Give me the team** (TEAM) | Seven specialist agents, one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
+| **2 · Give me the team** (TEAM) | Seven role prompts (you run each session), one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
-The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root.
+The installer also asks where to save the work: an Obsidian vault folder, a folder on this computer (default: your project folder), Notion (a local working copy plus an export of the finished library), or another local folder. That folder becomes the workspace root. See [what the installer asks](docs/INSTALLER.md#what-the-installer-asks) for the full menu.
 
 SOLO follows the same jobs with saved self-handoffs. TEAM uses seven sessions you open yourself, with handoffs you carry between them and Researcher first:
 
@@ -191,7 +191,7 @@ current status host by host.
 | [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
 | [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust and loading steps | Shared method files; TEAM adds the full role bundles |
-| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; read `.website-build-skill/SKILL.md` | Portable method files; TEAM adds the full role bundles |
+| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; it writes `.agents/skills/website-build-skill/`, where Antigravity looks for workspace skills | Method files; TEAM adds the full role bundles |
 | [Grok Bot](adapters/grok.md) | Attach the five bundles and follow the manual team setup | Complete role instructions and addressed handoffs |
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instructions | The SOLO method in your chat |
 | [ChatGPT](adapters/chatgpt-project.md) | Add the instructions and five bundles to a Project or [custom GPT](adapters/custom-gpt.md) | The SOLO method and saved state packets |

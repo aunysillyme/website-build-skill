@@ -6,8 +6,21 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added
+
+- Implemented native subagent definition generation in `src/agents.mjs` (`generateAgents`) and wired it into `--team` installs for `claude-code` (`.claude/agents/website-*.md`) and `codex` (`.codex/agents/website-*.toml`), with read-only permissions for `reviewer` and full receipt-tracked uninstall (#24).
+
+### Fixed
+
+- `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+
 ### Changed
 
+- Soften hard stops when web access or a different-family reviewer is unavailable (proceed with `UNVERIFIED` / `INTERNAL (UNVERIFIED)` receipts), make `agents.json`, `ai-instructions.json`, and `data-agent-*` optional in SEO discovery, and add an outcome-eval comparison harness (`scripts/eval-outcome.mjs`, `test/outcome-eval.test.mjs`) (#26).
+- Trim `playbooks/research-and-memory.md`'s ASK DATE rule to a compact summary and reinforce lazy checklist loading in `SKILL.md` (#22).
+- The README and the install menu now call TEAM "seven role prompts (you run each session)" instead of "seven specialist agents", because nothing starts a subagent yet (part of #24).
+- SKILL.md now opens with what the agent does when invoked. The human install menu moved to the installer docs (`docs/INSTALLER.md`), and the check now requires it there and refuses it in SKILL.md (#23).
+- The skill description names more triggers: landing page, portfolio, homepage, Astro or Next.js sites, and Lighthouse or accessibility audits (#23).
 - Update setup-node to v7.1.0 and upload-sarif to v4.39.3, with matching workflow labels and upstream-tag-verified pins in the validator.
 
 ## [0.1.24] - 2026-11-13
@@ -61,6 +74,7 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 - README and skill entrypoint lead with current-day research and the results to expect.
 - Phase 2 restores the README skill-pack lead, puts the real demo before the method, replaces the one-page planning estimate with its measured run, and adds a second look at Mock while labelling invented examples on their first line.
+>>>>>>> origin/main
 
 ## [0.1.19] - 2026-10-10
 

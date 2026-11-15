@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0e35fb39a5e6734c1b71a30b0adabf930fbf0c2630a8163f613b7ce27d28c5e8"
+      "sha256": "9949defeead9b354009f2162981ffa3ba1f436d75ed50de704ff24b92145890c"
     },
     {
       "path": "manifest.json",
@@ -450,7 +450,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d6dc53bd67a92f4403287638616c4c32e0f3632057643417d1d3f2b75409954d"
+      "sha256": "14a2252fbb3cf70adfb6931f1fa4acc906b818ce874253ea5ba7b48c3c46d83a"
     },
     {
       "path": "playbooks/performance-budgets.md",
@@ -497,7 +497,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "dbac7440d87a85d1f8970b10938d91baa7203b5a596f1f902dfe347b5baecaad"
+      "sha256": "81a502eb9a46dcc8a92f388d1b9037bd4f1d191b969106966da876b3909155a4"
     },
     {
       "path": "playbooks/deploy-and-operate.md",
@@ -602,7 +602,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "779e35a60e52d1c61494b78e9fb97e3b78bcd596cf7692b843dc95991502f5e2"
+      "sha256": "4203399f7c2be8938456e3a5c7fd15ffe836224fe91520281d133c5d009d5b71"
     },
     {
       "path": "checklists/security.md",
@@ -692,7 +692,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d90a9274f6f34126a5a8816f9ba3905b7f38435ccf2296b446ec67962ce0b518"
+      "sha256": "42674f99152111f58783ad3d1d00eafc44c022927dd0bd3e520ce693d23136e4"
     },
     {
       "path": "templates/brief.md",

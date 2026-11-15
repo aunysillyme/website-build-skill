@@ -78,10 +78,21 @@ test('3 Modes are exclusive and TEAM copies complete bundles with manual relay',
   const teamDir = resolve(dir, 'team');
   const team = install({ ...request(teamDir), mode: 'team' });
   assert.equal(team.code, 0);
-  assert.match(team.message, /adapters\/grok.md#manual-fallback/);
-  assert.match(team.message, /No native agent definitions were generated/);
+  assert.match(team.message, /Generated 7 native subagent definitions for codex/);
+  assert.ok(fs.existsSync(resolve(teamDir, '.codex/agents/website-researcher.toml')));
+  assert.match(fs.readFileSync(resolve(teamDir, '.codex/agents/website-reviewer.toml'), 'utf8'), /sandbox_mode = "read-only"/);
+  const claudeDir = resolve(dir, 'claude-team');
+  const claudeTeam = install({ ...request(claudeDir), target: 'claude-code', mode: 'team' });
+  assert.equal(claudeTeam.code, 0);
+  assert.match(claudeTeam.message, /Generated 7 native subagent definitions for claude-code/);
+  assert.ok(fs.existsSync(resolve(claudeDir, '.claude/agents/website-researcher.md')));
+  assert.match(fs.readFileSync(resolve(claudeDir, '.claude/agents/website-reviewer.md'), 'utf8'), /tools: Read, Grep, Glob/);
+  const hermesDir = resolve(dir, 'hermes-team');
+  const hermesTeam = install({ ...request(hermesDir), target: 'hermes', mode: 'team' });
+  assert.equal(hermesTeam.code, 0);
+  assert.match(hermesTeam.message, /adapters\/grok.md#manual-fallback/);
+  assert.match(hermesTeam.message, /No native agent definitions were generated/);
   for (const name of files(root, 'docs/bundles').filter(name => name.endsWith('.md'))) assert.deepEqual(fs.readFileSync(resolve(destination(teamDir), 'bundles', name.split('/').at(-1))), fs.readFileSync(resolve(root, name)));
-  assert.doesNotMatch(fs.readFileSync(resolve(root, 'src/install.mjs'), 'utf8'), /generateAgents/);
 }));
 
 test('4 Flags validate scope, values, Hermes bundle-dir, help and package version', () => workspace(async dir => {
@@ -542,3 +553,15 @@ test('Local bundle path resolver rejects traversal', () => {
   assert.throws(() => owned(root, '/escape'));
   assert.throws(() => owned(root, 'C:\\escape'));
 });
+
+test('25 Antigravity installs into its documented workspace skill folder and old installs uninstall by receipt', () => workspace(dir => {
+  assert.equal(targets.antigravity, '.agents/skills/website-build-skill');
+  const project = resolve(dir, 'antigravity');
+  const result = install({ ...request(project), target: 'antigravity' });
+  assert.equal(result.code, 0, result.message);
+  assert.ok(fs.lstatSync(resolve(project, '.agents/skills/website-build-skill/SKILL.md')).isFile());
+  assert.throws(() => fs.lstatSync(resolve(project, '.website-build-skill')), { code: 'ENOENT' });
+  const removal = install({ uninstall: true, target: 'antigravity', dir: project });
+  assert.equal(removal.code, 0, removal.message);
+  assert.throws(() => fs.lstatSync(resolve(project, '.agents/skills/website-build-skill/SKILL.md')), { code: 'ENOENT' });
+}));

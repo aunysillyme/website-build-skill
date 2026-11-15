@@ -1,0 +1,7 @@
+{
+  "name": "example-studio-outcome-eval",
+  "domain": "https://example.com/",
+  "brief": "One-page landing page for an independent neighborhood ceramics studio with class schedule, inquiry form, and studio hours.",
+  "baselineNotes": "Minimal unguided HTML without skill checklists (missing lang, landmarks, labels, meta description, canonical, structured data, reduced-motion).",
+  "withSkillNotes": "Skill-guided HTML applying accessibility.md, performance-seo.md, and structured-data-and-llms.md (semantic landmarks, skip-link, form labels, alt text, canonical, JSON-LD, viewport, reduced-motion)."
+}
