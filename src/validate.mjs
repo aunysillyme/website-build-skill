@@ -125,6 +125,11 @@ export function installClaimIssues(name, text, published = false) {
 const PINNED_VERSIONS = {
   'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1': 'v7.0.1',
   'actions/setup-node@820762786026740c76f36085b0efc47a31fe5020': 'v7.0.0',
+  'actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1': 'v7.1.0',
+  'ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e': 'v2.5.0',
+  'actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9': 'v7.0.2',
+  'github/codeql-action/upload-sarif@24c54180a607b1449ed407dd24f251e4e9147c8d': 'v4.38.3',
+  'github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066': 'v4.39.3',
 };
 
 export function workflowIssues(name, text) {
@@ -132,16 +137,18 @@ export function workflowIssues(name, text) {
   let workflow;
   try { workflow = JSON.parse(text); }
   catch { return [`WORKFLOW_FORMAT:${name}:use the JSON subset of YAML for structural validation`]; }
-  // One exception, as narrow as it can be written: npm trusted publishing exchanges an OIDC
-  // token for a short-lived credential, so the publish job of the release workflow needs
-  // id-token: write. No other workflow, no other job, and no other permission value.
+  // OIDC is limited to the release publisher and the Scorecard analysis job.
   const publisher = name === '.github/workflows/release.yml';
+  const scorecard = name === '.github/workflows/scorecard.yml';
   const checkPermissions = (permissions, location, job) => {
     if (!permissions || typeof permissions !== 'object' || Array.isArray(permissions)) issues.push(`WORKFLOW_PERMISSIONS:${location}`);
     else for (const [key, value] of Object.entries(permissions)) {
       if (key === 'contents' && value === 'read') continue;
       if (value === 'none') continue;
-      if (publisher && job === 'publish' && key === 'id-token' && value === 'write') continue;
+      if (key === 'id-token' && value === 'write' &&
+          ((publisher && job === 'publish') || (scorecard && job === 'analysis'))) continue;
+      if (scorecard && job === 'analysis' &&
+          ((key === 'actions' && value === 'read') || (key === 'security-events' && value === 'write'))) continue;
       issues.push(`WORKFLOW_PERMISSIONS:${location}:${key}`);
     }
   };
@@ -317,16 +324,18 @@ export function check(root, options = {}) {
     else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
     // A published tarball that omits any of these installs nothing on a stranger's machine.
     // A negation can empty one of them while the entry it negates is still listed. Only
-    // the GIF exclusion is allowed: documentation serves those images by raw URL.
+    // GIFs and the repository-only showcase may be excluded; docs link to their public URLs.
     // `src` and `src/` are the same entry.
     const published = (p.files ?? []).map(entry => String(entry).replace(/\/+$/, ''));
-    if (published.some(entry => entry.startsWith('!') && entry !== '!docs/*.gif')) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
+    const exclusions = ['!docs/*.gif', '!docs/showcase/**'];
+    if (published.some(entry => entry.startsWith('!') && !exclusions.includes(entry))) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
     for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE'])
       if (!published.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);
     // npm applies the list in order, so an exclusion placed before the entry it trims
-    // removes nothing and both GIFs still ship.
-    if (published.includes('!docs/*.gif') && published.indexOf('!docs/*.gif') < published.indexOf('docs'))
-      issues.push('PACKAGE_FILES:!docs/*.gif must come after the docs entry or it excludes nothing');
+    // removes nothing and the excluded files still ship.
+    for (const exclusion of exclusions)
+      if (published.includes(exclusion) && published.indexOf(exclusion) < published.indexOf('docs'))
+        issues.push(`PACKAGE_FILES:${exclusion} must come after the docs entry or it excludes nothing`);
     const floor = p.engines?.node?.match(/(\d+)/)?.[1];
     const checks = JSON.parse(read(root, '.github/workflows/check.yml')).jobs?.checks;
     const matrix = checks?.strategy?.matrix?.node;

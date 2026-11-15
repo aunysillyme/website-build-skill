@@ -12,6 +12,8 @@ through npm trusted publishing, which exchanges a short-lived OIDC token issued 
 ## Trigger
 
 Local: a maintainer changes canonical content or adapters and explicitly runs the commands below.
+The "Part of a set" rows come from https://raw.githubusercontent.com/aunysillyme/.github/HEAD/set.json; each row's line is that package's npm description. A maintainer refreshes them with `npx repo-build-skill@0.1.1 set sync` outside CI and commits the result. Never hand-edit `.repo-build/*` or text between the set markers. CI only checks drift offline with `node scripts/check-set.mjs`; the lock pins the renderer and vendored set hashes. Nothing watches this check outside the existing push and pull request workflow. On drift, review and refresh the shared inputs before retrying.
+
 Hosted checks: pull request, push to main or manual dispatch.
 Release: pushing a `v*` tag runs the publish job, which republishes nothing and refuses a tag
 whose version disagrees with `package.json`. No scheduled publication exists, and no branch
@@ -72,7 +74,7 @@ Check writes nothing. Tests create synthetic scratch directories only under `.te
 The installer writes only its destination, the output root probe it removes, and its receipt.
 The check workflow has only `contents: read`. The release workflow's publish job adds exactly
 one permission, `id-token: write`, for the OIDC exchange, and the workflow validator refuses
-that permission at the top level, in any other job, and in any other workflow.
+that permission at the top level and in every job except the release publish job and the Scorecard analysis job. The Scorecard analysis job also permits `actions: read` and `security-events: write` for analysis and SARIF upload.
 
 ## The closed loop
 
@@ -115,7 +117,7 @@ No separate watchdog is configured. The public repository owner is the failure r
 - Bundle drift: review the source change and regenerate, then rerun check. Never have CI silently repair the candidate.
 - Private data: remove it from all public artifacts; if already exposed, use private incident handling and rotate affected credentials through the owner's authorized process.
 - Claim review pending: review the prose and actual evidence before updating its checksum entry; the generator must not approve claims.
-- Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving only the reviewed publish-job OIDC exception.
+- Floating action or unexpected write permission: restore an upstream full SHA and read-only permissions, preserving the reviewed release publish and Scorecard analysis permission exceptions.
 - Local tests fail: stop publication, reproduce, fix confirmed defects and rerun the affected harness.
 - Runtime or network unavailable: report BLOCKED with the failing command; do not substitute a pass.
 - Publication partly succeeds: inspect registry and release state before any retry. Never assume an npm version can be overwritten or routinely deleted.

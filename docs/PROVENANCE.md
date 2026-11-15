@@ -13,6 +13,14 @@ Reported historical measurements are not repeated as package evidence.
 Original package work uses [MIT](../LICENSE). The conduct text retains its own attribution and license.
 No third-party site screenshots, fonts or brand kits are included.
 
+## Structural inspiration
+
+[Anatomy](https://github.com/wheresryan22/anatomy) inspired the structure only:
+leading with results, real times and limits. No code or text was copied.
+MIT licence per its `LICENSE` file and SKILL.md `license: MIT`, verified by
+Claude on 2026-10-18. This attribution uses that supplied verification;
+the sources were not fetched again during this offline correction.
+
 ## Design review techniques
 
 Two techniques adapted (own wording, not copied text) into checklists/brand-and-mockups.md (BM05),

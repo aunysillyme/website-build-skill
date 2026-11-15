@@ -24,7 +24,7 @@ test('Agent handshake marks fixture and example files as non-live', () => {
 
 test('Agent handshake PS11 is included in the checklist and discovery route', () => {
   const checklist = read(root, `${CORE}/checklists/performance-seo.md`);
-  assert.match(checklist, /^\| PS11: agent handshake \| .+ \| .+ \|$/m);
+  assert.match(checklist, /^\| PS11: agent handshake(?:<br>[^|\n]+)? \| .+ \| .+ \|$/m);
   const manifest = JSON.parse(read(root, `${CORE}/manifest.json`));
   assert.ok(manifest.stageRoutes.find(route => route.id === 'discovery').checks.includes('PS11'));
   assert.match(read(root, `${CORE}/playbooks/structured-data-and-llms.md`), /PS05 through PS11/);
@@ -61,6 +61,7 @@ const cases = [
   ['RED20 a publish-time hook that can change the tested bytes', 'PACKAGE_HONESTY:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), scripts: { ...JSON.parse(s).scripts, prepublishOnly: 'node -e 0' } }, null, 2) + '\n')],
   ['RED21 a negated files entry that empties a published path', 'PACKAGE_FILES:', r => change(r, 'package.json', s => JSON.stringify({ ...JSON.parse(s), files: [...JSON.parse(s).files, '!src/**'] }, null, 2) + '\n')],
   ['RED25 the GIF exclusion listed before the docs entry, so npm still ships both GIFs', 'PACKAGE_FILES:', r => change(r, 'package.json', s => { const p = JSON.parse(s); p.files = ['!docs/*.gif', ...p.files.filter(e => e !== '!docs/*.gif')]; return JSON.stringify(p, null, 2) + '\n'; })],
+  ['RED26 the showcase exclusion listed before the docs entry, so npm still ships the showcase', 'PACKAGE_FILES:', r => change(r, 'package.json', s => { const p = JSON.parse(s); p.files = ['!docs/showcase/**', ...p.files.filter(e => e !== '!docs/showcase/**')]; return JSON.stringify(p, null, 2) + '\n'; })],
   ['RED23 SKILL.md loses the verbatim install card the agent shows the user', 'CHOICE_DRIFT:', r => change(r, `${CORE}/SKILL.md`, s => s.replace('How do you want to work?', 'How would you like to work?'))],
   ['RED24 repository description drifts from package.json', 'DESCRIPTION_DRIFT:REPO_SETTINGS.md', r => change(r, 'REPO_SETTINGS.md', s => s.replace(/(## Description\n\n- \[x\][^\n]*\n\n)[^\n]+/, '$1Research-first website-building skill: learn the craft, match the brand, compare three mockups, then build and verify.'))],
   ['RED22 a runtime step that ignores the matrix it claims to run', 'ENGINE_UNTESTED:', r => change(r, '.github/workflows/check.yml', s => s.replace('"node-version": "${{ matrix.node }}"', '"node-version": "24"'))],
@@ -70,9 +71,10 @@ for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   assert.ok(check(r).some(i => i.startsWith(gate)), `expected ${gate}`);
 }));
 
-test('The GIF exclusion after the docs entry passes the package check', () => fixture(r => {
+test('The GIF and showcase exclusions after the docs entry pass the package check', () => fixture(r => {
   const files = JSON.parse(read(r, 'package.json')).files;
   assert.ok(files.indexOf('!docs/*.gif') > files.indexOf('docs/'), 'baseline has the exclusion after docs/');
+  assert.ok(files.indexOf('!docs/showcase/**') > files.indexOf('docs/'), 'baseline has the showcase exclusion after docs/');
   assert.ok(!check(r).some(i => i.startsWith('PACKAGE_FILES:')));
 }));
 
@@ -113,4 +115,42 @@ test('WORKFLOW rejects top-level writes, all-write and reusable floating actions
   }
   baseline.jobs.external = { uses: 'example/workflow/.github/workflows/run.yml@main', 'timeout-minutes': 5 };
   assert.ok(workflowIssues('check.yml', JSON.stringify(baseline)).some(s => s.startsWith('ACTION_PIN:')));
+});
+
+test('WORKFLOW permits OIDC only in the release publish and Scorecard analysis jobs', () => {
+  const workflow = JSON.parse(read(root, '.github/workflows/check.yml'));
+  workflow.jobs = { analysis: { permissions: { 'id-token': 'write' }, 'timeout-minutes': 5 } };
+  const checkOidc = (name, job) => {
+    workflow.jobs = { [job]: { permissions: { 'id-token': 'write' }, 'timeout-minutes': 5 } };
+    return workflowIssues(name, JSON.stringify(workflow)).filter(issue => issue.startsWith('WORKFLOW_PERMISSIONS:'));
+  };
+  assert.deepEqual(checkOidc('.github/workflows/scorecard.yml', 'analysis'), []);
+  assert.deepEqual(checkOidc('.github/workflows/release.yml', 'publish'), []);
+  for (const [name, job] of [
+    ['.github/workflows/scorecard.yml', 'publish'],
+    ['.github/workflows/release.yml', 'analysis'],
+    ['.github/workflows/other.yml', 'analysis'],
+    ['.github/workflows/other.yml', 'publish'],
+  ]) assert.ok(checkOidc(name, job).length, `${name}:${job}`);
+  workflow.permissions = { 'id-token': 'write' };
+  assert.ok(workflowIssues('.github/workflows/scorecard.yml', JSON.stringify(workflow)).includes('WORKFLOW_PERMISSIONS:.github/workflows/scorecard.yml:id-token'));
+});
+
+test('WORKFLOW permits Scorecard analysis permissions only in that job', () => {
+  const workflow = JSON.parse(read(root, '.github/workflows/check.yml'));
+  for (const [key, value] of [['actions', 'read'], ['security-events', 'write']]) {
+    for (const [name, job, allowed] of [
+      ['.github/workflows/scorecard.yml', 'analysis', true],
+      ['.github/workflows/scorecard.yml', 'other', false],
+      ['.github/workflows/other.yml', 'analysis', false],
+      ['.github/workflows/release.yml', 'publish', false],
+    ]) {
+      workflow.jobs = { [job]: { permissions: { [key]: value }, 'timeout-minutes': 5 } };
+      const issues = workflowIssues(name, JSON.stringify(workflow));
+      assert.equal(issues.includes(`WORKFLOW_PERMISSIONS:${name}:${job}:${key}`), !allowed, `${name}:${job}:${key}`);
+    }
+    workflow.permissions = { [key]: value };
+    assert.ok(workflowIssues('.github/workflows/scorecard.yml', JSON.stringify(workflow)).includes(`WORKFLOW_PERMISSIONS:.github/workflows/scorecard.yml:${key}`));
+    workflow.permissions = { contents: 'read' };
+  }
 });
