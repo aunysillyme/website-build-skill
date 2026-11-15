@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+
+- `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+
 ### Changed
 
 - Update setup-node to v7.1.0 and upload-sarif to v4.39.3, with matching workflow labels and upstream-tag-verified pins in the validator.
@@ -61,6 +65,7 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 - README and skill entrypoint lead with current-day research and the results to expect.
 - Phase 2 restores the README skill-pack lead, puts the real demo before the method, replaces the one-page planning estimate with its measured run, and adds a second look at Mock while labelling invented examples on their first line.
+>>>>>>> origin/main
 
 ## [0.1.19] - 2026-10-10
 
