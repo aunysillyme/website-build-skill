@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added
+
+- Implemented native subagent definition generation in `src/agents.mjs` (`generateAgents`) and wired it into `--team` installs for `claude-code` (`.claude/agents/website-*.md`) and `codex` (`.codex/agents/website-*.toml`), with read-only permissions for `reviewer` and full receipt-tracked uninstall (#24).
+
 ### Fixed
 
 - `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.

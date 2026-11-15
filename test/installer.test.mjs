@@ -78,10 +78,21 @@ test('3 Modes are exclusive and TEAM copies complete bundles with manual relay',
   const teamDir = resolve(dir, 'team');
   const team = install({ ...request(teamDir), mode: 'team' });
   assert.equal(team.code, 0);
-  assert.match(team.message, /adapters\/grok.md#manual-fallback/);
-  assert.match(team.message, /No native agent definitions were generated/);
+  assert.match(team.message, /Generated 7 native subagent definitions for codex/);
+  assert.ok(fs.existsSync(resolve(teamDir, '.codex/agents/website-researcher.toml')));
+  assert.match(fs.readFileSync(resolve(teamDir, '.codex/agents/website-reviewer.toml'), 'utf8'), /sandbox_mode = "read-only"/);
+  const claudeDir = resolve(dir, 'claude-team');
+  const claudeTeam = install({ ...request(claudeDir), target: 'claude-code', mode: 'team' });
+  assert.equal(claudeTeam.code, 0);
+  assert.match(claudeTeam.message, /Generated 7 native subagent definitions for claude-code/);
+  assert.ok(fs.existsSync(resolve(claudeDir, '.claude/agents/website-researcher.md')));
+  assert.match(fs.readFileSync(resolve(claudeDir, '.claude/agents/website-reviewer.md'), 'utf8'), /tools: Read, Grep, Glob/);
+  const hermesDir = resolve(dir, 'hermes-team');
+  const hermesTeam = install({ ...request(hermesDir), target: 'hermes', mode: 'team' });
+  assert.equal(hermesTeam.code, 0);
+  assert.match(hermesTeam.message, /adapters\/grok.md#manual-fallback/);
+  assert.match(hermesTeam.message, /No native agent definitions were generated/);
   for (const name of files(root, 'docs/bundles').filter(name => name.endsWith('.md'))) assert.deepEqual(fs.readFileSync(resolve(destination(teamDir), 'bundles', name.split('/').at(-1))), fs.readFileSync(resolve(root, name)));
-  assert.doesNotMatch(fs.readFileSync(resolve(root, 'src/install.mjs'), 'utf8'), /generateAgents/);
 }));
 
 test('4 Flags validate scope, values, Hermes bundle-dir, help and package version', () => workspace(async dir => {
