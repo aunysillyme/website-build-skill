@@ -5,6 +5,41 @@ receipt of exactly what it wrote. Open the chosen host and ask it to read the in
 See [compatibility](COMPATIBILITY.md) for host setup evidence and loading checks.
 TEAM: one command installs the seven workers' files; you open each session yourself and carry the handoffs between them. Researcher goes first.
 
+## What the installer asks
+
+Run without `--solo` or `--team` and the installer prints this menu from `skills/website-build-skill/templates/install-choice.txt`, then asks for the work mode, the target and the save location. `--solo` or `--team`, `--target` and `--output-dir` answer them in advance. The installed SKILL.md does not repeat the menu; the agent follows the recorded choice.
+
+```text
+How do you want to work?
+
+  1  Teach my AI          One AI learns the whole thing and does every job itself.
+                          Works with any AI: Claude, ChatGPT, Grok, Cursor, Copilot.
+                          Nothing else to install.
+
+  2  Give me the team     Seven role prompts (you run each session), one per job, starting with a researcher that gets them all current.
+                          Needs Claude Code, Codex, Hermes, Antigravity, or Grok Bot.
+                          One command installs their files; you open each session yourself.
+
+Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
+
+Where should the work be saved?
+
+  1  Obsidian vault       Give an existing folder inside your vault. The library is
+                          plain Markdown, so it opens and links natively.
+
+  2  A folder on this computer
+                          Give an existing directory. The default is the
+                          website project folder.
+
+  3  Notion               Working copy still lives in a folder on this computer,
+                          because every gate reads its own files back by path.
+                          Notion receives an export of the finished library.
+
+  4  Somewhere else       Type an existing local destination yourself.
+
+Whatever you pick becomes the workspace root. Everything below is written inside it.
+```
+
 ## Manual copy
 
 Copy the complete `skills/website-build-skill/` directory into a new, empty destination:
@@ -14,7 +49,7 @@ Copy the complete `skills/website-build-skill/` directory into a new, empty dest
 | Claude Code | `.claude/skills/website-build-skill/` | Read back the entrypoint and assets |
 | Codex | `.agents/skills/website-build-skill/` | Inspect discovery and invocation |
 | Hermes | `.agents/skills/website-build-skill/` | Check trust and shared discovery |
-| Gemini (via Antigravity CLI) | `.website-build-skill/` | Ask the session to read the entrypoint |
+| Gemini (via Antigravity CLI) | `.agents/skills/website-build-skill/` | Inspect discovery, or ask the session to read the entrypoint |
 | Generic agent | `.website-build-skill/` | Read the entrypoint and preserve existing routers |
 | Grok file-capable host | `.grok/skills/website-build-skill/` | Read back the entrypoint, or paste the bundles |
 
@@ -57,6 +92,7 @@ Append `#<reviewed-commit-sha>` to the repository reference for a reproducible i
 - Interruption: record truthful partial results; never advertise an all-or-nothing transaction without evidence.
 - Exit policy: 0 complete, 2 invalid input, 3 preflight conflict, 4 interrupted write, 5 activation pending. 5 is a completed install whose integration snippet is unmerged, not a failure.
 - Uninstall: receipt-based, removing only files this package actually wrote and whose bytes still match the receipt. A file that was already on disk before the install, and therefore recorded as identical, is kept: installing it was a no-op and removing it would be taking something that is not ours. A changed file is kept and named, and so is a file the receipt does not list. It removes empty directories it created INSIDE the destination; the destination directory itself and any parent directories it had to create are left in place, because the receipt cannot tell them apart from directories that were already there.
+- Earlier Antigravity installs: releases up to 0.1.19 wrote `--target antigravity` to `.website-build-skill/`. Remove such an install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`, because `--target antigravity --dir` now points at `.agents/skills/website-build-skill/`.
 - Destination: decided by `--target` and `--dir`, or by where the receipt sits when only `--receipt` is given. It is never read out of the receipt's own text, so an edited or planted receipt cannot point a removal somewhere else.
 - Read-back: every file is re-read from disk and digested after the write pass. A digest taken from the bytes the installer meant to write is a record of the intention, not of what is on disk, and the receipt only ever carries the second one.
 - Ownership across runs: a reinstall that writes fewer files keeps owning what an earlier run wrote, so a SOLO install over a TEAM install does not orphan the bundles.
