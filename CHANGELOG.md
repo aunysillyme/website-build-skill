@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Fixed
+
+- `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+
 ### Changed
 
 - SKILL.md now opens with what the agent does when invoked. The human install menu moved to the installer docs (`docs/INSTALLER.md`), and the check now requires it there and refuses it in SKILL.md (#23).
