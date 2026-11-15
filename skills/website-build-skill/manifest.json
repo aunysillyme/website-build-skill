@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "6f5cc984d2d0824d7d8beea23e8aec790bbb091be13264231e6b7ae86eded409"
+      "sha256": "9949defeead9b354009f2162981ffa3ba1f436d75ed50de704ff24b92145890c"
     },
     {
       "path": "manifest.json",
@@ -450,7 +450,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "d6dc53bd67a92f4403287638616c4c32e0f3632057643417d1d3f2b75409954d"
+      "sha256": "14a2252fbb3cf70adfb6931f1fa4acc906b818ce874253ea5ba7b48c3c46d83a"
     },
     {
       "path": "playbooks/performance-budgets.md",
@@ -602,7 +602,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "779e35a60e52d1c61494b78e9fb97e3b78bcd596cf7692b843dc95991502f5e2"
+      "sha256": "4203399f7c2be8938456e3a5c7fd15ffe836224fe91520281d133c5d009d5b71"
     },
     {
       "path": "checklists/security.md",

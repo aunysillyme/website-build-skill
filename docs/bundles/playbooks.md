@@ -604,8 +604,8 @@ validated route/offer registry
   -> truthful structured data
   -> sitemap of intended canonical public URLs
   -> llms.txt navigation map with useful summaries and source links
-  -> /.well-known/agents.json agent card
-  -> /.well-known/ai-instructions.json interaction and safety map
+  -> (optional, owner opt-in) /.well-known/agents.json agent card
+  -> (optional, owner opt-in) /.well-known/ai-instructions.json interaction and safety map
 ```
 
 Use one inclusion rule for drafts, private routes, duplicates, redirects, and removed pages.
@@ -616,9 +616,9 @@ consumer documentation makes those distinctions. Preserve the owner's explicit p
 Use IndexNow only when the selected endpoint and current support are verified and
 submission is already authorized. File generation does not authorize network submission.
 
-## Publish an agent handshake
+## Publish an agent handshake (optional)
 
-Generate both files from the same validated route/offer registry as llms.txt.
+Only generate `agents.json`, `ai-instructions.json`, and `data-agent-*` attributes if the owner explicitly opts in; none of these are web standards or required SEO outputs. When opted in, generate both files from the same validated route/offer registry as llms.txt.
 Never maintain a second hand list of routes, offers, endpoints, or actions.
 Put name, capabilities, endpoints.discovery, and endpoints.action_root in agents.json.
 Use an HTTP path or the string `none` for endpoints.action_root.
@@ -655,7 +655,7 @@ No sold-out badge or signup link remains because a second metadata list was forg
 ## Verify and hand off
 
 Optimizer owns route-map.json, metadata.json, structured-data.json, answers.md,
-llms.txt, sitemap.xml, agents.json, and ai-instructions.json under site-work/optimization/.
+llms.txt, and sitemap.xml (plus optional agents.json and ai-instructions.json if opted in) under site-work/optimization/.
 Builder integrates an immutable revision and regenerates the release candidate.
 Optimizer then checks intended-public routes, initial HTML, response status, robots,
 canonical parity, inbound links, sitemap membership, and actual social-image dimensions.

@@ -12,6 +12,7 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ### Changed
 
+- Soften hard stops when web access or a different-family reviewer is unavailable (proceed with `UNVERIFIED` / `INTERNAL (UNVERIFIED)` receipts), make `agents.json`, `ai-instructions.json`, and `data-agent-*` optional in SEO discovery, and add an outcome-eval comparison harness (`scripts/eval-outcome.mjs`, `test/outcome-eval.test.mjs`) (#26).
 - Trim `playbooks/research-and-memory.md`'s ASK DATE rule to a compact summary and reinforce lazy checklist loading in `SKILL.md` (#22).
 - The README and the install menu now call TEAM "seven role prompts (you run each session)" instead of "seven specialist agents", because nothing starts a subagent yet (part of #24).
 - SKILL.md now opens with what the agent does when invoked. The human install menu moved to the installer docs (`docs/INSTALLER.md`), and the check now requires it there and refuses it in SKILL.md (#23).
