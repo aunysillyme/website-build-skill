@@ -13,7 +13,7 @@ rules:
   - each-role-researches-before-execution
   - no-site-code-before-selected-mockup
   - failed-gates-stop-dependent-work
-  - reviewer-family-differs-from-builder-family
+  - cross-family-reviewer-preferred-else-internal-unverified
 roles:
   researcher:
     instructions: roles/researcher.md

@@ -174,3 +174,16 @@ test('Approved legal notices and public name variants pass without hiding privat
     assert.ok(privacyIssues(file, `${line} ${['/', 'Users', '/private'].join('')}`).length, 'private data remains blocked');
   }
 });
+
+test('Local Linux/Windows user paths fail while lowercase product prose and public /home URLs pass', () => {
+  const productLower = ['claude', 'code'].join(' ');
+  const home = ['/ho', 'me/'].join('');
+  const winUsers = ['C', ':', '\\', 'Use', 'rs\\'].join('');
+  assert.deepEqual(privacyIssues('README.md', `Works with ${productLower} and codex.`), []);
+  assert.deepEqual(privacyIssues('README.md', `See https://example.com${home}about/`), []);
+  assert.deepEqual(privacyIssues('README.md', `~/${productLower}/site`), ['PRIVACY:README.md:1']);
+  assert.deepEqual(privacyIssues('README.md', `${home}alice.dev/project`), ['PRIVACY:README.md:1']);
+  assert.deepEqual(privacyIssues('README.md', `${winUsers}alice\\project`), ['PRIVACY:README.md:1']);
+  assert.deepEqual(privacyIssues('README.md', `${winUsers.toLowerCase()}alice\\project`), ['PRIVACY:README.md:1']);
+  assert.deepEqual(privacyIssues(`docs${home}alice/note.md`, 'public note'), [`PRIVACY_NAME:docs${home}alice/note.md`]);
+});

@@ -3,7 +3,9 @@
 // because a gate that over-blocks gets switched off.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, symlinkSync, mkdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, realpathSync, symlinkSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { resolve } from 'node:path';
 import { privacyIssues, workflowIssues } from '../src/validate.mjs';
 import { owned } from '../src/bundle.mjs';
 
@@ -56,16 +58,14 @@ test('F4 event data interpolated into run: is rejected, the env: form is not', (
 });
 
 test('F5 a dangling output symlink is rejected before any write follows it', () => {
-  const dir = '.test-work/f5-regression';
-  mkdirSync(dir, { recursive: true });
+  const dir = mkdtempSync(resolve(realpathSync(tmpdir()), 'f5-regression-'));
   try {
-    symlinkSync('/tmp/website-build-skill-absent-target', `${dir}/dangling`);
-    assert.throws(() => owned(process.cwd(), `${dir}/dangling`, false), /symlink path/);
+    symlinkSync('/tmp/website-build-skill-absent-target', resolve(dir, 'dangling'));
+    assert.throws(() => owned(dir, 'dangling', false), /symlink path/);
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });
 
-test('F6 every shipped YAML payload parses', async () => {
-  const { parse } = await import('node:util');
+test('F6 every shipped YAML payload parses', () => {
   // Structural proxy: the defect was two mappings joined onto one line, so every mapping
   // line in these payloads must carry exactly one unquoted top-level key.
   for (const file of ['adapters/team.yaml', 'skills/website-build-skill/templates/handoff.yaml']) {

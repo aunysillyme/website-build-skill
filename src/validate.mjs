@@ -12,15 +12,17 @@ const legalLines = {
   'CHANGELOG.md': `- LICENSE names ${company} as copyright holder; outside contributions now require the CLA in CLA.md.`,
 };
 const product = ['Claude', 'Code'].join(' ');
+const productPattern = new RegExp(product, 'gi');
+const localPathPattern = /\/home\/[A-Za-z0-9._-]+\/|[A-Za-z]:\\{1,2}Users\\{1,2}/i;
 // Public brand is allowed; private-stack traces stay blocked.
 const forbidden = [product, ['Vau','lts'].join(''), ['A','UN-'].join(''), ['linear','.app'].join(''), ['/','Users','/'].join(''), ['@','gmail'].join(''), ['site','builder','skill'].join('-')];
 export const privacyPattern = new RegExp(forbidden.map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
 
-export function privacyIssues(name, text, options = {}) {
+export function privacyIssues(name, text) {
   const issues = [];
   // A private identifier can reach the public tree as a FILENAME while every line of the
   // file is clean, so the path is scanned before its contents.
-  if (privacyPattern.test(name)) issues.push(`PRIVACY_NAME:${name}`);
+  if (privacyPattern.test(name) || localPathPattern.test(name)) issues.push(`PRIVACY_NAME:${name}`);
   for (const [i, original] of text.split('\n').entries()) {
     let line = original;
     // Legal notices allow only the approved full line in its named file.
@@ -32,39 +34,37 @@ export function privacyIssues(name, text, options = {}) {
     const normalised = line.replace(/\\ /g, ' ').replace(/["']/g, '');
     const productPath = new RegExp(`(?:~|\\$HOME|%USERPROFILE%|[A-Za-z]:)?[\\\\/]${product}(?=[\\\\/ ]|$)`, 'i');
     if (productPath.test(normalised)) { issues.push(`PRIVACY:${name}:${i + 1}`); continue; }
-    line = line.replaceAll(product, 'PUBLIC_PRODUCT');
-    if (privacyPattern.test(line) || /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(line)) issues.push(`PRIVACY:${name}:${i + 1}`);
+    line = line.replace(productPattern, 'PUBLIC_PRODUCT');
+    const localPathTarget = line.replace(/\bhttps?:\/\/[A-Za-z0-9.-]+(?::\d+)?\/home\/[A-Za-z0-9._-]+\//gi, 'PUBLIC_URL/');
+    if (privacyPattern.test(line) || localPathPattern.test(localPathTarget) || /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(line)) issues.push(`PRIVACY:${name}:${i + 1}`);
     if (line.includes(String.fromCharCode(0x2014))) issues.push(`VOICE:${name}:${i + 1}`);
   }
   return issues;
 }
 
-function visibleMarkdown(text) {
-  let fence = null;
-  return text.split('\n').map(line => {
-    const m = line.match(/^\s*(`{3,}|~{3,})/);
-    if (m) {
-      if (!fence) fence = m[1];
-      else if (m[1][0] === fence[0] && m[1].length >= fence.length) fence = null;
-      return '';
-    }
-    return fence ? '' : line.replace(/`[^`]*`/g, '');
-  }).join('\n');
-}
-
 // Fenced blocks, closed the way a Markdown reader closes them: same marker, at least as
-// long, indented up to three spaces. Returns each block's body.
-export function fenced(text) {
-  const blocks = [];
+// long, indented up to three spaces. Returns each block's body and the non-fenced text.
+function scanFences(text) {
+  const blocks = [], visible = [];
   let marker = null, body = [];
   for (const line of text.replace(/\r\n/g, '\n').split('\n')) {
     const open = line.match(/^ {0,3}(`{3,}|~{3,})/);
-    if (!marker) { if (open) { marker = open[1]; body = []; } continue; }
-    if (open && open[1][0] === marker[0] && open[1].length >= marker.length && !line.slice(line.indexOf(open[1]) + open[1].length).trim()) { blocks.push(body.join('\n')); marker = null; continue; }
-    body.push(line);
+    if (!marker) {
+      if (open) { marker = open[1]; body = []; visible.push(''); }
+      else visible.push(line.replace(/`[^`]*`/g, ''));
+      continue;
+    }
+    if (open && open[1][0] === marker[0] && open[1].length >= marker.length && !line.slice(line.indexOf(open[1]) + open[1].length).trim()) {
+      blocks.push(body.join('\n'));
+      marker = null;
+    } else body.push(line);
+    visible.push('');
   }
-  return blocks;
+  return { blocks, visible: visible.join('\n') };
 }
+
+const visibleMarkdown = text => scanFences(text).visible;
+export const fenced = text => scanFences(text).blocks;
 
 function anchors(text) {
   const result = new Set(), counts = new Map();
@@ -176,16 +176,19 @@ export function workflowIssues(name, text) {
   const visitUses = obj => {
     if (!obj || typeof obj !== 'object') return;
     for (const [key, value] of Object.entries(obj)) {
-      if (key === 'uses' && (typeof value !== 'string' || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_./-]+@[a-f0-9]{40}$/.test(value))) issues.push(`ACTION_PIN:${name}`);
-      if (key === 'uses' && typeof value === 'string' && value.startsWith('actions/checkout@') && obj.with?.['persist-credentials'] !== false) issues.push(`WORKFLOW_CREDENTIALS:${name}`);
-      // A step name that quotes a version must quote the version actually pinned. Dependabot
-      // moves the SHA and leaves the label, so without this the workflow lies after every bump.
-      if (key === 'uses' && typeof value === 'string' && typeof obj.name === 'string') {
-        const labelled = obj.name.match(/\bv\d+(?:\.\d+)*\b/);
-        const action = value.split('@')[0].split('/').pop();
-        if (labelled && !obj.name.includes(`${action} ${labelled[0]}`)) issues.push(`ACTION_LABEL:${name}:${obj.name}`);
-        if (labelled && !PINNED_VERSIONS[value]) issues.push(`ACTION_LABEL:${name}:unverified pin ${value}`);
-        else if (labelled && PINNED_VERSIONS[value] !== labelled[0]) issues.push(`ACTION_LABEL:${name}:${obj.name} pins ${PINNED_VERSIONS[value]}`);
+      if (key === 'uses') {
+        const pinned = typeof value === 'string' && /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_./-]+@[a-f0-9]{40}$/.test(value);
+        if (!pinned) issues.push(`ACTION_PIN:${name}`);
+        if (typeof value === 'string' && value.startsWith('actions/checkout@') && obj.with?.['persist-credentials'] !== false) issues.push(`WORKFLOW_CREDENTIALS:${name}`);
+        if (pinned && !PINNED_VERSIONS[value]) issues.push(`ACTION_PIN:${name}:unverified pin ${value}`);
+        // A step name that quotes a version must quote the version actually pinned. Dependabot
+        // moves the SHA and leaves the label, so without this the workflow lies after every bump.
+        if (typeof value === 'string' && typeof obj.name === 'string') {
+          const labelled = obj.name.match(/\bv\d+(?:\.\d+)*\b/);
+          const action = value.split('@')[0].split('/').pop();
+          if (labelled && !obj.name.includes(`${action} ${labelled[0]}`)) issues.push(`ACTION_LABEL:${name}:${obj.name}`);
+          if (labelled && PINNED_VERSIONS[value] && PINNED_VERSIONS[value] !== labelled[0]) issues.push(`ACTION_LABEL:${name}:${obj.name} pins ${PINNED_VERSIONS[value]}`);
+        }
       }
       visitUses(value);
     }
@@ -219,7 +222,7 @@ export function claimIssues(root, names) {
   return issues;
 }
 
-export function check(root, options = {}) {
+export function check(root) {
   const issues = [], names = files(root);
   // A published package is one whose bin names a real entry point, read from package.json
   // rather than assumed, so the claim checks below follow the package instead of the prose.
@@ -231,10 +234,10 @@ export function check(root, options = {}) {
   } catch { published = false; }
   const protect = (name, fn) => { try { fn(); } catch (e) { issues.push(`${name}:${e.message}`); } };
   for (const name of names) {
-    // A GIF is compressed bytes, not prose: a text scan matches random byte runs (an em dash
-    // sequence, an at-sign). Its path is still checked; only the content scan is skipped.
-    const text = /\.gif$/i.test(name) ? '' : read(root, name);
-    issues.push(...privacyIssues(name, text, options));
+    // A GIF or PNG is compressed bytes, not prose: a text scan matches random byte runs
+    // (an em dash sequence, an at-sign). Its path is still checked; only the content scan is skipped.
+    const text = /\.(?:gif|png)$/i.test(name) ? '' : read(root, name);
+    issues.push(...privacyIssues(name, text));
     if (name.endsWith('.md') || name === 'llms.txt') issues.push(...linkIssues(root, name, text));
     if (name.endsWith('.md')) issues.push(...installClaimIssues(name, text, published));
     if (/^\.github\/workflows\/.*\.ya?ml$/.test(name)) issues.push(...workflowIssues(name, text));
@@ -326,10 +329,10 @@ export function check(root, options = {}) {
     else if (/UNAVAILABLE/.test(read(root, binEntry))) issues.push('PACKAGE_HONESTY:bin is still the unavailable sentinel');
     // A published tarball that omits any of these installs nothing on a stranger's machine.
     // A negation can empty one of them while the entry it negates is still listed. Only
-    // GIFs and the repository-only showcase may be excluded; docs link to their public URLs.
+    // GIFs, showcase, evidence and evaluation notes may be excluded; docs link to their public URLs.
     // `src` and `src/` are the same entry.
     const published = (p.files ?? []).map(entry => String(entry).replace(/\/+$/, ''));
-    const exclusions = ['!docs/*.gif', '!docs/showcase/**'];
+    const exclusions = ['!docs/*.gif', '!docs/showcase/**', '!docs/evidence/**', '!docs/evaluation/**'];
     if (published.some(entry => entry.startsWith('!') && !exclusions.includes(entry))) issues.push('PACKAGE_FILES:a negated entry can empty a published path');
     for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE'])
       if (!published.includes(needed)) issues.push(`PACKAGE_FILES:${needed} is not published`);

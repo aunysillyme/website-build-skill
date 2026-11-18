@@ -9,7 +9,9 @@ Unresolved required fields keep the relevant gate BLOCKED; never prefill a PASS.
 Record exact immutable artifact/revision and source identity, intended release target,
 authorized review scope, Builder's actual model family and evidence, and Reviewer's family.
 Different model names within one family do not satisfy independence.
-If independence is absent, record INTERNAL and independent gate NOT MET, shipment BLOCKED.
+Cross-family review is recommended and optional: if independence is absent, run a read-only
+internal review pass and record `independent-review: INTERNAL (UNVERIFIED)` (unreviewed
+self-merges or undeclared INTERNAL claims keep shipment BLOCKED).
 Reviewer owns no filesystem paths; Coordinator captures returned bodies unchanged.
 
 ## Runtime and reproduction

@@ -50,8 +50,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -76,8 +77,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need search/retrieval, image tools, visual inspection, file writing, and an export
 inspector for actual dimensions, formats, and sizes. Do not imply a subscription
-includes a tool unless verified. Use playbooks/research-and-memory.md's shared
-section 5.7 degradation table. Without generation or inspection, return exact asset
+includes a tool unless verified. Use [Working with the tools you have](../playbooks/research-and-memory.md#working-with-the-tools-you-have). Without generation or inspection, return exact asset
 specs to a capable creator. Without rights evidence, withhold the affected asset.
 No writes means downloadable exports plus named manifests for save and read-back.
 

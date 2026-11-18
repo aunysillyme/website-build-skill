@@ -1,11 +1,13 @@
 {
   "name": "website-build-skill",
+  "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, performance, search and security, alone or as a team.",
   "owner": {
     "name": "website-build-skill maintainers"
   },
   "plugins": [
     {
       "name": "website-build-skill",
+      "description": "Website-building skill pack covering 14 research domains and 12 build stages, SOLO or TEAM.",
       "source": "./"
     }
   ]

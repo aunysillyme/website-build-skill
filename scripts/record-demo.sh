@@ -7,14 +7,16 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 for tool in node npx asciinema agg; do
   command -v "$tool" >/dev/null || { printf 'Required tool: %s\n' "$tool" >&2; exit 1; }
 done
-mkdir -p "$repo_root/.test-work"
-demo_work="$(mktemp -d "$repo_root/.test-work/record-demo-XXXXXX")"
-trap 'rm -rf "$demo_work"' EXIT
+tmp_base="${TMPDIR:-/tmp}"
+WORK_DIR="$(mktemp -d "${tmp_base%/}/record-demo-XXXXXX")"
+trap 'rm -rf "$WORK_DIR"' EXIT
 trap 'exit 130' INT
 trap 'exit 143' TERM
-export WEBSITE_BUILD_DEMO_WORK="$demo_work"
+mkdir -p "$WORK_DIR/home"
+export HOME="$WORK_DIR/home"
+export WEBSITE_BUILD_DEMO_WORK="$WORK_DIR"
 
-cat > "$demo_work/session.sh" <<'SESSION'
+cat > "$WORK_DIR/session.sh" <<'SESSION'
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$WEBSITE_BUILD_DEMO_WORK"
@@ -61,8 +63,8 @@ SESSION
 
 asciinema rec --return --output-format asciicast-v2 --window-size 100x28 \
   --idle-time-limit 1 --title 'website-build-skill: preview, install, receipt' \
-  --command 'bash "$WEBSITE_BUILD_DEMO_WORK/session.sh"' "$demo_work/demo.cast"
+  --command 'bash "$WEBSITE_BUILD_DEMO_WORK/session.sh"' "$WORK_DIR/demo.cast"
 agg --theme github-dark --idle-time-limit 1 --last-frame-duration 4 \
-  "$demo_work/demo.cast" "$demo_work/demo.gif"
-mv "$demo_work/demo.gif" "$repo_root/docs/demo.gif"
+  "$WORK_DIR/demo.cast" "$WORK_DIR/demo.gif"
+mv "$WORK_DIR/demo.gif" "$repo_root/docs/demo.gif"
 printf 'Recorded docs/demo.gif\n'

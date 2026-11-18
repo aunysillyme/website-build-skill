@@ -74,7 +74,6 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 - README and skill entrypoint lead with current-day research and the results to expect.
 - Phase 2 restores the README skill-pack lead, puts the real demo before the method, replaces the one-page planning estimate with its measured run, and adds a second look at Mock while labelling invented examples on their first line.
->>>>>>> origin/main
 
 ## [0.1.19] - 2026-10-10
 

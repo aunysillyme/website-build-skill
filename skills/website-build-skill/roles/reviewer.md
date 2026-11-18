@@ -21,8 +21,9 @@ reproduced. Return stale library conflicts to Researcher for correction.
 Require candidate-to-reviewer from Coordinator after research and all pre-review
 checks, containing a fixed artifact/revision, source, AUDIT_BRIEF, threat model,
 prior tests, design decisions, known limits, and Builder's actual model family.
-You must use a different model family. If not, return INTERNAL with independence
-BLOCKED and an external review packet. Missing or unreadable candidate inputs mean
+A different model family is recommended; if unavailable, run a read-only internal
+review pass, record `independent-review: INTERNAL (UNVERIFIED)` in the receipt, and
+attach an external review packet (never masquerade internal review as independent). Missing or unreadable candidate inputs mean
 an unstarted handoff. Never review an unspecified moving branch as a fixed artifact.
 
 ## WHAT YOU MUST LEARN
@@ -53,8 +54,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+return `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -80,7 +82,7 @@ Need read-only source/artifact access, search, URL reading, and viewing of brows
 scanner and test evidence. No Write/Edit or mutating shell tools. For reproduction,
 return precise commands and synthetic inputs to an authorized capable runner working
 on a disposable candidate; inspect its evidence without changing the reviewed files.
-Use playbooks/research-and-memory.md's shared section 5.7 degradation table.
+Use [Working with the tools you have](../playbooks/research-and-memory.md#working-with-the-tools-you-have).
 Missing evidence stays unverified; no executable test access cannot become a claimed
 runtime PASS. No writable filesystem is required for your returned reports.
 

@@ -72,17 +72,31 @@ for (const [name, gate, mutate] of cases) test(name, () => fixture(r => {
   assert.ok(check(r).some(i => i.startsWith(gate)), `expected ${gate}`);
 }));
 
-test('The GIF and showcase exclusions after the docs entry pass the package check', () => fixture(r => {
+test('The GIF, showcase, evidence and evaluation exclusions after the docs entry pass the package check', () => fixture(r => {
   const files = JSON.parse(read(r, 'package.json')).files;
-  assert.ok(files.indexOf('!docs/*.gif') > files.indexOf('docs/'), 'baseline has the exclusion after docs/');
-  assert.ok(files.indexOf('!docs/showcase/**') > files.indexOf('docs/'), 'baseline has the showcase exclusion after docs/');
+  for (const exclusion of ['!docs/*.gif', '!docs/showcase/**', '!docs/evidence/**', '!docs/evaluation/**']) {
+    assert.ok(files.indexOf(exclusion) > files.indexOf('docs/'), `baseline has ${exclusion} after docs/`);
+  }
   assert.ok(!check(r).some(i => i.startsWith('PACKAGE_FILES:')));
 }));
 
-test('A GIF whose bytes happen to hold an em dash or an address is not scanned as prose', () => fixture(r => {
+for (const exclusion of ['!docs/evidence/**', '!docs/evaluation/**']) {
+  test(`RED placing ${exclusion} before docs/ fails PACKAGE_FILES`, () => fixture(r => {
+    change(r, 'package.json', s => {
+      const p = JSON.parse(s);
+      p.files = [exclusion, ...p.files.filter(e => e !== exclusion)];
+      return JSON.stringify(p, null, 2) + '\n';
+    });
+    assert.ok(check(r).some(i => i.startsWith(`PACKAGE_FILES:${exclusion}`)));
+  }));
+}
+
+test('A GIF or PNG whose bytes happen to hold an em dash or an address is not scanned as prose', () => fixture(r => {
   writeFileSync(resolve(r, 'docs/trailer.gif'), Buffer.concat([Buffer.from('GIF89a'), Buffer.from([0xe2, 0x80, 0x94, 0x0a]), Buffer.from('a' + String.fromCharCode(64) + 'b.co\n')]));
+  writeFileSync(resolve(r, 'docs/showcase/test.png'), Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47]), Buffer.from([0xe2, 0x80, 0x94, 0x0a]), Buffer.from('a' + String.fromCharCode(64) + 'b.co\n')]));
   const issues = check(r);
   assert.ok(!issues.some(i => i.includes('docs/trailer.gif')), issues.join(' '));
+  assert.ok(!issues.some(i => i.includes('docs/showcase/test.png')), issues.join(' '));
 }));
 
 test('README summarizes the install card as a table, the installer docs keep it verbatim, SKILL.md starts with the method', () => fixture(r => {
@@ -153,5 +167,20 @@ test('WORKFLOW permits Scorecard analysis permissions only in that job', () => {
     workflow.permissions = { [key]: value };
     assert.ok(workflowIssues('.github/workflows/scorecard.yml', JSON.stringify(workflow)).includes(`WORKFLOW_PERMISSIONS:.github/workflows/scorecard.yml:${key}`));
     workflow.permissions = { contents: 'read' };
+  }
+});
+
+test('WORKFLOW rejects unverified action SHAs even when step.name omits a version label', () => {
+  const baseline = JSON.parse(read(root, '.github/workflows/check.yml'));
+  for (const stepName of [undefined, 'Check out source']) {
+    const workflow = structuredClone(baseline);
+    workflow.jobs.checks.steps[0] = {
+      ...(stepName === undefined ? {} : { name: stepName }),
+      uses: 'actions/checkout@' + 'a'.repeat(40),
+      with: { 'persist-credentials': false },
+    };
+    const issues = workflowIssues('check.yml', JSON.stringify(workflow));
+    assert.ok(issues.some(s => s.startsWith('ACTION_PIN:') && s.includes('unverified pin')),
+      `expected unverified pin error for name=${String(stepName)}`);
   }
 });
