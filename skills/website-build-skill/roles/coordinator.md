@@ -53,8 +53,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+require `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -79,10 +80,12 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need file reading/writing, source search/retrieval, and access to returned receipts.
 Need artifact/image viewing or a capable inspection handoff before accepting visuals.
-Use playbooks/research-and-memory.md's shared section 5.7 degradation table.
+Use [Working with the tools you have](../playbooks/research-and-memory.md#working-with-the-tools-you-have).
 Without files, return named bodies for save/reattach; without search, leave dated
 capability changes unresolved; without separate workers record SOLO explicitly.
-A same-family Reviewer leaves the independent gate BLOCKED even on a real team.
+Cross-family review is recommended and optional: a same-family read-only Reviewer may
+proceed to Ship only when the receipt records `independent-review: INTERNAL (UNVERIFIED)`
+(never accept undeclared internal review as independent or waive a read-only review pass).
 
 ## YOUR INPUTS
 
@@ -107,7 +110,8 @@ Open and check every artifact before accepting its receipt. Research coverage mu
 pass before any role besides Researcher starts; confirm all seven routes separately
 from work readiness. All acted-on claims need sources/dates and current applicability.
 Before implementation, require the user's named mockup selection. Before release,
-require all applicable QA, rights, security, different-family review, reproduced
+require all applicable QA, rights, security, a read-only review pass (cross-family
+recommended; or `independent-review: INTERNAL (UNVERIFIED)` when unavailable), reproduced
 fix regressions, and exact final artifact identity. Missing evidence means BLOCKED.
 
 ## YOUR HANDOFF

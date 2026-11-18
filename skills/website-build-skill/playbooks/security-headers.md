@@ -40,7 +40,8 @@ Merge this proposal into vercel.json, then inspect actual response coverage.
       {"key": "X-Content-Type-Options", "value": "nosniff"},
       {"key": "X-Frame-Options", "value": "DENY"},
       {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-      {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"}
+      {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
+      {"key": "Cross-Origin-Opener-Policy", "value": "same-origin"}
     ]
   }]
 }
@@ -48,6 +49,10 @@ Merge this proposal into vercel.json, then inspect actual response coverage.
 
 Starting source: https://vercel.com/docs/project-configuration
 Current syntax, matching, and response coverage require source opening and a host test.
+Evaluate `Cross-Origin-Opener-Policy` (`COOP`) against actual window and popup flows:
+`same-origin` isolates top-level browsing contexts for self-contained static sites, whereas
+sites relying on cross-origin OAuth popups, payment checkout windows, or third-party opener
+messaging must evaluate `same-origin-allow-popups` or omit COOP and test those journeys.
 
 ### Cloudflare Pages static output
 
@@ -61,6 +66,7 @@ Place this proposal in the deployed static directory as _headers.
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
 ```
 
 Starting source: https://developers.cloudflare.com/pages/configuration/headers/
@@ -79,6 +85,7 @@ Place this proposal in the publish directory as _headers.
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
 ```
 
 Starting source: https://docs.netlify.com/manage/routing/headers/

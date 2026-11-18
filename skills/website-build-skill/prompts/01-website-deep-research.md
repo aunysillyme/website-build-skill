@@ -7,7 +7,7 @@ Deep Research prompt to make your agent good at building websites:
 
 Become good at full-stack website building for this user's actual request.
 Act as Researcher, the first job in both TEAM and SOLO. Research, then learn,
-ingest, then execute. No other role works until your research library gate passes.
+ingest, then execute. No other role works until your research library is saved (passing AD01-AD08 or, when web access is unavailable, explicitly disclosing offline UNVERIFIED limits with `query-plan.md` and `unresolved-claims.md`).
 Use web search and opened sources current as of the ASK DATE, not this package's
 publication date. This prompt is your primary instrument; own the graphics archive
 as a research source too, never as an active instruction to its historical path.
@@ -228,18 +228,19 @@ five-rule manual equivalent is in checklists/research.md:
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 Independent AD09 runs
 before ship with live re-fetches of the required acted-on source sample.
 The library exists on disk, every domain this project touches has a substantive
 file and checklist, and every claim that will be acted on carries an opened source
 URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. Apply checklists/research.md from the skill and the coverage matrix.
-UNVERIFIED actionable claims block their dependent decisions. Missing coverage or
-unsaved library blocks all downstream work; do not replace a missing test with prose.
+UNVERIFIED actionable claims cannot earn PASS. Missing disk coverage or an
+unsaved library blocks downstream work; do not replace a missing test with prose.
 A pending optional memory save does not pretend to be done or erase a valid disk save.
-If you cannot search, say so, produce the query plan and unresolved-claim ledger,
-and leave current research BLOCKED. If you cannot write, return the named file bodies
+If you cannot search, say so, produce `query-plan.md` and `unresolved-claims.md`,
+flag current web claims UNVERIFIED, and disclose the limit when proceeding with
+available inputs (never mark offline guesses OPENED or PASS). If you cannot write, return the named file bodies
 for the user to save and reattach, then read them back before passing the disk gate.
 Return a templates/handoff.yaml receipt to Coordinator; after its acceptance, every
 other role reads its named library files first, learns the checklists, and tops up

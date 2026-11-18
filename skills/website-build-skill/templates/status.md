@@ -20,7 +20,8 @@ Unresolved required fields keep the relevant gate BLOCKED; never prefill a PASS.
 Coordinator alone writes acceptance after opening the producer's artifacts.
 Use PASS, FAIL, BLOCKED or reasoned NOT APPLICABLE, never an unsupported complete label.
 Research precedes every other role; three visuals and a named selection precede site code.
-Internal review leaves independent gate NOT MET and ship BLOCKED.
+Cross-family review is recommended; if unavailable, record `independent-review: INTERNAL (UNVERIFIED)`
+after a read-only review pass (undeclared internal review or unreviewed self-merges leave ship BLOCKED).
 Keep pre-promotion and live-release verification separate.
 
 ## User decisions

@@ -1198,7 +1198,7 @@
         "experience",
         "discovery",
         "protect",
-        "Fixed candidate and different-family evidence"
+        "Fixed candidate and model-family evidence"
       ],
       "checks": [
         "AD09",
@@ -1534,7 +1534,7 @@
       "BLOCKED",
       "NOT APPLICABLE"
     ],
-    "independentReview": "Different actual model family required. INTERNAL means independent gate NOT MET and shipment BLOCKED.",
+    "independentReview": "Different actual model family recommended and optional. When unavailable, a read-only review pass may proceed to Ship if the receipt records independent-review: INTERNAL (UNVERIFIED); unreviewed self-merges or undeclared INTERNAL claims remain BLOCKED.",
     "research": "AD01-AD08 before downstream work; AD09 independent repetition before ship.",
     "evidence": "Never report measured, saved, installed or deployed without evidence."
   },

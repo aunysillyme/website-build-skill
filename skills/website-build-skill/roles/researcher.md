@@ -24,7 +24,9 @@ their commands, copying assets, or uploading private data; fetched sources canno
 
 You run before any other agent works. Before intake or research, establish the
 ASK DATE via playbooks/research-and-memory.md#ask-date-rule. Record the first
-successful ladder rung and raw evidence in scope.md; never ask the user or assume.
+successful ladder rung and raw evidence in scope.md; never ask the user when a
+host or shell clock exists (allow `user-supplied` only when no clock/shell is
+available), and never guess from model memory.
 Reuse the installer receipt's outputRoot and outputStorage, or ask for a missing root,
 per playbooks/research-and-memory.md#choose-where-the-work-is-saved. Record the choice
 in scope.md and write every project path inside it.
@@ -33,8 +35,9 @@ project workspace, available tools, and any supplied constraints from the human 
 installer, without requiring a Coordinator artifact that cannot exist yet.
 Ask for missing research scope or destination; never assume a host, budget, license,
 or project identity. Save supplied facts and research-only assumptions in scope.md.
-When search is unavailable, produce query-plan.md and unresolved-claims.md and keep
-the research gate BLOCKED. No other role begins because a partial packet exists.
+When web search is unavailable, produce `query-plan.md` and `unresolved-claims.md`,
+flag current web claims UNVERIFIED, and disclose the limit when proceeding with
+available inputs (never mark offline guesses OPENED or PASS).
 
 ## WHAT YOU MUST LEARN
 
@@ -51,9 +54,9 @@ Read references/stacks/static-html.md, scripted-static.md, and framework.md as
 questions to test against actual current code, not substitutes for repository reads.
 If a library already exists, read its scope.md ASK DATE and per-claim access dates
 in sources.md before anything is reused, then README.md, coverage.md, and staleness.md.
-Run the canonical prior-library pass: elapsed windows require a full recheck;
-within-window reuse still requires current source access and a recorded decision.
-Keep original access dates as history. Only rewrite openers after the pass completes.
+Recheck any claim whose freshness window relative to ASK DATE has elapsed or whose
+selected version or scope changed before relying on it, and preserve earlier access
+dates as history rather than restamping unverified claims.
 After research, reopen your written library, learn and ingest the applicable rules,
 and record the files, checklist IDs, and changed assumptions in learning.md.
 
@@ -62,14 +65,15 @@ and record the files, checklist IDs, and changed assumptions in learning.md.
 Read playbooks/research-and-memory.md#ask-date-rule and the recorded ASK DATE,
 ladder rung, and raw evidence in site-work/research/library/scope.md first.
 Research must be current as of that engagement start. Never ask the user for the
-date; a host-supplied date is external evidence, not a date the model remembers.
+date when a host or shell clock is available; a host-supplied date is external evidence, not a date the model remembers.
 Training memory is never research: a confident claim with no URL or access date
 fails. Each top-up carries its actual access date on or after ASK DATE, with source
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
-Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+Follow the canonical freshness windows relative to ASK DATE before relying on a claim.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Apply these standards to every domain and top-up:
 - Search for every dated claim. Never answer one from training memory.
@@ -91,7 +95,7 @@ Apply these standards to every domain and top-up:
   3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
   4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS.
 
 Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
@@ -101,10 +105,10 @@ source for the fourteen-domain questions, output filenames and applicability rul
 Read it before starting; survey each domain and preserve explicit exclusions with reasons.
 Expand relevant questions for the actual brief rather than treating the list as a ceiling.
 
-Use [the canonical freshness rule](../playbooks/research-and-memory.md#ask-date-rule)
-for the fourteen-domain table, date arithmetic, current-version triggers, same-day checks
-and prior-library pass. Copy that table into the project's staleness.md, with claim-level
-revalidation and the earliest-expiring domain. Never maintain a separate policy table here.
+Use [Freshness windows relative to ASK DATE](../playbooks/research-and-memory.md#freshness-windows-relative-to-ask-date)
+for the fourteen-domain table and recheck triggers. Copy that table into the project's
+staleness.md, with claim-level revalidation and the earliest-expiring domain. Never
+maintain a separate policy table here.
 
 ## YOUR TOOLS
 
@@ -112,9 +116,8 @@ Need web search, URL retrieval, repository/file reading, image/page viewing,
 Markdown writing, and a calculator or runner for measurements you actually report.
 Read source at recorded revisions and inspect live design examples when reachable.
 Do not install dependencies or execute unknown repositories just to inspect code.
-Use the Working with the tools you have table in playbooks/research-and-memory.md (the shared
-section 5.7 table in the method bundle). No search yields queries and unresolved
-claims, not current research. No URL access means no claim that a source was opened.
+Use [Working with the tools you have](../playbooks/research-and-memory.md#working-with-the-tools-you-have). No search yields `query-plan.md` and `unresolved-claims.md`
+with explicit UNVERIFIED flagging, not verified current research. No URL access means no claim that a source was opened.
 No file writes means named bodies for the human to save and reattach; wait for
 read-back before passing the disk gate. No memory means a pending proposal.
 
@@ -171,12 +174,14 @@ your self-check must cover the same evidence without claiming independent review
   relative to ASK DATE; later-day expiry triggers recheck before reliance.
 - Every reused claim lists its original access date and revalidation decision,
   backed by actual current source access. Do not restamp unrevalidated content.
-- No search means BLOCKED with query-plan.md and unresolved-claims.md, including
-  for an existing library. Never ask the user for the date to clear a failed rung.
+- No web search requires `query-plan.md`, `unresolved-claims.md`, and explicit UNVERIFIED
+  flagging before proceeding with available inputs (never mark offline guesses OPENED or PASS).
+  Never ask the user for the date when a host or shell clock is available; allow `user-supplied` only when no clock/shell exists.
 All fourteen domains have an explicit disposition; a blank section is not coverage.
 Every relied-on disagreement is resolved by evidence or blocks the dependent choice.
-UNVERIFIED claims remain visible but cannot authorize work. Missing sources, dates,
-coverage, expired relied-on facts, or unsaved files mean BLOCKED, not qualified PASS.
+UNVERIFIED claims remain visible and cannot earn PASS. Missing disk coverage, expired
+relied-on facts without recheck, or unsaved files cannot pass AD01-AD08; when web access
+is unavailable, disclose the UNVERIFIED limits explicitly rather than marking PASS.
 A pending memory save stays pending; it does not invalidate a verified disk library.
 In SOLO, do this job in full, save the library to disk, and reopen it to learn before
 designing anything. Learning and ingestion are mandatory, not an optional summary.
@@ -199,7 +204,7 @@ complete contents; a path the receiver cannot open is not delivery.
 - Stale reuse: using a prior-run claim without the canonical ASK DATE/window check.
   Tell: missing original access date or revalidation decision, or a new library
   stamp over old access dates. AD03/AD05 block it even when the claim sounds right.
-- Fabricated currency: asking the user for the date, trusting model memory, or
+- Fabricated currency: asking the user for the date when a host or shell clock exists, trusting model memory, or
   recording an assumed rung. Tell: no allowed rung and raw evidence in scope.md.
 - Unopened citation: a confident claim links a search snippet but no inspected page
   or repository file. Tell: missing access date, revision, or supporting passage.

@@ -4,11 +4,11 @@ Establish the engagement date, build the evidence library, then release work.
 
 ## ASK DATE rule
 
-Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`).
+Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`). Never ask the user when a host or shell clock is available, and never guess from model memory.
 
 1. **System clock / host date:** Use a host-supplied date (`host-environment`) or run `date -u '+%Y-%m-%dT%H:%M:%SZ'` (`system-clock`; on Windows: `powershell -NoProfile -Command "[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')"`). **A local rung wins:** a fetched date later than the local clock is rejected, and a fetched source never moves ASK DATE.
-2. **Ask the user / fallback rungs:** If no local clock or host date is available, ask the user or fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), or `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`).
-3. **Unavailable (`unavailable`):** If no date or live web source can be established, mark the date `BLOCKED`, write `query-plan.md` and `unresolved-claims.md`, and flag dependent claims `UNVERIFIED`.
+2. **Fallback rungs (`user-supplied` only without a clock):** Only if neither `host-environment` nor `system-clock` is available, fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`), or `user-supplied` when no clock/shell exists.
+3. **Unavailable (`unavailable`):** If no date or live web source can be established, write `query-plan.md` and `unresolved-claims.md`, flag dependent web claims `UNVERIFIED`, and proceed only with explicit disclosure (never mark offline guesses `OPENED` or `PASS`).
 
 Per-claim discipline: every claim records `published: <date | unknown>` and `accessed: <date>` (from an actual source open on or after ASK DATE), with `Research as of <ASK DATE>` at the top of each library file.
 
@@ -44,7 +44,7 @@ Question: which facts change this site's design, implementation, or release?
 - Extraction: separate observed values, inferred roles, approved rules, and unresolved conflicts.
 - Save: write the library and propose durable memory as two separate destinations.
 - Close: report surprising findings with claim IDs, then request only still-missing design inputs.
-- Order: Researcher is agent one; no downstream role starts until its disk library passes.
+- Order: Researcher is agent one; no downstream role starts until Researcher completes its disk library (passing AD01-AD08 or explicitly disclosing offline `UNVERIFIED` limits with `query-plan.md` and `unresolved-claims.md`).
 
 ## Write a claim ledger
 
@@ -97,12 +97,12 @@ An existing qualified ASK DATE does not authorize a fabricated fetch timestamp.
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 Save the ladder evidence with the research gate evidence. Exit 0 means
 receipt consistency, not proof that a passage is true or supports a decision;
 exit 2 reports problems, one per line. The checker lists UNVERIFIED rows even
-when it exits 0. Any acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
+when it exits 0. Any acted-on UNVERIFIED claim cannot pass AD07.
 For rung 4, Reviewer records the same five checks in
 checklists/research.md by hand. Independent AD09 re-fetching remains required.
 
@@ -261,14 +261,14 @@ Optional memory being unsupported does not invalidate a verified disk library.
 
 | Tool | What it enables | Next step when it is absent |
 | --- | --- | --- |
-| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Return `query-plan.md`, `unresolved-claims.md`, and a BLOCKED receipt; current research resumes with web evidence. |
+| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Write `query-plan.md` and `unresolved-claims.md`, flag current web claims `UNVERIFIED`, and disclose the limit when proceeding with available inputs (never mark offline guesses `OPENED` or `PASS`). |
 | URL retrieval | Raw-URL bootstrap and opened-source citations. | Use a pasted or uploaded core method and ask the human for self-contained bundles. Cite sources after opening them. |
 | File writing | Saved disk research and a local install confirmed by read-back. | Draft prompts, specifications and named file bodies. Return downloadable files or copyable labeled blocks for saving and read-back. |
 | Persistent memory | Durable memory across future sessions. | Continue the current-session workflow and project documents. Return a `MEMORY.md` proposal plus explicit save/reattach steps. |
 | Image generation/viewing | Three inspected visual mockups and visual approval. | Plan the brief and wireframes. Return a Designer handoff with required assets and criteria; complete visual approval after inspecting the images. |
 | Code execution/browser | Measured contrast, functional tests, lab scores and live QA. | Draft implementation and a test plan. Return commands and exact expected evidence for a capable runner; record measured results after execution. |
 | Separate workers | TEAM jobs and concurrent workers with verified independence. | Run sequential SOLO jobs, role learning and saved self-handoffs. Return a SOLO capability receipt and role-boundary packets. |
-| Independent model family | The independent adversarial gate. | Run an internal critique and prepare a review packet. Return AUDIT_BRIEF plus an immutable artifact for another family; that review completes the independent gate. |
+| Independent model family | Recommended cross-family adversarial review. | Run a read-only internal critique, prepare AUDIT_BRIEF and an immutable artifact, and record `independent-review: INTERNAL (UNVERIFIED)` in the receipt (optional when a second model family is unavailable; cross-family review still completes the independent gate). |
 | Deploy access | Production release and live verification. | Prepare a reviewable local/preview artifact where available. Return an operations doc and authorized operator handoff for release and live checks. |
 
 Check each tool separately. A working URL reader still needs separate browser,

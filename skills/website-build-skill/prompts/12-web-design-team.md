@@ -24,8 +24,9 @@ SET UP
 - The human checks each session reference and obtains seven setup acknowledgements.
   These confirm receipt of instructions, not permission to start downstream work.
 - A role label in one conversation is option 1. Record SOLO and use prompts/00-start.md
-  if separate workers cannot be reached. A same-family team remains a team but
-  cannot pass independent review. Respect host concurrency limits.
+  if separate workers cannot be reached. A same-family team remains a team; record
+  `independent-review: INTERNAL (UNVERIFIED)` if no second model family is available.
+  Respect host concurrency limits.
 - Read the host adapter and receipt. The installer supplies role files and bundles;
   the human opens sessions, checks trust and tools, and supplies each worker's files.
   Pending discovery, trust, tools or independent review checks remain explicit limits.
@@ -82,7 +83,10 @@ OPTIMIZER
 - Claim neither indexing, received analytics nor schema validity without evidence.
 
 REVIEWER
-- Last before ship, use a different model family or return INTERNAL, gate BLOCKED.
+- Last before ship, use a different model family when available, or run a read-only
+  internal pass and record `independent-review: INTERNAL (UNVERIFIED)` in the receipt
+  (cross-family review is recommended and optional; unreviewed self-merges or undeclared
+  INTERNAL claims remain BLOCKED).
 - Learn the relevant library and top up current attack, accessibility and scanner facts.
 - Review the fixed candidate read-only; return findings and research without edits.
 - Check code against site-work/coding-standards.md and checklists/code-quality.md.
@@ -106,7 +110,9 @@ If group messages cannot carry images, attach directly to each receiving worker.
 Complete one independent review round; verify reproduced fixes through the harness.
 Use playbooks/research-and-memory.md's degradation table for missing capabilities.
 In SOLO do the Researcher's complete job first, save and reopen the library before
-any design, and leave research BLOCKED if current search or disk persistence fails.
+any design; if disk persistence fails, leave research BLOCKED, and if web search is
+unavailable, write `query-plan.md` and `unresolved-claims.md`, flag current web
+claims UNVERIFIED, and disclose the limit when proceeding with available inputs.
 Finish each stage with its next concrete action and accountable owner.
 
 EVIDENCE
@@ -139,6 +145,8 @@ Preserve seven acknowledgements separately from research and work-readiness rece
 A text-only group requires direct image attachments to each receiving visual reviewer.
 Inaccessible files or routes keep the relevant handoff BLOCKED.
 Completed file installation means the files are available; session setup is the human's next step.
-No separate workers means SOLO; no independent family means independent review BLOCKED.
+No separate workers means SOLO; when no second model family is available, cross-family
+review is optional provided the read-only review receipt records
+`independent-review: INTERNAL (UNVERIFIED)` (unreviewed self-merges remain BLOCKED).
 Never invent a platform capability to fill a setup gap.
 

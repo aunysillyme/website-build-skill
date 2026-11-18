@@ -53,9 +53,8 @@ B. Your memory: save the durable rules and research location through an authoriz
 APPLY
 - Test intended-public routes and deliberate exclusions against the route map.
 - Use Person, Organization, and ProfilePage only where the visible facts fit.
-- Add FAQPage only for actual visible questions and answers when appropriate.
-- Do not promise Google FAQ rich results; verify current Google support first.
-- Treat llms.txt as navigation assistance, not a proven ranking requirement.
+- General `FAQPage` rich results were deprecated/retired in Google Search (limited to well-known authoritative government and health sites); do not promise Google FAQ rich results, and add `FAQPage` only for actual visible questions and answers when justified and verified against current consumer documentation on ASK DATE.
+- Verify current Google Search AI-feature and `llms.txt` documentation on ASK DATE; treat `llms.txt` as navigation assistance, not a proven ranking requirement.
 - Do not add AI-blocking metadata by default; respect an explicit owner policy.
 - Own site-work/optimization/route-map.json, metadata.json, structured-data.json,
   answers.md, llms.txt, and sitemap.xml as the discovery inputs. Validate them.
