@@ -238,12 +238,24 @@ test('6 Output root probe is read back before writes and unwritable roots leave 
   mock.restoreAll();
   const blocked = resolve(dir, 'blocked');
   fs.mkdirSync(blocked);
-  fs.chmodSync(blocked, 0o500);
-  try {
-    const project = resolve(dir, 'unwritable');
-    assert.equal(install({ ...request(project), outputDir: blocked }).code, 2);
-    assert.throws(() => fs.lstatSync(project), { code: 'ENOENT' });
-  } finally { fs.chmodSync(blocked, 0o700); }
+  if (process.platform === 'win32') {
+    mock.method(fs, 'openSync', (path, ...args) => {
+      if (String(path).includes('probe-')) throw Object.assign(Error('EACCES: permission denied'), { code: 'EACCES' });
+      return open(path, ...args);
+    });
+    try {
+      const project = resolve(dir, 'unwritable');
+      assert.equal(install({ ...request(project), outputDir: blocked }).code, 2);
+      assert.throws(() => fs.lstatSync(project), { code: 'ENOENT' });
+    } finally { mock.restoreAll(); }
+  } else {
+    fs.chmodSync(blocked, 0o500);
+    try {
+      const project = resolve(dir, 'unwritable');
+      assert.equal(install({ ...request(project), outputDir: blocked }).code, 2);
+      assert.throws(() => fs.lstatSync(project), { code: 'ENOENT' });
+    } finally { fs.chmodSync(blocked, 0o700); }
+  }
   assert.throws(() => fs.lstatSync(resolve(output, 'site-work')), { code: 'ENOENT' });
 }));
 
@@ -453,7 +465,7 @@ test('8 Idempotence preserves every byte and mtime, reports identical and record
   fs.mkdirSync(dest, { recursive: true });
   fs.copyFileSync(resolve(root, CORE, 'SKILL.md'), resolve(dest, 'SKILL.md'));
   assert.equal(install(request(dir)).code, 0);
-  assert.equal(receipt(dir).files.find(entry => entry.path.endsWith('/SKILL.md')).action, 'identical');
+  assert.equal(receipt(dir).files.find(entry => entry.path === resolve(dest, 'SKILL.md')).action, 'identical');
   const before = snapshot(dir);
   const result = install(request(dir));
   assert.equal(result.code, 0);

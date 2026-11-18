@@ -28,7 +28,7 @@ export function auditHtmlOutcome(html) {
     labelMatches.map(m => parseAttrs(m[0]).get('for')?.trim()).filter(Boolean),
   );
   const wrappedLabels = [...html.matchAll(/<label\b(?:[^>"']|"[^"]*"|'[^']*')*>([\s\S]*?)<\/label>/gi)]
-    .filter(m => (m[1].match(/<input\b/gi) || []).length === 1 && m[1].replace(/<[^>]*>/g, '').trim().length > 0);
+    .filter(m => (m[1].match(/<input\b/gi) || []).length === 1 && m[1].split(/<[^>]*>/).some(part => part.trim().length > 0));
   const isWrapped = index => wrappedLabels.some(m => index >= m.index && index < m.index + m[0].length);
   const checkableInputs = inputs.filter(m => {
     const type = (parseAttrs(m[0]).get('type') || 'text').trim().toLowerCase();

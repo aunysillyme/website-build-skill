@@ -16,7 +16,7 @@ function demo(options = {}) {
     for (const dir of ['scripts', 'docs', 'stubs', 'tmp']) fs.mkdirSync(path.join(trial, dir));
     fs.writeFileSync(path.join(trial, 'stubs/package.json'), JSON.stringify({ type: 'commonjs' }));
     fs.copyFileSync(source, path.join(trial, 'scripts/record-demo.sh'));
-    const stub = (name, body) => fs.writeFileSync(path.join(trial, 'stubs', name), `#!${process.execPath}\n${body}`, { mode: 0o755 });
+    const stub = (name, body) => fs.writeFileSync(path.join(trial, 'stubs', name), `#!${process.execPath.split('\\').join('/')}\n${body}`, { mode: 0o755 });
     stub('npx', `const fs = require('node:fs');
 const { spawnSync } = require('node:child_process');
 const args = process.argv.slice(2);
@@ -28,7 +28,7 @@ process.exit(result.status ?? 1);`);
 const { spawnSync } = require('node:child_process');
 const args = process.argv.slice(2);
 fs.appendFileSync(process.env.DEMO_TEST_CALLS, JSON.stringify({ name: 'asciinema', args }) + '\\n');
-const result = spawnSync('/bin/sh', ['-c', args[args.indexOf('--command') + 1]], { encoding: 'utf8' });
+const result = spawnSync('sh', ['-c', args[args.indexOf('--command') + 1]], { encoding: 'utf8' });
 fs.writeFileSync(args.at(-1), result.stdout);
 process.stdout.write(result.stdout);
 process.stderr.write(result.stderr);
@@ -41,7 +41,7 @@ fs.copyFileSync(args.at(-2), args.at(-1));`);
     const calls = path.join(trial, 'calls.jsonl');
     const result = spawnSync('bash', ['scripts/record-demo.sh'], {
       cwd: trial, encoding: 'utf8', env: {
-        ...process.env, PATH: `${path.join(trial, 'stubs')}:${process.env.PATH}`,
+        ...process.env, PATH: `${path.join(trial, 'stubs')}${path.delimiter}${process.env.PATH}`,
         TMPDIR: path.join(trial, 'tmp'),
         DEMO_TEST_CALLS: calls, DEMO_TEST_CLI: path.join(root, 'bin/website-build-skill.mjs'),
         DEMO_TEST_INSTALL_FAIL: options.installFail ? '1' : '',
@@ -67,7 +67,7 @@ test('Demo records the published package dry run, install and verified receipt, 
   assert.deepEqual(installs[1].args, ['--yes', 'website-build-skill@latest', '--solo', '--target', 'codex', '--dir', './project', '--yes']);
   assert.match(installs[0].cwd, /record-demo-/);
   assert.equal(result.hasRepoTestWork, false);
-  assert.equal(installs[0].home, `${installs[0].cwd}/home`);
+  assert.equal(path.resolve(installs[0].home), path.resolve(installs[0].cwd, 'home'));
   assert.deepEqual(result.calls.map(call => call.name), ['asciinema', 'npx', 'npx', 'agg']);
   assert.match(result.rendered, /Receipt: project\/\.agents\/skills\/website-build-skill\/\.website-build-skill-receipt\.json/);
   assert.match(result.rendered, /Mode: solo; target: codex; scope: project/);

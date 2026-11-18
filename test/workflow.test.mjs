@@ -108,7 +108,8 @@ test('Release pins npm and rejects versions below the trusted publishing minimum
   assert.match(step.run, /^npm install -g npm@12\.2\.0\n/);
   const versionCheck = step.run.split('\n').slice(1).join('\n');
   for (const [version, expected] of [['11.5.0', 1], ['11.4.99', 1], ['10.99.99', 1], ['11.5.1', 0], ['12.2.0', 0], ['invalid', 1]]) {
-    const result = spawnSync('sh', ['-c', versionCheck], { encoding: 'utf8', env: { ...process.env, TEST_NPM_VERSION: version, NODE_OPTIONS: `--require "${resolve('test/npm-version-stub.cjs')}"` } });
+    const stubPath = resolve('test/npm-version-stub.cjs').replace(/\\/g, '/');
+    const result = spawnSync('sh', ['-c', versionCheck], { encoding: 'utf8', env: { ...process.env, TEST_NPM_VERSION: version, NODE_OPTIONS: `--require "${stubPath}"` } });
     assert.equal(result.status, expected, version);
   }
 });
