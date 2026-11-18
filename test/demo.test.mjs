@@ -20,7 +20,7 @@ function demo(options = {}) {
     stub('npx', `const fs = require('node:fs');
 const { spawnSync } = require('node:child_process');
 const args = process.argv.slice(2);
-fs.appendFileSync(process.env.DEMO_TEST_CALLS, JSON.stringify({ name: 'npx', args, cwd: process.cwd(), home: process.env.HOME }) + '\\n');
+fs.appendFileSync(process.env.DEMO_TEST_CALLS, JSON.stringify({ name: 'npx', args, cwd: fs.realpathSync.native(process.cwd()), home: fs.realpathSync.native(process.env.HOME) }) + '\\n');
 if (process.env.DEMO_TEST_INSTALL_FAIL && !args.includes('--dry-run')) process.exit(3);
 const result = spawnSync(process.execPath, [process.env.DEMO_TEST_CLI, ...args.slice(2)], { stdio: 'inherit' });
 process.exit(result.status ?? 1);`);
