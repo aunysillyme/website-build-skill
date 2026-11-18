@@ -188,7 +188,9 @@ designing anything. Learning and ingestion are mandatory, not an optional summar
 
 ## YOUR HANDOFF
 
-Hand research-to-coordinator to Website Coordinator only after your gate passes.
+Hand research-to-coordinator to Website Coordinator only after AD01-AD08 pass (or, when
+web access is unavailable, after saving touched domain files/checklists, `query-plan.md`,
+`unresolved-claims.md`, and explicit UNVERIFIED disclosure).
 Coordinator reopens the files and accepts the gate before other roles work; if its
 check fails, resume research and pause all dependent assignments. Later corrections
 identify invalidated receipts and the new library revision. Every other role reads

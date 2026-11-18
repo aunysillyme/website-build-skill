@@ -49,7 +49,8 @@ TEAM: one command installs the seven workers' files; you open each session yours
   roles/optimizer.md, and roles/reviewer.md.
 - Follow prompts/12-web-design-team.md while the human opens the sessions and carries handoffs.
 - The human checks session references during setup and opens Researcher first. Coordinator
-  records families and working readiness after the research gate passes.
+  records families and working readiness after Researcher's gate completes (passing
+  AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Role labels within one conversation are option 1; if separate workers are unavailable,
   say so, record SOLO, and continue below. Missing cross-family review leaves
   independence UNVERIFIED (record `independent-review: INTERNAL (UNVERIFIED)`)
@@ -118,14 +119,17 @@ SAVE
 
   For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS.
 
-- After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
-  under site-work/. If file tools are missing, return named bodies for me to save
-  and reattach; wait for saved library read-back before any design work.
+- After Researcher's gate completes (passing AD01-AD08, or disclosed offline UNVERIFIED
+  receipt with `query-plan.md` and `unresolved-claims.md`), Coordinator confirms
+  `brief.md`, `capabilities.md`, and `status.md` under `site-work/`. If file tools are
+  missing, return named bodies for me to save and reattach; wait for saved library
+  read-back before any design work.
 - Do not claim to have installed, saved, researched, tested, or remembered anything
   unless the corresponding action actually succeeded.
 
 NEXT
-- Researcher issues the first research-to-coordinator handoff after the library gate.
+- Researcher issues the first research-to-coordinator handoff after the library gate
+  (passing AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Each later worker or solo role learns the named library files, applies its checklists,
   and tops up its own dated questions. Flag stale or wrong claims back to Researcher.
 - Without web search, say so, write `query-plan.md` and `unresolved-claims.md`,
@@ -812,9 +816,12 @@ Researcher establishes it before intake or research; later roles read scope.md.
 Never ask the user for the date or infer it from model knowledge. Apply the
 same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
 
-Run one independent adversarial audit of this fixed release candidate.
-The reviewer must be a different model family from the builder.
-If that is unavailable, prepare the review packet and mark independence incomplete.
+Run one read-only adversarial audit of this fixed release candidate.
+A reviewer from a different model family from the builder is recommended.
+If no second model family is available, run a read-only internal review pass, prepare
+the external review packet, and record `independent-review: INTERNAL (UNVERIFIED)` in the
+receipt (never masquerade internal review as independent, and never skip a read-only
+review pass).
 
 PREPARE THE AUDIT_BRIEF
 - Identify runtime, exact revision or artifact digest, routes, callers, and trust boundaries.
@@ -954,11 +961,15 @@ RESEARCHER
   acted-on claim has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. UNVERIFIED cannot pass a claim.
 - Include README headlines, source/disagreement ledgers, user surprises, memory
   proposal/receipt, and earliest staleness/recheck markers. Proposal is not saved memory.
-- Hand research-to-coordinator over only after the gate passes. Accept corrections
+- Hand research-to-coordinator over only after AD01-AD08 pass (or, when web search is
+  unavailable, with `query-plan.md`, `unresolved-claims.md`, and explicit UNVERIFIED
+  disclosure). Accept corrections
   from specialists, update canonical evidence, and invalidate affected old receipts.
 
 COORDINATOR
-- Start after Researcher's passing receipt; read the files and verify that gate.
+- Start after Researcher's research-to-coordinator receipt (passing AD01-AD08, or
+  disclosed offline UNVERIFIED receipt with `query-plan.md` and `unresolved-claims.md`);
+  read the files and verify that gate.
 - Learn the named library files and top up current host/worker capability questions.
 - Own brief, capabilities, stage state, ownership, gate acceptance, and integration.
 - Record routes, family evidence, tools, and ownership after research acceptance.
@@ -1018,7 +1029,9 @@ is a domain top-up; flag stale/wrong claims back to Researcher and pause affecte
 Coordinator alone accepts gates in site-work/status.md; authors keep their receipts.
 Changed inputs invalidate affected evidence. Failed gates stop dependent work.
 If group messages cannot carry images, attach directly to each receiving worker.
-Complete one independent review round; verify reproduced fixes through the harness.
+Complete one read-only review round (different model family recommended, or
+`independent-review: INTERNAL (UNVERIFIED)` when unavailable); verify reproduced fixes
+through the harness.
 Use playbooks/research-and-memory.md's degradation table for missing capabilities.
 In SOLO do the Researcher's complete job first, save and reopen the library before
 any design; if disk persistence fails, leave research BLOCKED, and if web search is
@@ -1049,7 +1062,9 @@ A missing host adapter does not authorize inventing a native file format or impo
    and attachments, and verify each receiving worker can open them.
 7. Give the user's actual request, authorized workspace, assets and constraints to
    Researcher alone. It establishes ASK DATE and completes the library and gate first.
-8. Relay its complete passing receipt and readable library to Coordinator. Coordinator
+8. Relay its complete research-to-coordinator receipt (passing AD01-AD08, or disclosed
+   offline UNVERIFIED receipt with `query-plan.md` and `unresolved-claims.md`) and
+   readable library to Coordinator. Coordinator
    reopens them before accepting research and releasing design/graphics assignments.
 
 Preserve seven acknowledgements separately from research and work-readiness receipts.

@@ -18,7 +18,8 @@ If a second model family is unavailable (e.g. outside `/swarm` cross-model revie
 ## Native tool mapping
 
 Documented Antigravity native tools are listed below; confirm actual availability in your running session (host loading and TEAM execution remain awaiting a recorded trial).
-Generated `.agents/agents/website-<role>.md` files omit `tools` on the six non-reviewer roles so optional browser or image tools do not trigger unmapped-tool hangs; `website-reviewer` explicitly sets `tools: [read_file, search_web]` and `commandExecutionPolicy: off`.
+Generated `.agents/agents/website-<role>.md` files omit `tools` on the six non-reviewer roles so optional browser or image tools do not trigger unmapped-tool hangs; `website-reviewer` sets `tools: [read_file, search_web]` (matching Antigravity 2.0's built-in `migrate-agent-settings` subagent mapping) and `commandExecutionPolicy: off`.
+Note: the public [subagents docs](https://antigravity.google/docs/subagents) examples still list `view_file` and warn that an unmapped tool name in `tools` can hang subagent execution; verify `website-reviewer` executes without hanging on your client version before relying on it (or switch `tools` to `view_file` if your client uses legacy tool names).
 
 | Role | Documented native tools | Reason and permission scope | Fallback route ([Working with the tools you have](../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have)) |
 | --- | --- | --- | --- |

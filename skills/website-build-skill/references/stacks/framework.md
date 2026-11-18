@@ -59,7 +59,7 @@ Keep client work small; add it for actual interaction rather than all page conte
 - CSP: inspect emitted inline content and test an exact hash or per-response nonce design.
 - Responses: check normal, redirect, error, asset and dynamic/function headers separately.
 - Journey: complete mobile/desktop, keyboard, failure/retry and reduced-motion paths.
-- Release: freeze a candidate, obtain different-family read-only review, reproduce findings,
+- Release: freeze a candidate, obtain read-only review (different-family recommended, or `independent-review: INTERNAL (UNVERIFIED)` when unavailable), reproduce findings,
   verify fixes, then promote the checked artifact within existing authorization.
 
 ## When to move to a bigger stack

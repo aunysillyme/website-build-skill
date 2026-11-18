@@ -49,7 +49,7 @@ Record any added tool as a project-specific dependency with a reason.
 - Performance: retain the declared cold mobile series and all reports.
 - Discovery: inspect initial HTML, canonicals, internal links, route map and metadata parity.
 - Security: inspect actual host headers, enforced-policy behavior, and scanner evidence.
-- Release: apply checklists/ship.md to the exact uploaded files and independent review.
+- Release: apply checklists/ship.md to the exact uploaded files and read-only review (different-family recommended, or `independent-review: INTERNAL (UNVERIFIED)` when unavailable).
 
 ## Add the next page
 

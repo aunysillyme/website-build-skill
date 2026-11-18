@@ -8,8 +8,10 @@ Question: can a cold reader release, verify, and recover this site from one docu
 
 ## Establish release authority and identity
 
-Require the brief, user selection, current research, QA receipts, independent review,
-and ROUND 1 dispositions with regressions on the final candidate.
+Require the brief, user selection, current research, QA receipts, a read-only review pass
+(independent different-family review recommended, or `independent-review: INTERNAL (UNVERIFIED)`
+when no second model family is available), and ROUND 1 dispositions with regressions on
+the final candidate.
 Name target account, project, domain, operator, and authorized action.
 Existing explicit authorization is sufficient within its scope.
 If authority is missing, finish the reviewable candidate before asking at that boundary.

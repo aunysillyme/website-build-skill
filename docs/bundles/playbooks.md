@@ -1199,8 +1199,10 @@ Question: can a cold reader release, verify, and recover this site from one docu
 
 ## Establish release authority and identity
 
-Require the brief, user selection, current research, QA receipts, independent review,
-and ROUND 1 dispositions with regressions on the final candidate.
+Require the brief, user selection, current research, QA receipts, a read-only review pass
+(independent different-family review recommended, or `independent-review: INTERNAL (UNVERIFIED)`
+when no second model family is available), and ROUND 1 dispositions with regressions on
+the final candidate.
 Name target account, project, domain, operator, and authorized action.
 Existing explicit authorization is sufficient within its scope.
 If authority is missing, finish the reviewable candidate before asking at that boundary.
@@ -1334,7 +1336,7 @@ Record any added tool as a project-specific dependency with a reason.
 - Performance: retain the declared cold mobile series and all reports.
 - Discovery: inspect initial HTML, canonicals, internal links, route map and metadata parity.
 - Security: inspect actual host headers, enforced-policy behavior, and scanner evidence.
-- Release: apply checklists/ship.md to the exact uploaded files and independent review.
+- Release: apply checklists/ship.md to the exact uploaded files and read-only review (different-family recommended, or `independent-review: INTERNAL (UNVERIFIED)` when unavailable).
 
 ## Add the next page
 
@@ -1506,7 +1508,7 @@ Keep client work small; add it for actual interaction rather than all page conte
 - CSP: inspect emitted inline content and test an exact hash or per-response nonce design.
 - Responses: check normal, redirect, error, asset and dynamic/function headers separately.
 - Journey: complete mobile/desktop, keyboard, failure/retry and reduced-motion paths.
-- Release: freeze a candidate, obtain different-family read-only review, reproduce findings,
+- Release: freeze a candidate, obtain read-only review (different-family recommended, or `independent-review: INTERNAL (UNVERIFIED)` when unavailable), reproduce findings,
   verify fixes, then promote the checked artifact within existing authorization.
 
 ## When to move to a bigger stack

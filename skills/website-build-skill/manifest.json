@@ -45,7 +45,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a1cc8cb8f3b47f317dc3c303223daa94107310470865a825f52b1c994d461994"
+      "sha256": "da318a2cd481d0ed54cf39affe486a9ced4277708f970d5da301c81e42f1b740"
     },
     {
       "path": "prompts/01-website-deep-research.md",
@@ -194,7 +194,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "c98da6d0c2b729f2a37f5a2f662c657b9650248fdb03b93cb84ec2368d9558ec"
+      "sha256": "4470f1bb228f00fb5c407dd6b6b649ba2d9d93607613a41017d8f693998438a6"
     },
     {
       "path": "prompts/11-ship-and-verify.md",
@@ -225,7 +225,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "b65fbebda09b28307eedc48985ef3eea9fba30e0e620a59eef73bb06473e8d57"
+      "sha256": "17fc42537d718780eb5db51416c9c2e4b682344256fa363ada574a52255358ab"
     },
     {
       "path": "prompts/13-coding-research.md",
@@ -255,7 +255,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "fa8be9cf817a859daceb57f7799c1668086eba93e3ca84bbabb9804fe250542a"
+      "sha256": "edce2f821917ddc523e7cf601747d6d79163aadff47854828de176f401865f6a"
     },
     {
       "path": "roles/coordinator.md",
@@ -270,7 +270,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "bda541fd8b65ab77338c0e0b22f5e0ec762fc05873c315bb4147ef45068ad03d"
+      "sha256": "c44a0842cf44665c5a36149d3814002fcbf14c51a76007a6730b0d4842f1a41e"
     },
     {
       "path": "roles/designer.md",
@@ -512,7 +512,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "170e2a32a6993e901056e67fc82d5ba3a4a1dfc97a363a9f17bab902c3ed194f"
+      "sha256": "03b924cb650b992a44795868bb1acf0c10687b6cfd5a20d32dd0796770eafd35"
     },
     {
       "path": "checklists/research.md",
@@ -647,7 +647,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "75f57202b34466534effc4f05918e51c9073b15c57e7d1c765426f68db4cfa25"
+      "sha256": "1808ba585a38fe3e8e6597c1e01b2f8f1b7d4200662e99c2e4d3100233b0b22b"
     },
     {
       "path": "references/stacks/scripted-static.md",
@@ -677,7 +677,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "059ed2167912c80787fcc72cceb14ec8bea2c991056f95e03c7be4f25dab30cc"
+      "sha256": "2c03c4827c492c44a77e1a340a7644365ee17fe7d84697cd3d6b117c8be79fa2"
     },
     {
       "path": "templates/install-choice.txt",

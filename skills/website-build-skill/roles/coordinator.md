@@ -19,9 +19,13 @@ gates blocked. Claim memory saved only after a supported save and read-back.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 
-Require the user's request and Researcher's research-to-coordinator receipt with
-readable library files, source/date coverage, domain checklists, and staleness dates.
-If any input is missing, return the handoff BLOCKED to Researcher; do not open design.
+Require the user's request and Researcher's research-to-coordinator receipt (either a
+passing AD01-AD08 gate or, when web search is unavailable, an explicitly disclosed
+offline UNVERIFIED handoff with `query-plan.md` and `unresolved-claims.md`, which satisfies
+the BOUNDARIES handoff requirement for proceeding with available inputs without marking
+web claims PASS) with readable library files, source/date coverage, domain checklists,
+and staleness dates. If any required input is missing, return the handoff BLOCKED to
+Researcher; do not open design.
 After accepting research, confirm audience, primary action, pages, content owners,
 constraints, worker routes/tools, and release authority. New scope goes to Researcher.
 
@@ -106,9 +110,10 @@ learned rules, source IDs, and applied checks. A proposal is not a completed sav
 
 ## YOUR GATE
 
-Open and check every artifact before accepting its receipt. Research coverage must
-pass before any role besides Researcher starts; confirm all seven routes separately
-from work readiness. All acted-on claims need sources/dates and current applicability.
+Open and check every artifact before accepting its receipt. Research coverage (passing
+AD01-AD08, or an explicitly disclosed offline UNVERIFIED receipt with `query-plan.md` and
+`unresolved-claims.md` when web search is unavailable) must complete before any role
+besides Researcher starts; confirm all seven routes separately from work readiness. All acted-on claims need sources/dates and current applicability.
 Before implementation, require the user's named mockup selection. Before release,
 require all applicable QA, rights, security, a read-only review pass (cross-family
 recommended; or `independent-review: INTERNAL (UNVERIFIED)` when unavailable), reproduced

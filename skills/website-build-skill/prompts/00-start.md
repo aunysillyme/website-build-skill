@@ -21,7 +21,8 @@ TEAM: one command installs the seven workers' files; you open each session yours
   roles/optimizer.md, and roles/reviewer.md.
 - Follow prompts/12-web-design-team.md while the human opens the sessions and carries handoffs.
 - The human checks session references during setup and opens Researcher first. Coordinator
-  records families and working readiness after the research gate passes.
+  records families and working readiness after Researcher's gate completes (passing
+  AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Role labels within one conversation are option 1; if separate workers are unavailable,
   say so, record SOLO, and continue below. Missing cross-family review leaves
   independence UNVERIFIED (record `independent-review: INTERNAL (UNVERIFIED)`)
@@ -90,14 +91,17 @@ SAVE
 
   For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS.
 
-- After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
-  under site-work/. If file tools are missing, return named bodies for me to save
-  and reattach; wait for saved library read-back before any design work.
+- After Researcher's gate completes (passing AD01-AD08, or disclosed offline UNVERIFIED
+  receipt with `query-plan.md` and `unresolved-claims.md`), Coordinator confirms
+  `brief.md`, `capabilities.md`, and `status.md` under `site-work/`. If file tools are
+  missing, return named bodies for me to save and reattach; wait for saved library
+  read-back before any design work.
 - Do not claim to have installed, saved, researched, tested, or remembered anything
   unless the corresponding action actually succeeded.
 
 NEXT
-- Researcher issues the first research-to-coordinator handoff after the library gate.
+- Researcher issues the first research-to-coordinator handoff after the library gate
+  (passing AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Each later worker or solo role learns the named library files, applies its checklists,
   and tops up its own dated questions. Flag stale or wrong claims back to Researcher.
 - Without web search, say so, write `query-plan.md` and `unresolved-claims.md`,
