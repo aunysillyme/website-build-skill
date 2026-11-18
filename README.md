@@ -24,7 +24,7 @@ Built page:
 
 ![Crumb & Co built demo page at 1440 px, with the shorter headline, hours table and placeholder-content notice](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/showcase/crumb-and-co/built/site-1440.png)
 
-See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md).
+See [all three directions, mobile views, stage times and limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.25/docs/showcase/README.md).
 
 Treat the first mockup as a draft: say what feels off and ask again.
 
@@ -39,7 +39,7 @@ The one-page entry is one measured demo run through Prove, with limits. Other ti
 
 | Size | What it holds | Time and evidence |
 | --- | --- | --- |
-| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md). |
+| One page | One primary action, essential sections, contact details and a responsive layout. | MEASURED: 24 min 48 s, research to proof, [one demo run with limits](https://github.com/aunysillyme/website-build-skill/blob/v0.1.25/docs/showcase/README.md). |
 | Small site (2-6 pages) | Shared navigation and styles, a home page and supporting service, work, about or contact pages. | ESTIMATE: 1-2 working days |
 | Full rebuild | Existing-site review, content and route mapping, redesigned page templates, redirects and release checks. | ESTIMATE: 1-2 weeks |
 
@@ -51,10 +51,10 @@ before starting the full rebuild. Use the recorded demo as a reference with its 
 ## How long it takes
 
 The recorded host trials cover loading the skill, about 1-3 minutes, with one run
-each for [Claude Code](docs/evidence/host-trial-claude-code-2026-09-24.json),
-[Codex](docs/evidence/host-trial-codex-2026-09-24.json) and
-[Grok Build CLI](docs/evidence/host-trial-grok-build-2026-09-24.json).
-These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.22/docs/showcase/README.md) separately records
+each for [Claude Code](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evidence/host-trial-claude-code-2026-09-24.json),
+[Codex](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evidence/host-trial-codex-2026-09-24.json) and
+[Grok Build CLI](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evidence/host-trial-grok-build-2026-09-24.json).
+These are loading checks. The [Crumb & Co run](https://github.com/aunysillyme/website-build-skill/blob/v0.1.25/docs/showcase/README.md) separately records
 24 min 48 s across Research, Learn, Ingest, Scope, Match, Mock, Choose, Build and Prove.
 Its 43 s install is logged separately. Stage intervals include thinking and tool waits;
 writing the report afterward is excluded. One host, one model and placeholder content
@@ -148,7 +148,7 @@ Every site follows the same twelve stages, so your AI researches before it desig
 | Choice | What happens | Works with |
 |---|---|---|
 | **1 · Teach my AI** (SOLO) | One AI learns the whole method and does every job itself. Nothing else to install. | Any AI: Claude, ChatGPT, Grok, Cursor, Copilot |
-| **2 · Give me the team** (TEAM) | Seven role prompts (you run each session), one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Gemini (via Antigravity CLI), Grok Bot |
+| **2 · Give me the team** (TEAM) | Seven role prompts (you run each session), one per job. One command installs their files; you open each session yourself and carry the handoffs between them. Researcher goes first. | Claude Code, Codex, Hermes, Google Antigravity, Gemini CLI, Grok Bot |
 
 Not sure? Pick 1. Moving to 2 later keeps everything you have already done.
 
@@ -188,11 +188,12 @@ current status host by host.
 
 | Host | Set it up | What you get |
 |---|---|---|
-| [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
-| [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds the full role bundles |
-| [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust and loading steps | Shared method files; TEAM adds the full role bundles |
-| [Gemini (via Antigravity CLI)](adapters/antigravity.md) | Install with `--target antigravity`; it writes `.agents/skills/website-build-skill/`, where Antigravity looks for workspace skills | Method files; TEAM adds the full role bundles |
-| [Grok Bot](adapters/grok.md) | Attach the five bundles and follow the manual team setup | Complete role instructions and addressed handoffs |
+| [Claude Code](adapters/claude-code.md) | Install with `--target claude-code`; ask it to read `.claude/skills/website-build-skill/SKILL.md` | Method files; TEAM adds role bundles and `.claude/agents/` subagents |
+| [Codex](adapters/codex.md) | Install with `--target codex`; ask it to read `.agents/skills/website-build-skill/SKILL.md` | Method files; TEAM adds role bundles and `.codex/agents/` subagents |
+| [Hermes](adapters/hermes.md) | Install with `--target hermes`; follow the trust, `delegate_task` or loading steps | Shared method files; TEAM adds role bundles and `--bundle-dir` aliases |
+| [Google Antigravity](adapters/antigravity.md) | Install with `--target antigravity` (or `agy plugin install`); project skills land in `.agents/skills/website-build-skill/` | Method files; TEAM adds role bundles and `.agents/agents/` subagents |
+| [Gemini CLI](adapters/gemini-cli.md) | Install with `--target gemini-cli`; project skills land in `.gemini/skills/website-build-skill/` | Method files; TEAM adds role bundles and `.gemini/agents/` subagents |
+| [Grok Bot](adapters/grok.md) | Attach the five bundles or follow the Connect apps and manual team setup | Complete role instructions and addressed handoffs |
 | [Claude Desktop](adapters/claude-desktop.md) | Attach the five bundles and paste the shared instructions | The SOLO method in your chat |
 | [ChatGPT](adapters/chatgpt-project.md) | Add the instructions and five bundles to a Project or [custom GPT](adapters/custom-gpt.md) | The SOLO method and saved state packets |
 
@@ -219,7 +220,7 @@ Reopen that library for later pages and refresh claims against the date of the n
 
 ## For agents
 
-Read [llms.txt](llms.txt) for the source catalog and [AGENTS.md](AGENTS.md) for repository instructions.
+Read [llms.txt](llms.txt) for the source catalog and [AGENTS.md](https://github.com/aunysillyme/website-build-skill/blob/main/AGENTS.md) for repository instructions.
 For a headless project install, name SOLO or TEAM:
 
 ```bash
@@ -238,7 +239,7 @@ Run `npx website-build-skill`, pick your host and let it copy the skill pack int
 
 ### Which AI tools does it work with?
 
-Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Gemini (via Antigravity CLI) and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
+Any AI that can read files works with the SOLO method, including Claude, ChatGPT, Grok, Cursor and Copilot. TEAM installs the seven workers' files for Claude Code, Codex, Hermes, Google Antigravity, Gemini CLI and Grok Bot in one command; you open each session yourself and carry the handoffs between them, with Researcher first; see [Choose your host](#choose-your-host) for each setup guide.
 
 ### What does my AI research before it builds?
 
@@ -273,9 +274,9 @@ Use the target and directory from your install; it removes only files the instal
 ## Contributing, credits and license
 
 Contributions welcome: reproducible defects, clearer instructions, accessible examples and host evidence.
-Pull requests are accepted under the [contributor license agreement](CLA.md); the checkbox in the pull request template records your agreement.
-Read [CONTRIBUTING](CONTRIBUTING.md), [the conduct policy](CODE_OF_CONDUCT.md),
-[SECURITY](SECURITY.md), [maintainers](MAINTAINERS.md) and [release operations](RELEASING.md).
+Pull requests are accepted under the [contributor license agreement](https://github.com/aunysillyme/website-build-skill/blob/main/CLA.md); the checkbox in the pull request template records your agreement.
+Read [CONTRIBUTING](https://github.com/aunysillyme/website-build-skill/blob/main/CONTRIBUTING.md), [the conduct policy](https://github.com/aunysillyme/website-build-skill/blob/main/CODE_OF_CONDUCT.md),
+[SECURITY](https://github.com/aunysillyme/website-build-skill/blob/main/SECURITY.md), [maintainers](https://github.com/aunysillyme/website-build-skill/blob/main/MAINTAINERS.md) and [release operations](https://github.com/aunysillyme/website-build-skill/blob/main/RELEASING.md).
 [Provenance](docs/PROVENANCE.md) records the method's sources and attribution.
 Credits: inspired by [Anatomy by Ryan](https://github.com/wheresryan22/anatomy) (MIT), which leads with results, real times and limits.
 [Evaluation](docs/EVALUATION.md) describes the checks; run `npm run build`, `npm run check` and `npm test` locally.

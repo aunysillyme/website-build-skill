@@ -37,7 +37,8 @@ records browser version and account controls available during that trial.
 | Claude Code | [Adapter](../../adapters/claude-code.md) | SOLO and separately TEAM |
 | Codex | [Adapter](../../adapters/codex.md) | SOLO and separately TEAM |
 | Hermes | [Adapter](../../adapters/hermes.md), including explicit alias and trust checks | SOLO and separately TEAM |
-| Gemini (via Antigravity CLI) | [Adapter](../../adapters/antigravity.md) | SOLO and separately TEAM |
+| Google Antigravity | [Adapter](../../adapters/antigravity.md) | SOLO and separately TEAM |
+| Gemini CLI | [Adapter](../../adapters/gemini-cli.md) | SOLO and separately TEAM |
 | Grok Bot | [Adapter](../../adapters/grok.md), including attachment and manual relay controls | SOLO and separately TEAM |
 | Claude Desktop | [Adapter](../../adapters/claude-desktop.md), including skill ZIP upload where exposed | SOLO; record any separate-session TEAM trial separately |
 | ChatGPT Project | [Adapter](../../adapters/chatgpt-project.md) | SOLO; record any separate-session TEAM trial separately |
@@ -53,7 +54,7 @@ acknowledgements separately from the research receipt and later work receipts.
 Test title: `Live AD01-AD09 behavior: ladder evidence, clock override, no-search blockage, stale claims, derived floors and multi-day expiry`.
 
 1. Use a fresh synthetic project on each claimed host/OS above. Follow the
-   [host trial](host-trial.md) to install, explicitly load the skill and record tool access.
+   [host trial](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evaluation/host-trial.md) to install, explicitly load the skill and record tool access.
 2. Run every case in `test/fixtures/ask-date-cases.md` from the matching source checkout
    (test fixtures are checkout-only files).
    Follow [AD01-AD09](../../skills/website-build-skill/checklists/research.md) and the
@@ -65,8 +66,8 @@ Test title: `Live AD01-AD09 behavior: ladder evidence, clock override, no-search
    criterion, not an observation. Identify simulated tools separately from live tools;
    a simulation cannot establish the live capability it replaces.
 4. Save scope, library, source receipts, gate output and transcript excerpts. Mark each
-   AD check PASS, FAIL, BLOCKED or NOT APPLICABLE with its evidence and reason. A missing
-   different-family Reviewer leaves AD09 BLOCKED.
+   AD check PASS, FAIL, BLOCKED or NOT APPLICABLE with its evidence and reason. If a
+   different-family Reviewer is unavailable, record `independent-review: INTERNAL (UNVERIFIED)`.
 
 ## Skipped item: per-host npm and ZIP distribution
 
@@ -98,12 +99,12 @@ from that installation and ZIP extraction/upload on the host/OS combinations cla
    loaded resource. Record absent upload controls as BLOCKED for that route. Source
    archives and skill-upload ZIPs are distinct artifacts and need separate results.
 5. Save installer output, receipt, installed file/digest inventory, exact invocation,
-   host transcript and observed limits. Use the [full trial](host-trial.md) separately
+   host transcript and observed limits. Use the [full trial](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evaluation/host-trial.md) separately
    before making a website-outcome claim.
 
 ## Receipt and acceptance
 
-Copy [receipt-template.json](receipt-template.json) into the private trial workspace.
+Copy [receipt-template.json](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evaluation/receipt-template.json) into the private trial workspace.
 Fill its fields from observations, including:
 
 - Identity: trial ID, package commit, artifact filename and SHA-256, host/client version,
@@ -126,4 +127,4 @@ assert, or a linked, reviewed receipt for the exact host/OS/mode observed. A rec
 be linked beside a retained skip for combinations still awaiting trials. A skipped test
 is never converted to a pass by editing its label, removing `skip`, or adding an empty
 passing body. `npm test` alone establishes no live-host result. Promote compatibility
-only for the observed scope under the [host-trial evidence rules](host-trial.md#publish-evidence-and-promote-narrowly).
+only for the observed scope under the [host-trial evidence rules](https://github.com/aunysillyme/website-build-skill/blob/main/docs/evaluation/host-trial.md#publish-evidence-and-promote-narrowly).
