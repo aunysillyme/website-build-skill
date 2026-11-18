@@ -6,6 +6,10 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+### Added
+
+- Add `playbooks/feel-layer.md` for small static-site interaction details (six MIT/ISC vanilla JS picks: Lenis, NumberFlow, Rough Notation, canvas-confetti, AutoAnimate, Atropos, with single-entrypoint `prefers-reduced-motion` wiring and before/after verification gates), backed by test-page Lighthouse and Playwright evidence in `docs/evaluation/feel-layer/` (`RND-116`).
+
 ### Changed
 
 - Add an interface finish pass to the build gate (`checklists/build.md` B08): concentric radii, text wrapping, tabular figures, explicit transition properties, press state, touch-target size, icon stroke weight and motion restraint, adapted in our own wording from make-interfaces-feel-better (MIT) with credit in `docs/PROVENANCE.md`.

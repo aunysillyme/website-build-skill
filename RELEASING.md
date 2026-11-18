@@ -151,7 +151,7 @@ cd "$trial" && npm init -y > /dev/null && npm install "$OLDPWD/$tarball"
 ./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes
 ```
 
-Expected: exit 0, 58 files plus a receipt under `.agents/skills/website-build-skill/`, and
+Expected: exit 0, 59 files plus a receipt under `.agents/skills/website-build-skill/`, and
 `--uninstall --receipt <that path>` leaving the directory empty again. Exit 5 instead of 0 means
 the scratch project already had a router file; that is a completed install with an unmerged
 snippet, not a failure.

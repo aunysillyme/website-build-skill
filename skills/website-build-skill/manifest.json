@@ -315,7 +315,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "0f5184e2e9ecdd1ee921b533d2359d572f954c22aa0bba92f4a1889cd26d1710"
+      "sha256": "8c5b8777139a8fc888fc86a3386a420810fe43f3ef2211e816cac462eb1a0317"
     },
     {
       "path": "roles/optimizer.md",
@@ -421,6 +421,21 @@
         "native-skill"
       ],
       "sha256": "3c952d6fed81b97842c0155bcfc3948131a30385bfac7d40aed47d62f6797e5b"
+    },
+    {
+      "path": "playbooks/feel-layer.md",
+      "version": "0.1.0",
+      "kind": "playbook",
+      "active": true,
+      "bundles": [
+        "playbooks"
+      ],
+      "distributions": [
+        "npm",
+        "skill-zip",
+        "native-skill"
+      ],
+      "sha256": "86c35268c24ec636460d0cfff25f10a3301fcd78bb814b3527e401e9310cc2e8"
     },
     {
       "path": "playbooks/security-headers.md",
@@ -1055,6 +1070,7 @@
         "playbooks/image-pipeline.md",
         "playbooks/self-hosted-fonts.md",
         "playbooks/embed-facades.md",
+        "playbooks/feel-layer.md",
         "references/stacks/static-html.md",
         "references/stacks/scripted-static.md",
         "references/stacks/framework.md",
@@ -1288,6 +1304,7 @@
       "playbooks/image-pipeline.md",
       "playbooks/self-hosted-fonts.md",
       "playbooks/embed-facades.md",
+      "playbooks/feel-layer.md",
       "playbooks/security-headers.md",
       "playbooks/structured-data-and-llms.md",
       "playbooks/performance-budgets.md",
@@ -1353,6 +1370,7 @@
         "playbooks/image-pipeline.md",
         "playbooks/self-hosted-fonts.md",
         "playbooks/embed-facades.md",
+        "playbooks/feel-layer.md",
         "playbooks/security-headers.md",
         "playbooks/structured-data-and-llms.md",
         "playbooks/performance-budgets.md",
@@ -1417,6 +1435,7 @@
         "playbooks/image-pipeline.md",
         "playbooks/self-hosted-fonts.md",
         "playbooks/embed-facades.md",
+        "playbooks/feel-layer.md",
         "playbooks/security-headers.md",
         "playbooks/structured-data-and-llms.md",
         "playbooks/performance-budgets.md",
@@ -1481,6 +1500,7 @@
         "playbooks/image-pipeline.md",
         "playbooks/self-hosted-fonts.md",
         "playbooks/embed-facades.md",
+        "playbooks/feel-layer.md",
         "playbooks/security-headers.md",
         "playbooks/structured-data-and-llms.md",
         "playbooks/performance-budgets.md",
