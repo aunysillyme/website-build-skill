@@ -4,8 +4,12 @@
 
 This is the end-to-end operating document for repository validation and distribution.
 The system generates Markdown bundles, checks repository content locally, and publishes the
-package to npm when a version tag is pushed. Native worker generation and any claim of host
-activation remain unavailable and unverified; publication of the files is not.
+package to npm when a version tag is pushed. In `--team` mode the installer generates native
+subagent definition files for Claude Code (`.claude/agents/website-<role>.md`), Codex
+(`.codex/agents/website-<role>.toml`), Gemini CLI (`.gemini/agents/website-<role>.md`), and
+Google Antigravity (`.agents/agents/website-<role>.md` / `~/.gemini/config/agents/website-<role>.md`),
+while manual relay stays available for manual hosts (`adapters/grok.md#manual-fallback`).
+Claims of host activation and TEAM execution/loading receipts remain UNVERIFIED until recorded trials; publication of the files is not.
 The release workflow IS the publisher. It holds no stored registry secret: it authenticates
 through npm trusted publishing, which exchanges a short-lived OIDC token issued to that one job.
 
@@ -42,8 +46,8 @@ rm release-notes.md
 
 ## Dependencies
 
-Local maintainer runtime: Node 22.22.3. The sources are plain ES modules; no build step or dependency install is needed.
-The check matrix covers Node 18, 20, 22.22.3 and 24. Sources are JavaScript ES modules;
+Local maintainer runtime: Node 22.22.3 (package floor `>=22`). The sources are plain ES modules; no build step or dependency install is needed.
+The check matrix covers Node 22.22.3, 24 and 26 across `ubuntu-latest`, `macos-latest` and `windows-latest`, and the release workflow runs on Node 26. Sources are JavaScript ES modules;
 no TypeScript compiler is part of this operating chain. Consult the revision-bound
 baseline receipt in docs/evidence/audit-baseline.json and rerun checks for a new candidate.
 Workflow files use the JSON subset of YAML so structural security checks need no YAML dependency.
@@ -70,8 +74,8 @@ The archive is an immutable input and never an active bundle member.
 Plain build writes exactly `docs/bundles/method.md`, `prompts.md`, `playbooks.md`, `checklists.md`,
 `team.md` below that same bundle directory, plus root `llms.txt`.
 Explicit `--rehash` also updates only the named asset digests in the canonical manifest when changed.
-Check writes nothing. Tests create synthetic scratch directories only under `.test-work/` and remove their own directories.
-The installer writes only its destination, the output root probe it removes, and its receipt.
+Check writes nothing. Tests create synthetic scratch directories only under the OS temporary directory (`os.tmpdir()`) and remove their own directories.
+The installer writes only its destination, optional `--team` native subagent definitions for supported targets, the output root probe it removes, and its receipt.
 The check workflow has only `contents: read`. The release workflow's publish job adds exactly
 one permission, `id-token: write`, for the OIDC exchange, and the workflow validator refuses
 that permission at the top level and in every job except the release publish job and the Scorecard analysis job. The Scorecard analysis job also permits `actions: read` and `security-events: write` for analysis and SARIF upload.
@@ -147,7 +151,7 @@ cd "$trial" && npm init -y > /dev/null && npm install "$OLDPWD/$tarball"
 ./node_modules/.bin/website-build-skill --solo --target codex --dir . --yes
 ```
 
-Expected: exit 0, 57 files plus a receipt under `.agents/skills/website-build-skill/`, and
+Expected: exit 0, 58 files plus a receipt under `.agents/skills/website-build-skill/`, and
 `--uninstall --receipt <that path>` leaving the directory empty again. Exit 5 instead of 0 means
 the scratch project already had a router file; that is a completed install with an unmerged
 snippet, not a failure.

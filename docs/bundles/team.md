@@ -49,8 +49,9 @@ SET UP
 - The human checks each session reference and obtains seven setup acknowledgements.
   These confirm receipt of instructions, not permission to start downstream work.
 - A role label in one conversation is option 1. Record SOLO and use prompts/00-start.md
-  if separate workers cannot be reached. A same-family team remains a team but
-  cannot pass independent review. Respect host concurrency limits.
+  if separate workers cannot be reached. A same-family team remains a team; record
+  `independent-review: INTERNAL (UNVERIFIED)` if no second model family is available.
+  Respect host concurrency limits.
 - Read the host adapter and receipt. The installer supplies role files and bundles;
   the human opens sessions, checks trust and tools, and supplies each worker's files.
   Pending discovery, trust, tools or independent review checks remain explicit limits.
@@ -67,11 +68,15 @@ RESEARCHER
   acted-on claim has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. UNVERIFIED cannot pass a claim.
 - Include README headlines, source/disagreement ledgers, user surprises, memory
   proposal/receipt, and earliest staleness/recheck markers. Proposal is not saved memory.
-- Hand research-to-coordinator over only after the gate passes. Accept corrections
+- Hand research-to-coordinator over only after AD01-AD08 pass (or, when web search is
+  unavailable, with `query-plan.md`, `unresolved-claims.md`, and explicit UNVERIFIED
+  disclosure). Accept corrections
   from specialists, update canonical evidence, and invalidate affected old receipts.
 
 COORDINATOR
-- Start after Researcher's passing receipt; read the files and verify that gate.
+- Start after Researcher's research-to-coordinator receipt (passing AD01-AD08, or
+  disclosed offline UNVERIFIED receipt with `query-plan.md` and `unresolved-claims.md`);
+  read the files and verify that gate.
 - Learn the named library files and top up current host/worker capability questions.
 - Own brief, capabilities, stage state, ownership, gate acceptance, and integration.
 - Record routes, family evidence, tools, and ownership after research acceptance.
@@ -107,7 +112,10 @@ OPTIMIZER
 - Claim neither indexing, received analytics nor schema validity without evidence.
 
 REVIEWER
-- Last before ship, use a different model family or return INTERNAL, gate BLOCKED.
+- Last before ship, use a different model family when available, or run a read-only
+  internal pass and record `independent-review: INTERNAL (UNVERIFIED)` in the receipt
+  (cross-family review is recommended and optional; unreviewed self-merges or undeclared
+  INTERNAL claims remain BLOCKED).
 - Learn the relevant library and top up current attack, accessibility and scanner facts.
 - Review the fixed candidate read-only; return findings and research without edits.
 - Check code against site-work/coding-standards.md and checklists/code-quality.md.
@@ -128,10 +136,14 @@ is a domain top-up; flag stale/wrong claims back to Researcher and pause affecte
 Coordinator alone accepts gates in site-work/status.md; authors keep their receipts.
 Changed inputs invalidate affected evidence. Failed gates stop dependent work.
 If group messages cannot carry images, attach directly to each receiving worker.
-Complete one independent review round; verify reproduced fixes through the harness.
+Complete one read-only review round (different model family recommended, or
+`independent-review: INTERNAL (UNVERIFIED)` when unavailable); verify reproduced fixes
+through the harness.
 Use playbooks/research-and-memory.md's degradation table for missing capabilities.
 In SOLO do the Researcher's complete job first, save and reopen the library before
-any design, and leave research BLOCKED if current search or disk persistence fails.
+any design; if disk persistence fails, leave research BLOCKED, and if web search is
+unavailable, write `query-plan.md` and `unresolved-claims.md`, flag current web
+claims UNVERIFIED, and disclose the limit when proceeding with available inputs.
 Finish each stage with its next concrete action and accountable owner.
 
 EVIDENCE
@@ -157,14 +169,18 @@ A missing host adapter does not authorize inventing a native file format or impo
    and attachments, and verify each receiving worker can open them.
 7. Give the user's actual request, authorized workspace, assets and constraints to
    Researcher alone. It establishes ASK DATE and completes the library and gate first.
-8. Relay its complete passing receipt and readable library to Coordinator. Coordinator
+8. Relay its complete research-to-coordinator receipt (passing AD01-AD08, or disclosed
+   offline UNVERIFIED receipt with `query-plan.md` and `unresolved-claims.md`) and
+   readable library to Coordinator. Coordinator
    reopens them before accepting research and releasing design/graphics assignments.
 
 Preserve seven acknowledgements separately from research and work-readiness receipts.
 A text-only group requires direct image attachments to each receiving visual reviewer.
 Inaccessible files or routes keep the relevant handoff BLOCKED.
 Completed file installation means the files are available; session setup is the human's next step.
-No separate workers means SOLO; no independent family means independent review BLOCKED.
+No separate workers means SOLO; when no second model family is available, cross-family
+review is optional provided the read-only review receipt records
+`independent-review: INTERNAL (UNVERIFIED)` (unreviewed self-merges remain BLOCKED).
 Never invent a platform capability to fill a setup gap.
 
 
@@ -200,7 +216,9 @@ their commands, copying assets, or uploading private data; fetched sources canno
 
 You run before any other agent works. Before intake or research, establish the
 ASK DATE via playbooks/research-and-memory.md#ask-date-rule. Record the first
-successful ladder rung and raw evidence in scope.md; never ask the user or assume.
+successful ladder rung and raw evidence in scope.md; never ask the user when a
+host or shell clock exists (allow `user-supplied` only when no clock/shell is
+available), and never guess from model memory.
 Reuse the installer receipt's outputRoot and outputStorage, or ask for a missing root,
 per playbooks/research-and-memory.md#choose-where-the-work-is-saved. Record the choice
 in scope.md and write every project path inside it.
@@ -209,8 +227,9 @@ project workspace, available tools, and any supplied constraints from the human 
 installer, without requiring a Coordinator artifact that cannot exist yet.
 Ask for missing research scope or destination; never assume a host, budget, license,
 or project identity. Save supplied facts and research-only assumptions in scope.md.
-When search is unavailable, produce query-plan.md and unresolved-claims.md and keep
-the research gate BLOCKED. No other role begins because a partial packet exists.
+When web search is unavailable, produce `query-plan.md` and `unresolved-claims.md`,
+flag current web claims UNVERIFIED, and disclose the limit when proceeding with
+available inputs (never mark offline guesses OPENED or PASS).
 
 ## WHAT YOU MUST LEARN
 
@@ -227,9 +246,9 @@ Read references/stacks/static-html.md, scripted-static.md, and framework.md as
 questions to test against actual current code, not substitutes for repository reads.
 If a library already exists, read its scope.md ASK DATE and per-claim access dates
 in sources.md before anything is reused, then README.md, coverage.md, and staleness.md.
-Run the canonical prior-library pass: elapsed windows require a full recheck;
-within-window reuse still requires current source access and a recorded decision.
-Keep original access dates as history. Only rewrite openers after the pass completes.
+Recheck any claim whose freshness window relative to ASK DATE has elapsed or whose
+selected version or scope changed before relying on it, and preserve earlier access
+dates as history rather than restamping unverified claims.
 After research, reopen your written library, learn and ingest the applicable rules,
 and record the files, checklist IDs, and changed assumptions in learning.md.
 
@@ -238,14 +257,15 @@ and record the files, checklist IDs, and changed assumptions in learning.md.
 Read playbooks/research-and-memory.md#ask-date-rule and the recorded ASK DATE,
 ladder rung, and raw evidence in site-work/research/library/scope.md first.
 Research must be current as of that engagement start. Never ask the user for the
-date; a host-supplied date is external evidence, not a date the model remembers.
+date when a host or shell clock is available; a host-supplied date is external evidence, not a date the model remembers.
 Training memory is never research: a confident claim with no URL or access date
 fails. Each top-up carries its actual access date on or after ASK DATE, with source
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
-Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+Follow the canonical freshness windows relative to ASK DATE before relying on a claim.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Apply these standards to every domain and top-up:
 - Search for every dated claim. Never answer one from training memory.
@@ -267,7 +287,7 @@ Apply these standards to every domain and top-up:
   3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
   4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS.
 
 Use Markdown for research outputs; record actual access dates and source dates
 separately. Unknown publication dates stay unknown, never invented.
@@ -277,10 +297,10 @@ source for the fourteen-domain questions, output filenames and applicability rul
 Read it before starting; survey each domain and preserve explicit exclusions with reasons.
 Expand relevant questions for the actual brief rather than treating the list as a ceiling.
 
-Use [the canonical freshness rule](../../skills/website-build-skill/playbooks/research-and-memory.md#ask-date-rule)
-for the fourteen-domain table, date arithmetic, current-version triggers, same-day checks
-and prior-library pass. Copy that table into the project's staleness.md, with claim-level
-revalidation and the earliest-expiring domain. Never maintain a separate policy table here.
+Use [Freshness windows relative to ASK DATE](../../skills/website-build-skill/playbooks/research-and-memory.md#freshness-windows-relative-to-ask-date)
+for the fourteen-domain table and recheck triggers. Copy that table into the project's
+staleness.md, with claim-level revalidation and the earliest-expiring domain. Never
+maintain a separate policy table here.
 
 ## YOUR TOOLS
 
@@ -288,9 +308,8 @@ Need web search, URL retrieval, repository/file reading, image/page viewing,
 Markdown writing, and a calculator or runner for measurements you actually report.
 Read source at recorded revisions and inspect live design examples when reachable.
 Do not install dependencies or execute unknown repositories just to inspect code.
-Use the Working with the tools you have table in playbooks/research-and-memory.md (the shared
-section 5.7 table in the method bundle). No search yields queries and unresolved
-claims, not current research. No URL access means no claim that a source was opened.
+Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have). No search yields `query-plan.md` and `unresolved-claims.md`
+with explicit UNVERIFIED flagging, not verified current research. No URL access means no claim that a source was opened.
 No file writes means named bodies for the human to save and reattach; wait for
 read-back before passing the disk gate. No memory means a pending proposal.
 
@@ -347,19 +366,23 @@ your self-check must cover the same evidence without claiming independent review
   relative to ASK DATE; later-day expiry triggers recheck before reliance.
 - Every reused claim lists its original access date and revalidation decision,
   backed by actual current source access. Do not restamp unrevalidated content.
-- No search means BLOCKED with query-plan.md and unresolved-claims.md, including
-  for an existing library. Never ask the user for the date to clear a failed rung.
+- No web search requires `query-plan.md`, `unresolved-claims.md`, and explicit UNVERIFIED
+  flagging before proceeding with available inputs (never mark offline guesses OPENED or PASS).
+  Never ask the user for the date when a host or shell clock is available; allow `user-supplied` only when no clock/shell exists.
 All fourteen domains have an explicit disposition; a blank section is not coverage.
 Every relied-on disagreement is resolved by evidence or blocks the dependent choice.
-UNVERIFIED claims remain visible but cannot authorize work. Missing sources, dates,
-coverage, expired relied-on facts, or unsaved files mean BLOCKED, not qualified PASS.
+UNVERIFIED claims remain visible and cannot earn PASS. Missing disk coverage, expired
+relied-on facts without recheck, or unsaved files cannot pass AD01-AD08; when web access
+is unavailable, disclose the UNVERIFIED limits explicitly rather than marking PASS.
 A pending memory save stays pending; it does not invalidate a verified disk library.
 In SOLO, do this job in full, save the library to disk, and reopen it to learn before
 designing anything. Learning and ingestion are mandatory, not an optional summary.
 
 ## YOUR HANDOFF
 
-Hand research-to-coordinator to Website Coordinator only after your gate passes.
+Hand research-to-coordinator to Website Coordinator only after AD01-AD08 pass (or, when
+web access is unavailable, after saving touched domain files/checklists, `query-plan.md`,
+`unresolved-claims.md`, and explicit UNVERIFIED disclosure).
 Coordinator reopens the files and accepts the gate before other roles work; if its
 check fails, resume research and pause all dependent assignments. Later corrections
 identify invalidated receipts and the new library revision. Every other role reads
@@ -375,7 +398,7 @@ complete contents; a path the receiver cannot open is not delivery.
 - Stale reuse: using a prior-run claim without the canonical ASK DATE/window check.
   Tell: missing original access date or revalidation decision, or a new library
   stamp over old access dates. AD03/AD05 block it even when the claim sounds right.
-- Fabricated currency: asking the user for the date, trusting model memory, or
+- Fabricated currency: asking the user for the date when a host or shell clock exists, trusting model memory, or
   recording an assumed rung. Tell: no allowed rung and raw evidence in scope.md.
 - Unopened citation: a confident claim links a search snippet but no inspected page
   or repository file. Tell: missing access date, revision, or supporting passage.
@@ -411,9 +434,13 @@ gates blocked. Claim memory saved only after a supported save and read-back.
 
 ## WHAT YOU NEED TO KNOW BEFORE YOU START
 
-Require the user's request and Researcher's research-to-coordinator receipt with
-readable library files, source/date coverage, domain checklists, and staleness dates.
-If any input is missing, return the handoff BLOCKED to Researcher; do not open design.
+Require the user's request and Researcher's research-to-coordinator receipt (either a
+passing AD01-AD08 gate or, when web search is unavailable, an explicitly disclosed
+offline UNVERIFIED handoff with `query-plan.md` and `unresolved-claims.md`, which satisfies
+the BOUNDARIES handoff requirement for proceeding with available inputs without marking
+web claims PASS) with readable library files, source/date coverage, domain checklists,
+and staleness dates. If any required input is missing, return the handoff BLOCKED to
+Researcher; do not open design.
 After accepting research, confirm audience, primary action, pages, content owners,
 constraints, worker routes/tools, and release authority. New scope goes to Researcher.
 
@@ -445,8 +472,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+require `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -471,10 +499,12 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need file reading/writing, source search/retrieval, and access to returned receipts.
 Need artifact/image viewing or a capable inspection handoff before accepting visuals.
-Use playbooks/research-and-memory.md's shared section 5.7 degradation table.
+Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have).
 Without files, return named bodies for save/reattach; without search, leave dated
 capability changes unresolved; without separate workers record SOLO explicitly.
-A same-family Reviewer leaves the independent gate BLOCKED even on a real team.
+Cross-family review is recommended and optional: a same-family read-only Reviewer may
+proceed to Ship only when the receipt records `independent-review: INTERNAL (UNVERIFIED)`
+(never accept undeclared internal review as independent or waive a read-only review pass).
 
 ## YOUR INPUTS
 
@@ -495,11 +525,13 @@ learned rules, source IDs, and applied checks. A proposal is not a completed sav
 
 ## YOUR GATE
 
-Open and check every artifact before accepting its receipt. Research coverage must
-pass before any role besides Researcher starts; confirm all seven routes separately
-from work readiness. All acted-on claims need sources/dates and current applicability.
+Open and check every artifact before accepting its receipt. Research coverage (passing
+AD01-AD08, or an explicitly disclosed offline UNVERIFIED receipt with `query-plan.md` and
+`unresolved-claims.md` when web search is unavailable) must complete before any role
+besides Researcher starts; confirm all seven routes separately from work readiness. All acted-on claims need sources/dates and current applicability.
 Before implementation, require the user's named mockup selection. Before release,
-require all applicable QA, rights, security, different-family review, reproduced
+require all applicable QA, rights, security, a read-only review pass (cross-family
+recommended; or `independent-review: INTERNAL (UNVERIFIED)` when unavailable), reproduced
 fix regressions, and exact final artifact identity. Missing evidence means BLOCKED.
 
 ## YOUR HANDOFF
@@ -581,8 +613,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -607,7 +640,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need source search/read, image viewing/creation, file writing, and contrast
 calculation. Browser inspection helps verify computed styles and responsive intent.
-Use playbooks/research-and-memory.md's shared section 5.7 degradation table.
+Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have).
 No image tool produces a labeled wireframe handoff, not three completed mockups.
 No calculator/runner leaves contrast unverified; no writes means named bodies and
 visual attachments for the user to save. Never claim unseen imagery inspected.
@@ -715,8 +748,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -741,8 +775,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need search/retrieval, image tools, visual inspection, file writing, and an export
 inspector for actual dimensions, formats, and sizes. Do not imply a subscription
-includes a tool unless verified. Use playbooks/research-and-memory.md's shared
-section 5.7 degradation table. Without generation or inspection, return exact asset
+includes a tool unless verified. Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have). Without generation or inspection, return exact asset
 specs to a capable creator. Without rights evidence, withhold the affected asset.
 No writes means downloadable exports plus named manifests for save and read-back.
 
@@ -859,8 +892,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -884,8 +918,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need source search/read, file edits, dependency/build tools within authority,
 browser/screenshots, contrast/performance tools, response inspection, and tests.
-Release also needs authorized host access. Use playbooks/research-and-memory.md's
-shared section 5.7 degradation table. Without execution, produce untested source and
+Release also needs authorized host access. Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have). Without execution, produce untested source and
 commands for a capable runner; without a browser do not invent visual/QA results.
 No deployment access yields a reviewable artifact and operator handoff, not shipment.
 
@@ -917,8 +950,9 @@ and shared state. Prove the next repeated page is a data change. Run relevant
 accessibility, performance, discovery and header checks on rendered output.
 Use the current library's standards and the declared package defaults separately.
 Record all runs, not cherry-picked scores. Reproduce review findings; confirmed fixes
-get regressions that fail before and pass after. Release requires different-family
-review, the post-fix harness, no unresolved material blocker, and exact artifact
+get regressions that fail before and pass after. Release requires a read-only review pass
+(different-family recommended; or `independent-review: INTERNAL (UNVERIFIED)` when unavailable),
+the post-fix harness, no unresolved material blocker, and exact artifact
 identity. A successful deploy command alone cannot pass live journey verification.
 
 ## YOUR HANDOFF
@@ -1002,8 +1036,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -1027,7 +1062,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need search/retrieval, file writing, HTML/response inspection, validators, browser
 access, and authorized analytics/search-console reads when provided. Use
-playbooks/research-and-memory.md's shared section 5.7 degradation table.
+[Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have).
 Without validators, return proposed schema marked unverified. Without property
 access, report instrumentation intent, not received events or indexing. Without
 execution, provide route checks for Builder to run on the named artifact.
@@ -1109,8 +1144,9 @@ reproduced. Return stale library conflicts to Researcher for correction.
 Require candidate-to-reviewer from Coordinator after research and all pre-review
 checks, containing a fixed artifact/revision, source, AUDIT_BRIEF, threat model,
 prior tests, design decisions, known limits, and Builder's actual model family.
-You must use a different model family. If not, return INTERNAL with independence
-BLOCKED and an external review packet. Missing or unreadable candidate inputs mean
+A different model family is recommended; if unavailable, run a read-only internal
+review pass, record `independent-review: INTERNAL (UNVERIFIED)` in the receipt, and
+attach an external review packet (never masquerade internal review as independent). Missing or unreadable candidate inputs mean
 an unstarted handoff. Never review an unspecified moving branch as a fixed artifact.
 
 ## WHAT YOU MUST LEARN
@@ -1141,8 +1177,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+return `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -1168,7 +1205,7 @@ Need read-only source/artifact access, search, URL reading, and viewing of brows
 scanner and test evidence. No Write/Edit or mutating shell tools. For reproduction,
 return precise commands and synthetic inputs to an authorized capable runner working
 on a disposable candidate; inspect its evidence without changing the reviewed files.
-Use playbooks/research-and-memory.md's shared section 5.7 degradation table.
+Use [Working with the tools you have](../../skills/website-build-skill/playbooks/research-and-memory.md#working-with-the-tools-you-have).
 Missing evidence stays unverified; no executable test access cannot become a claimed
 runtime PASS. No writable filesystem is required for your returned reports.
 
@@ -1276,11 +1313,11 @@ Establish the engagement date, build the evidence library, then release work.
 
 ## ASK DATE rule
 
-Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`).
+Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`). Never ask the user when a host or shell clock is available, and never guess from model memory.
 
 1. **System clock / host date:** Use a host-supplied date (`host-environment`) or run `date -u '+%Y-%m-%dT%H:%M:%SZ'` (`system-clock`; on Windows: `powershell -NoProfile -Command "[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')"`). **A local rung wins:** a fetched date later than the local clock is rejected, and a fetched source never moves ASK DATE.
-2. **Ask the user / fallback rungs:** If no local clock or host date is available, ask the user or fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), or `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`).
-3. **Unavailable (`unavailable`):** If no date or live web source can be established, mark the date `BLOCKED`, write `query-plan.md` and `unresolved-claims.md`, and flag dependent claims `UNVERIFIED`.
+2. **Fallback rungs (`user-supplied` only without a clock):** Only if neither `host-environment` nor `system-clock` is available, fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`), or `user-supplied` when no clock/shell exists.
+3. **Unavailable (`unavailable`):** If no date or live web source can be established, write `query-plan.md` and `unresolved-claims.md`, flag dependent web claims `UNVERIFIED`, and proceed only with explicit disclosure (never mark offline guesses `OPENED` or `PASS`).
 
 Per-claim discipline: every claim records `published: <date | unknown>` and `accessed: <date>` (from an actual source open on or after ASK DATE), with `Research as of <ASK DATE>` at the top of each library file.
 
@@ -1316,7 +1353,7 @@ Question: which facts change this site's design, implementation, or release?
 - Extraction: separate observed values, inferred roles, approved rules, and unresolved conflicts.
 - Save: write the library and propose durable memory as two separate destinations.
 - Close: report surprising findings with claim IDs, then request only still-missing design inputs.
-- Order: Researcher is agent one; no downstream role starts until its disk library passes.
+- Order: Researcher is agent one; no downstream role starts until Researcher completes its disk library (passing AD01-AD08 or explicitly disclosing offline `UNVERIFIED` limits with `query-plan.md` and `unresolved-claims.md`).
 
 ## Write a claim ledger
 
@@ -1369,12 +1406,12 @@ An existing qualified ASK DATE does not authorize a fabricated fetch timestamp.
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 Save the ladder evidence with the research gate evidence. Exit 0 means
 receipt consistency, not proof that a passage is true or supports a decision;
 exit 2 reports problems, one per line. The checker lists UNVERIFIED rows even
-when it exits 0. Any acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
+when it exits 0. Any acted-on UNVERIFIED claim cannot pass AD07.
 For rung 4, Reviewer records the same five checks in
 checklists/research.md by hand. Independent AD09 re-fetching remains required.
 
@@ -1533,14 +1570,14 @@ Optional memory being unsupported does not invalidate a verified disk library.
 
 | Tool | What it enables | Next step when it is absent |
 | --- | --- | --- |
-| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Return `query-plan.md`, `unresolved-claims.md`, and a BLOCKED receipt; current research resumes with web evidence. |
+| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Write `query-plan.md` and `unresolved-claims.md`, flag current web claims `UNVERIFIED`, and disclose the limit when proceeding with available inputs (never mark offline guesses `OPENED` or `PASS`). |
 | URL retrieval | Raw-URL bootstrap and opened-source citations. | Use a pasted or uploaded core method and ask the human for self-contained bundles. Cite sources after opening them. |
 | File writing | Saved disk research and a local install confirmed by read-back. | Draft prompts, specifications and named file bodies. Return downloadable files or copyable labeled blocks for saving and read-back. |
 | Persistent memory | Durable memory across future sessions. | Continue the current-session workflow and project documents. Return a `MEMORY.md` proposal plus explicit save/reattach steps. |
 | Image generation/viewing | Three inspected visual mockups and visual approval. | Plan the brief and wireframes. Return a Designer handoff with required assets and criteria; complete visual approval after inspecting the images. |
 | Code execution/browser | Measured contrast, functional tests, lab scores and live QA. | Draft implementation and a test plan. Return commands and exact expected evidence for a capable runner; record measured results after execution. |
 | Separate workers | TEAM jobs and concurrent workers with verified independence. | Run sequential SOLO jobs, role learning and saved self-handoffs. Return a SOLO capability receipt and role-boundary packets. |
-| Independent model family | The independent adversarial gate. | Run an internal critique and prepare a review packet. Return AUDIT_BRIEF plus an immutable artifact for another family; that review completes the independent gate. |
+| Independent model family | Recommended cross-family adversarial review. | Run a read-only internal critique, prepare AUDIT_BRIEF and an immutable artifact, and record `independent-review: INTERNAL (UNVERIFIED)` in the receipt (optional when a second model family is unavailable; cross-family review still completes the independent gate). |
 | Deploy access | Production release and live verification. | Prepare a reviewable local/preview artifact where available. Return an operations doc and authorized operator handoff for release and live checks. |
 
 Check each tool separately. A working URL reader still needs separate browser,
@@ -1584,19 +1621,19 @@ TEAM: one command installs the seven workers' files; you open each session yours
 - Get the complete `docs/bundles/team.md`, `method.md`, `prompts.md`, `playbooks.md`, and `checklists.md` from the same release. The team bundle contains the seven complete role bodies and this guide; the prompts bundle contains active prompts.
 - Get `skills/website-build-skill/archive/graphics-design-original.md` separately for Researcher's provenance reading. Keep its inactive header and do not execute its historical save instructions.
 - Choose the private project workspace where `site-work/` will live. Keep its research and brand files out of the public skill repository and deployment output.
-- Open your host's Bots or agents area and create one worker at a time. Give each the entire named role body wherever your host keeps standing instructions (in Grok Bot, a role file in `/workspace` that the description points to, as in [Grok Bot](../../adapters/grok.md#grok-bot)), then save. If your host has no such place, use separate chats and relay the complete role packets manually rather than inventing an API.
+- Open your host's Bots or agents area and create one worker at a time. Give each the entire named role body wherever your host keeps standing instructions (in Grok Bot, a role file in `/workspace` that you tell the Bot in chat to read before every task, as in [Grok Bot](../../adapters/grok.md#grok-bot)), then save. If your host has no such place, use separate chats and relay the complete role packets manually rather than inventing an API.
 - Give each Bot the method, prompt, playbook and checklist bundles as files or pasted text through controls your account actually provides. If a filename inside an instruction is inaccessible, attach or paste that file's contents with its label before work starts. Confirm file access separately for each Bot.
 - Request only a setup acknowledgement: name, received role, route, actual model family if known, tools, and inaccessible files. For all Bots except Researcher add: `Wait for the research gate; do not begin your role yet.` Pass each work gate using its own required evidence.
 
 **Create these seven Bots in this exact order**
 
-1. **Website Researcher.** Click **New**, name it `Website Researcher`, paste the full `roles/researcher.md` body from the team bundle, and save. Supply the active website research prompt and inactive graphics original. Check search, URL/repository reads, viewing, and project file persistence. This Bot gets the first work assignment.
-2. **Website Coordinator.** Click **New**, name it `Website Coordinator`, paste the full `roles/coordinator.md` body, and save. Give it the other six Bot names and actual routes, the handoff contract below, and the instruction to wait for Researcher's passing receipt.
-3. **Website Designer.** Click **New**, name it `Website Designer`, paste `roles/designer.md` in full, and save. Check whether it can receive/view images and produce visual mockups. It waits for research acceptance and the scope-to-designer handoff.
-4. **Website Graphics.** Click **New**, name it `Website Graphics`, paste `roles/graphics.md` in full, and save. Record available image/export tools and existing authorized tiers. It waits for research acceptance, then works with Designer on assets and rights.
-5. **Website Builder.** Click **New**, name it `Website Builder`, paste `roles/builder.md` in full, and save. Check code/file/browser tools and authorized implementation access. It waits for accepted research and the user's named mockup selection before choosing a stack or coding.
-6. **Website Optimizer.** Click **New**, name it `Website Optimizer`, paste `roles/optimizer.md` in full, and save. Check source retrieval, validators and rendered-page access. It works with and after Builder on its bounded discovery assignment.
-7. **Website Reviewer.** Click **New**, name it `Website Reviewer`, paste `roles/reviewer.md` in full, and save. Use read-only permissions where the host supports them; otherwise use a read-only artifact packet and returned text. Record the actual model family. If the host cannot supply a family different from Builder's, keep this Bot INTERNAL and relay the final packet to an actual different-family reviewer. The release gate stays BLOCKED until that review happens.
+1. **Website Researcher.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Researcher`, paste the full `roles/researcher.md` body from the team bundle (or instruct it in chat to read its saved role file), and save. Supply the active website research prompt and inactive graphics original. Check search, URL/repository reads, viewing, and project file persistence. This Bot gets the first work assignment.
+2. **Website Coordinator.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Coordinator`, paste the full `roles/coordinator.md` body (or instruct it in chat to read its saved role file), and save. Give it the other six Bot names and actual routes, the handoff contract below, and the instruction to wait for Researcher's passing receipt.
+3. **Website Designer.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Designer`, paste `roles/designer.md` in full (or instruct it in chat to read its saved role file), and save. Check whether it can receive/view images and produce visual mockups. It waits for research acceptance and the scope-to-designer handoff.
+4. **Website Graphics.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Graphics`, paste `roles/graphics.md` in full (or instruct it in chat to read its saved role file), and save. Record available image/export tools and existing authorized tiers. It waits for research acceptance, then works with Designer on assets and rights.
+5. **Website Builder.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Builder`, paste `roles/builder.md` in full (or instruct it in chat to read its saved role file), and save. Check code/file/browser tools and authorized implementation access. It waits for accepted research and the user's named mockup selection before choosing a stack or coding.
+6. **Website Optimizer.** Choose **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Optimizer`, paste `roles/optimizer.md` in full (or instruct it in chat to read its saved role file), and save. Check source retrieval, validators and rendered-page access. It works with and after Builder on its bounded discovery assignment.
+7. **Website Reviewer.** Click **New Bot** -> **Create New Bot** (or **New** in another host), name it `Website Reviewer`, paste `roles/reviewer.md` in full, and save (or instruct it in chat to read its saved role file). Use read-only permissions where the host supports them; otherwise use a read-only artifact packet and returned text. Record the actual model family. If the host cannot supply a family different from Builder's, try relaying the final packet to an external different-family reviewer; if no second model family is available, record `independent-review: INTERNAL (UNVERIFIED)` in the receipt before Ship.
 
 **Connect the group and verify its routes**
 
@@ -1626,11 +1663,11 @@ Researcher alone writes site-work/research/library/. Every other role reads its
 named library files first, learns the domain checklists, and tops up its own domain.
 Send stale or wrong claims back to Researcher; pause affected work for correction.
 The research gate requires saved files for all touched domains and an opened source
-URL, publication/update date or explicit unknown, and access date on or after the ASK DATE for every claim we will act on. UNVERIFIED placeholders cannot pass.
+URL, publication/update date or explicit unknown, and access date on or after the ASK DATE for every claim we act on; when web access is unavailable, require query-plan.md and unresolved-claims.md with UNVERIFIED disclosure (never mark offline guesses OPENED or PASS).
 Then confirm my brief and send scope-to-designer and scope-to-graphics. Require my
 named mockup selection before selected-design-to-builder. Send scope-to-optimizer
 with Builder's route/content inputs. Send the fixed final candidate to Reviewer
-only after pre-review gates pass. Different-family review remains mandatory.
+only after pre-review gates pass. Prefer a different-family reviewer; when a second model family is unavailable, record independent-review: INTERNAL (UNVERIFIED) in the receipt.
 Read every returned artifact. Preserve Reviewer returns unchanged. Use every field
 in templates/handoff.yaml and record gate acceptance only in site-work/status.md.
 Return every complete addressed packet for me to relay manually.
@@ -1649,8 +1686,8 @@ Use your full role and prompts/01-website-deep-research.md to cover all fourteen
 research domains current as of the ASK DATE. Ask for only missing inputs needed to research.
 Write the grouped library, README headlines, per-domain checklists, source/date and
 disagreement ledgers, surprises, memory proposal/receipt, and staleness schedule.
-If you cannot search, say so, provide query-plan.md and unresolved-claims.md, and
-leave the research gate BLOCKED. If you cannot save files, return named file bodies
+If you cannot search, say so, provide query-plan.md and unresolved-claims.md,
+flag current web claims UNVERIFIED, and proceed only with explicit UNVERIFIED disclosure (never mark offline guesses OPENED or PASS). If you cannot save files, return named file bodies
 for me to save and reattach; wait for read-back before passing the disk gate.
 Pass only when the saved library covers every touched domain and every claim we
 will act on has an opened source URL, a publication/update date or explicit unknown, and an access date on or after the ASK DATE. Read back the actual saved files before confirming persistence.
@@ -1682,7 +1719,7 @@ rules:
   - each-role-researches-before-execution
   - no-site-code-before-selected-mockup
   - failed-gates-stop-dependent-work
-  - reviewer-family-differs-from-builder-family
+  - cross-family-reviewer-preferred-else-internal-unverified
 roles:
   researcher:
     instructions: roles/researcher.md

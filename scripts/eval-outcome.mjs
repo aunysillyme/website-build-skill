@@ -1,20 +1,55 @@
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+function parseAttrs(tag) {
+  const attrs = new Map();
+  const body = tag.replace(/^<[a-z0-9-]+\s*/i, '').replace(/\/?>$/, '');
+  const re = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+  for (const m of body.matchAll(re)) {
+    const name = m[1].toLowerCase();
+    const val = m[2] ?? m[3] ?? m[4] ?? '';
+    if (!attrs.has(name)) attrs.set(name, val);
+  }
+  return attrs;
+}
 
 /**
  * Deterministically score static HTML output across accessibility, SEO, and performance hygiene.
  * This provides an offline structural outcome check alongside optional live Lighthouse/axe runs.
+ * Note: labelledInputs, imgAlt, and imgDimensions use .every(), passing vacuously when zero
+ * applicable elements exist and failing if any element lacks the required attributes.
  */
 export function auditHtmlOutcome(html) {
+  const inputs = [...html.matchAll(/<input\b(?:[^>"']|"[^"]*"|'[^']*')*>/gi)];
+  const labelMatches = [...html.matchAll(/<label\b(?:[^>"']|"[^"]*"|'[^']*')*>/gi)];
+  const labelFors = new Set(
+    labelMatches.map(m => parseAttrs(m[0]).get('for')?.trim()).filter(Boolean),
+  );
+  const wrappedLabels = [...html.matchAll(/<label\b(?:[^>"']|"[^"]*"|'[^']*')*>([\s\S]*?)<\/label>/gi)]
+    .filter(m => (m[1].match(/<input\b/gi) || []).length === 1 && m[1].split(/<[^>]*>/).some(part => part.trim().length > 0));
+  const isWrapped = index => wrappedLabels.some(m => index >= m.index && index < m.index + m[0].length);
+  const checkableInputs = inputs.filter(m => {
+    const type = (parseAttrs(m[0]).get('type') || 'text').trim().toLowerCase();
+    return !['hidden', 'submit', 'button', 'reset'].includes(type);
+  });
+  const imgs = [...html.matchAll(/<img\b(?:[^>"']|"[^"]*"|'[^']*')*>/gi)].map(m => parseAttrs(m[0]));
+
   const checks = {
     accessibility: {
       htmlLang: /<html[^>]*\blang=["'][a-z]{2,}/i.test(html),
       skipLink: /<a[^>]*href=["']#main["'][^>]*>/i.test(html),
       mainLandmark: /<main\b[^>]*id=["']main["']/i.test(html) || /<main\b/i.test(html),
       singleH1: (html.match(/<h1\b/gi) || []).length === 1,
-      labelledInputs: !/<input\b(?![^>]*\btype=["'](?:hidden|submit|button)["'])/i.test(html) || /<label[^>]*\bfor=/i.test(html),
-      imgAlt: !/<img\b/i.test(html) || /<img\b[^>]*\balt=["'][^"']*["']/i.test(html),
+      labelledInputs: checkableInputs.every(m => {
+        const attrs = parseAttrs(m[0]);
+        const id = attrs.get('id')?.trim();
+        const ariaLabel = attrs.get('aria-label')?.trim();
+        const ariaLabelledBy = attrs.get('aria-labelledby')?.trim();
+        return Boolean((id && labelFors.has(id)) || ariaLabel || ariaLabelledBy || isWrapped(m.index));
+      }),
+      imgAlt: imgs.every(attrs => attrs.has('alt')),
     },
     seo: {
       title: /<title>[^<]{5,}<\/title>/i.test(html),
@@ -25,7 +60,7 @@ export function auditHtmlOutcome(html) {
     performance: {
       charset: /<meta[^>]*\bcharset=["']utf-8["']/i.test(html),
       viewport: /<meta[^>]*\bname=["']viewport["'][^>]*\bcontent=["'][^"']*width=device-width/i.test(html),
-      imgDimensions: !/<img\b/i.test(html) || (/<img\b[^>]*\bwidth=/i.test(html) && /<img\b[^>]*\bheight=/i.test(html)),
+      imgDimensions: imgs.every(attrs => Boolean(attrs.get('width')?.trim()) && Boolean(attrs.get('height')?.trim())),
       reducedMotion: /prefers-reduced-motion/i.test(html),
     },
   };
@@ -126,7 +161,13 @@ export const SYNTHETIC_SKILL_HTML = `<!doctype html>
 </body>
 </html>`;
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isEntrypoint = (() => {
+  if (!process.argv[1]) return false;
+  try { return import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href; }
+  catch { return false; }
+})();
+
+if (isEntrypoint) {
   const brief = JSON.parse(readFileSync(resolve(process.cwd(), 'evals/outcome-brief.json'), 'utf8'));
   const result = compareBuilds(SYNTHETIC_BASELINE_HTML, SYNTHETIC_SKILL_HTML);
   console.log(JSON.stringify({ brief: brief.name, ...result }, null, 2));

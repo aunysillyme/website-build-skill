@@ -69,7 +69,7 @@ the five-rule manual equivalent is in checklists/research.md:
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 ## Reuse and expiry record
 
@@ -100,5 +100,5 @@ Keep external standard source evidence separate from the site's observed measure
 ## Gate result
 
 Apply research AD01 through AD08; Reviewer later applies AD09 independently.
-No web access means BLOCKED, including an old or freshly restamped library.
+When web access is unavailable, write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED, and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 UNVERIFIED claims stay in unresolved-claims.md with a named next check and blocked decisions.

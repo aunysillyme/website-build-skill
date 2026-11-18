@@ -3,9 +3,12 @@ Researcher establishes it before intake or research; later roles read scope.md.
 Never ask the user for the date or infer it from model knowledge. Apply the
 same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
 
-Run one independent adversarial audit of this fixed release candidate.
-The reviewer must be a different model family from the builder.
-If that is unavailable, prepare the review packet and mark independence incomplete.
+Run one read-only adversarial audit of this fixed release candidate.
+A reviewer from a different model family from the builder is recommended.
+If no second model family is available, run a read-only internal review pass, prepare
+the external review packet, and record `independent-review: INTERNAL (UNVERIFIED)` in the
+receipt (never masquerade internal review as independent, and never skip a read-only
+review pass).
 
 PREPARE THE AUDIT_BRIEF
 - Identify runtime, exact revision or artifact digest, routes, callers, and trust boundaries.

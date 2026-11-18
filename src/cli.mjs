@@ -9,7 +9,8 @@ check-library <site-work-dir> (read-only receipt validation)
 --dir <path>  --scope project|user  --output-dir <path>
 --yes  --dry-run  --receipt <path>  --uninstall  --help  --version
 --bundle-dir <path> (Hermes TEAM only; relative to the installed skill folder)
-Headless installs require explicit mode, target and --dir.
+Headless installs require explicit mode, target and --dir (optional with --scope user, where --dir defaults to home).
+Uninstall accepts --receipt inside the installed skill folder; custom external --receipt needs --target and --dir (or --scope user).
 Activation remains UNVERIFIED.`;
 
 export function parseArgs(args) {
@@ -48,10 +49,14 @@ export async function main(args = process.argv.slice(2), { input = process.stdin
     if (request.help) return { code: 0, message: help };
     if (request.version) return { code: 0, message: packageInfo.version };
     if (request.uninstall) {
-      if (!request.receipt && (!request.target || !request.dir)) throw Error('Uninstall requires --receipt or --target and --dir');
+      if (!request.receipt && (!request.target || (!request.dir && request.scope !== 'user'))) {
+        throw Error('Uninstall requires --receipt or --target with --dir or --scope user');
+      }
       return install(request);
     }
-    if (request.yes && (!request.mode || !request.target || !request.dir)) throw Error('--yes requires mode, target and --dir; it never prompts');
+    if (request.yes && (!request.mode || !request.target || (!request.dir && request.scope !== 'user'))) {
+      throw Error('--yes requires mode, target and --dir (or --scope user); it never prompts');
+    }
     if (!request.mode || !request.target || (!request.yes && !request.outputDir)) {
       const reader = createInterface({ input, crlfDelay: Infinity });
       const answers = reader[Symbol.asyncIterator]();

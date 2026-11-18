@@ -13,6 +13,7 @@ test('Test sources use explicit manual-gate skips instead of pending declaration
   for (const name of ['test/package.test.mjs', 'test/research-date.test.mjs']) {
     assert.match(read(root, name), /skip: 'needs a live host: manual gate in docs\/evaluation\/host-gate\.md'/);
   }
+  assert.match(read(root, 'test/outcome-eval.test.mjs'), /skip: 'requires lighthouse and @axe-core\/cli with headless Chrome'/);
 });
 
 test('RED: reintroducing a pending declaration fails the no-pending check', () => fixture(target => {
@@ -26,10 +27,9 @@ function packedMatrix(workflow) {
   const matrix = job.strategy.matrix;
   const systems = new Set([...matrix.os, ...(matrix.include || []).map(entry => entry.os)]);
   for (const os of ['ubuntu-latest', 'macos-latest', 'windows-latest']) assert.ok(systems.has(os), os);
-  assert.ok(job.steps.some(step => step.run === 'node --test test/packed-artifact.test.mjs'
-    && step.if === "${{ runner.os != 'Linux' }}"));
   assert.ok(job.steps.some(step => step.run === 'node --test test/*.test.mjs'
-    && step.if === "${{ always() && runner.os == 'Linux' }}"));
+    && (step.if === undefined || step.if === 'always()' || step.if === '${{ always() }}')));
+  assert.ok(!job.steps.some(step => step.if && /runner\.os/.test(step.if)), 'all OSes run the full test suite');
   assert.ok(workflow.jobs['required-check'].needs.includes('checks'));
 }
 

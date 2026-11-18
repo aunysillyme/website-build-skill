@@ -1,7 +1,8 @@
 ASK DATE prerequisite: follow playbooks/research-and-memory.md#ask-date-rule.
 Researcher establishes it before intake or research; later roles read scope.md.
-Never ask the user for the date or infer it from model knowledge. Apply the
-same source, two-date, freshness, reuse, and blocked-gate rules to this stage.
+Never ask the user for the date when a host or shell clock is available (allow
+`user-supplied` only when no clock/shell exists), and never infer it from model
+knowledge. Apply the same source, two-date, freshness, reuse, and offline-disclosure rules to this stage.
 
 Help me build a website using Research. Learn. Ingest. Execute: Match. Mock. Build. Prove. Ship.
 Read the installed SKILL.md and any supplied request or existing brief before asking
@@ -20,10 +21,12 @@ TEAM: one command installs the seven workers' files; you open each session yours
   roles/optimizer.md, and roles/reviewer.md.
 - Follow prompts/12-web-design-team.md while the human opens the sessions and carries handoffs.
 - The human checks session references during setup and opens Researcher first. Coordinator
-  records families and working readiness after the research gate passes.
+  records families and working readiness after Researcher's gate completes (passing
+  AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Role labels within one conversation are option 1; if separate workers are unavailable,
-  say so, record SOLO, and continue below. Missing independent review alone blocks
-  that gate without discarding an otherwise real team.
+  say so, record SOLO, and continue below. Missing cross-family review leaves
+  independence UNVERIFIED (record `independent-review: INTERNAL (UNVERIFIED)`)
+  without discarding an otherwise real team.
 
 SOLO PATH
 - Hold all seven jobs, but do one at a time: Researcher full sweep and saved library,
@@ -36,14 +39,18 @@ SOLO PATH
   site-work/handoffs/<role>/<stage>-<revision>.yaml. Reopen it and the artifacts.
 - Clear the previous role's framing before the next job. Name what you let go of
   in framing_reset; keep approved requirements but discard unapproved assumptions.
-- Obtain a different-family reviewer through the user, or mark the review INTERNAL
-  and the independent gate BLOCKED, not met. Your own critique can never pass it.
+- Obtain a different-family reviewer through the user when available, or run a
+  read-only internal review pass and record `independent-review: INTERNAL (UNVERIFIED)`
+  in the receipt (never present an undeclared internal review as independent).
 - If you cannot save, return named handoff bodies for the user to preserve and
   reattach. Do not claim a self-handoff was saved without confirmation.
 
 SAME GATES
 Both paths hit the same gates. Solo work does not lower a threshold or waive a
-missing check. An INTERNAL review leaves independence unmet and release blocked.
+missing check. Cross-family review is recommended and optional: when a second model
+family is unavailable, a read-only review pass may proceed to Ship provided the
+receipt records `independent-review: INTERNAL (UNVERIFIED)`; unreviewed self-merges
+and undeclared internal claims remain blocked.
 Read the Working with the tools you have table in playbooks/research-and-memory.md.
 
 FIRST
@@ -71,7 +78,9 @@ SAVE
 - At each page fetch, write `site-work/research/library/receipts/<CLAIM-ID>.md`
   using templates/evidence.md. Never write the receipt afterward or mark a claim
   OPENED from memory or a search snippet. Without a receipt it is UNVERIFIED;
-  an acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
+  an acted-on UNVERIFIED claim cannot earn PASS (if web access is unavailable,
+  write `query-plan.md` and `unresolved-claims.md`, flag current web claims
+  UNVERIFIED, and disclose the limit instead of marking offline guesses OPENED or PASS).
 - Complete prompts/01-website-deep-research.md and its library before any other role.
   Use this checker ladder; the five-rule manual equivalent is in checklists/research.md:
 
@@ -80,20 +89,24 @@ SAVE
   3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
   4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+  For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS.
 
-- After its gate passes, Coordinator confirms brief.md, capabilities.md, and status.md
-  under site-work/. If file tools are missing, return named bodies for me to save
-  and reattach; wait for saved library read-back before any design work.
+- After Researcher's gate completes (passing AD01-AD08, or disclosed offline UNVERIFIED
+  receipt with `query-plan.md` and `unresolved-claims.md`), Coordinator confirms
+  `brief.md`, `capabilities.md`, and `status.md` under `site-work/`. If file tools are
+  missing, return named bodies for me to save and reattach; wait for saved library
+  read-back before any design work.
 - Do not claim to have installed, saved, researched, tested, or remembered anything
   unless the corresponding action actually succeeded.
 
 NEXT
-- Researcher issues the first research-to-coordinator handoff after the library gate.
+- Researcher issues the first research-to-coordinator handoff after the library gate
+  (passing AD01-AD08 or disclosed offline UNVERIFIED receipt).
 - Each later worker or solo role learns the named library files, applies its checklists,
   and tops up its own dated questions. Flag stale or wrong claims back to Researcher.
-- Without web search, say so, write the query plan and unresolved-claim ledger, and
-  stop at the research gate; do not present unresearched output as researched.
+- Without web search, say so, write `query-plan.md` and `unresolved-claims.md`,
+  flag current web claims UNVERIFIED, and disclose the limit when proceeding with
+  available inputs; never mark offline guesses OPENED or PASS.
 - Then extract the brand and show three visual mockups before writing website code.
 - Builder follows prompts/05-stack-and-build.md and runs
   [prompts/13-coding-research.md](13-coding-research.md) after Choose, before Build.

@@ -31,6 +31,12 @@ test('Actual npm tarball excludes GIFs and the showcase, preserves documentation
       'README hero and installer demo are served by raw URLs, so GIFs must not ship');
     assert.deepEqual(packed.files.filter(file => file.path.startsWith('docs/showcase/')), [],
       'the repository-only showcase must not ship');
+    assert.deepEqual(packed.files.filter(file => file.path.startsWith('docs/evidence/')), [],
+      'internal evidence receipts must not ship');
+    assert.deepEqual(packed.files.filter(file => file.path.startsWith('docs/evaluation/')), [],
+      'evaluation notes must not ship');
+    assert.deepEqual(packed.files.filter(file => ['CONTRIBUTING.md', 'AGENTS.md'].includes(file.path)), [],
+      'repository governance files must not ship');
     assert.deepEqual(packed.files.filter(file => file.path.startsWith('evals/')), [],
       'evaluation specifications must stay repository-only');
     assert.deepEqual(packed.files.filter(file => file.path.startsWith('.repo-build/') || file.path === 'scripts/check-set.mjs'), [],
@@ -42,9 +48,9 @@ test('Actual npm tarball excludes GIFs and the showcase, preserves documentation
     assert.deepEqual(issues, [], 'links must resolve inside the distributed artifact');
 
     // A checkout-only link check would miss this defect. Exercise the packed tree itself.
-    unlinkSync(resolve(artifact, 'CONTRIBUTING.md'));
+    unlinkSync(resolve(artifact, 'docs/INSTALLER.md'));
     assert.ok(linkIssues(artifact, 'README.md', readFileSync(resolve(artifact, 'README.md'), 'utf8'))
-      .some(issue => issue.includes('CONTRIBUTING.md')));
+      .some(issue => issue.includes('docs/INSTALLER.md')));
 
     const consumer = resolve(trial, 'consumer');
     mkdirSync(consumer);
@@ -74,36 +80,52 @@ test('Actual npm tarball excludes GIFs and the showcase, preserves documentation
     assert.ok(existsSync(resolve(consumer, 'node_modules/.bin',
       process.platform === 'win32' ? 'website-build-skill.cmd' : 'website-build-skill')));
 
-    for (const mode of ['solo', 'team']) {
-      const project = resolve(trial, mode);
-      mkdirSync(project);
-      run(process.execPath, [bin, `--${mode}`, '--target', 'codex', '--dir', project, '--yes'], consumer);
-      const destination = resolve(project, '.agents/skills/website-build-skill');
-      const expected = files(resolve('skills/website-build-skill'));
-      if (mode === 'team') expected.push(...files(process.cwd(), 'docs/bundles')
-        .filter(name => name.endsWith('.md')).map(name => name.replace('docs/', '')));
-      expected.push('.website-build-skill-receipt.json');
-      assert.deepEqual(files(destination).sort(), expected.sort(), `${mode} installed file tree`);
-      const receipt = JSON.parse(readFileSync(resolve(destination, '.website-build-skill-receipt.json')));
-      assert.equal(receipt.mode, mode);
-      const entrypoint = readFileSync(resolve(destination, 'SKILL.md'), 'utf8');
-      const compatibility = `https://github.com/aunysillyme/website-build-skill/blob/v${metadata.version}/docs/COMPATIBILITY.md`;
-      assert.ok(entrypoint.includes(`[host evidence](${compatibility})`),
-        `${mode}: compatibility evidence must be linked to the installed release`);
-      assert.match(entrypoint, /Network access is required to retrieve this document/);
-      assert.match(entrypoint, /If offline, ask for a copy of that release's document and linked receipts/);
-      assert.match(entrypoint, /Keep host activation, TEAM and integrations UNVERIFIED until checked in a recorded trial/);
-      for (const entry of receipt.files) assert.equal(digest(readFileSync(entry.path)), entry.sha256);
-      for (const name of expected.filter(name => name !== '.website-build-skill-receipt.json')) {
-        const source = name.startsWith('bundles/') ? resolve(installed, 'docs', name)
-          : resolve(installed, 'skills/website-build-skill', name);
-        const checkout = name.startsWith('bundles/') ? resolve('docs', name)
-          : resolve('skills/website-build-skill', name);
-        assert.deepEqual(readFileSync(source), readFileSync(checkout), `packed ${name}`);
-        assert.deepEqual(readFileSync(resolve(destination, name)), readFileSync(source), name);
+    for (const [target, skillDir, agentDir, ext] of [
+      ['codex', '.agents/skills/website-build-skill', '.codex/agents', '.toml'],
+      ['claude-code', '.claude/skills/website-build-skill', '.claude/agents', '.md'],
+    ]) {
+      for (const mode of ['solo', 'team']) {
+        const project = resolve(trial, `${target}-${mode}`);
+        mkdirSync(project);
+        run(process.execPath, [bin, `--${mode}`, '--target', target, '--dir', project, '--yes'], consumer);
+        const destination = resolve(project, skillDir);
+        const expected = files(resolve('skills/website-build-skill'));
+        if (mode === 'team') expected.push(...files(process.cwd(), 'docs/bundles')
+          .filter(name => name.endsWith('.md')).map(name => name.replace('docs/', '')));
+        expected.push('.website-build-skill-receipt.json');
+        assert.deepEqual(files(destination).sort(), expected.sort(), `${target} ${mode} installed file tree`);
+        const roles = ['researcher', 'coordinator', 'designer', 'graphics', 'builder', 'optimizer', 'reviewer'];
+        const expectedAgents = mode === 'team' ? roles.map(role => `website-${role}${ext}`) : [];
+        assert.deepEqual(existsSync(resolve(project, agentDir)) ? files(resolve(project, agentDir)).sort() : [],
+          expectedAgents.sort(), `${target} ${mode} subagent files`);
+        const receipt = JSON.parse(readFileSync(resolve(destination, '.website-build-skill-receipt.json')));
+        assert.equal(receipt.mode, mode);
+        assert.equal(receipt.target, target);
+        if (mode === 'team') assert.equal(receipt.project, project);
+        const entrypoint = readFileSync(resolve(destination, 'SKILL.md'), 'utf8');
+        const compatibility = `https://github.com/aunysillyme/website-build-skill/blob/v${metadata.version}/docs/COMPATIBILITY.md`;
+        assert.ok(entrypoint.includes(`[host evidence](${compatibility})`),
+          `${target} ${mode}: compatibility evidence must be linked to the installed release`);
+        assert.match(entrypoint, /Network access is required to retrieve this document/);
+        assert.match(entrypoint, /If offline, ask for a copy of that release's document and linked receipts/);
+        assert.match(entrypoint, /Keep host activation, TEAM and integrations UNVERIFIED until checked in a recorded trial/);
+        for (const entry of receipt.files) assert.equal(digest(readFileSync(entry.path)), entry.sha256);
+        for (const agentFile of expectedAgents) {
+          assert.ok(receipt.files.some(entry => entry.path === resolve(project, agentDir, agentFile)),
+            `${target} receipt must track ${agentFile}`);
+        }
+        for (const name of expected.filter(name => name !== '.website-build-skill-receipt.json')) {
+          const source = name.startsWith('bundles/') ? resolve(installed, 'docs', name)
+            : resolve(installed, 'skills/website-build-skill', name);
+          const checkout = name.startsWith('bundles/') ? resolve('docs', name)
+            : resolve('skills/website-build-skill', name);
+          assert.deepEqual(readFileSync(source), readFileSync(checkout), `packed ${name}`);
+          assert.deepEqual(readFileSync(resolve(destination, name)), readFileSync(source), name);
+        }
+        run(process.execPath, [bin, '--uninstall', '--target', target, '--dir', project], consumer);
+        assert.deepEqual(existsSync(destination) ? files(destination) : [], []);
+        assert.deepEqual(existsSync(resolve(project, agentDir)) ? files(resolve(project, agentDir)) : [], []);
       }
-      run(process.execPath, [bin, '--uninstall', '--target', 'codex', '--dir', project], consumer);
-      assert.deepEqual(files(destination), []);
     }
   } finally {
     rmSync(trial, { recursive: true, force: true });

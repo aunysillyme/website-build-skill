@@ -58,13 +58,13 @@
     },
     {
       "path": "package.json",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Repository floor content; installer entry point, engine floor, and tarball exclusions implemented."
     },
     {
       "path": "package-lock.json",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Repository floor content; synchronized package version."
     },
     {
       "path": ".gitignore",
@@ -108,6 +108,11 @@
     },
     {
       "path": "adapters/antigravity.md",
+      "status": "CREATED",
+      "note": "Repository floor content."
+    },
+    {
+      "path": "adapters/gemini-cli.md",
       "status": "CREATED",
       "note": "Repository floor content."
     },
@@ -203,28 +208,23 @@
     },
     {
       "path": "src/cli.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
-    },
-    {
-      "path": "src/choice.mjs",
       "status": "CREATED",
-      "note": "Repository floor content."
+      "note": "Installer CLI, user scope, and check-library dispatch implemented."
     },
     {
       "path": "src/agents.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Native subagent definition generator for Claude Code, Codex, Gemini CLI, and Antigravity."
     },
     {
       "path": "src/install.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Preflight, canonical path checks, receipt read-back, and receipt-verified uninstall implemented."
     },
     {
       "path": "src/catalog.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Project/user target destinations and subagent directories."
     },
     {
       "path": "src/bundle.mjs",
@@ -238,13 +238,13 @@
     },
     {
       "path": "bin/website-build-skill.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Executable CLI entry point."
     },
     {
       "path": "scripts/build.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Bundle generator, llms.txt builder, and explicit --rehash tool."
     },
     {
       "path": "scripts/check.mjs",
@@ -258,18 +258,18 @@
     },
     {
       "path": "test/research-date.test.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Local ASK DATE routing checks; live-host manual gate remains separate."
     },
     {
       "path": "test/installer.test.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Installer, scope, subagent generation, and security regressions."
     },
     {
       "path": "test/package.test.mjs",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Package metadata and build/rehash checks; live-host distribution skip remains separate."
     },
     {
       "path": "test/privacy.test.mjs",
@@ -338,8 +338,8 @@
     },
     {
       "path": ".github/workflows/release.yml",
-      "status": "PARTIAL",
-      "note": "Planned installer/publication scope remains unavailable; floor contract or local subset only."
+      "status": "CREATED",
+      "note": "Tag-gated npm OIDC provenance publishing workflow."
     }
   ]
 }

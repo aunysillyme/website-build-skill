@@ -1,7 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { checkLibrary } from '../src/library-check.mjs';
 
@@ -21,8 +22,7 @@ const receipt = 'research/library/receipts/CLAIM-EXAMPLE-01.md';
 const read = (dir, file) => readFileSync(`${dir}/${file}`, 'utf8');
 const edit = (dir, file, transform) => writeFileSync(`${dir}/${file}`, transform(read(dir, file)));
 function fixture(t) {
-  mkdirSync('.test-work', { recursive: true });
-  const dir = mkdtempSync('.test-work/library-check-');
+  const dir = mkdtempSync(resolve(realpathSync(tmpdir()), 'library-check-'));
   cpSync(green, dir, { recursive: true });
   t.after(() => rmSync(dir, { recursive: true, force: true }));
   return dir;
@@ -215,4 +215,110 @@ test('AD04 AD07 and AD09 name the receipt artifact and checker', () => {
     assert.ok(row.includes('research/library/receipts/<CLAIM-ID>.md'), `${id} names the receipt path`);
     assert.match(row, /check-library/, `${id} names the checker`);
   }
+});
+
+test('Multi-paragraph excerpt literal blocks preserve blank lines without leaking unindented text', async t => {
+  await t.test('GREEN multi-paragraph excerpt keeps paragraph-2 publication date', t => {
+    const dir = fixture(t);
+    edit(dir, receipt, text => text.replace(/excerpt:[\s\S]*/, [
+      'excerpt: |',
+      '  First paragraph describing the scope of the synthetic study.',
+      '',
+      '  Second paragraph published 2026-09-20 with enough supporting detail.',
+      '',
+    ].join('\n')));
+    assert.equal(checkLibrary(dir).code, 0);
+  });
+
+  await t.test('RED unindented break stops excerpt capture before later text', t => {
+    const dir = fixture(t);
+    edit(dir, receipt, text => text.replace(/excerpt:[\s\S]*/, [
+      'excerpt: |',
+      '  First paragraph is well over eighty characters long so length is not the reason this fails.',
+      '',
+      'Not indented paragraph containing 2026-09-20.',
+      '',
+    ].join('\n')));
+    fails(dir, /CLAIM-EXAMPLE-01: published date is not present in excerpt text/);
+  });
+});
+
+test('Ledger validates non-empty Domain, Statement, Accessed date, and http(s) URL', async t => {
+  const badCases = [
+    ['empty domain', text => text.replace('| Domain 1 |', '|   |'), /CLAIM-EXAMPLE-01: missing domain/],
+    ['empty statement', text => text.replace('| A synthetic research claim. |', '|  |'), /CLAIM-EXAMPLE-01: missing statement/],
+    ['invalid accessed text', text => text.replaceAll('| 2026-09-23 |', '| recently |'), /CLAIM-EXAMPLE-01: accessed date/],
+    ['invalid calendar accessed', text => text.replaceAll('| 2026-09-23 |', '| 2026-02-30 |'), /CLAIM-EXAMPLE-01: accessed date/],
+    ['offset accessed timestamp', text => text.replaceAll('| 2026-09-23 |', '| 2026-09-23T12:00:00+00:00 |'), /CLAIM-EXAMPLE-01: accessed date/],
+    ['non-url on OPENED row', text => text.replace('https://example.com/research', 'not-a-url'), /CLAIM-EXAMPLE-01: url must be a valid http or https URL/],
+    ['ftp url on OPENED row', text => text.replace('https://example.com/research', 'ftp://example.com/research'), /CLAIM-EXAMPLE-01: url must be a valid http or https URL/],
+  ];
+  for (const [label, transform, pattern] of badCases) {
+    await t.test(`RED ${label}`, t => {
+      const dir = fixture(t);
+      if (label.includes('url')) edit(dir, receipt, transform);
+      edit(dir, ledger, transform);
+      fails(dir, pattern);
+    });
+  }
+
+  await t.test('GREEN UTC ISO timestamp in Accessed and unverified non-URL lead pass', t => {
+    const dir = fixture(t);
+    edit(dir, ledger, text => text
+      .replace('| 2026-09-23 | OPENED | Designer |', '| 2026-09-23T12:00:00Z | OPENED | Designer |')
+      .replace('https://example.com/lead', 'none'));
+    assert.equal(checkLibrary(dir).code, 0);
+  });
+});
+
+test('Ledger supports non-claim tables and multiple claim tables', async t => {
+  await t.test('GREEN non-claim summary table and split claim tables pass', t => {
+    const dir = fixture(t);
+    edit(dir, ledger, text => [
+      '# Multi-table ledger',
+      '',
+      '| Domain | Status |',
+      '| --- | --- |',
+      '| Domain 1 | Covered |',
+      '',
+      '## Table A',
+      '',
+      '| Claim ID | Domain | Statement | URL | Published | Accessed | Status | Dependents |',
+      '| --- | --- | --- | --- | --- | --- | --- | --- |',
+      text.split('\n').find(l => l.includes('CLAIM-EXAMPLE-01')),
+      '',
+      '## Table B',
+      '',
+      '| Claim ID | Domain | Statement | URL | Published | Accessed | Status | Dependents |',
+      '| --- | --- | --- | --- | --- | --- | --- | --- |',
+      text.split('\n').find(l => l.includes('CLAIM-EXAMPLE-02')),
+      text.split('\n').find(l => l.includes('CLAIM-EXAMPLE-03')),
+      '',
+    ].join('\n'));
+    const res = checkLibrary(dir);
+    assert.equal(res.code, 0, res.message);
+    assert.match(res.message, /PASS library: 2 OPENED, 1 UNVERIFIED, 3 claims/);
+  });
+
+  await t.test('RED second claim table still catches missing receipt or short row', t => {
+    const dir = fixture(t);
+    edit(dir, ledger, text => `${text}\n## Extra\n\n| Claim ID | Domain | Statement | URL | Published | Accessed | Status | Dependents |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| CLAIM-EXAMPLE-04 | Domain 4 | Missing receipt. | https://example.com/4 | unknown | 2026-09-23 | OPENED | Builder |\n`);
+    fails(dir, /CLAIM-EXAMPLE-04: unreceipted claim/);
+  });
+});
+
+test('Rule 5 catches broader all-claims-verified phrases only when unreceipted rows exist', async t => {
+  for (const phrase of ['All claims verified in this table.', 'All claim verified before ship.']) {
+    await t.test(`RED ${phrase}`, t => {
+      const dir = fixture(t);
+      edit(dir, ledger, text => `${phrase}\n\n${text}`);
+      fails(dir, /verification claim over unreceipted rows: CLAIM-EXAMPLE-03/);
+    });
+  }
+
+  await t.test('GREEN passes when all rows carry receipts', t => {
+    const dir = fixture(t);
+    edit(dir, ledger, text => `All claims verified.\n\n${text.split('\n').filter(l => !l.includes('CLAIM-EXAMPLE-03')).join('\n')}\n`);
+    assert.equal(checkLibrary(dir).code, 0);
+  });
 });

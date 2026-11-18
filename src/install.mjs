@@ -1,9 +1,10 @@
 import fs from 'node:fs';
+import { homedir } from 'node:os';
 import { resolve, relative, dirname, basename, join, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 import { CORE, files, owned, digest } from './bundle.mjs';
-import { targets } from './catalog.mjs';
+import { targets, destinationFor, agentDirFor } from './catalog.mjs';
 import { generateAgents } from './agents.mjs';
 
 const packageRoot = fileURLToPath(new URL('../', import.meta.url));
@@ -60,6 +61,23 @@ export function safePath(root, name) {
 const receiptName = '.website-build-skill-receipt.json';
 const result = (code, message) => ({ code, message });
 
+function existingAncestor(dir) {
+  let current = resolve(dir);
+  while (!stat(current)) {
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  return current;
+}
+
+function derivedBaseFor(destination, target, scope) {
+  const destRel = destinationFor(target, scope);
+  if (!destRel) return null;
+  const base = resolve(destination, ...destRel.split('/').map(() => '..'));
+  return resolve(base, destRel) === destination ? base : null;
+}
+
 function canonicalReceipt(path, root, destination, outputRoot) {
   const boundaries = [destination, outputRoot].filter(Boolean);
   // Resolve the user's root spelling, but inspect its suffix before using the canonical
@@ -87,19 +105,19 @@ function validate(request) {
   }
 }
 
-function plan(request, destination, project) {
+function plan(request, destination, project, scope) {
   const coreRoot = owned(packageRoot, CORE);
-  const entries = files(coreRoot).map(name => ({ path: safePath(destination, name), bytes: fs.readFileSync(owned(coreRoot, name)), root: destination }));
+  const entries = files(coreRoot).map(name => ({ path: safePath(destination, name), bytes: fs.readFileSync(owned(coreRoot, name)), root: project }));
   if (request.mode === 'team') {
     for (const name of files(packageRoot, 'docs/bundles').filter(name => /^docs\/bundles\/[^/]+\.md$/.test(name))) {
       const bytes = fs.readFileSync(owned(packageRoot, name));
-      entries.push({ path: safePath(destination, `bundles/${basename(name)}`), bytes, root: destination });
+      entries.push({ path: safePath(destination, `bundles/${basename(name)}`), bytes, root: project });
       if (request.bundleDir !== undefined) {
         const path = safePath(destination, resolve(destination, request.bundleDir, basename(name)));
-        if (!entries.some(entry => entry.path === path)) entries.push({ path, bytes, root: destination });
+        if (!entries.some(entry => entry.path === path)) entries.push({ path, bytes, root: project });
       }
     }
-    for (const agent of generateAgents({ target: request.target, project, destination })) {
+    for (const agent of generateAgents({ target: request.target, project, destination, scope })) {
       entries.push({ path: safePath(project, agent.relPath), bytes: agent.bytes, root: project, isAgent: true });
     }
   }
@@ -107,16 +125,48 @@ function plan(request, destination, project) {
 }
 
 function integrationFor(project, destination, target) {
-  const conventional = { 'claude-code': 'CLAUDE.md', codex: 'AGENTS.md', hermes: 'AGENTS.md', grok: 'GROK.md', antigravity: 'GEMINI.md' };
-  const routers = [...new Set(['AGENTS.md', 'CLAUDE.md', conventional[target]].filter(Boolean))];
-  const routerPath = routers.map(name => resolve(project, name)).find(path => stat(path)) ?? null;
+  const conventional = {
+    'claude-code': 'CLAUDE.md',
+    codex: 'AGENTS.md',
+    hermes: 'AGENTS.md',
+    'gemini-cli': 'GEMINI.md',
+    antigravity: 'GEMINI.md',
+    grok: 'GROK.md',
+  };
+  const routers = [...new Set([conventional[target], 'AGENTS.md', 'CLAUDE.md'].filter(Boolean))];
+  const routerPath = routers.map(name => resolve(project, name)).find(path => stat(path)?.isFile()) ?? null;
   return {
     routerPath, merged: false,
     snippet: routerPath ? `<!-- website-build-skill integration -->\nRead ${resolve(destination, 'SKILL.md')} and begin with prompts/00-start.md. Activation: UNVERIFIED.` : null,
   };
 }
 
-function readReceipt(path, destination, receiptRoot) {
+function canonicalOutputRoot(value) {
+  return typeof value.outputRoot === 'string' && value.outputRoot === resolve(value.outputRoot) && canonical(value.outputRoot) === value.outputRoot
+    ? value.outputRoot
+    : null;
+}
+
+function receiptDirRoot(directory, receiptPath, destination, destBase, projectRoot, agentRoot, receiptOutputRoot) {
+  if (typeof directory !== 'string' || directory !== resolve(directory) || dirname(directory) === directory) return null;
+  if (inside(destination, directory) && directory !== destination) return destination;
+  if (destBase && inside(destBase, directory) && directory !== destBase && inside(directory, destination)) return destBase;
+  if (agentRoot !== null && inside(projectRoot, directory) && directory !== projectRoot && inside(directory, agentRoot)) return projectRoot;
+  const receiptDir = dirname(receiptPath);
+  if (inside(directory, receiptDir) && directory !== receiptOutputRoot && directory !== destBase && directory !== projectRoot) {
+    if (receiptOutputRoot && inside(receiptOutputRoot, receiptPath)) {
+      return inside(receiptOutputRoot, directory) && directory !== receiptOutputRoot ? receiptOutputRoot : null;
+    }
+    if (destBase && inside(destBase, receiptPath)) {
+      return inside(destBase, directory) && directory !== destBase ? destBase : null;
+    }
+    const parent = dirname(directory);
+    return canonical(parent) === parent ? parent : null;
+  }
+  return null;
+}
+
+function readReceipt(path, destination, receiptRoot, expectedProject = null, expectedTarget = null) {
   safePath(receiptRoot, path);
   const info = stat(path);
   if (!info?.isFile() || info.nlink !== 1) throw Error(`Missing, shared or non-file receipt: ${path}`);
@@ -125,17 +175,46 @@ function readReceipt(path, destination, receiptRoot) {
   // so this comparison is a check that the receipt belongs here, not a source of authority.
   if (value.schemaVersion !== 1 || value.package?.name !== packageInfo.name || value.destination !== destination || !Array.isArray(value.files) || !Array.isArray(value.directories)) throw Error('Invalid receipt ownership');
   if (value.activation !== 'UNVERIFIED' || !['solo', 'team'].includes(value.mode) || !Object.hasOwn(targets, value.target) || !['project', 'user'].includes(value.scope)) throw Error('Invalid receipt metadata');
-  const allowedRootFor = path => (inside(destination, path) ? destination : (value.project && inside(value.project, destination) && canonical(value.project) === value.project && inside(value.project, path) ? value.project : null));
+  if (expectedTarget && value.target !== expectedTarget) throw Error('Invalid receipt ownership');
+
+  const destRel = destinationFor(value.target, value.scope);
+  const agentRel = agentDirFor(value.target, value.scope);
+  const candidateBase = derivedBaseFor(destination, value.target, value.scope);
+  const destBase = candidateBase && canonical(candidateBase) === candidateBase && (expectedProject === null || candidateBase === expectedProject) ? candidateBase : null;
+
+  let projectRoot = null;
+  let agentRoot = null;
+  if (value.project !== undefined) {
+    if (
+      typeof value.project !== 'string' ||
+      !agentRel ||
+      !destRel ||
+      value.project !== resolve(value.project) ||
+      canonical(value.project) !== value.project ||
+      destination !== resolve(value.project, destRel) ||
+      (expectedProject !== null && value.project !== expectedProject)
+    ) {
+      throw Error('Invalid receipt project');
+    }
+    projectRoot = value.project;
+    agentRoot = resolve(projectRoot, agentRel);
+  }
+
   const seen = new Set();
   for (const entry of value.files) {
-    const entryRoot = typeof entry.path === 'string' ? allowedRootFor(entry.path) : null;
-    if (!entryRoot || !entry.path || entry.path !== resolve(entry.path) || entry.path === destination || entry.path === value.project || entry.path === path || seen.has(entry.path) || !/^[a-f0-9]{64}$/.test(entry.sha256) || !['written', 'identical'].includes(entry.action)) throw Error('Invalid receipt file');
-    safePath(entryRoot, entry.path);
-    seen.add(entry.path);
+    const filePath = entry?.path;
+    const inDest = typeof filePath === 'string' && inside(destination, filePath) && filePath !== destination;
+    const inAgent = typeof filePath === 'string' && agentRoot !== null && inside(agentRoot, filePath) && filePath !== agentRoot;
+    const entryRoot = inDest ? destination : (inAgent ? projectRoot : null);
+    if (!entryRoot || filePath !== resolve(filePath) || filePath === path || seen.has(filePath) || !/^[a-f0-9]{64}$/.test(entry.sha256) || !['written', 'identical'].includes(entry.action)) throw Error('Invalid receipt file');
+    safePath(entryRoot, filePath);
+    seen.add(filePath);
   }
+
+  const receiptOutputRoot = canonicalOutputRoot(value);
   for (const directory of value.directories) {
-    const dirRoot = typeof directory === 'string' ? allowedRootFor(directory) : null;
-    if (!dirRoot || directory !== resolve(directory) || directory === destination || directory === value.project) throw Error('Invalid receipt directory');
+    const dirRoot = receiptDirRoot(directory, path, destination, destBase, projectRoot, agentRoot, receiptOutputRoot);
+    if (!dirRoot) throw Error('Invalid receipt directory');
     safePath(dirRoot, directory);
   }
   return value;
@@ -185,22 +264,21 @@ function probe(root) {
   } finally { if (created) fs.unlinkSync(path); }
 }
 
-// Remove empty directories inside one tree this install created, deepest first. A directory
-// that existed before the install is never in that list, so it is never removed.
-function pruneCreated(destination, root, removed) {
-  const walk = path => {
-    safePath(destination, path);
-    const info = stat(path);
-    if (!info?.isDirectory()) return;
-    for (const name of fs.readdirSync(path)) walk(resolve(path, name));
-    if (fs.readdirSync(path).length === 0 && path !== destination) { fs.rmdirSync(path); removed.push(path); }
-  };
-  walk(root);
+// Remove only empty directories explicitly recorded as created by this install.
+// Never walk into unrecorded user subdirectories.
+function pruneCreated(root, directory, removed) {
+  safePath(root, directory);
+  const info = stat(directory);
+  if (!info?.isDirectory()) return;
+  if (fs.readdirSync(directory).length === 0 && directory !== root) {
+    fs.rmdirSync(directory);
+    removed.push(directory);
+  }
 }
 
-function uninstall(request, destination, receiptPath, receiptRoot) {
+function uninstall(request, destination, receiptPath, receiptRoot, expectedProject) {
   let receipt;
-  try { receipt = readReceipt(receiptPath, destination, receiptRoot); } catch (error) { return result(2, error.message); }
+  try { receipt = readReceipt(receiptPath, destination, receiptRoot, expectedProject, request.target ?? null); } catch (error) { return result(2, error.message); }
   const remove = [], kept = [];
   try {
     for (const entry of receipt.files) {
@@ -220,6 +298,22 @@ function uninstall(request, destination, receiptPath, receiptRoot) {
     };
     visit(destination);
     if (request.dryRun) return result(0, [...remove.map(entry => `Would remove: ${entry.path}`), ...kept, `Would remove receipt: ${receiptPath}`].join('\n'));
+    const destBase = derivedBaseFor(destination, receipt.target, receipt.scope);
+    const agentRel = agentDirFor(receipt.target, receipt.scope);
+    const agentRoot = receipt.project && agentRel ? resolve(receipt.project, agentRel) : null;
+    const receiptOutputRoot = canonicalOutputRoot(receipt);
+    const dirRootFor = directory => receiptDirRoot(directory, receiptPath, destination, destBase, receipt.project ?? null, agentRoot, receiptOutputRoot);
+    // Preflight all removals before unlinking anything, and unlink receiptPath last.
+    for (const entry of remove) {
+      const entryRoot = inside(destination, entry.path) ? destination : receipt.project;
+      safePath(entryRoot, entry.path);
+    }
+    for (const directory of receipt.directories) {
+      const dirRoot = dirRootFor(directory);
+      if (!dirRoot) throw Error(`Invalid receipt directory: ${directory}`);
+      safePath(dirRoot, directory);
+    }
+    safePath(receiptRoot, receiptPath);
     const removed = [];
     try {
       for (const entry of remove) {
@@ -232,8 +326,7 @@ function uninstall(request, destination, receiptPath, receiptRoot) {
       safePath(receiptRoot, receiptPath);
       fs.unlinkSync(receiptPath);
       for (const directory of [...receipt.directories].sort((a, b) => b.length - a.length)) {
-        const dirRoot = inside(destination, directory) ? destination : receipt.project;
-        pruneCreated(dirRoot, directory, removed);
+        pruneCreated(dirRootFor(directory), directory, removed);
       }
       return result(0, [...removed.map(path => `Removed: ${path}`), ...kept, 'Uninstall complete.'].join('\n'));
     } catch (error) { return result(4, `Uninstall interrupted: ${error.message}\n${removed.map(path => `Removed: ${path}`).join('\n')}\n${kept.join('\n')}`); }
@@ -241,55 +334,65 @@ function uninstall(request, destination, receiptPath, receiptRoot) {
 }
 
 export function install(request = {}) {
-  let destination, receiptPath, receiptRoot, entries, integration, previous = null, oldReceipt, outputRoot, project;
+  const scope = request.scope ?? 'project';
+  let destination, receiptPath, receiptRoot, entries, integration, previous = null, oldReceipt, outputRoot, project, expectedProject = null;
   try {
     if (request.uninstall) {
       // What gets removed is decided by what the user named. A receipt that carries its own
       // destination would let an edited or planted file point the removal anywhere on disk.
-      if (request.target && request.dir) {
+      if (request.target && (request.dir || request.scope === 'user')) {
         if (!Object.hasOwn(targets, request.target)) throw Error('Unknown or missing target');
-        destination = resolve(canonical(request.dir), targets[request.target]);
+        if (!['project', 'user'].includes(scope)) throw Error('Scope must be project or user');
+        const base = request.dir ? canonical(request.dir) : canonical(homedir());
+        destination = resolve(base, destinationFor(request.target, scope));
         receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
+        expectedProject = base;
       } else if (request.receipt) {
         receiptPath = resolve(request.receipt);
         destination = canonical(dirname(receiptPath));
-      } else throw Error('Uninstall requires --receipt or --target and --dir');
+        expectedProject = null;
+      } else throw Error('Uninstall requires --receipt or --target with --dir or --scope user');
       // The default receipt sits at the destination root, so that root is already its own.
       // Only a receipt the user placed elsewhere needs its own directory canonicalized, and
       // doing that eagerly for the default would resolve the destination before preflight.
       receiptRoot = request.receipt ? canonical(dirname(receiptPath)) : destination;
     } else {
       validate(request);
-      // The project root is the user's to name, so it is canonicalized here. The target suffix
-      // is ours, and a symlink planted in it is a preflight refusal, not bad input, so that
-      // walk happens in the preflight block below where the exit code is 3.
-      project = canonical(request.dir ?? process.cwd());
-      destination = resolve(project, targets[request.target]);
+      // The base root is the user's to name (or homedir for user scope, cwd for project),
+      // so it is canonicalized here. The target suffix is ours, and a symlink planted in it
+      // is a preflight refusal, not bad input, so that walk happens in the preflight block below.
+      const base = request.dir ? canonical(request.dir) : (scope === 'user' ? canonical(homedir()) : canonical(process.cwd()));
+      project = base;
+      destination = resolve(base, destinationFor(request.target, scope));
       receiptPath = resolve(request.receipt ?? resolve(destination, receiptName));
       receiptRoot = request.receipt ? canonical(dirname(receiptPath)) : destination;
+      expectedProject = request.dir || request.scope === 'user' ? base : null;
     }
     outputRoot = request.outputDir === undefined ? null : canonical(request.outputDir);
   } catch (error) { return result(2, error.message); }
   try {
     if (request.receipt) receiptPath = canonicalReceipt(receiptPath, receiptRoot, destination, outputRoot);
-    if (request.uninstall) return uninstall(request, destination, receiptPath, receiptRoot);
-    safePath(project, targets[request.target]);
+    if (request.uninstall) return uninstall(request, destination, receiptPath, receiptRoot, expectedProject);
+    safePath(project, destination);
     if (request.receipt) safePath(receiptRoot, receiptPath);
     if (inside(destination, receiptPath) && receiptPath === destination) throw Error('Receipt collides with destination');
-    entries = plan(request, destination, project);
+    entries = plan(request, destination, project, scope);
     for (const entry of entries) {
       if (entries.some(other => other !== entry && inside(entry.path, other.path))) throw Error(`Planned file/directory collision: ${entry.path}`);
     }
     if (entries.some(entry => entry.path === receiptPath || inside(entry.path, receiptPath) || inside(receiptPath, entry.path))) throw Error('Receipt collides with installed content');
-    integration = integrationFor(resolve(request.dir ?? process.cwd()), destination, request.target);
+    integration = integrationFor(project, destination, request.target);
     const conflicts = [];
     // Read the previous receipt FIRST, because it is what separates a file this package wrote
     // on an earlier run from a file that was already on disk. Both are byte-identical now, and
     // only one of them is ours to remove later.
     if (stat(receiptPath)) {
       try {
-        oldReceipt = readReceipt(receiptPath, destination, receiptRoot);
+        oldReceipt = readReceipt(receiptPath, destination, receiptRoot, expectedProject);
         previous = fs.readFileSync(receiptPath, 'utf8');
+        if (oldReceipt.target !== request.target) {
+          conflicts.push(`${receiptPath} (owned by target ${oldReceipt.target}, cannot overwrite with ${request.target})`);
+        }
       } catch { conflicts.push(receiptPath); }
     }
     const ours = new Set((oldReceipt?.files ?? []).filter(entry => entry.action === 'written').map(entry => entry.path));
@@ -303,27 +406,42 @@ export function install(request = {}) {
     }
     if (conflicts.length) return result(3, `Preflight conflicts; nothing written:\n${conflicts.join('\n')}`);
   } catch (error) { return request.uninstall ? result(2, error.message) : result(3, `Preflight refused; nothing written: ${error.message}`); }
-  const hasAgents = entries.some(entry => entry.isAgent);
-  const receipt = {
-    schemaVersion: 1, package: packageInfo, date: new Date().toISOString(), mode: request.mode,
-    target: request.target, scope: request.scope ?? 'project', destination, outputRoot,
-    ...(hasAgents ? { project } : {}),
-    ...(request.outputStorage ? { outputStorage: request.outputStorage } : {}),
-    files: entries.map(entry => ({ path: entry.path, sha256: digest(entry.bytes), action: entry.action })),
-    directories: [], integration, activation: 'UNVERIFIED',
-  };
-  // An earlier run's files stay owned even when this run installs fewer of them, or a later
-  // uninstall would walk past its own TEAM bundles and call them somebody else's.
-  const carried = [];
+
+  const plannedFiles = entries.map(entry => ({ path: entry.path, sha256: digest(entry.bytes), action: entry.action }));
+  const carried = [], carriedDirs = [];
   if (oldReceipt) {
     for (const entry of oldReceipt.files) {
-      if (receipt.files.some(current => current.path === entry.path)) continue;
+      if (plannedFiles.some(current => current.path === entry.path)) continue;
       const info = stat(entry.path);
       if (info?.isFile() && digest(fs.readFileSync(entry.path)) === entry.sha256) carried.push(entry);
     }
-    receipt.directories.push(...oldReceipt.directories);
+    carriedDirs.push(...oldReceipt.directories);
   }
-  const sameReceipt = oldReceipt && ['mode', 'target', 'scope', 'outputRoot'].every(key => oldReceipt[key] === receipt[key]) && JSON.stringify(oldReceipt.outputStorage) === JSON.stringify(receipt.outputStorage) && JSON.stringify(oldReceipt.package) === JSON.stringify(receipt.package) && JSON.stringify(oldReceipt.integration) === JSON.stringify(integration) && oldReceipt.files.length === receipt.files.length && receipt.files.every(entry => oldReceipt.files.some(old => old.path === entry.path && old.sha256 === entry.sha256));
+  // Merge carried files and directories BEFORE computing hasExternal and sameReceipt,
+  // so --team -> --solo preserves agent ownership and repeated --solo stays idempotent.
+  const allFiles = [...plannedFiles, ...carried];
+  const agentRel = agentDirFor(request.target, scope);
+  const agentRoot = agentRel ? resolve(project, agentRel) : null;
+  const hasExternalDir = dirs => agentRoot !== null
+    && dirs.some(dir => inside(project, dir) && dir !== project && inside(dir, agentRoot) && !inside(dir, destination));
+  const hasExternal = entries.some(entry => entry.isAgent)
+    || allFiles.some(entry => !inside(destination, entry.path))
+    || hasExternalDir(carriedDirs);
+  const receipt = {
+    schemaVersion: 1, package: packageInfo, date: new Date().toISOString(), mode: request.mode,
+    target: request.target, scope, destination, outputRoot,
+    ...(hasExternal ? { project } : {}),
+    ...(request.outputStorage ? { outputStorage: request.outputStorage } : {}),
+    files: allFiles,
+    directories: [...carriedDirs], integration, activation: 'UNVERIFIED',
+  };
+  const sameReceipt = Boolean(oldReceipt)
+    && ['mode', 'target', 'scope', 'outputRoot', 'project'].every(key => oldReceipt[key] === receipt[key])
+    && JSON.stringify(oldReceipt.outputStorage) === JSON.stringify(receipt.outputStorage)
+    && JSON.stringify(oldReceipt.package) === JSON.stringify(receipt.package)
+    && JSON.stringify(oldReceipt.integration) === JSON.stringify(integration)
+    && oldReceipt.files.length === receipt.files.length
+    && receipt.files.every(entry => oldReceipt.files.some(old => old.path === entry.path && old.sha256 === entry.sha256 && old.action === entry.action));
   const noChanges = entries.every(entry => !entry.wrote) && sameReceipt;
   const lines = entries.map(entry => `${entry.wrote ? 'write' : 'identical'}: ${entry.path}`);
   lines.push(`${noChanges ? 'identical' : 'write'} receipt: ${receiptPath}`);
@@ -334,10 +452,22 @@ export function install(request = {}) {
   if (request.dryRun) return result(0, `Dry run; no writes or probe.\n${outputRoot ? `Would probe: ${outputRoot}\n` : ''}${lines.join('\n')}`);
   if (noChanges) return result(integration.snippet ? 5 : 0, `Identical install; nothing written.\n${lines.join('\n')}`);
   try { if (outputRoot) probe(outputRoot); } catch (error) { return result(2, `Output root verification failed; no skill files written: ${error.message}`); }
+
+  const receiptMkdirRoot = request.receipt
+    ? (inside(project, receiptPath) ? project : (outputRoot && inside(outputRoot, receiptPath) ? outputRoot : existingAncestor(dirname(receiptPath))))
+    : project;
+  const allowedDir = path => (
+    (inside(destination, path) && path !== destination)
+    || (inside(project, path) && path !== project && inside(path, destination))
+    || (agentRoot !== null && inside(project, path) && path !== project && inside(path, agentRoot))
+    || (Boolean(request.receipt) && inside(path, dirname(receiptPath)) && path !== project && path !== outputRoot && dirname(path) !== path
+      && (!outputRoot || !inside(outputRoot, receiptPath) || inside(outputRoot, path))
+      && (!inside(project, receiptPath) || inside(project, path)))
+  );
   const landed = [], made = [], receiptWrite = {};
   try {
     for (const entry of entries) {
-      const entryRoot = entry.root ?? destination;
+      const entryRoot = entry.root ?? project;
       safePath(entryRoot, entry.path);
       if (entry.wrote) writeNew(entry.path, entry.bytes, landed, entryRoot, made);
       else if (digest(fs.readFileSync(entry.path)) !== digest(entry.bytes)) throw Error(`File changed during install: ${entry.path}`);
@@ -349,26 +479,39 @@ export function install(request = {}) {
       const actual = digest(fs.readFileSync(safePath(entryRoot, entry.path)));
       if (actual !== entry.sha256) throw Error(`Read-back mismatch after write: ${entry.path}`);
     }
-    receipt.files.push(...carried);
-    if (carried.some(entry => !inside(destination, entry.path))) receipt.project = project;
-    receipt.directories = [...new Set([...receipt.directories, ...made])].filter(path => (inside(destination, path) && path !== destination) || (hasAgents && inside(project, path) && path !== project));
+    mkdirFor(receiptPath, receiptMkdirRoot, made);
+    receipt.directories = [...new Set([...carriedDirs, ...made])].filter(allowedDir);
     writeReceipt(receiptPath, receipt, previous, receiptWrite, receiptRoot, made);
   } catch (error) {
-    receipt.files = receipt.files.filter(entry => !entries.find(planned => planned.path === entry.path)?.wrote || landed.includes(entry.path));
     const notes = [];
-    receipt.files = receipt.files.filter(entry => {
+    const recoveredPlanned = [];
+    for (let i = 0; i < plannedFiles.length; i++) {
+      const entry = plannedFiles[i];
+      const planned = entries[i];
+      if (planned.wrote && !landed.includes(entry.path)) continue;
       try {
-        safePath(destination, entry.path);
+        const entryRoot = inside(destination, entry.path) ? destination : project;
+        safePath(entryRoot, entry.path);
         const actual = digest(fs.readFileSync(entry.path));
-        if (!landed.includes(entry.path) && actual !== entry.sha256) { notes.push(`Kept changed during install: ${entry.path}`); return false; }
-        entry.sha256 = actual;
-        return true;
-      }
-      catch { notes.push(`Could not verify: ${entry.path}`); return false; }
+        if (!landed.includes(entry.path) && actual !== entry.sha256) { notes.push(`Kept changed during install: ${entry.path}`); continue; }
+        recoveredPlanned.push({ ...entry, sha256: actual });
+      } catch { notes.push(`Could not verify: ${entry.path}`); }
+    }
+    const recoveredCarried = carried.filter(entry => {
+      try {
+        const entryRoot = inside(destination, entry.path) ? destination : project;
+        safePath(entryRoot, entry.path);
+        return Boolean(stat(entry.path)?.isFile());
+      } catch { notes.push(`Could not verify: ${entry.path}`); return false; }
     });
-    receipt.files.push(...carried.filter(entry => stat(entry.path)?.isFile()));
-    receipt.directories = [...new Set([...receipt.directories, ...made])].filter(path => inside(destination, path) && path !== destination);
+    receipt.files = [...recoveredPlanned, ...recoveredCarried];
     try {
+      mkdirFor(receiptPath, receiptMkdirRoot, made);
+      receipt.directories = [...new Set([...carriedDirs, ...made])].filter(allowedDir);
+      const hasRecoveredExternal = receipt.files.some(entry => !inside(destination, entry.path))
+        || hasExternalDir(receipt.directories);
+      if (hasRecoveredExternal) receipt.project = project;
+      else delete receipt.project;
       // Retry our own interrupted receipt, without clobbering an unrelated arrival.
       if (receiptWrite.started) { safePath(receiptRoot, receiptPath); previous = fs.readFileSync(receiptPath, 'utf8'); }
       writeReceipt(receiptPath, receipt, previous, {}, receiptRoot, made);

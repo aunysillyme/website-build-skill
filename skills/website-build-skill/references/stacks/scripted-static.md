@@ -10,17 +10,17 @@ Use when many pages share structure and must derive metadata from the same recor
 ## File responsibilities
 
 ```text
-src/data/                 Authored records and route registry.
-src/render/               Shared escaping, URL, JSON and state helpers.
-templates/                Page and component rendering.
-scripts/build.ts          Validate, render, derive discovery, report omissions.
-scripts/images.ts         Deterministic authorized image transformations.
-public/                   Approved static files copied to output.
-test/                     Data boundaries, rendered adverse cases, route parity.
-dist/                     Generated deployable output, never hand edited.
-package.json              Exact project scripts and declared dependencies.
-package-lock.json         Reproducible dependency resolution when npm is selected.
-SITE_OPERATIONS.md        Content, build, release, verify and recovery in one file.
+src/data/                     Authored records and route registry.
+src/render/                   Shared escaping, URL, JSON and state helpers.
+templates/                    Page and component rendering.
+scripts/build.{mjs,js,ts}     Validate, render, derive discovery, report omissions.
+scripts/images.{mjs,js,ts}    Deterministic authorized image transformations.
+public/                       Approved static files copied to output.
+test/                         Data boundaries, rendered adverse cases, route parity.
+dist/                         Generated deployable output, never hand edited.
+package.json                  Exact project scripts and declared dependencies.
+package-lock.json             Reproducible dependency resolution when npm is selected.
+SITE_OPERATIONS.md            Content, build, release, verify and recovery in one file.
 ```
 
 Builder owns implementation and generated output.
@@ -37,7 +37,7 @@ npm run preview    Serve the built output for local browser verification.
 ```
 
 These commands are a proposed project contract, not scripts supplied by this skill.
-Builder must implement and verify the scripts and document the actual TypeScript runtime.
+Builder must implement and verify the scripts and document the actual script runtime (Node.js ESM `.mjs`/`.js` or the chosen TypeScript runtime).
 Use the chosen runtime's supported compilation/execution path after a current-source check.
 Vite is optional when bundling or development behavior serves a named requirement.
 Sharp is a build dependency when the image transformation pipeline needs it.

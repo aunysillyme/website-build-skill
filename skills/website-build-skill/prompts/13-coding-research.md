@@ -52,6 +52,9 @@ RESEARCH
 - Define dependency hygiene: justify each dependency, pin direct versions and
   toolchain versions, preserve the lockfile, use reproducible install commands,
   audit advisories, and record findings, owners, and update/recheck decisions.
+  Before adopting any third-party UI component library or copied component, apply
+  [the UI component library checks](../checklists/research.md#ui-component-libraries)
+  (licence/EULA class, notices, stack runtime, and CSS plus script-driven reduced motion).
 - Research secure template and script handling for the actual stack: structural
   escaping by output context, script-safe serialization, URL scheme validation,
   input validation, and secrets supplied through the server-side environment.
@@ -85,10 +88,11 @@ affected standards when selected versions, requirements, or source freshness cha
 
 BLOCKED RESEARCH
 If search or source access is unavailable, follow playbooks/research-and-memory.md:
-return a query plan and unresolved-claim ledger for the selected stack, keep research
-BLOCKED, and stop before implementation. Training memory or a previous library
-does not pass current research. If file writing is unavailable, return named file
-bodies for saving and read-back before the standards gate can pass.
+write `query-plan.md` and `unresolved-claims.md` for the selected stack, flag
+current stack claims UNVERIFIED, and disclose the limit when proceeding with
+available inputs (never mark offline guesses OPENED or PASS). Training memory or a
+previous library does not pass current research. If file writing is unavailable,
+return named file bodies for saving and read-back before the standards gate can pass.
 
 EVIDENCE
 Never report a measured, saved, installed, or deployed result without evidence.

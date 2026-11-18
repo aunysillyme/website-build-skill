@@ -19,9 +19,7 @@ Connect page and entity records with stable @id references and explicit relation
 Write the direct answer near its question, then support it with useful detail and sources.
 Make a section understandable outside surrounding navigation without losing its conditions.
 Do not repeat keywords at the expense of task completion.
-Use FAQPage only for genuine visible questions and answers where appropriate.
-Current consumer eligibility requires a same-day source check; valid vocabulary does not
-prove a consumer offers a rich result or that the site qualifies for it.
+General `FAQPage` rich results were deprecated/retired in Google Search (restricted to well-known authoritative government and health sites); do not promise `FAQPage` rich results for general sites. Use `FAQPage` only for genuine visible questions and answers where justified and verified against current consumer documentation on ASK DATE; valid vocabulary does not prove a consumer offers a rich result or that the site qualifies for it.
 
 ## Validate structured data
 
@@ -109,7 +107,9 @@ Apply checklists/performance-seo.md PS05 through PS11.
 
 Open https://schema.org/docs/schemas.html for vocabulary.
 Open https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
-for consumer guidance and https://developers.google.com/search/updates for changes.
+for consumer guidance (including current `FAQPage` eligibility limits) and
+https://developers.google.com/search/updates for deprecations and changes on ASK DATE.
 Open https://developers.google.com/search/docs/appearance/ai-features and
-https://llmstxt.org/ to distinguish consumer requirements from proposal semantics.
+https://llmstxt.org/ on ASK DATE to verify current AI-feature documentation and
+distinguish consumer requirements from `llms.txt` proposal semantics.
 These links are research starting points, not receipts of an opening in this engagement.

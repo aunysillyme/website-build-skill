@@ -1,6 +1,6 @@
 {
   "name": "website-build-skill",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "A skill pack that turns your AI into an expert website builder: current research, design, code, accessibility, speed, SEO and security, alone or as a team.",
   "type": "module",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "website-build-skill": "bin/website-build-skill.mjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "repository": {
     "type": "git",
@@ -49,20 +49,13 @@
     "docs/",
     "!docs/*.gif",
     "!docs/showcase/**",
+    "!docs/evidence/**",
+    "!docs/evaluation/**",
     "README.md",
     "LICENSE",
-    "CLA.md",
     "CHANGELOG.md",
-    "SECURITY.md",
     "llms.txt",
-    ".claude-plugin/",
-    "AGENTS.md",
-    "CLAUDE.md",
-    "CONTRIBUTING.md",
-    "CODE_OF_CONDUCT.md",
-    "MAINTAINERS.md",
-    "RELEASING.md",
-    "REPO_SETTINGS.md"
+    ".claude-plugin/"
   ],
   "homepage": "https://website-build-skill.aunysillyme.dev/",
   "bugs": {

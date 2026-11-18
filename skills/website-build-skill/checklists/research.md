@@ -26,17 +26,17 @@ in the receipt section below:
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 | Check | Reject condition and required passing evidence |
 | --- | --- |
-| AD01: date provenance<br>Prevents research from starting with a guessed date. | Reject missing, invalid, assumed or model-inferred ASK DATE; missing rung; `assumed`, `from memory` or `user-supplied` rung; raw evidence absent or inconsistent with its rung. Require the allowed first successful ladder rung, raw evidence, attempts, precision and any cross-check. Validate the calendar value and derived-floor label; never accept a fabricated date as environment output. |
-| AD02: no date solicitation<br>Prevents asking the user to supply a date the tools should establish. | Reject any active instruction asking the user to supply or confirm the date, regardless of wording. Scan prompts, roles, playbooks, checklists, references, templates, adapters, README, SKILL.md and generated bundles; combine pattern checks with a semantic read for paraphrases. Negative test strings in explicitly inactive fixtures are data, never executable instructions. |
+| AD01: date provenance<br>Prevents research from starting with a guessed date. | Reject missing, invalid, assumed or model-inferred ASK DATE; missing rung; `assumed` or `from memory` rung; `user-supplied` when `host-environment` or `system-clock` is available; or raw evidence absent or inconsistent with its rung. Require the allowed first successful ladder rung (`user-supplied` only when no host/shell clock exists), raw evidence, attempts, precision and any cross-check. Validate the calendar value and derived-floor label; never accept a fabricated date as environment output. |
+| AD02: no date solicitation<br>Prevents asking the user to supply a date when a host or shell clock can establish it. | Reject any active instruction asking the user to supply or confirm the date when `host-environment` or `system-clock` is available, or guessing from model memory. Scan prompts, roles, playbooks, checklists, references, templates, adapters, README, SKILL.md and generated bundles; combine pattern checks with a semantic read for paraphrases. `user-supplied` is permitted only when no host/shell clock exists. Negative test strings in explicitly inactive fixtures are data, never executable instructions. |
 | AD03: acted-on claim dates<br>Prevents old or invented access dates from making claims look current. | Every acted-on claim has its actual access date equal to or later than ASK DATE inside this engagement, a fetch-time source-opening receipt at `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, and a separate source publication/update date or explicit unknown. Reject earlier, missing, future-fabricated or merely restamped access dates, including in downstream top-ups. Apply the qualified floor procedure only with matching scope provenance and disclosed precision. Require the `check-library` checker ladder above, with command, exit code and output for each rung tried, or the recorded five-rule manual equivalent below only under rung 4. |
 | AD04: source integrity<br>Prevents unsupported claims from being treated as checked facts. | Every cited claim requires a fetch receipt at `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, with URL and a verbatim supporting excerpt of at least 80 characters. Without it the claim is UNVERIFIED; acting on it keeps research acceptance BLOCKED. Require source date evidence in the excerpt, otherwise `published: unknown`. Require the `check-library` checker ladder above, with command, exit code and output for each rung tried, or the recorded five-rule manual equivalent below only under rung 4. A self-assigned Verified label is not evidence. Reject confident undated claims as findings, regardless of familiarity. |
 | AD05: library stamps and reuse<br>Prevents an updated date label from disguising unchecked old research. | Every library Markdown file opens with `Research as of <ASK DATE>` from scope, with the floor qualification where required. Reject an older or different stamp, a new stamp over unrevalidated content, or any prior-run claim without original access and recorded revalidation decision/current source-opening evidence. Old dates in labelled history may remain only alongside current evidence; they cannot support reliance themselves. |
 | AD06: domain coverage and expiry<br>Prevents missing topics and expired sources from guiding the build. | Every applicable domain has a substantive file/checklist and at least one access-dated source, or an explicit NOT APPLICABLE with a reason. `staleness.md` contains all fourteen windows, current-version checks, the earliest-expiring domain, its window and recheck date relative to ASK DATE. Reject elapsed windows or change triggers without rechecks before reliance, including on later engagement days. |
-| AD07: capability and gate status<br>Prevents missing web access or missing proof from being called a research pass. | No web access leaves the current-research gate BLOCKED with `query-plan.md` and `unresolved-claims.md`, even when a prior library exists. Reject PASS or PASSED without actual web evidence, complete date provenance, saved/read-back files and required domain coverage. PASS additionally requires exit 0 from a mechanical rung of the `check-library` checker ladder above for `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, or its recorded five-rule manual equivalent only under rung 4, and no acted-on UNVERIFIED claims. A derived-floor result repeats its limitation; it never claims exact-day currency. |
+| AD07: capability and gate status<br>Prevents missing web access or missing proof from being called a research pass. | When web access is unavailable, write `query-plan.md` and `unresolved-claims.md`, flag current web claims `UNVERIFIED`, and disclose the limit when proceeding with available inputs (never mark offline guesses as `OPENED` or `PASS`). Reject PASS or PASSED without actual web evidence, complete date provenance, saved/read-back files and required domain coverage. PASS additionally requires exit 0 from a mechanical rung of the `check-library` checker ladder above for `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, or its recorded five-rule manual equivalent only under rung 4; fabricated or mismatched `OPENED` receipts keep that receipt BLOCKED. A derived-floor result repeats its limitation; it never claims exact-day currency. |
 | AD08: relative active recency<br>Prevents fixed calendar years from making active instructions grow stale. | Reject literal calendar years/ranges used as recency instructions in active prompts, playbooks, checklists, roles, references, templates, adapters, bundles, README and SKILL.md. Permit only bounded ARCHIVE, QUOTE and EVIDENCE contexts identified by the manifest context allowlist; inspect adjacent active text and generated copies too. |
 | AD09: independent freshness review<br>Prevents unchecked source excerpts and stale claims from reaching release. | Reviewer repeats AD01 through AD08 against the actual candidate library, acted-on claim IDs, top-ups and `research/library/receipts/<CLAIM-ID>.md` relative to `site-work/`, including `check-library` output or the recorded manual equivalent. Independently re-fetch at least 3 acted-on sources or 20 percent rounded up, whichever is larger. Confirm each receipt excerpt appears on the live page and record URL, tool, outcome and supporting page text. Any excerpt mismatch is a finding that keeps research acceptance BLOCKED. Reject missing URL/access, access dates before ASK DATE, and stamped-but-unrevalidated material; treat confident undated claims as findings. Coordinator records those findings and keeps dependent research/ship acceptance BLOCKED until Researcher corrects evidence and the normal reproduction/disposition checks pass. |
 
@@ -61,7 +61,7 @@ prerequisite that would activate Reviewer before Researcher finishes.
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 Save the ladder evidence with the gate receipt. For rung 4, Reviewer records each
 rule's result, claim IDs and evidence paths by hand:
@@ -77,15 +77,17 @@ rule's result, claim IDs and evidence paths by hand:
    opened", while any row is unreceipted.
 
 List UNVERIFIED rows even when all five consistency rules pass. They cannot count
-as substantive domain coverage or support an acted-on claim. Record the manual
-result honestly; do not invent a command run or exit code. An internal substitute
-cannot pass independent review. The checker validates the written artifacts;
+as substantive domain coverage or support a verified acted-on claim. Record the
+manual result honestly; do not invent a command run or exit code. An internal
+substitute cannot satisfy independent review (record `independent-review: INTERNAL (UNVERIFIED)`
+when a second model family is unavailable). The checker validates the written artifacts;
 AD09's independent live re-fetch checks whether the excerpts appear on the pages.
 
 ## Content boundary checks
 
-AD02 includes a semantic read of active instructions for date solicitation paraphrases.
-An affirmative request to supply or confirm the date fails regardless of wording.
+AD02 includes a semantic read of active instructions for unnecessary date solicitation paraphrases.
+Asking the user to supply or confirm the date fails whenever a host or shell clock is available;
+`user-supplied` is allowed only when no clock/shell exists, and guessing from model memory always fails.
 Instructions prohibiting date solicitation do not fail merely because they mention dates.
 AD08 rejects hardcoded calendar years in ACTIVE instructions, including code fences.
 Only the exact inactive archive body and explicitly bounded non-executable evidence
@@ -93,15 +95,19 @@ may carry historical years. An archive copied into an active route fails.
 Do not exempt adjacent wrapper instructions, entire cited files, or generic code fences.
 The manifest marks the graphics archive inactive and excludes it from active bundles.
 
-## UI component libraries (before a component enters a site)
+## UI component libraries
 
-Research a third-party component library with the same receipts as any claim: read its licence from the file that governs the code you copy (its LICENSE file or licence page), quote the sentence that decides each point, and record the URL and the date read. Free and paid tiers often carry different licences, so the paid tier's licence decides a paid kit.
+Before a component enters a site, research a third-party component library with the same receipts as any claim: read the licence or EULA from the file or page that governs the code you copy (its LICENSE file, licence page, or paid-tier EULA), quote the sentence that decides each point, and record the URL and the date read. Free and paid tiers often carry different terms, so the paid tier's terms decide a paid kit.
 
-- **Ship-safe test:** the component may appear inside a client or own website. The component source may not be sold, sublicensed or redistributed alone, in a bundle or as a ported copy. The copyright and permission notice stays in every copied file.
+- **Licence class (separate EULA vs open source):**
+  - **Proprietary UI-kit EULAs:** usually allow using the component in a client or own website while forbidding reselling, sublicensing, or redistributing the component source alone, in a bundle, or as a ported kit/template.
+  - **Permissive open-source licences (`MIT`, `Apache-2.0`):** allow commercial use, modification, and redistribution when required copyright and permission notices (plus `Apache-2.0` `NOTICE` or change notices where present) remain intact.
+  - **Copyleft licences (`GPL`, `AGPL`):** require source disclosure under compatible copyleft terms for distributed or network-served derivative works, which rarely fits proprietary client deliverables without explicit legal review and approval.
+  - **Non-commercial licences (`CC-BY-NC`, etc.):** forbid commercial use, so reject them for commercial or client sites unless separate commercial permission is obtained.
+- **Copyright notices vs author credits:** preserve required copyright and permission notices in copied source or notice files per the governing licence. Add public author credits (on the page or in a credits file with a link to the source component) only when the licence requires attribution or when the user approves an optional credit; treat optional author credits separately from mandatory copyright/permission notices.
 - **Media is not code:** marketplace demo pages, screenshots, GIFs and video previews are often owned by the platform. Copy code under its own licence, never the previews.
-- **Credit the author** on the page or in a credits file, with a link to the source component, whenever the licence asks for it or the source is one person's work.
 - **Stack check:** name the runtime a component needs (React, Tailwind, a motion library). A plain HTML/CSS site takes only components that port without it.
-- **Motion:** note each transition or animation and whether it honours `prefers-reduced-motion`. Add the media query when the source does not.
+- **Motion:** inspect every CSS transition/animation and every JavaScript, Web Animations API (`WAAPI`, `element.animate()`), or `requestAnimationFrame` motion loop, and check whether each honours `@media (prefers-reduced-motion: reduce)` and `window.matchMedia('(prefers-reduced-motion: reduce)')`. Add the CSS media query and JS `matchMedia` check when the source omits them.
 - **Agent installs:** a CLI or MCP install writes files into the project. List which files it writes and which credentials it needs (by name, never by value) before running it.
 
 ## Gate receipt
@@ -112,6 +118,6 @@ equivalent, learning, memory receipt, and the completed checks.
 Every reused claim retains original access, original scope, window, decision, reason,
 current source opening, and revalidation evidence. A new stamp does not revive it.
 A derived floor repeats its limitation in every output and gate; exact-day decisions
-remain BLOCKED. No web access always blocks current research, even with old files.
+remain UNVERIFIED or BLOCKED as required. When web access is unavailable, write `query-plan.md` and `unresolved-claims.md`, flag current web claims `UNVERIFIED`, and disclose the limit when proceeding with available inputs (never mark offline guesses as `OPENED` or `PASS`).
 Independent AD09 findings remain visible until correction and normal disposition checks.
 

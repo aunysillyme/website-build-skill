@@ -33,7 +33,7 @@ output: content-keyed variants + actual dimensions + byte sizes + manifest
 invalidate: any input bytes, settings, crop, or encoder version changes
 ```
 
-Use a documented TypeScript build script with sharp as a declared build dependency.
+Use a documented build script (`.mjs`, `.js`, or `.ts` matching the chosen runtime) with sharp as a declared build dependency.
 Read current API documentation before implementing format options.
 Reject enlargements that cannot meet the approved visual requirement.
 Rebuild from source rather than recompressing already compressed derivatives.

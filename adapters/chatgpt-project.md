@@ -29,7 +29,7 @@ A later switch to TEAM installs the seven workers' files in one command; you ope
 Read all seven complete role bodies in team.md on either path. Before each job, complete
 its learning and dated research; save and reopen handoffs, including self-handoffs.
 Name the previous framing you are clearing when changing solo jobs.
-An independent pre-release reviewer must use a different model family from the builder.
+Prefer a different model family from the builder for pre-release review; if unavailable, run a read-only review pass and record independent-review: INTERNAL (UNVERIFIED).
 Keep project data in this project; do not upload it to public examples or repositories.
 Do not publish beyond the user's recorded authorization.
 Finish each stage with artifacts, completed checks, next steps, and the next owner.
@@ -54,7 +54,7 @@ Native loading on this host is awaiting a real-client trial; the check below con
 Give the host a synthetic brief and ask it to identify the entrypoint and complete asset list.
 Record client version, date, exact path, tool availability and the observed invocation.
 Start Researcher, verify saved library read-back, then confirm Coordinator waits for its gate.
-For TEAM, record seven separate routes and families; an inherited family leaves independent review BLOCKED.
+For TEAM, record seven separate routes and actual model families; if a second model family is unavailable, record `independent-review: INTERNAL (UNVERIFIED)` rather than claiming independent review.
 Never grant a Reviewer write access just to persist findings. Return text for Coordinator to capture.
-When a tool is absent, keep current research BLOCKED until opened sources return; save and reattach named file bodies before the save gate; return inspected images before the visual gate.
+When web search is absent, return `query-plan.md` and `unresolved-claims.md` with `UNVERIFIED` flagging; save and reattach named file bodies before the save gate; return inspected images before the visual gate.
 Read the [method](../docs/METHOD.md), [compatibility](../docs/COMPATIBILITY.md) and [installer contract](../docs/INSTALLER.md).

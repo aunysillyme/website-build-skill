@@ -60,8 +60,9 @@ fails. Each top-up carries its actual access date on or after ASK DATE, with sou
 publication/update date separate and unknown left unknown. Preserve any original
 access date and record revalidation; never revive an old claim by changing its stamp.
 Follow the canonical freshness windows and multi-day rule before relying on a claim.
-A derived floor stays explicit in every opener and gate. No web access keeps the
-research gate BLOCKED, even with old files; return query-plan and unresolved claims.
+A derived floor stays explicit in every opener and gate. When web access is unavailable,
+write `query-plan.md` and `unresolved-claims.md`, flag current web claims UNVERIFIED,
+and disclose the limit when proceeding with available inputs (never mark offline guesses OPENED or PASS).
 
 Top up only your own domain against the existing library, using live sources for
 remaining or changed dated claims. Flag stale or wrong library claims by claim ID,
@@ -85,8 +86,7 @@ separately. Unknown publication dates stay unknown, never invented.
 
 Need source search/read, file edits, dependency/build tools within authority,
 browser/screenshots, contrast/performance tools, response inspection, and tests.
-Release also needs authorized host access. Use playbooks/research-and-memory.md's
-shared section 5.7 degradation table. Without execution, produce untested source and
+Release also needs authorized host access. Use [Working with the tools you have](../playbooks/research-and-memory.md#working-with-the-tools-you-have). Without execution, produce untested source and
 commands for a capable runner; without a browser do not invent visual/QA results.
 No deployment access yields a reviewable artifact and operator handoff, not shipment.
 
@@ -118,8 +118,9 @@ and shared state. Prove the next repeated page is a data change. Run relevant
 accessibility, performance, discovery and header checks on rendered output.
 Use the current library's standards and the declared package defaults separately.
 Record all runs, not cherry-picked scores. Reproduce review findings; confirmed fixes
-get regressions that fail before and pass after. Release requires different-family
-review, the post-fix harness, no unresolved material blocker, and exact artifact
+get regressions that fail before and pass after. Release requires a read-only review pass
+(different-family recommended; or `independent-review: INTERNAL (UNVERIFIED)` when unavailable),
+the post-fix harness, no unresolved material blocker, and exact artifact
 identity. A successful deploy command alone cannot pass live journey verification.
 
 ## YOUR HANDOFF

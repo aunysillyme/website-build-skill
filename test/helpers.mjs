@@ -1,5 +1,6 @@
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, realpathSync, rmSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { files, owned } from '../src/bundle.mjs';
 import { check as strictCheck } from '../src/validate.mjs';
 
@@ -8,9 +9,7 @@ export const root = process.cwd();
 // Kept as a named alias so the RED cases read the same as when it was a candidate.
 export const candidateCheck = target => strictCheck(target);
 export function fixture(run) {
-  const parent = resolve(root, '.test-work');
-  mkdirSync(parent, { recursive: true });
-  const target = mkdtempSync(resolve(parent, 'case-'));
+  const target = mkdtempSync(resolve(realpathSync(tmpdir()), 'website-build-case-'));
   try {
     for (const name of files(root)) {
       const dest = resolve(target, name);

@@ -53,7 +53,7 @@ Verify intentional private or draft exclusions remain excluded.
 Input: no source was opened, but research is labeled complete.
 Reject with research.md AD07; query plans do not satisfy current research.
 Input: Builder reviews its own work and marks independent review complete.
-Reject with ship.md SH01; record INTERNAL and independent gate NOT MET, ship BLOCKED.
+Reject with ship.md SH01: undeclared internal review cannot claim independent review; require a read-only review pass and record `independent-review: INTERNAL (UNVERIFIED)` when no second model family is available.
 Retest: require actual source-opening evidence or different-family review as applicable.
 Changing the label cannot repair either missing capability.
 

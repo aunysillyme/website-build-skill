@@ -15,6 +15,8 @@ CHOOSE
 - Do not add a CMS, page builder, analytics product, or paid service without a requirement.
 - Record alternatives, dependencies, host constraints, and the next-page editing path
   in site-work/stack.md. Verify current APIs before writing against them.
+- Before adopting any third-party UI component library or copied component, apply
+  [the UI component library checks](../checklists/research.md#ui-component-libraries).
 
 LEARN CODING PRACTICE
 - Run [prompts/13-coding-research.md](13-coding-research.md) for the exact selected
