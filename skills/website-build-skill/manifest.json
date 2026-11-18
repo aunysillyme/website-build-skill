@@ -557,7 +557,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "f915ee4f5bbe76c485526149303a588b67e8113f08293e69af7ab56de7932ba8"
+      "sha256": "90a46ed25aa623403b05a8c59e8463172cbd7f84bb2b7ea06700c83b0d17eb12"
     },
     {
       "path": "checklists/code-quality.md",
