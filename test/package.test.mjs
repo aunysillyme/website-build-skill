@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, readdirSync, realpathSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { CORE, ARCHIVE, ARCHIVE_SHA, read, digest, generated, manifest, files } from '../src/bundle.mjs';
 import { root, fixture, change } from './helpers.mjs';
 
@@ -83,10 +84,10 @@ test('Published package ships runtime files and excludes GIFs and the repository
   // Four of these run on a stranger's machine before they have read anything; the other two
   // run at publish time and could change the bytes after the trial that approved them.
   for (const hook of ['preinstall', 'install', 'postinstall', 'prepare', 'prepublishOnly', 'prepack']) assert.equal(p.scripts[hook], undefined, hook);
-  // The tarball carries runtime files; GIFs and the showcase use public repository URLs.
+  // The tarball carries runtime files; GIFs, showcase, evidence and evaluation notes use public repository URLs.
   // Other negations can empty runtime paths even when those paths are still listed.
   const published = p.files.map(entry => entry.replace(/\/+$/, ''));
-  assert.deepEqual(published.filter(entry => entry.startsWith('!')), ['!docs/*.gif', '!docs/showcase/**']);
+  assert.deepEqual(published.filter(entry => entry.startsWith('!')), ['!docs/*.gif', '!docs/showcase/**', '!docs/evidence/**', '!docs/evaluation/**']);
   for (const needed of ['bin', 'src', 'skills', 'docs', 'README.md', 'LICENSE']) assert.ok(published.includes(needed), needed);
   // The engine floor is a claim about runtimes, so it is one continuous integration runs.
   const floor = p.engines.node.match(/(\d+)/)[1];
@@ -95,9 +96,7 @@ test('Published package ships runtime files and excludes GIFs and the repository
 });
 
 test('Installer entry point rejects EOF without writing', () => {
-  const parent = resolve(root, '.test-work');
-  mkdirSync(parent, { recursive: true });
-  const dir = mkdtempSync(resolve(parent, 'entrypoint-'));
+  const dir = mkdtempSync(resolve(realpathSync(tmpdir()), 'entrypoint-'));
   try {
     const result = spawnSync(process.execPath, ['bin/website-build-skill.mjs', '--dir', dir], { cwd: root, input: '', encoding: 'utf8' });
     assert.equal(result.status, 2);

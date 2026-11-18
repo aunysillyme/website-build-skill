@@ -47,22 +47,16 @@
         {
           "name": "RED cases and valid controls",
           "run": "node --test test/*.test.mjs",
-          "if": "${{ always() && runner.os == 'Linux' }}"
-        },
-        {
-          "name": "Packed consumer install: SOLO and TEAM",
-          "run": "node --test test/packed-artifact.test.mjs",
-          "if": "${{ runner.os != 'Linux' }}"
+          "if": "always()"
         }
       ],
       "strategy": {
         "fail-fast": false,
         "matrix": {
           "node": [
-            "18",
-            "20",
             "22.22.3",
-            "24"
+            "24",
+            "26"
           ],
           "os": [
             "ubuntu-latest"
