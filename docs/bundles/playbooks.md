@@ -234,7 +234,7 @@ output: content-keyed variants + actual dimensions + byte sizes + manifest
 invalidate: any input bytes, settings, crop, or encoder version changes
 ```
 
-Use a documented TypeScript build script with sharp as a declared build dependency.
+Use a documented build script (`.mjs`, `.js`, or `.ts` matching the chosen runtime) with sharp as a declared build dependency.
 Read current API documentation before implementing format options.
 Reject enlargements that cannot meet the approved visual requirement.
 Rebuild from source rather than recompressing already compressed derivatives.
@@ -465,7 +465,8 @@ Merge this proposal into vercel.json, then inspect actual response coverage.
       {"key": "X-Content-Type-Options", "value": "nosniff"},
       {"key": "X-Frame-Options", "value": "DENY"},
       {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-      {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"}
+      {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
+      {"key": "Cross-Origin-Opener-Policy", "value": "same-origin"}
     ]
   }]
 }
@@ -473,6 +474,10 @@ Merge this proposal into vercel.json, then inspect actual response coverage.
 
 Starting source: https://vercel.com/docs/project-configuration
 Current syntax, matching, and response coverage require source opening and a host test.
+Evaluate `Cross-Origin-Opener-Policy` (`COOP`) against actual window and popup flows:
+`same-origin` isolates top-level browsing contexts for self-contained static sites, whereas
+sites relying on cross-origin OAuth popups, payment checkout windows, or third-party opener
+messaging must evaluate `same-origin-allow-popups` or omit COOP and test those journeys.
 
 ### Cloudflare Pages static output
 
@@ -486,6 +491,7 @@ Place this proposal in the deployed static directory as _headers.
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
 ```
 
 Starting source: https://developers.cloudflare.com/pages/configuration/headers/
@@ -504,6 +510,7 @@ Place this proposal in the publish directory as _headers.
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cross-Origin-Opener-Policy: same-origin
 ```
 
 Starting source: https://docs.netlify.com/manage/routing/headers/
@@ -583,9 +590,7 @@ Connect page and entity records with stable @id references and explicit relation
 Write the direct answer near its question, then support it with useful detail and sources.
 Make a section understandable outside surrounding navigation without losing its conditions.
 Do not repeat keywords at the expense of task completion.
-Use FAQPage only for genuine visible questions and answers where appropriate.
-Current consumer eligibility requires a same-day source check; valid vocabulary does not
-prove a consumer offers a rich result or that the site qualifies for it.
+General `FAQPage` rich results were deprecated/retired in Google Search (restricted to well-known authoritative government and health sites); do not promise `FAQPage` rich results for general sites. Use `FAQPage` only for genuine visible questions and answers where justified and verified against current consumer documentation on ASK DATE; valid vocabulary does not prove a consumer offers a rich result or that the site qualifies for it.
 
 ## Validate structured data
 
@@ -673,9 +678,11 @@ Apply checklists/performance-seo.md PS05 through PS11.
 
 Open https://schema.org/docs/schemas.html for vocabulary.
 Open https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
-for consumer guidance and https://developers.google.com/search/updates for changes.
+for consumer guidance (including current `FAQPage` eligibility limits) and
+https://developers.google.com/search/updates for deprecations and changes on ASK DATE.
 Open https://developers.google.com/search/docs/appearance/ai-features and
-https://llmstxt.org/ to distinguish consumer requirements from proposal semantics.
+https://llmstxt.org/ on ASK DATE to verify current AI-feature documentation and
+distinguish consumer requirements from `llms.txt` proposal semantics.
 These links are research starting points, not receipts of an opening in this engagement.
 
 <!-- END SOURCE: playbooks/structured-data-and-llms.md -->
@@ -879,11 +886,11 @@ Establish the engagement date, build the evidence library, then release work.
 
 ## ASK DATE rule
 
-Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`).
+Establish ASK DATE (the engagement start date) before intake or research, and record it once in `site-work/research/library/scope.md` (later roles read `scope.md`). Never ask the user when a host or shell clock is available, and never guess from model memory.
 
 1. **System clock / host date:** Use a host-supplied date (`host-environment`) or run `date -u '+%Y-%m-%dT%H:%M:%SZ'` (`system-clock`; on Windows: `powershell -NoProfile -Command "[DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')"`). **A local rung wins:** a fetched date later than the local clock is rejected, and a fetched source never moves ASK DATE.
-2. **Ask the user / fallback rungs:** If no local clock or host date is available, ask the user or fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), or `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`).
-3. **Unavailable (`unavailable`):** If no date or live web source can be established, mark the date `BLOCKED`, write `query-plan.md` and `unresolved-claims.md`, and flag dependent claims `UNVERIFIED`.
+2. **Fallback rungs (`user-supplied` only without a clock):** Only if neither `host-environment` nor `system-clock` is available, fall back to `http-date` (needs corroboration from a second independent host within 24 hours), `filesystem-mtime` (`.ask-date-probe`), `derived-floor` (latest credible opened source date, labeled `Research as of derived-floor <date>`), or `user-supplied` when no clock/shell exists.
+3. **Unavailable (`unavailable`):** If no date or live web source can be established, write `query-plan.md` and `unresolved-claims.md`, flag dependent web claims `UNVERIFIED`, and proceed only with explicit disclosure (never mark offline guesses `OPENED` or `PASS`).
 
 Per-claim discipline: every claim records `published: <date | unknown>` and `accessed: <date>` (from an actual source open on or after ASK DATE), with `Research as of <ASK DATE>` at the top of each library file.
 
@@ -919,7 +926,7 @@ Question: which facts change this site's design, implementation, or release?
 - Extraction: separate observed values, inferred roles, approved rules, and unresolved conflicts.
 - Save: write the library and propose durable memory as two separate destinations.
 - Close: report surprising findings with claim IDs, then request only still-missing design inputs.
-- Order: Researcher is agent one; no downstream role starts until its disk library passes.
+- Order: Researcher is agent one; no downstream role starts until Researcher completes its disk library (passing AD01-AD08 or explicitly disclosing offline `UNVERIFIED` limits with `query-plan.md` and `unresolved-claims.md`).
 
 ## Write a claim ledger
 
@@ -972,12 +979,12 @@ An existing qualified ASK DATE does not authorize a fabricated fetch timestamp.
 3. From a repository checkout: `node bin/website-build-skill.mjs check-library <site-work-dir>`.
 4. When no rung can run, meaning no shell, no PATH command and npx fails or has no network: Reviewer records the five-rule manual equivalent. Also record each rung tried, with its command, exit code and output, as the reason.
 
-For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims still keep research acceptance BLOCKED.
+For every rung that runs, save the command, exit code and output. PASS still needs exit 0 from a mechanical rung, or a recorded manual equivalent for rung 4. Acted-on UNVERIFIED claims cannot earn PASS (if web access is unavailable, proceed only with `query-plan.md`, `unresolved-claims.md`, and explicit `UNVERIFIED` disclosure).
 
 Save the ladder evidence with the research gate evidence. Exit 0 means
 receipt consistency, not proof that a passage is true or supports a decision;
 exit 2 reports problems, one per line. The checker lists UNVERIFIED rows even
-when it exits 0. Any acted-on UNVERIFIED claim keeps research acceptance BLOCKED.
+when it exits 0. Any acted-on UNVERIFIED claim cannot pass AD07.
 For rung 4, Reviewer records the same five checks in
 checklists/research.md by hand. Independent AD09 re-fetching remains required.
 
@@ -1136,14 +1143,14 @@ Optional memory being unsupported does not invalidate a verified disk library.
 
 | Tool | What it enables | Next step when it is absent |
 | --- | --- | --- |
-| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Return `query-plan.md`, `unresolved-claims.md`, and a BLOCKED receipt; current research resumes with web evidence. |
+| Web search | Current-to-ASK-DATE research and revalidation, including a prior library. | Clarify the request, review supplied sources and plan queries. Write `query-plan.md` and `unresolved-claims.md`, flag current web claims `UNVERIFIED`, and disclose the limit when proceeding with available inputs (never mark offline guesses `OPENED` or `PASS`). |
 | URL retrieval | Raw-URL bootstrap and opened-source citations. | Use a pasted or uploaded core method and ask the human for self-contained bundles. Cite sources after opening them. |
 | File writing | Saved disk research and a local install confirmed by read-back. | Draft prompts, specifications and named file bodies. Return downloadable files or copyable labeled blocks for saving and read-back. |
 | Persistent memory | Durable memory across future sessions. | Continue the current-session workflow and project documents. Return a `MEMORY.md` proposal plus explicit save/reattach steps. |
 | Image generation/viewing | Three inspected visual mockups and visual approval. | Plan the brief and wireframes. Return a Designer handoff with required assets and criteria; complete visual approval after inspecting the images. |
 | Code execution/browser | Measured contrast, functional tests, lab scores and live QA. | Draft implementation and a test plan. Return commands and exact expected evidence for a capable runner; record measured results after execution. |
 | Separate workers | TEAM jobs and concurrent workers with verified independence. | Run sequential SOLO jobs, role learning and saved self-handoffs. Return a SOLO capability receipt and role-boundary packets. |
-| Independent model family | The independent adversarial gate. | Run an internal critique and prepare a review packet. Return AUDIT_BRIEF plus an immutable artifact for another family; that review completes the independent gate. |
+| Independent model family | Recommended cross-family adversarial review. | Run a read-only internal critique, prepare AUDIT_BRIEF and an immutable artifact, and record `independent-review: INTERNAL (UNVERIFIED)` in the receipt (optional when a second model family is unavailable; cross-family review still completes the independent gate). |
 | Deploy access | Production release and live verification. | Prepare a reviewable local/preview artifact where available. Return an operations doc and authorized operator handoff for release and live checks. |
 
 Check each tool separately. A working URL reader still needs separate browser,
@@ -1367,17 +1374,17 @@ Use when many pages share structure and must derive metadata from the same recor
 ## File responsibilities
 
 ```text
-src/data/                 Authored records and route registry.
-src/render/               Shared escaping, URL, JSON and state helpers.
-templates/                Page and component rendering.
-scripts/build.ts          Validate, render, derive discovery, report omissions.
-scripts/images.ts         Deterministic authorized image transformations.
-public/                   Approved static files copied to output.
-test/                     Data boundaries, rendered adverse cases, route parity.
-dist/                     Generated deployable output, never hand edited.
-package.json              Exact project scripts and declared dependencies.
-package-lock.json         Reproducible dependency resolution when npm is selected.
-SITE_OPERATIONS.md        Content, build, release, verify and recovery in one file.
+src/data/                     Authored records and route registry.
+src/render/                   Shared escaping, URL, JSON and state helpers.
+templates/                    Page and component rendering.
+scripts/build.{mjs,js,ts}     Validate, render, derive discovery, report omissions.
+scripts/images.{mjs,js,ts}    Deterministic authorized image transformations.
+public/                       Approved static files copied to output.
+test/                         Data boundaries, rendered adverse cases, route parity.
+dist/                         Generated deployable output, never hand edited.
+package.json                  Exact project scripts and declared dependencies.
+package-lock.json             Reproducible dependency resolution when npm is selected.
+SITE_OPERATIONS.md            Content, build, release, verify and recovery in one file.
 ```
 
 Builder owns implementation and generated output.
@@ -1394,7 +1401,7 @@ npm run preview    Serve the built output for local browser verification.
 ```
 
 These commands are a proposed project contract, not scripts supplied by this skill.
-Builder must implement and verify the scripts and document the actual TypeScript runtime.
+Builder must implement and verify the scripts and document the actual script runtime (Node.js ESM `.mjs`/`.js` or the chosen TypeScript runtime).
 Use the chosen runtime's supported compilation/execution path after a current-source check.
 Vite is optional when bundling or development behavior serves a named requirement.
 Sharp is a build dependency when the image transformation pipeline needs it.

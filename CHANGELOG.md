@@ -4,23 +4,31 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.25] - 2026-11-18
 
 ### Added
 
-- Implemented native subagent definition generation in `src/agents.mjs` (`generateAgents`) and wired it into `--team` installs for `claude-code` (`.claude/agents/website-*.md`) and `codex` (`.codex/agents/website-*.toml`), with read-only permissions for `reviewer` and full receipt-tracked uninstall (#24).
+- Add `gemini-cli` installer target (`--target gemini-cli`, `adapters/gemini-cli.md`, `.gemini/skills/website-build-skill/`, `.gemini/agents/website-<role>.md`) and per-target `--scope user` destinations (`userTargets`, `destinationFor`, `agentDirFor`) without requiring `--dir` for `--scope user` installs or uninstalls (#39, #40, #41).
+- Implement native subagent definition generation in `src/agents.mjs` (`generateAgents`) for `--team` installs on `claude-code` (`.claude/agents/website-*.md`), `codex` (`.codex/agents/website-*.toml`), `gemini-cli` (`.gemini/agents/website-*.md`), and `antigravity` (`.agents/agents/website-*.md` for project scope, `~/.gemini/config/agents/website-*.md` for user scope), with receipt-tracked uninstall (#24, #40).
+- Add UI component library license, copyright, and reduced-motion rules (`checklists/research.md#ui-component-libraries`) and `Cross-Origin-Opener-Policy` guidance (`playbooks/security-headers.md`) (#31, #42).
+- Add OpenSSF Scorecard workflow and badge, and add `scripts/eval-outcome.mjs` / `test/outcome-eval.test.mjs` for offline HTML outcome checks (#26).
 
 ### Fixed
 
-- `--target antigravity` now installs to `.agents/skills/website-build-skill/`, the workspace skill folder Antigravity discovers, instead of `.website-build-skill/` (#25). Remove an earlier Antigravity install with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+- Harden `src/install.mjs` receipt validation (`expectedProject`, `destinationFor`, `agentDirFor`) so forged `project` or directory entries cannot redirect uninstall outside the verified target root, require `--target` and `--dir` (or `--scope user`) for custom external `--receipt` paths, fix interrupted `--team` recovery and `--team` to `--solo` ownership carry-over, preserve preexisting empty directories in `pruneCreated`, unlink the receipt last, and remove unused `src/choice.mjs` (#39, #44).
+- Fix `src/agents.mjs` role reference rebasing (`rebaseRefs`), use `disallowedTools: Write, Edit, Bash` on Claude Code's `website-reviewer` so `WebFetch`/`WebSearch` remain available, remove ignored `sandbox_mode` and properly escape TOML multi-line `developer_instructions` in Codex `.toml` definitions, restrict Gemini CLI `website-reviewer` to verified read-only built-in tools, and set `subagent: true`, `mainAgent: false`, `commandExecutionPolicy: "off"` + `tools: [read_file, search_web]` on Antigravity `website-reviewer` (#40).
+- Rewrite links from packaged documentation to repository-only files (`docs/evidence/`, `docs/evaluation/`, `docs/showcase/`, `evals/`, governance files) as GitHub blob URLs so every link resolves inside the published npm tarball, and remove the stray merge-conflict line in `CHANGELOG.md` (#41, #43, #44).
+- `--target antigravity` now installs to `.agents/skills/website-build-skill/` (or `~/.gemini/config/skills/website-build-skill/` for `--scope user`), separated from standalone Gemini CLI (#25, #40, #41). Remove pre-0.1.25 Antigravity installs with `--uninstall --receipt .website-build-skill/.website-build-skill-receipt.json`.
+- Fix `src/library-check.mjs` multi-paragraph `excerpt: |` blocks, required `Domain`/`Statement`/`Accessed`/`URL` validation on `OPENED`/`VERIFIED` claims, and multi-table `sources.md` parsing (#43, #44).
+- Fix `src/validate.mjs` local path detection (`/home/<user>/`, Windows `Users`), binary skip for `.png` files alongside `.gif`, full `PINNED_VERSIONS` enforcement across all `uses` steps, shared `scanFences()` parser, and `scripts/eval-outcome.mjs` `.every()` checks across all `<input>` and `<img>` elements (#43, #44).
+- Replace `.test-work/` with `os.tmpdir()` in `test/` and `scripts/record-demo.sh`, and expand tests for installer security, packed tarball behavior, library-check, privacy, and outcome-eval (#44).
 
 ### Changed
 
-- Soften hard stops when web access or a different-family reviewer is unavailable (proceed with `UNVERIFIED` / `INTERNAL (UNVERIFIED)` receipts), make `agents.json`, `ai-instructions.json`, and `data-agent-*` optional in SEO discovery, and add an outcome-eval comparison harness (`scripts/eval-outcome.mjs`, `test/outcome-eval.test.mjs`) (#26).
-- Trim `playbooks/research-and-memory.md`'s ASK DATE rule to a compact summary and reinforce lazy checklist loading in `SKILL.md` (#22).
-- The README and the install menu now call TEAM "seven role prompts (you run each session)" instead of "seven specialist agents", because nothing starts a subagent yet (part of #24).
-- SKILL.md now opens with what the agent does when invoked. The human install menu moved to the installer docs (`docs/INSTALLER.md`), and the check now requires it there and refuses it in SKILL.md (#23).
-- The skill description names more triggers: landing page, portfolio, homepage, Astro or Next.js sites, and Lighthouse or accessibility audits (#23).
+- Exclude `!docs/evidence/**`, `!docs/evaluation/**`, and root governance files from the npm tarball (`package.json` `files`), declare `"engines": { "node": ">=22" }`, run `node --test test/*.test.mjs` across Node `22.22.3`, `24`, and `26` on Linux, macOS, and Windows in `.github/workflows/check.yml`, and run `.github/workflows/release.yml` on Node `26` (#43, #44).
+- Update multi-vendor adapters (`antigravity.md`, `claude-code.md`, `codex.md`, `hermes.md`, `grok.md`, `agents-md.md`, `team.yaml`) and documentation (`README.md`, `AGENTS.md`, `RELEASING.md`, `docs/COMPATIBILITY.md`, `docs/INSTALLER.md`, `docs/EVALUATION.md`, `docs/PROVENANCE.md`, `docs/evaluation/host-gate.md`) for generated subagents, Antigravity vs Gemini CLI separation, Hermes `delegate_task`, Grok Bot UI updates, and `#26` gate alignment (#40, #41).
+- Propagate `#26` offline-proceed (`query-plan.md`, `unresolved-claims.md`, `UNVERIFIED` disclosure), optional `independent-review: INTERNAL (UNVERIFIED)`, and optional `agents.json`/`ai-instructions.json`/`data-agent-*` discovery, compact `ASK DATE` ladder and lazy checklist loading (`#22`), and `#31` cross-references across `SKILL.md`, `evals/evals.json`, checklists, playbooks, prompts, roles, templates, and `v0.1.25` showcase links (#22, #26, #31, #42).
+- `SKILL.md` opens with invocation instructions and expanded triggers while the install menu lives in `docs/INSTALLER.md`; TEAM is framed around seven role prompts and optional generated subagents while host execution remains UNVERIFIED until recorded trials (#23, #24, #40).
 - Update setup-node to v7.1.0 and upload-sarif to v4.39.3, with matching workflow labels and upstream-tag-verified pins in the validator.
 
 ## [0.1.24] - 2026-11-13
@@ -309,7 +317,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.24...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.25...HEAD
+[0.1.25]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...v0.1.23
 [0.1.22]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.21...v0.1.22
