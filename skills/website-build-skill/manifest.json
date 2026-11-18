@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "packageVersion": "0.1.25",
+  "packageVersion": "0.1.26",
   "skillName": "website-build-skill",
   "pathBase": "All asset paths resolve from this manifest directory; runtime paths resolve in the authorized user project.",
   "assets": [
@@ -17,7 +17,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "2db8141608c0d718327adf874fdee576cdf795529a6c393fe149ae2a727f8e8f"
+      "sha256": "b5710e95b51abba972906ca420621955bd93edbc110b86d3b2522cfef0406c4f"
     },
     {
       "path": "manifest.json",
@@ -843,7 +843,7 @@
         "skill-zip",
         "native-skill"
       ],
-      "sha256": "a85740a274d61ee1c6250966cc0d977f1ac0e35ab6150e0f84a4120f051b00f7"
+      "sha256": "c598b17f9b121ed3ed8de324bc874f98ce5436bd6678871584c030d7a4bab19d"
     },
     {
       "path": "examples/fictional-studio-brief.md",

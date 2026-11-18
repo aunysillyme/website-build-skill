@@ -6,6 +6,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.26] - 2026-11-18
+
 ### Added
 
 - Add `playbooks/feel-layer.md` for small static-site interaction details (six MIT/ISC vanilla JS picks: Lenis, NumberFlow, Rough Notation, canvas-confetti, AutoAnimate, Atropos, with single-entrypoint `prefers-reduced-motion` wiring and before/after verification gates), backed by test-page Lighthouse and Playwright evidence in `docs/evaluation/feel-layer/` (`RND-116`).
@@ -327,7 +329,8 @@ Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html)
 - Generated native workers for the seven-role team, gated on schema and permission tests.
 - Clean-client trials, behavioral evaluations and fresh-tarball trials on Linux and Windows.
 
-[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.25...HEAD
+[Unreleased]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.26...HEAD
+[0.1.26]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.25...v0.1.26
 [0.1.25]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.24...v0.1.25
 [0.1.24]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.23...v0.1.24
 [0.1.23]: https://github.com/aunysillyme/website-build-skill/compare/v0.1.22...v0.1.23
