@@ -24,7 +24,7 @@ TEAM: one command installs the seven workers' files; you open each session yours
 ## Active sources
 
 - [SKILL.md](skills/website-build-skill/SKILL.md): Website Build Skill
-- [manifest.json](skills/website-build-skill/manifest.json): Index of all 58 skill assets with kind, version and bundles, plus the stage gates
+- [manifest.json](skills/website-build-skill/manifest.json): Index of all 59 skill assets with kind, version and bundles, plus the stage gates
 - [prompts/00-start.md](skills/website-build-skill/prompts/00-start.md): user-supplied only when no clock/shell exists), and never infer it from model
 - [prompts/01-website-deep-research.md](skills/website-build-skill/prompts/01-website-deep-research.md): Deep Research prompt to make your agent good at building websites
 - [prompts/03-extract-brand-kit.md](skills/website-build-skill/prompts/03-extract-brand-kit.md): Turn my approved materials into a brand kit that a website builder can use and test.
@@ -50,6 +50,7 @@ TEAM: one command installs the seven workers' files; you open each session yours
 - [playbooks/image-pipeline.md](skills/website-build-skill/playbooks/image-pipeline.md): Deliver images for their actual slots
 - [playbooks/self-hosted-fonts.md](skills/website-build-skill/playbooks/self-hosted-fonts.md): Serve licensed fonts from the site
 - [playbooks/embed-facades.md](skills/website-build-skill/playbooks/embed-facades.md): Load providers after deliberate activation
+- [playbooks/feel-layer.md](skills/website-build-skill/playbooks/feel-layer.md): Add small interaction details without a framework rewrite
 - [playbooks/security-headers.md](skills/website-build-skill/playbooks/security-headers.md): Tailor headers to the real response
 - [playbooks/structured-data-and-llms.md](skills/website-build-skill/playbooks/structured-data-and-llms.md): Keep discovery content truthful
 - [playbooks/performance-budgets.md](skills/website-build-skill/playbooks/performance-budgets.md): Measure the experience against explicit budgets

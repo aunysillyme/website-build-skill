@@ -1,0 +1,37 @@
+{
+  "status": "MEASURED EVALUATION (one page, simulated mobile throttling, Chromium headless shell)",
+  "scope": "Test-page baseline vs all-six feel-layer kit comparison backing playbooks/feel-layer.md (RND-116); docs/evaluation/feel-layer/ is excluded from the npm tarball.",
+  "command": "cd docs/evaluation/feel-layer && node build.mjs && (node serve.mjs & pid=$!; trap 'kill $pid' EXIT; node lh.mjs && node rm-test.mjs && node nf-test.mjs)",
+  "environment": "orchestra-a1 (Linux ARM64, Node 22, Chromium headless shell 1248); Lighthouse 13.6.0, playwright-core 1.65.1",
+  "date": "2026-11-18",
+  "exitCode": 0,
+  "artifact": "docs/evaluation/feel-layer/lh-results.json",
+  "artifactSha256": "61c51a680062c8b9a21f4702c94e12db55b6cd7633522bb2ae72519dbd5e17d8",
+  "digestMethod": "SHA-256 of docs/evaluation/feel-layer/lh-results.json.",
+  "observed": {
+    "runsPerVariant": 5,
+    "baseline": {
+      "performanceScore": 100,
+      "fcpAndLcpMsMedian": 607,
+      "fcpAndLcpMsRange": [603.169, 636],
+      "tbtMsMedian": 1,
+      "tbtMsRange": [0, 12],
+      "cls": 0,
+      "transferBytes": 2041
+    },
+    "kit": {
+      "performanceScore": 100,
+      "fcpAndLcpMsMedian": 610,
+      "fcpAndLcpMsRange": [609.327, 654.92],
+      "tbtMsMedian": 3,
+      "tbtMsRange": [0, 41.5],
+      "cls": 0,
+      "transferBytes": 26883
+    },
+    "reducedMotionBehaviourSummary": "Recorded in docs/evaluation/feel-layer/README.md for lenis 1.3.27, number-flow 0.6.2, rough-notation 0.5.1, canvas-confetti 1.9.4, @formkit/auto-animate 0.10.2, atropos 2.0.2; 0 page errors."
+  },
+  "limitations": [
+    "One static page, one machine, one browser engine, simulated mobile throttling.",
+    "Not run: INP, real devices, Safari or Firefox, assistive technology, lazy-loaded per-page variant, or raw JSON export of Playwright rm-test output."
+  ]
+}

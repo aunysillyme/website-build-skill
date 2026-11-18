@@ -69,7 +69,7 @@ npx website-build-skill --team --target antigravity --dir . --scope project --ye
 npx website-build-skill --team --target gemini-cli --scope user --yes
 ```
 
-This recorded install GIF uses the published 0.1.13 package (SOLO, Codex target), ending on the receipt read-back of 57 files (current releases ship 58 skill files, plus 5 bundles and 7 native subagent definitions on supported `--team` targets).
+This recorded install GIF uses the published 0.1.13 package (SOLO, Codex target), ending on the receipt read-back of 57 files (current releases ship 59 skill files, plus 5 bundles and 7 native subagent definitions on supported `--team` targets).
 
 ![Installer demo: preview the files, install the Codex skill and inspect the receipt](https://raw.githubusercontent.com/aunysillyme/website-build-skill/main/docs/demo.gif)
 
