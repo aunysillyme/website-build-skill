@@ -1,5 +1,5 @@
 import { readFileSync, readdirSync, lstatSync, existsSync } from 'node:fs';
-import { resolve, relative, dirname, sep, posix } from 'node:path';
+import { resolve, relative, sep, posix } from 'node:path';
 import { createHash } from 'node:crypto';
 
 // Installed packages use the prebuilt block and do not ship the repository renderer.
