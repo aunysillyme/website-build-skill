@@ -35,6 +35,17 @@ checklists/code-quality.md (CQ06), checklists/build.md (B08) and prompts/04-thre
   [github.com/pbakaus/impeccable](https://github.com/pbakaus/impeccable), commit
   `9d715cc4f5564a990ca8345abfdd5df6dc9b41c8`, Apache-2.0 licence.
 
+## Interface finish pass
+
+One technique adapted (own wording, not copied text) into checklists/build.md (B08):
+
+- The finish pass on a built page (concentric radii, text wrapping, tabular figures, explicit transition properties,
+  press state, touch-target size, icon stroke weight, motion restraint): adapted from make-interfaces-feel-better,
+  [github.com/jakubkrehel/make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better),
+  commit `6d9f2f1df10e8ce2ae1708598a73b0506fb98794` (HEAD when read, 2026-11-18), MIT licence per its `LICENSE` file.
+  Chosen after a one-page, four-way comparison graded on the design QA gate (RND-112): the pack alone scored highest, and this
+  skill's rules covered the finish details the pack's own build left out. No code or text was copied.
+
 ## Reference ledger
 
 These links are research entrypoints, not evidence that this package was loaded in a client.

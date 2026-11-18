@@ -4,6 +4,12 @@ All notable changes will be documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/2.0.0/).
 Version policy: [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Add an interface finish pass to the build gate (`checklists/build.md` B08): concentric radii, text wrapping, tabular figures, explicit transition properties, press state, touch-target size, icon stroke weight and motion restraint, adapted in our own wording from make-interfaces-feel-better (MIT) with credit in `docs/PROVENANCE.md`.
+
 ## [0.1.25] - 2026-11-18
 
 ### Added
